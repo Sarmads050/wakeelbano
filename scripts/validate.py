@@ -36,8 +36,9 @@ for path in sorted(html_files):
     if 'rel="canonical"' not in src:
         problems.append(f"{rel}: no canonical")
 
-    # --- internal links ---
-    for href in re.findall(r'href="([^"]+)"', src):
+    # --- internal links (ignore anything inside <script> blocks: those are templates) ---
+    markup = re.sub(r"<script.*?</script>", "", src, flags=re.S)
+    for href in re.findall(r'href="([^"]+)"', markup):
         if href.startswith(("http://", "https://", "mailto:", "tel:", "#", "data:")):
             continue
         target, _, frag = href.partition("#")

@@ -1006,3 +1006,238 @@ A: A pupil appears with or under the supervision of the senior, in accordance wi
 Q: Where can I get copies of orders?
 A: From the copying agency of the court concerned, on an application, once the order is on the file. Keep the receipt and follow up the same week.
 
+
+## Khula and Divorce in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/family/khula-divorce-pakistan/
+
+Khula is a dissolution of marriage sought by the wife in the family court. Divorce by the husband is effected by pronouncing talaq and giving written notice to the union council, which then starts a 90-day reconciliation period before the divorce takes effect.
+
+- Statutes: Muslim Family Laws Ordinance 1961; Family Courts Act 1964
+- Khula forum: Family court, on the prescribed suit form
+- Husband's talaq: Written notice to the union council concerned
+- Reconciliation period: 90 days under the 1961 Ordinance
+- Dower on khula: The court considers its return; it is not an automatic condition
+- Usual documents: Nikah nama, CNIC copies, marriage photographs, notice receipts
+### What is the difference between khula and talaq?
+Khula is initiated by the wife through the court; talaq is pronounced by the husband and becomes effective through the notice procedure.
+Khula Talaq Who starts it The wife, by a suit in the family court The husband, by pronouncing talaq Court involvement Required — the court passes the decree Not required to pronounce, but notice to the union council is required Timing Ends when the court dissolves the marriage Effective after the 90-day period, unless the wife is pregnant Dower The court considers whether it should be returned Dower remains payable unless already paid
+
+### How does a khula suit actually proceed?
+Suit on the prescribed form, notice to the husband, a reconciliation attempt, the wife's statement, then a decree dissolving the marriage.
+File the suit in the family court with the nikah nama and the correct court fee. The court issues notices and attempts reconciliation under the Family Courts Act 1964. The wife's statement is recorded; in khula the court is not bound to the husband's consent. The court frames the terms — dower, maintenance, custody — and passes a decree. Send the decree to the union council so the record is updated and the iddat period runs correctly. Drafting habit: plead the dower position and custody in the same suit. Splitting them into separate cases costs the client money and time.
+
+### What does the husband's talaq require?
+A written notice to the chairman of the union council, a copy to the wife, and then the statutory 90-day reconciliation period.
+The notice must be in writing and delivered to the union council; keep the receipt and a copy. The union council constitutes a reconciliation council and informs the wife. The divorce takes effect on expiry of 90 days, or on the birth of a child if the wife is pregnant. The wife's maintenance during iddat and the dower position should be settled in writing at the same time. Registration of the divorce with the union council is a separate step — do not confuse it with the notice.
+
+### Which mistakes delay a decree the most?
+Wrong forum, wrong suit form, an incomplete nikah nama, an unserved address, and mixing criminal and family proceedings without a plan.
+Filing as a civil suit instead of on the family court form. Address problems — service failing because the address is a shop or a relative's house. Dower left blank in the plaint, so it cannot be decided in the same decree. Custody forgotten until after the decree, requiring a second case. Anger in the pleadings — allegations that cannot be proved weaken the case the court must decide.
+
+Q: Can khula be granted against the husband's will?
+A: The court can dissolve the marriage on the wife's suit. The husband's consent is not a legal condition, although the court considers whether the dower should be returned. Follow the practice of your own court.
+
+Q: How long is iddat and does maintenance continue?
+A: Iddat is normally three menstrual cycles, or until delivery if the wife is pregnant. Maintenance during iddat is a separate entitlement from maintenance pending suit; plead both.
+
+Q: Does a khula decree end the husband's duty to pay child maintenance?
+A: No. A child's maintenance is the child's right and is decided separately from the marriage. Raise it in the decree rather than leaving it for a later case.
+
+
+## Maintenance in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/family/maintenance-pakistan/
+
+A husband must maintain his wife and children, and a person of means must maintain parents who cannot support themselves. Pakistani courts fix the amount on the husband's income and the family's standard of living, and interim maintenance can be ordered while the suit continues.
+
+- Statutes: Muslim Family Laws Ordinance 1961, sections 9 and 9-A; Family Courts Act 1964
+- Claimants: Wife, children, and in some cases parents
+- Key test: Means of the husband against the needs and standard of living of the family
+- Interim relief: Available while the suit is pending
+- Evidence: Salary slips, bank statements, tax returns, property documents, business records
+- Enforcement: Arrears are recoverable; the court can order payment and, in some cases, attachment
+### How does a court decide the amount?
+It compares the husband's proven means with the family's reasonable needs and their prior standard of living; there is no fixed formula.
+Courts look at income, visible assets, business profits and lifestyle, then compare them with rent, school fees, medical costs and food. A husband cannot reduce maintenance by simply claiming a low salary while his lifestyle shows otherwise. Factor What the court looks at Income Salary slips, bank statements, tax returns, business accounts Assets and lifestyle Property, vehicles, foreign travel, school of the children Needs Rent, utilities, education, medical expenses Other dependants Existing legal obligations of the husband
+
+### Can a client get maintenance before the case ends?
+Yes. Interim maintenance can be granted while the suit is pending, and it is often the most useful order in the file.
+Plead interim maintenance in the suit or by a separate application. Attach evidence of the husband's income — salary certificate, bank statement, tax return, or a business record. Attach evidence of the family's expenses — rent agreement, school fee vouchers, medical bills. Ask for the order to run from the date of application and to be paid monthly on a fixed date. If it is not paid, apply for enforcement immediately rather than waiting for the next date.
+
+### What documents make a maintenance case strong?
+Anything that proves income and anything that proves the family's expenses — both sides of the equation.
+Income — salary slips, employment letter, bank statements, tax returns, business registration, property documents. Expenses — rent agreement, utility bills, school fee receipts, medical prescriptions and bills. Status — nikah nama, CNIC and B-form for children, and the birth certificate. Conduct — written demands for maintenance and any reply received. Evidence tip: a screenshot of a salary slip sent on WhatsApp is weak; a bank statement showing the credit is strong. Teach the client the difference before the hearing.
+
+Q: Does a working wife lose her right to maintenance?
+A: Not automatically. Her own income is a factor the court weighs, not an automatic bar. Plead and prove the standard of living the family had.
+
+Q: Can parents claim maintenance from their children?
+A: Yes. A person with means is obliged to maintain parents who cannot support themselves. The claim is usually brought in the family court.
+
+Q: What if the husband ignores the maintenance order?
+A: Apply for enforcement of arrears and ask for the remedies the court provides, which can include attachment of property. Keep a running account of unpaid amounts.
+
+
+## Child Custody in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/family/child-custody-pakistan/
+
+In Pakistan the mother normally has the right of hizanat (physical custody) of young children, while the father remains the natural guardian. Every custody decision is ultimately decided on the welfare of the child, not on the parents' wishes.
+
+- Statutes: Guardians and Wards Act 1890; Family Courts Act 1964
+- Mother's hizanat: Generally until a son is about 7 and a daughter reaches puberty, subject to the court's view of welfare
+- Guardianship: The father is normally the natural guardian for property and legal acts
+- Deciding test: Welfare of the minor, above the parents' rights
+- Visitation: The court fixes times and can enforce them
+- Evidence: School records, living arrangements, income, conduct, medical and support history
+### What does the welfare principle mean in practice?
+The court asks who can provide stability, schooling, care and a safe home — and it can depart from the usual age rules if the child's welfare requires it.
+Continuity of school and neighbourhood. Who has actually been caring for the child day to day. Housing, income and the ability to supervise. Any risk of harm, neglect or exposure to conflict. The child's own wishes, given weight according to age and understanding. Common mistake: treating custody as a prize to be won. Courts respond to a plan for the child's routine, not to allegations against the other parent.
+
+### Can the mother lose custody?
+Yes, if the court finds that the child's welfare requires it — for example where she remarries a person who is a stranger to the child, or cannot provide care, though each case is decided on its own facts.
+Hizanat is a right that yields to welfare. Remarriage, relocation, neglect, or a home where the child cannot be properly supervised are all factors a court will examine. So are the father's conduct and his capacity to care for a young child.
+
+### How is visitation handled?
+The court fixes specific days and times, and can vary them; a party who obstructs visitation risks an adverse view in the custody decision.
+Ask for defined visitation in the decree, not a general statement of access. Set out days, times, place of pick-up and return, and overnight arrangements. Keep a written log of every visit and every missed visit. If an order is breached, apply to the court promptly with the log.
+
+Q: At what age does a boy go to the father?
+A: The usual guidance is around seven years for a son, with the court free to decide otherwise on welfare. Always argue welfare, not just the age rule.
+
+Q: Can a custody order be changed later?
+A: Yes. A change in circumstances — schooling, remarriage, relocation, the child's own wishes — can justify a fresh application.
+
+Q: Does custody decide guardianship too?
+A: No. Physical custody (hizanat) and legal guardianship are separate questions, and the father usually remains the natural guardian.
+
+
+## Haq Mehr (Dower) in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/family/dower-haq-mehr/
+
+Dower (haq mehr) is a mandatory payment from the husband to the wife under the nikah, either prompt (mu'ajjal) or deferred (mu'ajjal). It is the wife's own property, can be recovered through the family court, and is not cancelled automatically by a khula decree.
+
+- Nature: A legal obligation, not a gift or a formality
+- Two kinds: Prompt mehr, payable on demand; deferred mehr, payable on death or dissolution
+- Where recorded: The nikah nama, in figures and words
+- Recovery forum: Family court, usually with the other matrimonial claims
+- Effect of khula: The court considers whether mehr should be returned; it is not automatically forfeited
+- Interaction: Independent of maintenance, which is a separate right
+### Prompt or deferred — why the distinction matters
+Prompt mehr can be demanded immediately; deferred mehr becomes payable on the dissolution of the marriage or the husband's death.
+Prompt (mu'ajjal) Deferred (mu'ajjal) When payable On demand, after the nikah On dissolution or death Common practice Part of the mehr paid at marriage The larger part, recorded in the nikah nama Risk to the wife May be waived if not claimed early Recoverable from the estate Drafting point: if the nikah nama records a figure in words and a different figure in digits, expect a dispute. Check both before you file.
+
+### How is mehr recovered?
+By a suit in the family court, usually pleaded together with maintenance and the dissolution, and proved by the nikah nama and any receipts.
+Read the nikah nama carefully: amount, kind (prompt or deferred), and any conditions. Plead the mehr claim in the same suit as dissolution or maintenance. Attach the nikah nama and any evidence of part payment. Ask for a clear decree amount, not a formula. Plan enforcement at the time of filing, not after the decree.
+
+### What happens to mehr in a khula?
+The court considers whether the wife should return the mehr as a condition of the dissolution; the classic position is that khula involves a return, but the court has discretion on the facts.
+Do not tell a client that mehr is automatically lost, and do not tell her it is automatically kept. Plead the financial position, the length of the marriage and the reason for the breakdown, and let the court decide the terms. Record the outcome in the decree in figures.
+
+Q: Can mehr be waived?
+A: A wife may give up her mehr, but any waiver should be in writing and understood. Courts look closely at waivers signed under pressure.
+
+Q: Is mehr payable if the marriage was never consummated?
+A: The position depends on the facts and the kind of mehr. Plead the specific facts; do not generalise.
+
+Q: Does the widow inherit mehr from the estate?
+A: Deferred mehr is a debt on the estate and is dealt with alongside the inheritance claim. Handle both together.
+
+
+## Labour Court in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/service/labour-court-pakistan/
+
+A labour dispute in Pakistan goes to the labour court under the provincial industrial relations law, to the National Industrial Relations Commission where the employer is trans-provincial or federal, or to the civil court where the employment is outside those statutes. Filing in the wrong forum is the most common fatal error.
+
+- Sindh statute: Sindh Industrial Relations Act 2013
+- Federal / trans-provincial: Industrial Relations Act 2012 and the NIRC
+- Wage claims: Payment of Wages Act 1936, where applicable
+- Limitation: Short and statute-specific — often months, not years
+- First documents: Appointment letter, salary slips, termination letter, correspondence
+- Typical reliefs: Reinstatement, back benefits, wages, compensation
+### Which forum applies to your client's employer?
+Provincial labour court for a local industrial or commercial establishment, NIRC for a trans-provincial employer, civil court where the statutes do not apply.
+Identify the employer's legal entity and where it operates. Check whether the establishment is covered by the provincial industrial relations statute. Check the worker's category — some categories are excluded from particular protections. Confirm the limitation period in the statute that applies. Only then draft the claim; the forum decides the form, the reliefs and the appeal route. Verification rule: the provincial statutes are amended by notification. Read the current text and the latest Sindh notification before you rely on a limitation period.
+
+### What documents should the file contain?
+Proof of employment, proof of wages, proof of the adverse order, and proof of any demand made before filing.
+Document What it proves Appointment letter or contract Employment, designation, salary, notice period Salary slips and bank credits Wages actually paid, and arrears Termination letter or order The date and the stated reason — key for limitation Show-cause notice and reply Whether a domestic inquiry happened at all Written demand / notice That the employer had a chance to settle Attendance or duty records Length of continuous service
+
+### What are the first three steps after a termination?
+Secure the documents, fix the date and the limitation, and send a written demand so the record is clear.
+Secure — collect every document and message before access is cut off. Date — note the exact date of the termination order and of any internal appeal. Demand — send a written demand for dues and reinstatement, and keep proof of dispatch. After that, file in the correct forum within limitation. Delay is the second most common reason good cases fail.
+
+Q: How long does a labour case take?
+A: Months to a few years depending on the forum, the evidence and adjournments. A complete file at the start shortens it more than anything else.
+
+Q: Can a worker claim without a written contract?
+A: Yes — employment can be proved by salary slips, bank credits, attendance records, identity cards and witnesses. Start collecting that evidence immediately.
+
+Q: Is there a fee to file?
+A: Court fees and professional costs vary by forum. Explain the cost to the client in writing before filing.
+
+
+## Wrongful Termination in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/service/wrongful-termination-pakistan/
+
+A termination is usually challenged on three grounds: there was no valid reason, there was no domestic inquiry or show-cause notice, or the retrenchment and notice rules were not followed. If the court agrees, the usual reliefs are reinstatement with back benefits, or compensation where reinstatement is not practical.
+
+- Statutes: Provincial industrial relations laws; federal law for trans-provincial employers
+- Key procedural step: Show-cause notice and a fair domestic inquiry before punishment
+- Common defect: Termination ordered without any inquiry record
+- Typical reliefs: Reinstatement, back benefits, wages, compensation
+- Limitation: Short — check the applicable statute before anything else
+- Evidence to gather: Charge sheet, inquiry report, termination order, service record
+### What must an employer prove?
+A valid reason, a fair opportunity to answer the allegation, and compliance with the procedure in the standing orders or the statute.
+Reason — misconduct, inefficiency or redundancy, stated in writing. Notice — a show-cause notice with the specific allegation and the evidence. Opportunity — a reply, and a domestic inquiry where the rules require one. Proportion — the punishment must match the misconduct. Procedure — notice, dues and the statutory formalities for retrenchment. Where cases are won: in the inquiry record. Ask for the original inquiry file in the first hearing — its absence is often the whole case.
+
+### What arguments work for the worker?
+No inquiry, no notice, a punishment that does not fit the allegation, victimisation for union or complaint activity, and dues withheld after termination.
+No inquiry — a termination letter with no prior proceedings. No specific allegation — a vague charge that could not be answered. Disproportionate punishment — dismissal for a minor first offence. Victimisation — timing that follows a complaint, a union role or a wage demand. Withheld dues — salary, gratuity and provident fund, which are separate claims.
+
+### What relief can a court give?
+Reinstatement with back benefits, or compensation instead of reinstatement, plus the unpaid dues the evidence supports.
+Reinstatement is the classic relief, but courts also award compensation where the relationship has broken down or the employer no longer exists in the same form. Plead both: reinstatement as the primary relief and compensation in the alternative, and quantify the dues with a calculation sheet.
+
+Q: Does resigning end the claim?
+A: A resignation signed under pressure, or obtained without explaining the consequences, can be challenged. Gather evidence of the circumstances and file promptly.
+
+Q: Can an employee be terminated without notice?
+A: Only where the statute or the contract permits it, for example in a proven case of serious misconduct after a proper inquiry. Otherwise notice or pay in lieu is required.
+
+Q: Is a domestic inquiry always necessary?
+A: It depends on the applicable standing orders and statute, but its absence is the most common defect courts examine. Always check the inquiry record first.
+
+
+## Salary Recovery in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/service/salary-recovery-pakistan/
+
+Unpaid wages are recovered by a claim in the labour court or under the Payment of Wages Act where it applies, supported by salary slips, bank credits and attendance records. Gratuity, provident fund and other statutory dues are usually claimed in the same proceedings.
+
+- Statutes: Payment of Wages Act 1936; provincial industrial relations laws; Employees' Old-Age Benefits Act
+- Forum: Labour court, or the authority under the Payment of Wages Act
+- Proof of arrears: Salary slips, bank statements, attendance records, employer's ledger
+- Other dues: Gratuity, provident fund, leave encashment, notice pay
+- Limitation: Short — check the statute immediately
+- Best evidence: A bank statement showing the monthly credit, then a gap
+### How do you prove arrears?
+By showing what was payable and what was not paid: the agreed salary, the period worked, and the absence of credit in the bank.
+Claim Evidence Unpaid salary Salary slips, bank statements, appointment letter, attendance Overtime Attendance or duty rosters, wage rate Gratuity Length of continuous service, last drawn wage Provident fund Fund statements, deductions shown in salary slips Notice pay Contract, termination letter, date of departure Preparation tip: build a one-page calculation sheet — month, amount due, amount paid, shortfall. Courts and employers both settle faster when the arithmetic is on one page.
+
+### What should a lawyer do in the first week?
+Freeze the evidence, calculate the claim, and send a written demand to the employer.
+Collect every salary slip, bank statement and message before the client's access is cut off. Prepare the calculation sheet and get the client to sign it. Send a written demand with a deadline, by a mode that gives proof of delivery. Confirm the forum and the limitation period. File, and claim interest or compensation where the statute allows it.
+
+### What if the employer says the worker abandoned the job?
+The burden shifts to the record: attendance, leave applications, messages and witnesses decide whether the worker left or was pushed out.
+Attendance registers and gate records. Leave applications and approvals. Messages showing the employer's instructions up to the last day. Witnesses who saw the worker on site after the alleged abandonment.
+
+Q: Can salary be recovered after the company closes?
+A: Recovery becomes harder but is not impossible — the entity's status, its assets and the liability of office-bearers matter. Act quickly.
+
+Q: Is gratuity payable to every employee?
+A: Entitlement depends on the applicable statute, the length of service and the employer's coverage. Check the specific law for that establishment.
+
+Q: Do I need a lawyer for a small claim?
+A: Not always, but a well-drafted demand and a correct calculation often produce a settlement without litigation — and that is usually the fastest money for the client.
+

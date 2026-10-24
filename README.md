@@ -18,17 +18,41 @@ near the courts, paid drafting work, and free case law research guides.
 | `career/` | Career hub + Law-GAT, enrollment, how to become a lawyer, salary, High Court licence, cause list tracking, lawyer CV, first 30 days in a chamber |
 | `karachi/` | Karachi hub + lawyer jobs, lawyer room for rent, chamber seat rent, City Courts guide |
 | `about/` | Entity page (what the platform is and does not do) |
+| `jobs/` | **Job market + lawyer directory**: 18 sourced legal openings, 6 paid tasks, 8 lawyer profiles, apply / post / rate flows |
+| `family/` | Family law hub + khula and divorce, maintenance, child custody, dower |
+| `service/` | Service law hub + labour court, wrongful termination, salary recovery |
 | `scripts/content_pages.py` | Core page copy and data — the file to edit for content changes |
 | `scripts/content_pages_more.py` | Wave-2 pages (drafts, case law, practice, Karachi) plus extra hub tiles |
 | `404.html` | Not-found page (noindex) |
 | `CNAME` | GitHub Pages custom domain: `wakeelbano.com` |
-| `scripts/build_pages.py` | Generator: writes all 34 pages, `404.html`, `CNAME`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` |
+| `scripts/build_pages.py` | Generator: writes every content page, `404.html`, `CNAME`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` |
+| `scripts/build_jobs.py` | Generator for `jobs/index.html` — job data, lawyer profiles, apply/post/rate flows |
 | `scripts/validate.py` | Checks broken internal links, JSON-LD validity, one `<h1>`/title/canonical per page, dead links in `llms.txt` |
 | `scripts/repair_quotes.py` | Utility: converts unescaped straight quotes in content text to typographic quotes |
 | `scripts/push.sh` | Commit + push using a token in `.secrets/gh_token` |
 | `research/` | Demand research (what Pakistani lawyers search, pain points) behind the content plan |
 
-**Size of the site:** 33 indexable URLs — 1 home page, 4 hubs, 27 guides, 1 about page, plus a 404.
+**Size of the site:** 43 indexable URLs — home, job market, 6 hubs, 34 guides, about, plus a 404.
+
+## The job market (`jobs/`)
+
+`scripts/build_jobs.py` holds three datasets — `JOBS` (real openings aggregated from public
+listings, each with `src` and `url` back to the original posting), `TASKS` (paid freelance work
+posted through the platform) and `LAWYERS` (profiles with skills, cases handled, chamber and
+rating). The page is a single self-contained app:
+
+- filter jobs by city, area of law, type and free text
+- lawyer directory with profile drawers, star ratings and written reviews
+- recruiters post a job; lawyers apply; a recruiter rates the lawyer after the work is completed
+- "My profile" builds a lawyer profile (skills, cases, chamber, rate)
+
+**Current storage:** applications, postings, profiles and ratings are kept in `localStorage`, so
+the flows are demonstrable on a static host but not shared between users. To go live, connect a
+backend (Supabase or Firebase free tier is enough): tables `jobs`, `tasks`, `lawyers`,
+`applications`, `ratings`. The UI already expects exactly those fields.
+
+**Job freshness:** listings are dated and each links to its source. Re-run the aggregation
+monthly and delete expired entries — a stale job list destroys trust faster than a short one.
 
 ## Editing content
 

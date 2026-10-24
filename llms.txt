@@ -48,6 +48,22 @@ Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information on
 - [Chamber for rent: Seat share costs and what to check before paying](https://sarmads050.github.io/wakeelbano/karachi/chamber-seat-rent/index.html)
 - [City Courts guide: Filing, etiquette and the first month at City Courts](https://sarmads050.github.io/wakeelbano/karachi/city-courts-guide/index.html)
 
+## Family Law in Pakistan (https://sarmads050.github.io/wakeelbano/family/)
+- [Plain-language guides to Pakistani family law: khula and divorce, maintenance, child custody, dower and the Family Courts procedure. Written for lawyers and for the client sitting in front of them.](https://sarmads050.github.io/wakeelbano/family/)
+- [Khula and divorce: Grounds, procedure, notice to the union council and the 90-day period](https://sarmads050.github.io/wakeelbano/family/khula-divorce-pakistan/index.html)
+- [Maintenance: Wife, children and parents — how quantum is calculated](https://sarmads050.github.io/wakeelbano/family/maintenance-pakistan/index.html)
+- [Child custody: Hizanat, welfare of the child and visitation](https://sarmads050.github.io/wakeelbano/family/child-custody-pakistan/index.html)
+- [Dower and dowry: Haq mehr, prompt and deferred, and recovery](https://sarmads050.github.io/wakeelbano/family/dower-haq-mehr/index.html)
+
+## Service and Employment Law in Pakistan (https://sarmads050.github.io/wakeelbano/service/)
+- [Guides to Pakistani employment disputes: which forum hears them, when termination is unlawful, how unpaid salary is recovered, and what a junior lawyer should check before filing.](https://sarmads050.github.io/wakeelbano/service/)
+- [Labour court guide: Which forum, which law, and how to file](https://sarmads050.github.io/wakeelbano/service/labour-court-pakistan/index.html)
+- [Wrongful termination: Domestic inquiry, retrenchment and reinstatement](https://sarmads050.github.io/wakeelbano/service/wrongful-termination-pakistan/index.html)
+- [Salary recovery: Unpaid wages, gratuity, provident fund and the claim route](https://sarmads050.github.io/wakeelbano/service/salary-recovery-pakistan/index.html)
+
+## Jobs and hiring
+- [Legal jobs in Pakistan, freelance tasks and the lawyer directory](https://sarmads050.github.io/wakeelbano/jobs/) — aggregated openings with links to the original postings, lawyer profiles with skills, cases handled and ratings, and hiring tools for chambers and firms.
+
 ## Optional
 - [Sitemap](https://sarmads050.github.io/wakeelbano/sitemap.xml)
 - [Full text export](https://sarmads050.github.io/wakeelbano/llms-full.txt)

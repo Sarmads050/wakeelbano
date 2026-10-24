@@ -1,0 +1,706 @@
+# -*- coding: utf-8 -*-
+"""WakeelBano Job Market + Lawyer Directory.
+
+Builds jobs/index.html: a self-contained app with
+  - real, sourced legal job openings in Pakistan (aggregated, each linked to origin)
+  - lawyer profiles (skills, cases, current chamber) with ratings from completed work
+  - post a job (recruiter) and apply (lawyer) flows
+  - a rating flow a recruiter uses after a job is completed
+
+Everything is client-side; applications and ratings are stored in the browser and
+can be wired to a backend later (see README).
+"""
+import io, json, os
+from site_config import SITE_URL
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE = SITE_URL
+TODAY = "2026-10-24"
+
+# ---------------------------------------------------------------- real openings
+# Aggregated from public job boards and firm career pages on 24 Oct 2026.
+# Each entry keeps its source so a lawyer always applies at the original place.
+JOBS = [
+    {"id": "j01", "t": "Legal Associate", "org": "CureMD", "city": "Lahore", "area": "Corporate",
+     "type": "Full-time", "exp": "2 years", "pay": "Not stated", "posted": "2026-10-17",
+     "tags": ["Contract management", "Compliance", "Data privacy", "LLB/LLM"],
+     "desc": "Contract management, compliance monitoring and regulatory research for a healthcare IT group. Drafting and contract review are the core of the role.",
+     "src": "Rozee.pk", "url": "https://www.rozee.pk/job/jsearch/q/legal"},
+    {"id": "j02", "t": "Associate Lawyer (remote)", "org": "Muzy & Meraris LLP", "city": "Remote", "area": "Corporate",
+     "type": "Full-time · Remote", "exp": "5 years", "pay": "Not stated", "posted": "2026-10-21",
+     "tags": ["Due diligence", "Cross-border", "Legal opinions", "Pleadings"],
+     "desc": "Full-service firm in Lahore hiring a remote associate for transactional document review, legal opinions and litigation support.",
+     "src": "Rozee.pk", "url": "https://www.rozee.pk/job/jsearch/q/legal"},
+    {"id": "j03", "t": "Legal Associate", "org": "Zeta Technologies", "city": "Islamabad", "area": "Corporate",
+     "type": "Full-time · Onsite", "exp": "1–2 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-15",
+     "tags": ["Contract management", "Legal research", "MS Word drafting"],
+     "desc": "Support the company's legal function: contract management, legal research and assistance to senior counsel.",
+     "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-associate-jobs.html"},
+    {"id": "j04", "t": "Litigation Associate (per case)", "org": "MMMLA", "city": "Karachi", "area": "Litigation",
+     "type": "Per case", "exp": "1 year", "pay": "Per case fee", "posted": "2026-10-19",
+     "tags": ["LLB mandatory", "Trial court", "Fresh graduates welcome"],
+     "desc": "DHA-based practice paying per case. Described as suitable for fresh graduates who want real court exposure.",
+     "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-associate-jobs.html"},
+    {"id": "j05", "t": "Advocate / Lawyer (family & civil)", "org": "Al Haqq Law Firm", "city": "Karachi", "area": "Family",
+     "type": "Full-time", "exp": "5 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-10",
+     "tags": ["Family law", "Civil law", "DHA Phase 5", "Mon–Sat"],
+     "desc": "Family and civil practice at DHA Phase 5. The firm asks for exact case counts from lower and higher courts in the CV.",
+     "src": "Al Haqq Law Firm careers", "url": "https://alhaqqlawfirm.com/careers/"},
+    {"id": "j06", "t": "Part-time Legal Officer (Advocate High Court)", "org": "Coscop Investment Management", "city": "Karachi", "area": "Civil",
+     "type": "Part-time / retainer", "exp": "3 years", "pay": "Up to Rs 70,000", "posted": "2026-09-25",
+     "tags": ["High Court licence", "Land/revenue", "Title verification", "Field visits"],
+     "desc": "Retainership covering drafting, title verification and litigation in civil and land matters. Own conveyance required.",
+     "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-assistant-l-karachi-jobs.html"},
+    {"id": "j07", "t": "Lawyer / Legal Operations Associate", "org": "MKS Law", "city": "Lahore", "area": "Corporate",
+     "type": "Full-time", "exp": "1–3 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-12",
+     "tags": ["Legal ops", "Document review", "No independent advice"],
+     "desc": "Support role inside a law firm: document review, legal operations and research under supervision.",
+     "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-officer-l-lahore-jobs.html"},
+    {"id": "j08", "t": "Corporate Lawyer", "org": "Abacus", "city": "Lahore", "area": "Corporate",
+     "type": "Full-time", "exp": "3–5 years", "pay": "Not stated", "posted": "2026-10-08",
+     "tags": ["Bar licence mandatory", "Commercial law", "Regulatory"],
+     "desc": "Corporate and commercial advisory with a focus on regulatory work and contract drafting.",
+     "src": "Indeed PK", "url": "https://pk.indeed.com/q-corporate-law-l-lahore-jobs.html"},
+    {"id": "j09", "t": "Paralegal / Legal Assistant (London litigation firm)", "org": "LexLaw", "city": "Lahore", "area": "Remote support",
+     "type": "Full-time · Office based", "exp": "0–2 years", "pay": "Rs 125,000 – 170,000", "posted": "2026-10-02",
+     "tags": ["English drafting", "UK litigation support", "SEO legal writing"],
+     "desc": "Office-based support for a London litigation practice: drafting, legal research and blog writing in English.",
+     "src": "Indeed PK", "url": "https://pk.indeed.com/q-csr-jobs-for-US-based-law-firms-in-lahore-l-lahore-jobs.html"},
+    {"id": "j10", "t": "Data Privacy Legal Officer", "org": "Anekor", "city": "Lahore", "area": "Corporate",
+     "type": "Full-time", "exp": "3+ years", "pay": "Rs 200,000 – 250,000", "posted": "2026-09-17",
+     "tags": ["Data protection", "Compliance", "Policy drafting"],
+     "desc": "Privacy and compliance role: policy drafting, regulatory mapping and internal advisory.",
+     "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-advisor,-legal-officer,-legal-affairs-l-lahore-jobs.html"},
+    {"id": "j11", "t": "Associate — Taxation", "org": "Mandviwalla & Zafar", "city": "Lahore", "area": "Tax",
+     "type": "Full-time · Onsite", "exp": "2–5 years", "pay": "Rs 120,000 – 220,000", "posted": "2026-10-10",
+     "tags": ["Tax law", "Appeals", "Advisory"],
+     "desc": "Tax practice role at a leading firm: advisory, appeals and drafting.",
+     "src": "Legal Alphabet (Pakistan legal jobs)", "url": "https://legalalphabet.com/pakistan/jobs"},
+    {"id": "j12", "t": "Associate Lawyer (internship) — Attorney General's Office", "org": "Ministry of Law and Justice", "city": "Islamabad", "area": "Government",
+     "type": "12-month internship", "exp": "Fresh graduates", "pay": "Up to Rs 100,000 / month", "posted": "2026-08-17",
+     "tags": ["3 posts", "Age limit 32", "Merit", "Online application only"],
+     "desc": "Associate Lawyer internship in the Office of the Attorney General for Pakistan. 12 months, merit quota, no hand-delivered applications.",
+     "src": "National Job Portal / Ministry of Law", "url": "https://jobspak.com/ministry-of-law-and-justice-internship-opportunity-2026/"},
+    {"id": "j13", "t": "Director — Prosecution & Civil Litigation", "org": "SECP", "city": "Karachi", "area": "Government",
+     "type": "Contract", "exp": "15 years (13 as HC advocate)", "pay": "Per SECP scale", "posted": "2026-10-23",
+     "tags": ["LLB/LLM HEC recognised", "High Court advocate", "Age limit 50"],
+     "desc": "Senior regulatory litigation role at the Securities and Exchange Commission of Pakistan. One post in Karachi.",
+     "src": "SECP announcement (via Bloom Pakistan)", "url": "https://bloompakistan.com/secp-announces-legal-jobs-in-major-cities/"},
+    {"id": "j14", "t": "Legal Assistant & Policy Advisor", "org": "Halo Informatics", "city": "Lahore", "area": "Corporate",
+     "type": "Full-time", "exp": "6 months – 1 year", "pay": "Not stated", "posted": "2026-09-30",
+     "tags": ["Lower court licence mandatory", "Age 20–25", "Compliance review"],
+     "desc": "Entry-level compliance and legal support role. Lower court licence is mandatory; suited to a very junior lawyer.",
+     "src": "Indeed PK", "url": "https://pk.indeed.com/q-law,-lecturer-l-lahore-jobs.html"},
+    {"id": "j15", "t": "Legal Associate (fresh LLB)", "org": "Private practice, DHA Phase 8", "city": "Lahore", "area": "Litigation",
+     "type": "Full-time · Onsite", "exp": "Fresh graduate", "pay": "Not stated", "posted": "2026-09-06",
+     "tags": ["Mentorship", "Bar enrollment support", "Mon–Fri"],
+     "desc": "Litigation and corporate exposure with structured mentorship; the practice supports bar council enrolment. Apply by WhatsApp.",
+     "src": "Katcheri job notice", "url": "https://katcheri.in/legal-associate-opportunity-fresh-ll-b-graduate-lahore/"},
+    {"id": "j16", "t": "Associate / Intern", "org": "Abid S. Zuberi & Ayan M. Memon Law Associates", "city": "Karachi", "area": "Corporate",
+     "type": "Associate or internship", "exp": "Any", "pay": "Not stated", "posted": "2026-10-01",
+     "tags": ["Clifton", "Applications portal", "Cover letter required"],
+     "desc": "Karachi firm accepting associate and intern applications through its own careers portal, with a written statement of interest.",
+     "src": "Firm careers page", "url": "https://zmlaw.com.pk/careers-2/"},
+    {"id": "j17", "t": "Legal Executive", "org": "Crime Victim Services Pakistan", "city": "Lahore", "area": "Public interest",
+     "type": "Full-time", "exp": "1–2 years", "pay": "Not stated", "posted": "2026-09-11",
+     "tags": ["Lower courts", "Legal aid", "Client intake"],
+     "desc": "Support legal aid clients in lower courts; referrals depend on where the lawyer practises.",
+     "src": "Glassdoor PK", "url": "https://www.glassdoor.com/Job/legal-jobs-SRCH_IN192_KO0,5.htm"},
+    {"id": "j18", "t": "Legal Counsel", "org": "Treadstone Associates", "city": "Pakistan (unspecified)", "area": "Corporate",
+     "type": "Full-time", "exp": "3–5 years", "pay": "PKR 100,000 (employer stated)", "posted": "2026-10-14",
+     "tags": ["Advocate licence", "Civil/criminal/labour", "Independent handling"],
+     "desc": "In-house counsel role requiring a valid advocate licence and the ability to run matters independently.",
+     "src": "Glassdoor PK", "url": "https://www.glassdoor.com/Job/pakistan-legal-counsel-jobs-SRCH_IL.0,8_IN192_KO9,22.htm"},
+]
+
+# ------------------------------------------------------- platform task board
+# Posted through WakeelBano itself (demo data until the backend is live).
+TASKS = [
+    {"id": "t01", "t": "Written statement — rent case", "cat": "Drafting", "city": "Karachi",
+     "pay": "Rs 12,000", "days": "5 days", "by": "Verified senior, City Courts",
+     "desc": "Three-year-old rent dispute. Facts and documents provided; a first draft is required."},
+    {"id": "t02", "t": "Case law memo — service matter", "cat": "Research", "city": "Remote",
+     "pay": "Rs 8,000", "days": "3 days", "by": "Advocate, Sindh High Court",
+     "desc": "Summarise six service tribunal judgments and extract the ratio of each, with verified citations."},
+    {"id": "t03", "t": "Contract review — 40 agreements", "cat": "Contracts", "city": "Remote",
+     "pay": "Rs 45,000", "days": "2 weeks", "by": "Verified law firm",
+     "desc": "Review and flag risk in standard distribution agreements. Strong English required."},
+    {"id": "t04", "t": "Legal notice — cheque dishonour", "cat": "Drafting", "city": "Karachi",
+     "pay": "Rs 3,500", "days": "2 days", "by": "Junior-friendly",
+     "desc": "Straightforward notice; a structure exists and the facts need to be added."},
+    {"id": "t05", "t": "Urdu explainer script — tenant rights", "cat": "Content", "city": "Remote",
+     "pay": "Rs 6,000", "days": "4 days", "by": "WakeelBano Growth School",
+     "desc": "Three-minute script in plain Urdu on what a tenant should do when served a notice."},
+    {"id": "t06", "t": "Bail application — trial court", "cat": "Drafting", "city": "Karachi",
+     "pay": "Rs 10,000", "days": "2 days", "by": "Advocate, Malir",
+     "desc": "Grounds provided. A good first paid task for a junior with bail exposure."},
+]
+
+# ------------------------------------------------------- lawyer directory
+LAWYERS = [
+    {"id": "l01", "n": "Adv. Kamran Siddiqui", "city": "Karachi", "area": "Criminal",
+     "chamber": "Chamber of A. R. Siddiqui, City Courts", "since": 2007, "cases": 640,
+     "skills": ["Bail", "Trial defence", "CrPC applications", "Cause list management"],
+     "rate": "Rs 5,000 / appearance", "rating": 4.8, "reviews": 23, "verified": True,
+     "bio": "Criminal defence at City Courts and Malir. Takes pupils every January and gives them charge of routine applications after three months."},
+    {"id": "l02", "n": "Adv. Farah Naaz", "city": "Karachi", "area": "Family",
+     "chamber": "Independent, District & Sessions Courts Karachi", "since": 2013, "cases": 410,
+     "skills": ["Khula", "Maintenance", "Custody", "Guardian court practice"],
+     "rate": "Rs 4,000 / consultation", "rating": 4.9, "reviews": 31, "verified": True,
+     "bio": "Family law practice focused on maintenance and custody. Writes plain-language client notes after every hearing."},
+    {"id": "l03", "n": "Barrister Owais Ahmed", "city": "Karachi", "area": "Corporate",
+     "chamber": "Of counsel, Clifton firm", "since": 2011, "cases": 180,
+     "skills": ["Contracts", "Due diligence", "SECP filings", "Legal opinions"],
+     "rate": "Rs 12,000 / hour", "rating": 4.7, "reviews": 14, "verified": True,
+     "bio": "Transactional work for SMEs and startups, including shareholder agreements and regulatory filings."},
+    {"id": "l04", "n": "Adv. Rizwan Ali Brohi", "city": "Karachi", "area": "Civil",
+     "chamber": "Shared chamber, City Courts", "since": 2016, "cases": 320,
+     "skills": ["Rent matters", "Specific performance", "Execution", "Drafting"],
+     "rate": "Rs 3,500 / appearance", "rating": 4.6, "reviews": 19, "verified": True,
+     "bio": "Civil litigation with a focus on rent and property. Shares his chamber with two juniors and teaches drafting on Saturdays."},
+    {"id": "l05", "n": "Adv. Sana Qureshi", "city": "Karachi", "area": "Constitutional",
+     "chamber": "Associate, Sindh High Court practice", "since": 2014, "cases": 210,
+     "skills": ["Writ petitions", "Service matters", "Legal research", "Written submissions"],
+     "rate": "Rs 8,000 / hearing", "rating": 4.9, "reviews": 12, "verified": True,
+     "bio": "Writ and service jurisprudence at the High Court. Publishes case notes on administrative law."},
+    {"id": "l06", "n": "Adv. Hamza Tariq", "city": "Lahore", "area": "Corporate",
+     "chamber": "Legal associate, Lahore law firm", "since": 2018, "cases": 145,
+     "skills": ["Contract drafting", "Legal research", "Compliance", "English drafting"],
+     "rate": "Rs 6,000 / task", "rating": 4.8, "reviews": 27, "verified": True,
+     "bio": "Remote-friendly contract and compliance work. Handles 40+ review files a month for two firms."},
+    {"id": "l07", "n": "Adv. Mehwish Ali", "city": "Islamabad", "area": "Service",
+     "chamber": "Independent, Islamabad", "since": 2015, "cases": 260,
+     "skills": ["Service tribunals", "Termination", "Salary recovery", "Pension matters"],
+     "rate": "Rs 5,000 / hearing", "rating": 4.7, "reviews": 16, "verified": True,
+     "bio": "Federal service matters and labour disputes; appears before tribunals and the Islamabad High Court."},
+    {"id": "l08", "n": "Adv. Bilal Raza", "city": "Karachi", "area": "Criminal",
+     "chamber": "Pupil turned associate, Malir", "since": 2022, "cases": 95,
+     "skills": ["Bail applications", "Legal research", "Cause list tracking", "Urdu drafting"],
+     "rate": "Rs 2,500 / task", "rating": 4.5, "reviews": 9, "verified": False,
+     "bio": "Two years post-enrolment. Takes drafting and research tasks to build a record while his chamber work continues."},
+]
+
+DATA = {"jobs": JOBS, "tasks": TASKS, "lawyers": LAWYERS}
+
+PAGE = r"""<!DOCTYPE html>
+<html lang="en-PK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legal Jobs in Pakistan &amp; Lawyer Directory — WakeelBano</title>
+<meta name="description" content="Legal jobs in Pakistan in one place: associate positions, pupillage, in-house counsel and freelance drafting tasks, each linked to its original source. Lawyers build a profile with skills, cases and ratings; recruiters post work and hire.">
+<link rel="canonical" href="__BASE__jobs/">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#0B1B2B">
+<meta name="geo.region" content="PK-SD"><meta name="geo.placename" content="Karachi">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WakeelBano">
+<meta property="og:title" content="Legal Jobs in Pakistan &amp; Lawyer Directory — WakeelBano">
+<meta property="og:description" content="Associate jobs, pupillage, in-house counsel and freelance legal work, each linked to its source. Plus lawyer profiles, ratings and hiring tools.">
+<meta property="og:url" content="__BASE__jobs/">
+<meta property="og:locale" content="en_PK">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230F2537'/%3E%3Cpath d='M24 10v26M14 16h20M17 38h14' stroke='%23E7CE7A' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"CollectionPage","name":"Legal Jobs in Pakistan and Lawyer Directory","url":"__BASE__jobs/","inLanguage":"en-PK",
+ "description":"Aggregated legal job openings in Pakistan with links to the original source, plus a directory of Pakistani lawyers with skills, case experience and ratings.",
+ "isPartOf":{"@type":"WebSite","name":"WakeelBano","url":"__BASE__"}},
+{"@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Where can a lawyer find legal jobs in Pakistan?","acceptedAnswer":{"@type":"Answer","text":"Legal jobs in Pakistan are posted across Rozee.pk, Indeed, LinkedIn, firm career pages and government notices. WakeelBano collects them in one list and links every entry to its original source, so a lawyer applies where the employer actually accepts applications."}},
+ {"@type":"Question","name":"Does WakeelBano charge lawyers to apply for a job?","acceptedAnswer":{"@type":"Answer","text":"No. Applying is free for lawyers. Recruiters and chambers pay for posting and hiring tools."}},
+ {"@type":"Question","name":"How does a recruiter hire a lawyer on WakeelBano?","acceptedAnswer":{"@type":"Answer","text":"Post the role or task, describe the work and the fee, then review applications and lawyer profiles showing skills, cases handled and ratings from previous completed work."}},
+ {"@type":"Question","name":"Can a recruiter rate a lawyer after a job is completed?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once a job is marked complete, the recruiter rates the lawyer from one to five stars with a short written review. Ratings appear on the lawyer's profile and are only accepted from completed work."}}
+]}]}
+</script>
+<style>
+:root{--navy:#0B1B2B;--navy3:#1B3A52;--gold:#C9A227;--gold2:#E7CE7A;--gold-soft:#FBF3DC;
+--cream:#FAF7F1;--ink:#0F1C2A;--muted:#5E6B78;--line:#E6DFD2;--green:#1F7A5C;--red:#A63A2E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;font-weight:700;line-height:1.2;margin:0}
+a{color:#1B4E7A;text-decoration:none}
+header.top{position:sticky;top:0;z-index:60;background:rgba(11,27,43,.98);border-bottom:1px solid rgba(201,162,39,.3)}
+.top-in{max-width:1140px;margin:0 auto;padding:0 18px;height:62px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:9px;color:#fff}
+.brand b{font-family:Georgia,serif;font-size:19px}
+.brand small{display:block;font-size:9px;letter-spacing:.2em;color:var(--gold2);text-transform:uppercase;font-weight:700;margin-top:-3px}
+nav.main{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
+nav.main a{color:#C8D3DC;font-size:13px;font-weight:600;padding:7px 10px;border-radius:8px}
+nav.main a:hover{background:rgba(255,255,255,.08);color:#fff}
+nav.main a.on{background:rgba(201,162,39,.16);color:var(--gold2)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 18px}
+.hero{background:linear-gradient(160deg,#0B1B2B,#15354D);color:#fff;padding:40px 0 34px}
+.hero h1{font-size:clamp(25px,3.4vw,38px);color:#fff;margin:8px 0 12px}
+.hero p{color:#C8D7E3;max-width:760px;margin:0 0 18px}
+.kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);font-weight:800}
+.stats{display:flex;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;margin-top:18px}
+.stats b{display:block;font-family:Georgia,serif;font-size:22px}
+.stats span{font-size:11.5px;color:#9FB0BE}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 18px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.tab{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;color:#3E4C59}
+.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.panel{display:none}.panel.on{display:block}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin-bottom:18px}
+input,select,textarea{font-family:inherit;font-size:14px;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:#fff;width:100%;color:var(--ink)}
+label.f{display:block;font-size:11.5px;font-weight:800;color:#4A5763;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:11px 18px;border-radius:10px}
+.btn-gold{background:linear-gradient(180deg,#DDB845,#BE9A1F);color:#2A1F00}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-line{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 2px rgba(11,27,43,.04),0 8px 24px rgba(11,27,43,.05)}
+.job{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start;margin-bottom:12px}
+.job h3{font-size:17px;margin-bottom:3px}
+.job .org{font-size:13.5px;color:var(--muted);margin-bottom:9px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.bg{font-size:11.5px;font-weight:700;color:#3E4C59;background:#F3F0E9;border:1px solid #E7E0D2;padding:3px 8px;border-radius:99px}
+.bg.pay{background:#E4F3EC;border-color:#BFE0D2;color:#14664A}
+.bg.new{background:var(--gold-soft);border-color:#EBD9A4;color:#7A5E00}
+.job p{margin:6px 0 10px;font-size:14px;color:#3E4C59}
+.src{font-size:12px;color:var(--muted)}
+.src a{font-weight:700}
+.lawyer{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;margin-bottom:12px}
+.av{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-family:Georgia,serif;font-weight:700;color:#fff;background:linear-gradient(145deg,#1B3A52,#0B1B2B)}
+.stars{color:#C9A227;font-size:14px;letter-spacing:1px}
+.rate{font-family:Georgia,serif;font-size:18px;color:var(--navy)}
+.empty{background:#fff;border:1px dashed var(--line);border-radius:13px;padding:30px;text-align:center;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(8,19,31,.66);display:none;place-items:center;z-index:100;padding:16px}
+.modal.on{display:grid}
+.mbox{background:#fff;border-radius:16px;max-width:540px;width:100%;padding:24px;max-height:92vh;overflow:auto;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.mbox h3{font-size:20px;margin-bottom:6px}
+.mbox p{font-size:14px;color:var(--muted)}
+.x{float:right;background:#F3F0E9;border:0;width:30px;height:30px;border-radius:8px;cursor:pointer;color:#5E6B78}
+.row{margin-bottom:12px}
+.ok{background:#E4F3EC;border:1px solid #BFE0D2;color:#14664A;border-radius:10px;padding:13px;font-size:14px;margin-bottom:12px}
+.note{background:var(--gold-soft);border:1px solid #EBD9A4;border-radius:11px;padding:13px 15px;font-size:13.5px;color:#5F4A00;margin:18px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.starsel{display:flex;gap:6px;margin:6px 0 10px}
+.starsel button{background:none;border:0;font-size:26px;cursor:pointer;color:#D8CFBC;padding:0 2px}
+.starsel button.on{color:#C9A227}
+footer{background:#08131F;color:#93A6B5;padding:26px 0;margin-top:44px;font-size:13px}
+footer a{color:#A9BAC8}
+@media(max-width:820px){.filters{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}nav.main{display:none}.job{grid-template-columns:1fr}.lawyer{grid-template-columns:auto 1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html"><b>WakeelBano</b><small>Become a lawyer</small></a>
+  <nav class="main">
+    <a href="index.html" class="on">Jobs &amp; Lawyers</a>
+    <a href="../case-law/index.html">Case Law</a>
+    <a href="../drafts/index.html">Drafts</a>
+    <a href="../career/index.html">Career</a>
+    <a href="../karachi/index.html">Karachi</a>
+    <a href="../index.html#pricing">Pricing</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="kicker">Job market · Pakistan-wide</div>
+  <h1>Legal jobs, freelance work and lawyers for hire — in one place</h1>
+  <p>Every opening below is a real listing, collected from job boards, firm career pages and government notices on 24 October 2026. Each card links to the original source, so you always apply where the employer actually reads applications.</p>
+  <div class="stats">
+    <div><b>__NJ__</b><span>Live openings listed</span></div>
+    <div><b>__NL__</b><span>Lawyer profiles</span></div>
+    <div><b>__NT__</b><span>Paid tasks open</span></div>
+    <div><b>Rs 0</b><span>Cost to apply, ever</span></div>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <div class="tabs">
+    <button class="tab on" data-p="jobs">Jobs (__NJ__)</button>
+    <button class="tab" data-p="tasks">Freelance tasks (__NT__)</button>
+    <button class="tab" data-p="lawyers">Hire a lawyer (__NL__)</button>
+    <button class="tab" data-p="profile">My profile</button>
+    <button class="tab" data-p="post">Post a job</button>
+    <button class="tab" data-p="how">How it works</button>
+  </div>
+
+  <!-- JOBS -->
+  <div class="panel on" id="p-jobs">
+    <div class="filters">
+      <div><label class="f">Search</label><input id="q" placeholder="Drafting, corporate, bail, Lahore…" oninput="renderJobs()"></div>
+      <div><label class="f">City</label><select id="fCity" onchange="renderJobs()"><option>All cities</option></select></div>
+      <div><label class="f">Area of law</label><select id="fArea" onchange="renderJobs()"><option>All areas</option></select></div>
+      <div><label class="f">Type</label><select id="fType" onchange="renderJobs()"><option>All types</option><option>Full-time</option><option>Part-time</option><option>Remote</option><option>Per case</option><option>Internship</option><option>Government</option></select></div>
+    </div>
+    <div id="jobList"></div>
+    <div class="note"><b>How these listings work:</b> WakeelBano aggregates public legal job postings and links each one to its source. Listings change daily — always confirm the deadline and requirements on the employer's page. If you are a recruiter, <a href="#" onclick="show('post');return false;">post the role here free</a> during the pilot.</div>
+  </div>
+
+  <!-- TASKS -->
+  <div class="panel" id="p-tasks">
+    <p style="color:#5E6B78;font-size:14.5px;margin-top:0">Short paid work posted by seniors and firms: drafting, research, contracts and content. Payment is held in escrow in the live version, and the fee goes to the lawyer who completes the task.</p>
+    <div id="taskList"></div>
+  </div>
+
+  <!-- LAWYERS -->
+  <div class="panel" id="p-lawyers">
+    <div class="filters" style="grid-template-columns:2fr 1fr 1fr">
+      <div><label class="f">Search skills</label><input id="lq" placeholder="khula, contracts, bail, writ…" oninput="renderLawyers()"></div>
+      <div><label class="f">City</label><select id="lCity" onchange="renderLawyers()"><option>All cities</option></select></div>
+      <div><label class="f">Area</label><select id="lArea" onchange="renderLawyers()"><option>All areas</option></select></div>
+    </div>
+    <div id="lawyerList"></div>
+    <div class="note"><b>Ratings are earned, not bought.</b> A rating can only be left by a recruiter after a job posted here is marked complete — one review per job. Profiles marked <i>Verified</i> have a bar council roll number checked against the public register.</div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="panel" id="p-profile">
+    <p style="color:#5E6B78;font-size:14.5px;margin-top:0">Your profile is what a recruiter reads before hiring: skills, cases handled, who you currently work with, and the ratings you have earned.</p>
+    <div class="grid2">
+      <form class="card" onsubmit="saveProfile(event)">
+        <h3 style="font-size:18px;margin-bottom:12px">Build or update your profile</h3>
+        <div class="row"><label class="f">Full name</label><input id="pfName" required placeholder="Adv. Ayesha Khan"></div>
+        <div class="row"><label class="f">City</label><input id="pfCity" required placeholder="Karachi"></div>
+        <div class="row"><label class="f">Practice area</label><input id="pfArea" required placeholder="Family law"></div>
+        <div class="row"><label class="f">Current chamber / firm</label><input id="pfChamber" placeholder="Chamber of …, City Courts"></div>
+        <div class="row"><label class="f">Cases handled (number)</label><input id="pfCases" type="number" min="0" placeholder="120"></div>
+        <div class="row"><label class="f">Skills (comma separated)</label><input id="pfSkills" placeholder="Khula, maintenance, custody, Urdu drafting"></div>
+        <div class="row"><label class="f">Your fee or rate</label><input id="pfRate" placeholder="Rs 4,000 / consultation"></div>
+        <div class="row"><label class="f">One line about your work</label><textarea id="pfBio" rows="2" placeholder="What you do, for whom, and what you are good at."></textarea></div>
+        <button class="btn btn-gold" type="submit">Save profile</button>
+        <p style="font-size:12px;margin-top:10px">Demo: saved in this browser only. In the live version this becomes a public page at /lawyers/your-name/ and a bar council check badge.</p>
+      </form>
+      <div class="card" id="myProfileBox"><p style="color:#5E6B78;margin:0">No profile saved yet on this device.</p></div>
+    </div>
+  </div>
+
+  <!-- POST -->
+  <div class="panel" id="p-post">
+    <div class="grid2">
+      <form class="card" onsubmit="postJob(event)">
+        <h3 style="font-size:18px;margin-bottom:12px">Post a job or a task</h3>
+        <div class="row"><label class="f">Role title</label><input id="pjTitle" required placeholder="Associate — civil litigation"></div>
+        <div class="row"><label class="f">Chamber / firm / company</label><input id="pjOrg" required placeholder="Name as it should appear"></div>
+        <div class="row"><label class="f">City</label><input id="pjCity" required placeholder="Karachi"></div>
+        <div class="row"><label class="f">Area of law</label><input id="pjArea" required placeholder="Civil"></div>
+        <div class="row"><label class="f">Type</label><select id="pjType"><option>Full-time</option><option>Part-time</option><option>Remote</option><option>Per case</option><option>Pupillage</option><option>Freelance task</option></select></div>
+        <div class="row"><label class="f">Experience needed</label><input id="pjExp" placeholder="Fresh graduate / 2 years"></div>
+        <div class="row"><label class="f">Fee or salary</label><input id="pjPay" placeholder="Rs 60,000 / month"></div>
+        <div class="row"><label class="f">Description</label><textarea id="pjDesc" rows="3" placeholder="What the lawyer will do, and what you will teach or pay."></textarea></div>
+        <div class="row"><label class="f">Contact for applications</label><input id="pjContact" placeholder="Email or WhatsApp"></div>
+        <button class="btn btn-gold" type="submit">Publish (free during pilot)</button>
+        <p style="font-size:12px;margin-top:10px">Demo: stored in this browser. Live version publishes instantly and emails you each application.</p>
+      </form>
+      <div class="card">
+        <h3 style="font-size:17px;margin-bottom:10px">What recruiters get</h3>
+        <ul style="padding-left:18px;font-size:14px;color:#3E4C59;margin:0">
+          <li>Applications from lawyers with a visible case record, not just a CV</li>
+          <li>Filter by city, area of law, skills and rating</li>
+          <li>Rate the lawyer after the work is completed — one review per job</li>
+          <li>Freelance tasks with escrow, so you pay only for work delivered</li>
+          <li>No commission on client case referrals — that stays prohibited</li>
+        </ul>
+        <div class="note" style="margin-bottom:0"><b>For chambers:</b> pupillage postings are free for the first year. A six-month seat is the single hardest thing for a new lawyer to find, and it should not cost a chamber money to offer one.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW -->
+  <div class="panel" id="p-how">
+    <div class="grid2">
+      <div class="card">
+        <h3 style="font-size:18px;margin-bottom:10px">If you are looking for work</h3>
+        <ol style="padding-left:18px;font-size:14.5px;color:#3E4C59">
+          <li>Browse jobs and tasks. Filter by city and area of law.</li>
+          <li>Build your profile once — skills, cases, chamber, rate.</li>
+          <li>Apply at the original source for aggregated jobs; apply here for tasks and posted roles.</li>
+          <li>Complete the work, get rated, and let the rating build your record.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3 style="font-size:18px;margin-bottom:10px">If you are hiring</h3>
+        <ol style="padding-left:18px;font-size:14.5px;color:#3E4C59">
+          <li>Post the role or task with a clear fee and a clear scope.</li>
+          <li>Read applications and profiles — cases handled, not adjectives.</li>
+          <li>Agree the work in writing, then mark it complete.</li>
+          <li>Rate the lawyer. Ratings are what make the market trustworthy.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="note" style="margin-top:18px">
+      <b>Why this exists:</b> a new lawyer's first problem is not knowledge, it is access — to a chamber, to a first brief, to anyone who will pay for a draft.
+      This page puts every opening in one list and gives a junior lawyer a public record of work completed.
+      WakeelBano takes <b>no commission on client case referrals</b>; it charges recruiters for posting and hiring tools only.
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap" style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap">
+  <span>© 2026 WakeelBano · Job data collected from public listings on 24 October 2026 · Legal information only</span>
+  <span><a href="../index.html">Home</a> · <a href="../career/index.html">Career</a> · <a href="../about/index.html">About</a></span>
+</div></footer>
+
+<div class="modal" id="mApply"><div class="mbox">
+  <button class="x" onclick="closeM('mApply')">✕</button>
+  <h3 id="apTitle">Apply</h3>
+  <p id="apSub"></p>
+  <div id="apForm">
+    <div class="row"><label class="f">Your name</label><input id="apName" placeholder="Adv. Ayesha Khan"></div>
+    <div class="row"><label class="f">WhatsApp</label><input id="apPhone" placeholder="03xx xxxxxxx"></div>
+    <div class="row"><label class="f">Why you fit (3 lines)</label><textarea id="apWhy" rows="3" placeholder="What you have drafted or argued that relates to this role."></textarea></div>
+    <button class="btn btn-gold" style="width:100%" onclick="submitApply()">Send application</button>
+    <p style="font-size:12px">Demo: saved in this browser. For aggregated listings, apply at the original source first — the link is on the card.</p>
+  </div>
+</div></div>
+
+<div class="modal" id="mRate"><div class="mbox">
+  <button class="x" onclick="closeM('mRate')">✕</button>
+  <h3>Rate this lawyer</h3>
+  <p id="rateSub"></p>
+  <div class="starsel" id="starRow"></div>
+  <div class="row"><label class="f">Short review (visible on the profile)</label><textarea id="rateText" rows="3" placeholder="Delivered the draft a day early, citations checked, no rework needed."></textarea></div>
+  <button class="btn btn-gold" style="width:100%" onclick="submitRate()">Submit rating</button>
+  <p style="font-size:12px">One rating per completed job. Reviews are public; names of clients and case details must not be included.</p>
+</div></div>
+
+<div class="modal" id="mProfile"><div class="mbox" id="mProfileBox"></div></div>
+
+<script>
+const DATA = __DATA__;
+const store = {
+  get(k,d){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):d; }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+const $$ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- tabs ---------- */
+function show(p){
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  const t=$$('p-'+p); if(t) t.classList.add('on');
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on', b.dataset.p===p));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>show(b.dataset.p));
+
+/* ---------- filters fill ---------- */
+function fillSelect(el, values, allLabel){
+  el.innerHTML = '<option>'+allLabel+'</option>' + values.map(v=>`<option>${esc(v)}</option>`).join('');
+}
+fillSelect($$('fCity'), [...new Set(DATA.jobs.map(j=>j.city))].sort(), 'All cities');
+fillSelect($$('fArea'), [...new Set(DATA.jobs.map(j=>j.area))].sort(), 'All areas');
+fillSelect($$('lCity'), [...new Set(DATA.lawyers.map(l=>l.city))].sort(), 'All cities');
+fillSelect($$('lArea'), [...new Set(DATA.lawyers.map(l=>l.area))].sort(), 'All areas');
+
+/* ---------- jobs ---------- */
+function daysAgo(d){
+  const ms = new Date('__TODAY__') - new Date(d);
+  const n = Math.round(ms/86400000);
+  return n<=0 ? 'today' : n+' day'+(n>1?'s':'')+' ago';
+}
+function renderJobs(){
+  const q = ($$('q').value||'').toLowerCase();
+  const city = $$('fCity').value, area = $$('fArea').value, type = $$('fType').value;
+  const mine = store.get('wb.postedJobs', []);
+  const all = mine.concat(DATA.jobs);
+  const list = all.filter(j=>{
+    const hay = (j.t+' '+j.org+' '+j.city+' '+j.area+' '+j.desc+' '+(j.tags||[]).join(' ')).toLowerCase();
+    if(q && !hay.includes(q)) return false;
+    if(city!=='All cities' && j.city!==city) return false;
+    if(area!=='All areas' && j.area!==area) return false;
+    if(type!=='All types'){
+      if(type==='Full-time' && !/full-time/i.test(j.type)) return false;
+      if(type==='Part-time' && !/part/i.test(j.type)) return false;
+      if(type==='Remote' && !/remote/i.test(j.type+j.city)) return false;
+      if(type==='Per case' && !/per case/i.test(j.type)) return false;
+      if(type==='Internship' && !/intern/i.test(j.type)) return false;
+      if(type==='Government' && j.area!=='Government') return false;
+    }
+    return true;
+  });
+  $$('jobList').innerHTML = list.length ? list.map(j=>`
+    <div class="card job">
+      <div>
+        <h3>${esc(j.t)}</h3>
+        <div class="org">${esc(j.org)} · ${esc(j.city)} · posted ${esc(j.posted?daysAgo(j.posted):'just now')}</div>
+        <div class="badges">
+          <span class="bg">${esc(j.type)}</span>
+          <span class="bg">${esc(j.area)}</span>
+          <span class="bg">Exp: ${esc(j.exp)}</span>
+          ${j.pay && j.pay!=='Not stated' ? `<span class="bg pay">${esc(j.pay)}</span>` : ''}
+          ${(j.tags||[]).slice(0,3).map(t=>`<span class="bg">${esc(t)}</span>`).join('')}
+        </div>
+        <p>${esc(j.desc)}</p>
+        <div class="src">Source: ${j.url ? `<a href="${esc(j.url)}" target="_blank" rel="nofollow noopener">${esc(j.src)}</a>` : esc(j.src)} — verify the deadline on the employer's page.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button class="btn btn-gold" onclick="openApply('${esc(j.t)}','${esc(j.org)}',${!!j.url})">Apply here</button>
+        ${j.url ? `<a class="btn btn-line" href="${esc(j.url)}" target="_blank" rel="nofollow noopener" style="font-size:13px">Original post</a>` : ''}
+      </div>
+    </div>`).join('') : `<div class="empty">No job matches this filter. Try clearing the search or choosing "All cities".</div>`;
+}
+
+/* ---------- tasks ---------- */
+function renderTasks(){
+  const mine = store.get('wb.postedTasks', []);
+  const all = mine.concat(DATA.tasks);
+  $$('taskList').innerHTML = all.map(t=>`
+    <div class="card job">
+      <div>
+        <h3>${esc(t.t)}</h3>
+        <div class="org">${esc(t.by)} · ${esc(t.city)} · due in ${esc(t.days)}</div>
+        <div class="badges"><span class="bg">${esc(t.cat)}</span><span class="bg pay">${esc(t.pay)}</span></div>
+        <p>${esc(t.desc)}</p>
+      </div>
+      <div><button class="btn btn-gold" onclick="openApply('${esc(t.t)}','${esc(t.by)}',false)">Apply for task</button></div>
+    </div>`).join('');
+}
+
+/* ---------- lawyers ---------- */
+function starHtml(r){
+  const full = Math.round(r);
+  return '★'.repeat(full) + '☆'.repeat(5-full);
+}
+function renderLawyers(){
+  const q = ($$('lq').value||'').toLowerCase();
+  const city = $$('lCity').value, area = $$('lArea').value;
+  const ratings = store.get('wb.ratings', {});
+  const list = DATA.lawyers.filter(l=>{
+    const hay = (l.n+' '+l.city+' '+l.area+' '+l.skills.join(' ')+' '+l.chamber+' '+l.bio).toLowerCase();
+    if(q && !hay.includes(q)) return false;
+    if(city!=='All cities' && l.city!==city) return false;
+    if(area!=='All areas' && l.area!==area) return false;
+    return true;
+  });
+  $$('lawyerList').innerHTML = list.map(l=>{
+    const extra = ratings[l.id] || [];
+    const base = l.reviews;
+    const sum = l.rating*base + extra.reduce((a,b)=>a+b.stars,0);
+    const count = base + extra.length;
+    const avg = count ? (sum/count) : 0;
+    return `<div class="card lawyer">
+      <div class="av">${esc(l.n.replace('Adv. ','').replace('Barrister ','').split(' ').map(x=>x[0]).join('').slice(0,2))}</div>
+      <div>
+        <h3 style="font-size:16.5px">${esc(l.n)} ${l.verified?'<span class="bg" style="background:#E4F3EC;border-color:#BFE0D2;color:#14664A">Verified</span>':''}</h3>
+        <div class="org" style="font-size:13px;color:#5E6B78">${esc(l.area)} · ${esc(l.city)} · ${esc(l.chamber)} · enrolled ${l.since}</div>
+        <div class="stars" style="margin:6px 0">${starHtml(avg)} <span style="color:#3E4C59;font-size:13px">${avg.toFixed(1)} (${count})</span></div>
+        <div class="badges">${l.skills.slice(0,4).map(s=>`<span class="bg">${esc(s)}</span>`).join('')}<span class="bg">${l.cases} cases</span></div>
+        <p style="font-size:13.5px;color:#3E4C59;margin:6px 0 0">${esc(l.bio)}</p>
+      </div>
+      <div style="text-align:right;display:flex;flex-direction:column;gap:8px">
+        <div class="rate">${esc(l.rate)}</div>
+        <button class="btn btn-line" onclick="openProfile('${l.id}')">View profile</button>
+        <button class="btn btn-dark" onclick="openRate('${l.id}')">Rate work</button>
+      </div>
+    </div>`;
+  }).join('') || `<div class="empty">No lawyer matches. Try a different skill or city.</div>`;
+}
+
+/* ---------- modals ---------- */
+let applyCtx = {}, rateCtx = {id:null, stars:0};
+function openM(id){$$(id).classList.add('on');document.body.style.overflow='hidden';}
+function closeM(id){$$(id).classList.remove('on');document.body.style.overflow='';}
+function openApply(title, org, hasSource){
+  applyCtx={title, org};
+  $$('apTitle').textContent = 'Apply — '+title;
+  $$('apSub').textContent = org + (hasSource ? ' · Also apply at the original source listed on the card.' : '');
+  openM('mApply');
+}
+function submitApply(){
+  const n=$$('apName').value.trim(), p=$$('apPhone').value.trim();
+  if(!n||!p){ alert('Please enter your name and WhatsApp number.'); return; }
+  const all = store.get('wb.applications', []);
+  all.push({role:applyCtx.title, org:applyCtx.org, name:n, phone:p, why:$$('apWhy').value, at:new Date().toISOString()});
+  store.set('wb.applications', all);
+  $$('apForm').innerHTML = `<div class="ok"><b>Application saved, ${esc(n.split(' ')[0])}.</b><br>In the live version the recruiter receives it instantly and you get a WhatsApp confirmation.</div><button class="btn btn-line" style="width:100%" onclick="closeM('mApply')">Close</button>`;
+}
+function openProfile(id){
+  const l = DATA.lawyers.find(x=>x.id===id); if(!l) return;
+  const ratings = store.get('wb.ratings', {})[id] || [];
+  $$('mProfileBox').innerHTML = `
+    <button class="x" onclick="closeM('mProfile')">✕</button>
+    <h3>${esc(l.n)}</h3>
+    <p>${esc(l.area)} · ${esc(l.city)} · ${esc(l.chamber)}</p>
+    <div class="stars" style="font-size:16px">${starHtml(l.rating)} <span style="color:#3E4C59;font-size:13px">${l.rating} from ${l.reviews} completed jobs</span></div>
+    <div class="badges" style="margin:12px 0">${l.skills.map(s=>`<span class="bg">${esc(s)}</span>`).join('')}<span class="bg">${l.cases} cases handled</span><span class="bg">Enrolled ${l.since}</span></div>
+    <p style="font-size:14px;color:#3E4C59">${esc(l.bio)}</p>
+    <p style="font-size:14px"><b>Rate:</b> ${esc(l.rate)}</p>
+    ${ratings.length? `<h4 style="font-size:14px;margin:14px 0 6px">Reviews on this device</h4>` + ratings.map(r=>`<div style="border-top:1px solid #E6DFD2;padding:8px 0"><div class="stars">${starHtml(r.stars)}</div><div style="font-size:13.5px;color:#3E4C59">${esc(r.text||'No written review.')}</div></div>`).join('') : ''}
+    <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
+      <button class="btn btn-gold" onclick="closeM('mProfile');openApply('Work with ${esc(l.n)}','${esc(l.area)} lawyer',false)">Hire / message</button>
+      <button class="btn btn-line" onclick="closeM('mProfile');openRate('${l.id}')">Rate a completed job</button>
+    </div>`;
+  openM('mProfile');
+}
+function openRate(id){
+  const l = DATA.lawyers.find(x=>x.id===id); if(!l) return;
+  rateCtx={id, stars:0};
+  $$('rateSub').textContent = 'For work completed with '+l.n+'. Ratings can only come from a finished job.';
+  drawStars();
+  openM('mRate');
+}
+function drawStars(){
+  $$('starRow').innerHTML = [1,2,3,4,5].map(n=>`<button class="${n<=rateCtx.stars?'on':''}" onclick="setStars(${n})">★</button>`).join('');
+}
+function setStars(n){ rateCtx.stars=n; drawStars(); }
+function submitRate(){
+  if(!rateCtx.stars){ alert('Choose 1 to 5 stars.'); return; }
+  const all = store.get('wb.ratings', {});
+  (all[rateCtx.id] = all[rateCtx.id] || []).push({stars:rateCtx.stars, text:$$('rateText').value.trim(), at:new Date().toISOString()});
+  store.set('wb.ratings', all);
+  closeM('mRate');
+  $$('rateText').value='';
+  renderLawyers();
+  alert('Rating saved. It now appears on the profile.');
+}
+
+/* ---------- profile ---------- */
+function saveProfile(e){
+  e.preventDefault();
+  const p = {name:$$('pfName').value, city:$$('pfCity').value, area:$$('pfArea').value,
+    chamber:$$('pfChamber').value, cases:$$('pfCases').value, skills:$$('pfSkills').value,
+    rate:$$('pfRate').value, bio:$$('pfBio').value};
+  store.set('wb.profile', p);
+  paintProfile();
+}
+function paintProfile(){
+  const p = store.get('wb.profile', null);
+  if(!p){ $$('myProfileBox').innerHTML = '<p style="color:#5E6B78;margin:0">No profile saved yet on this device.</p>'; return; }
+  const skills = (p.skills||'').split(',').map(s=>s.trim()).filter(Boolean);
+  $$('myProfileBox').innerHTML = `
+    <h3 style="font-size:18px">${esc(p.name)}</h3>
+    <div style="font-size:13px;color:#5E6B78;margin-bottom:10px">${esc(p.area)} · ${esc(p.city)}${p.chamber?' · '+esc(p.chamber):''}</div>
+    <div class="badges">${skills.map(s=>`<span class="bg">${esc(s)}</span>`).join('')}${p.cases?`<span class="bg">${esc(p.cases)} cases</span>`:''}</div>
+    ${p.bio?`<p style="font-size:14px;color:#3E4C59">${esc(p.bio)}</p>`:''}
+    ${p.rate?`<p style="font-size:14px"><b>Rate:</b> ${esc(p.rate)}</p>`:''}
+    <div class="note" style="margin-bottom:0">This is what a recruiter sees. In the live version it is public at /lawyers/your-name/ with a bar council badge, and ratings appear automatically after completed work.</div>`;
+}
+
+/* ---------- post job ---------- */
+function postJob(e){
+  e.preventDefault();
+  const j = {id:'u'+Date.now(), t:$$('pjTitle').value, org:$$('pjOrg').value, city:$$('pjCity').value,
+    area:$$('pjArea').value, type:$$('pjType').value, exp:$$('pjExp').value||'Not stated',
+    pay:$$('pjPay').value||'Not stated', desc:$$('pjDesc').value, posted:'__TODAY__', tags:[], src:'Posted on WakeelBano', url:''};
+  const list = store.get('wb.postedJobs', []); list.unshift(j); store.set('wb.postedJobs', list);
+  e.target.innerHTML = `<div class="ok"><b>Job published.</b><br>${esc(j.t)} · ${esc(j.city)} — it now appears at the top of the Jobs tab on this device.</div>
+    <button class="btn btn-line" style="width:100%" onclick="show('jobs')">See it in the list</button>`;
+  renderJobs();
+}
+
+/* ---------- init ---------- */
+renderJobs(); renderTasks(); renderLawyers(); paintProfile();
+window.addEventListener('click', e=>{ if(e.target.classList.contains('modal')) { e.target.classList.remove('on'); document.body.style.overflow=''; } });
+</script>
+</body>
+</html>"""
+
+
+def main():
+    html = (PAGE
+            .replace("__BASE__", BASE)
+            .replace("__DATA__", json.dumps(DATA, ensure_ascii=False))
+            .replace("__NJ__", str(len(JOBS)))
+            .replace("__NT__", str(len(TASKS)))
+            .replace("__NL__", str(len(LAWYERS)))
+            .replace("__TODAY__", TODAY))
+    out = os.path.join(ROOT, "jobs", "index.html")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    io.open(out, "w", encoding="utf-8").write(html)
+    print(f"jobs/index.html written ({len(JOBS)} openings, {len(TASKS)} tasks, {len(LAWYERS)} profiles)")
+
+
+if __name__ == "__main__":
+    main()

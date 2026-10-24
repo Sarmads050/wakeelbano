@@ -1308,3 +1308,11 @@ for _hub in HUBS:
     for _t, _d, _u in HUB_ADDITIONS.get(_hub["slug"], []):
         if all(c[0] != _t for c in _hub["children"]):
             _hub["children"].append((_t, _d, _u))
+
+
+# ---------------------------------------------------------------- wave 3
+# Family law and service/employment guides, with two new hubs.
+from content_pages_family_service import PAGES_3, FAMILY_HUB, SERVICE_HUB
+
+HUBS.extend([FAMILY_HUB, SERVICE_HUB])
+PAGES.extend(PAGES_3)

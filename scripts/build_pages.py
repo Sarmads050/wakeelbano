@@ -99,7 +99,9 @@ NAV = """<nav>
 <a href="{root}index.html#career">Career</a>
 <a href="{root}case-law/index.html">Case Law</a>
 <a href="{root}drafts/index.html">Drafts</a>
-<a href="{root}karachi/lawyer-jobs/index.html">Jobs</a>
+<a href="{root}jobs/index.html">Jobs</a>
+<a href="{root}family/index.html">Family</a>
+<a href="{root}service/index.html">Service</a>
 <a href="{root}about/index.html">About</a>
 <a class="cta" href="{root}index.html#join">Join free</a>
 </nav>"""
@@ -365,6 +367,9 @@ def write_llms_txt(urls):
         for t, d, u in h.get("children", []):
             out.append(f"- [{t}: {d}]({BASE}{child_url(h['url'], u)})")
         out.append("")
+    out.append("## Jobs and hiring")
+    out.append(f"- [Legal jobs in Pakistan, freelance tasks and the lawyer directory]({BASE}jobs/) — aggregated openings with links to the original postings, lawyer profiles with skills, cases handled and ratings, and hiring tools for chambers and firms.")
+    out.append("")
     out += ["## Optional", f"- [Sitemap]({BASE}sitemap.xml)", f"- [Full text export]({BASE}llms-full.txt)", ""]
     io.open(os.path.join(ROOT, "llms.txt"), "w", encoding="utf-8").write("\n".join(out))
 
@@ -398,7 +403,7 @@ def write_llms_txt(urls):
 
 
 def main():
-    urls = [("", "1.0", "weekly")]
+    urls = [("", "1.0", "weekly"), ("jobs/", "0.9", "daily")]
 
     for h in C.HUBS:
         out = os.path.join(ROOT, h["slug"])

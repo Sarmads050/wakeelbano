@@ -252,7 +252,7 @@
       <a href="#career" data-v="career">Career</a>
       <a href="#chambers" data-v="chambers">Chambers</a>
       <a href="#rooms" data-v="rooms">Rooms</a>
-      <a href="#work" data-v="work">Work</a>
+      <a href="jobs/index.html" class="ext">Jobs</a>
       <a href="case-law/index.html" class="ext">Case Law</a>
       <a href="drafts/index.html" class="ext">Drafts</a>
       <a href="#ai-kit" data-v="ai-kit">AI Kit</a>
@@ -306,6 +306,17 @@
       </div>
     </div>
   </div>
+
+  <section style="padding:34px 0 10px">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:18px">
+        <span class="kicker">Start here — 10 seconds</span>
+        <h2 style="font-size:clamp(21px,2.6vw,28px)">What do you need right now?</h2>
+        <p>Pick one. Every path below takes you straight to the page that answers it — no scrolling, no guessing.</p>
+      </div>
+      <div class="grid g4" id="router"></div>
+    </div>
+  </section>
 
   <section>
     <div class="wrap">
@@ -745,7 +756,8 @@
         <a href="#career" onclick="go('career');return false;">Career navigator</a>
         <a href="#chambers" onclick="go('chambers');return false;">Chamber match</a>
         <a href="#rooms" onclick="go('rooms');return false;">Rooms</a>
-        <a href="#work" onclick="go('work');return false;">Work board</a>
+        <a href="jobs/index.html">Job market</a>
+        <a href="jobs/index.html">Hire a lawyer</a>
       </div>
       <div>
         <h5>Learn</h5>
@@ -822,6 +834,24 @@ const MODULES = [
   {n:'08',t:'Growth School',d:'Your first ten clients: content, local visibility and networking, inside professional conduct rules.'},
   {n:'09',t:'Verified Profile',d:'Your bar roll number checked against the register, so clients and firms can trust your profile.'}
 ];
+/* ---------- instant intent router ---------- */
+const ROUTES = [
+  {i:'💼', t:'Find a legal job', d:'18 live openings across Pakistan, each linked to its source', a:"location.href='jobs/index.html'"},
+  {i:'🤝', t:'Hire a lawyer', d:'Pick by skills, cases handled and rating', a:"location.href='jobs/index.html'"},
+  {i:'💸', t:'Earn from paid tasks', d:'Drafting and research work posted by seniors', a:"go('work')"},
+  {i:'🏛️', t:'Get a chamber / pupillage', d:'Verified seniors with terms stated openly', a:"go('chambers')"},
+  {i:'🛏️', t:'Find a room or seat', d:'Punjab Colony, Garden, Saddar, near the courts', a:"go('rooms')"},
+  {i:'📚', t:'Research case law', d:'302 PPC, 489-F, 497 CrPC, 420 PPC and more', a:"location.href='case-law/index.html'"},
+  {i:'📝', t:'Draft a document', d:'Bail, notice, plaint, statement, affidavit', a:"location.href='drafts/index.html'"},
+  {i:'🎯', t:'Start my career', d:'Step-by-step: LLB to High Court licence', a:"go('career')"}
+];
+document.getElementById('router').innerHTML = ROUTES.map(r => `
+  <button class="card" style="text-align:left;cursor:pointer;font-family:inherit;width:100%" onclick="${r.a}">
+    <div style="font-size:22px;line-height:1;margin-bottom:9px">${r.i}</div>
+    <h3 style="font-size:16px;margin-bottom:4px">${r.t}</h3>
+    <p style="font-size:13px">${r.d}</p>
+  </button>`).join('');
+
 document.getElementById('modules').innerHTML = MODULES.map(m=>`
   <div class="card"><div class="num">${m.n}</div><h3 style="font-size:16.5px">${m.t}</h3><p style="font-size:13.5px">${m.d}</p></div>`).join('');
 
