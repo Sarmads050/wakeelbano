@@ -143,7 +143,7 @@ def _verify_tags():
     return out
 
 
-def page(title, desc, slug, body, canonical, schema=None):
+def page(title, desc, slug, body, canonical, schema=None, extra_css=""):
     root = "../" * slug.count("/")
     verify_tags = _verify_tags()
     sch = ('<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False) + "</script>") if schema else ""
@@ -168,7 +168,7 @@ def page(title, desc, slug, body, canonical, schema=None):
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230F2537'/%3E%3Cpath d='M24 10v26M14 16h20M17 38h14' stroke='%23E7CE7A' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
-<style>{CSS}</style>{verify_tags}
+<style>{CSS}{extra_css}</style>{verify_tags}
 {sch}
 </head>
 <body>

@@ -96,6 +96,75 @@ footer a{color:#A9BAC8;display:block;padding:3px 0;border:0;font-size:13px}
 footer a:hover{color:var(--gold2)}
 footer .fb{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;font-size:12px}
 @media(max-width:820px){.grid,.grid.two{grid-template-columns:1fr}footer .fg{grid-template-columns:1fr}.top nav{display:none}.facts dl{grid-template-columns:1fr}.facts dt{border-top:1px solid #F0EBE0}}
+
+.job-page .hero{padding:30px 0 34px;margin-bottom:0}
+.job-page .hero .org-line{font-size:17px;color:#E3EBF2;margin:6px 0 0;font-weight:600}
+.job-page .hero .org-line span{color:#93A6B5;font-weight:400}
+.job-page .hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.job-page .pill{font-size:12.5px;font-weight:700;color:#0B2540;background:#E8EEF4;border:1px solid rgba(255,255,255,.18);
+  padding:5px 11px;border-radius:99px}
+.job-page .pill.gold{background:linear-gradient(180deg,#E7CE7A,#D2B14A);color:#2A1F00;border-color:transparent}
+.job-page .pill.warn{background:#FDECEC;color:#9B1C1C;border-color:#F3C9C9}
+.job-page .pill.ghost{background:rgba(255,255,255,.1);color:#DCE7EF}
+
+.job-page main{padding-top:26px;padding-bottom:10px}
+.job-page .jobgrid{display:grid;grid-template-columns:minmax(0,1fr) 322px;gap:30px;align-items:start}
+.job-page .col-main{min-width:0}
+.job-page .col-side{position:sticky;top:80px}
+
+/* snapshot */
+.job-page .snap{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 18px;margin:0 0 22px}
+.job-page .snap dl{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0}
+.job-page .snap .cell{padding:12px 0;border-top:1px solid #F0EBE0}
+.job-page .snap .cell:nth-child(-n+2){border-top:0}
+.job-page .snap dt{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:#7A8794;font-weight:800;margin:0 0 3px}
+.job-page .snap dd{margin:0;font-size:15.5px;font-weight:700;color:var(--navy);line-height:1.4}
+
+/* deadline banner */
+.job-page .deadline{display:flex;gap:12px;align-items:flex-start;border-radius:12px;padding:14px 16px;margin:0 0 26px;
+  background:#FFF8E6;border:1px solid #EBD9A4;color:#5F4A00;font-size:14.5px;line-height:1.55}
+.job-page .deadline.urgent{background:#FDEFEF;border-color:#F0C9C9;color:#8C1C1C}
+.job-page .deadline.none{background:#F4F7FA;border-color:#E1E8EE;color:#44525F}
+.job-page .deadline b{display:block;font-size:15px;margin-bottom:2px}
+
+/* sections */
+.job-page h2{font-size:22px;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.job-page .lead{font-size:16.5px;color:#33424F;margin:0 0 18px;line-height:1.7}
+.job-page ol.steps li{font-size:15px;line-height:1.6;color:#33424F}
+.job-page ol.steps li b{color:var(--navy)}
+.job-page .check{list-style:none;padding:0;margin:0 0 8px}
+.job-page .check li{position:relative;padding:11px 15px 11px 44px;background:#fff;border:1px solid var(--line);
+  border-radius:11px;margin:0 0 9px;font-size:15px;color:#33424F}
+.job-page .check li:before{content:"";position:absolute;left:15px;top:15px;width:16px;height:16px;border-radius:5px;
+  background:var(--gold-soft);border:1px solid #E0CD9A}
+.job-page .check li b{color:var(--navy)}
+
+/* apply card */
+.job-page .applycard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;
+  box-shadow:0 10px 30px rgba(11,27,43,.08)}
+.job-page .applycard .pay{font-family:Georgia,serif;font-size:23px;font-weight:700;color:var(--navy);line-height:1.2}
+.job-page .applycard .pay small{display:block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#7A8794;font-weight:800;margin-bottom:4px}
+.job-page .applycard .rowline{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:9px 0;
+  border-top:1px solid #F0EBE0;color:#44525F}
+.job-page .applycard .rowline b{color:var(--navy);text-align:right}
+.job-page .applycard .rowline:first-of-type{border-top:0}
+.job-page .btn-apply{display:block;text-align:center;margin:16px 0 10px;padding:15px 18px;border-radius:11px;border:0;
+  background:linear-gradient(180deg,#DDB845,#BE9A1F);color:#2A1F00;font-size:16.5px;font-weight:800;
+  letter-spacing:.01em;box-shadow:0 6px 16px rgba(190,154,31,.28)}
+.job-page .btn-apply:hover{filter:brightness(1.04)}
+.job-page .applycard .note{font-size:12.5px;color:#7A8794;line-height:1.55;margin:0}
+.job-page .applycard .verified{display:flex;align-items:center;gap:7px;font-size:12.5px;color:#1F7A5C;
+  background:#EAF6F1;border:1px solid #CBE7DB;border-radius:9px;padding:8px 10px;margin:12px 0 0}
+.job-page .btn-apply-bottom{display:none}
+
+@media(max-width:900px){
+  .job-page .jobgrid{grid-template-columns:1fr;gap:22px}
+  .job-page .col-side{position:static;order:-1}
+  .job-page .snap .cell{padding:10px 0}
+  .job-page .btn-apply-bottom{display:block;margin:24px 0 0;text-align:center;padding:16px;border-radius:11px;
+    background:linear-gradient(180deg,#DDB845,#BE9A1F);color:#2A1F00;font-size:16.5px;font-weight:800}
+}
 </style>
 <meta name="google-site-verification" content="1YecSvlkXKZa7UucUcKV3HEsX0O-Wb51DLSnm0PTw4s">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "JobPosting", "title": "Head of Legal", "description": "Leads the legal function of Pakistan's largest mobile operator.", "datePosted": "2026-10-10", "employmentType": "FULL_TIME", "hiringOrganization": {"@type": "Organization", "name": "Jazz"}, "jobLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Islamabad", "addressCountry": "PK"}}, "url": "https://sarmads050.github.io/wakeelbano/jobs/j36/", "directApply": false, "baseSalary": {"@type": "MonetaryAmount", "currency": "PKR", "value": {"@type": "QuantitativeValue", "unitText": "MONTH", "minValue": 0, "maxValue": 500}}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sarmads050.github.io/wakeelbano/"}, {"@type": "ListItem", "position": 2, "name": "Legal jobs", "item": "https://sarmads050.github.io/wakeelbano/jobs/"}, {"@type": "ListItem", "position": 3, "name": "Head of Legal", "item": "https://sarmads050.github.io/wakeelbano/jobs/j36/"}]}]}</script>
@@ -116,54 +185,94 @@ footer .fb{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;font-size:
 </nav>
 </div></header>
 
-<div class="wrap"><div class="crumbs"><a href="../../index.html">Home</a> <span>›</span> <a href="../../jobs/index.html">Jobs</a> <span>›</span> <span>Head of Legal</span></div></div>
+<div class="job-page">
 <section class="hero"><div class="wrap">
-  <div class="kicker">In-house · Islamabad</div>
+  <div class="kicker">In-house &middot; Islamabad</div>
   <h1>Head of Legal</h1>
-  <p>Jazz is hiring in Islamabad. Leads the legal function of Pakistan's largest mobile operator.</p>
-</div></section>
-<main class="wrap">
-  <div class="facts">
-    <div><b>Practice area</b><span>Corporate</span></div>
-    <div><b>Type</b><span>Full-time</span></div>
-    <div><b>Experience</b><span>Partner level</span></div>
-    <div><b>Pay</b><span>Rs 500,000 – 900,000</span></div>
-    <div><b>Location</b><span>Islamabad</span></div>
-    <div><b>Posted</b><span>10 Oct 2026</span></div>
+  <p class="org-line">Jazz <span>&middot; hiring in Islamabad</span></p>
+  <div class="pills">
+    <span class="pill gold">Full-time</span>
+    <span class="pill">Corporate</span>
+    <span class="pill ghost">Experience: Partner level</span>
+    <span class="pill ghost">Posted 10 Oct 2026</span>
   </div>
+</div></section>
 
-  <p style="margin:0 0 22px"><span class="pill">Last date: not stated on the listing — confirm on the source page</span></p>
+<main class="wrap">
+  <div class="jobgrid">
 
-  <h2>How to apply</h2>
-  <p>Open the employer's own careers page from the link below before applying — the salary shown on the aggregator is indicative, not an offer.</p>
-  <p style="margin:22px 0 8px"><a class="btn" style="font-size:16px;padding:15px 26px" href="https://legalalphabet.com/pakistan/jobs" target="_blank" rel="nofollow noopener">Apply here →</a></p>
-  <p style="font-size:13px;color:#7A8794">
-    This button opens the original listing at <b>Legalalphabet (aggregator — confirm on employer page)</b> — the place where the
-    application is actually made. Salaries and dates are copied from that listing; confirm them
-    there before you apply. WakeelBano takes no fee from candidates or employers.
-  </p>
+    <div class="col-main">
+      <div class="snap">
+        <dl>
+          <div class="cell"><dt>Practice area</dt><dd>Corporate</dd></div>
+          <div class="cell"><dt>Sector</dt><dd>In-house</dd></div>
+          <div class="cell"><dt>Location</dt><dd>Islamabad</dd></div>
+          <div class="cell"><dt>Job type</dt><dd>Full-time</dd></div>
+          <div class="cell"><dt>Experience</dt><dd>Partner level</dd></div>
+          <div class="cell"><dt>Pay</dt><dd>Rs 500,000 – 900,000</dd></div>
+        </dl>
+      </div>
 
-  <h2>What the job involves</h2>
-  <p>Leads the legal function of Pakistan's largest mobile operator.</p>
+      <div class="deadline none"><div><b>Last date: not stated on the listing</b>Open the source page and check the closing date there before you apply — government posts in particular close without notice.</div></div>
 
-  <h2>Good to know before you apply</h2>
-  <ul>
-    <li><b>Check the last date</b> on the source page — the listing is the only reliable date.</li>
-    <li><b>Keep the documents ready</b>: one-page CV, LLB/LLM degree, enrolment certificate,
-        CNIC, and for litigation roles a short drafting sample.</li>
-    <li><b>Write the first line of your email for the reader</b>: the exact role, your enrolment
-        year, and one case or transaction you handled.</li>
-    <li><b>Do not pay anyone</b> for a legal job. No genuine chamber charges a joining fee.</li>
-  </ul>
+      <h2>What the job involves</h2>
+      <p class="lead">Leads the legal function of Pakistan's largest mobile operator.</p>
 
-  <h2>Similar openings</h2><ul><li><a href="../../jobs/j01/index.html">Legal Associate</a> <span style="color:#7A8794">— CureMD, Lahore</span></li><li><a href="../../jobs/j02/index.html">Associate Lawyer (remote)</a> <span style="color:#7A8794">— Muzy &amp; Meraris LLP, Remote</span></li><li><a href="../../jobs/j03/index.html">Legal Associate</a> <span style="color:#7A8794">— Zeta Technologies, Islamabad</span></li><li><a href="../../jobs/j07/index.html">Lawyer / Legal Operations Associate</a> <span style="color:#7A8794">— MKS Law, Lahore</span></li></ul>
+      <h2>How to apply</h2>
+      <p class="lead">Open the employer's own careers page from the link below before applying — the salary shown on the aggregator is indicative, not an offer.</p>
+      <ol class="steps">
+        <li><b>Open the original listing.</b> The button on the right (and at the bottom of this
+            page) takes you straight to Legalalphabet (aggregator — confirm on employer page), where the application is actually made.
+            WakeelBano is not an employer and takes no fee from candidates.</li>
+        <li><b>Keep the papers ready.</b> One-page CV, LLB/LLM degree, Sindh Bar Council enrolment
+            certificate, CNIC, and for litigation roles a short drafting sample.</li>
+        <li><b>Write the first line for the reader.</b> Name the exact role, your enrolment year,
+            and one case or transaction you handled. Two sentences are enough.</li>
+        <li><b>Follow up once.</b> If there is no reply in a week, send one short email. Do not
+            send a third.</li>
+      </ol>
 
-  <div class="cta-box">
-    <div><h3>Get these jobs by email</h3>
-      <p>Subscribe once and new legal jobs in your city and practice area arrive in your inbox.</p></div>
-    <a class="btn" href="../../jobs/#jobs" onclick="location.href='../../jobs/';return false;">Set up job alerts →</a>
+      <h2>Before you apply</h2>
+      <ul class="check">
+        <li><b>Confirm the last date</b> on the source page — that listing is the only reliable
+            date, and some employers close early once they have enough applicants.</li>
+        <li><b>Check the experience requirement</b> against your own record: this post asks for
+            <b>Partner level</b>. If you are one year short, apply anyway and say why you are ready —
+            many chambers are flexible about the number and firm about the writing.</li>
+        <li><b>Never pay money</b> for a legal job or pupillage. No genuine chamber charges a
+            joining fee, and a request for one is a scam.</li>
+        <li><b>Keep a record.</b> Note where and when you applied, so a follow-up is easy and the
+            next interview does not catch you out.</li>
+      </ul>
+
+      <h2>Similar openings</h2><div class="grid"><a class="tile" href="../../jobs/j01/index.html"><b>Legal Associate</b><span>CureMD · Lahore · Not stated</span></a><a class="tile" href="../../jobs/j02/index.html"><b>Associate Lawyer (remote)</b><span>Muzy &amp; Meraris LLP · Remote · Not stated</span></a><a class="tile" href="../../jobs/j03/index.html"><b>Legal Associate</b><span>Zeta Technologies · Islamabad · Rs 75,000 – 100,000</span></a></div>
+
+      <a class="btn-apply-bottom" href="https://legalalphabet.com/pakistan/jobs" target="_blank" rel="nofollow noopener">Apply here &rarr;</a>
+
+      <div class="cta-box">
+        <div><h3>Get jobs like this by email</h3>
+          <p>Subscribe once and new legal jobs in your city and practice area arrive daily.</p></div>
+        <a class="btn" href="../../jobs/#jobs">Set up job alerts &rarr;</a>
+      </div>
+    </div>
+
+    <aside class="col-side">
+      <div class="applycard">
+        <div class="pay"><small>Pay</small>Rs 500,000 – 900,000</div>
+        <div class="rowline"><span>Experience</span><b>Partner level</b></div>
+        <div class="rowline"><span>Location</span><b>Islamabad</b></div>
+        <div class="rowline"><span>Type</span><b>Full-time</b></div>
+        <div class="rowline"><span>Last date</span><b>Not stated</b></div>
+        <a class="btn-apply" href="https://legalalphabet.com/pakistan/jobs" target="_blank" rel="nofollow noopener">Apply here &rarr;</a>
+        <p class="note">Opens the original listing on <b>Legalalphabet (aggregator — confirm on employer page)</b>. No fee, no middleman —
+        the application goes to the employer.</p>
+        <div class="verified">&#10003; Sourced 10 Oct 2026 from Legalalphabet (aggregator — confirm on employer page)</div>
+      </div>
+    </aside>
+
   </div>
 </main>
+</div>
 <footer><div class="wrap">
 <div class="fg">
   <div>
