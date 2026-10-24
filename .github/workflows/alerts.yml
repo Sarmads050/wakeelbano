@@ -1,0 +1,37 @@
+name: Job alerts
+
+# Sends the email digest of new legal jobs to everyone who subscribed on /jobs/.
+# Requires three repository secrets (Settings -> Secrets and variables -> Actions):
+#   SUPABASE_URL   https://<project>.supabase.co
+#   SUPABASE_KEY   the service-role / secret key (never the publishable one)
+#   RESEND_KEY     re_... sending key from resend.com
+# Optional:
+#   RESEND_FROM    verified sender, e.g. WakeelBano <alerts@wakeelbano.com>
+
+on:
+  schedule:
+    - cron: "0 4 * * 1"      # every Monday, 09:00 Pakistan time
+  workflow_dispatch:          # or press "Run workflow"
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Preview the digest
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python3 scripts/send_alerts.py --dry-run
+
+      - name: Send
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          RESEND_KEY: ${{ secrets.RESEND_KEY }}
+          RESEND_FROM: ${{ secrets.RESEND_FROM }}
+        run: python3 scripts/send_alerts.py
