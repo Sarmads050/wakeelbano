@@ -148,6 +148,7 @@ NAV = """<nav>
 <a href="{root}case-law/index.html">Case Law</a>
 <a href="{root}drafts/index.html">Drafts</a>
 <a href="{root}jobs/index.html">Jobs</a>
+<a href="{root}tools/index.html">Court Tools</a>
 <a href="{root}family/index.html">Family</a>
 <a href="{root}civil/index.html">Civil</a>
 <a href="{root}service/index.html">Service</a>
@@ -169,6 +170,7 @@ FOOTER = """<footer><div class="wrap">
   </div>
   <div><h5>Karachi</h5>
     <a href="{root}karachi/lawyer-jobs/index.html">Lawyer jobs</a>
+    <a href="{root}tools/index.html">Court tools</a>
     <a href="{root}case-law/index.html">Case law</a>
     <a href="{root}about/index.html">About</a>
   </div>
@@ -481,7 +483,7 @@ def write_llms_txt(urls):
 
 
 def main():
-    urls = [("", "1.0", "weekly"), ("jobs/", "0.9", "daily")]
+    urls = [("", "1.0", "weekly"), ("jobs/", "0.9", "daily"), ("tools/", "0.8", "monthly")]
 
     # one URL per open job — built by scripts/build_job_pages.py, listed here so
     # search engines can find them without crawling the whole jobs page

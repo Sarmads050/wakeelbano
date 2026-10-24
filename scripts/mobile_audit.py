@@ -97,7 +97,7 @@ def main():
     pages, results = 0, []
     for dp, dn, fn in os.walk(ROOT):
         dn[:] = [d for d in dn if not d.startswith((".", "node_modules", "scripts", "emails",
-                                                   "research", "uploads", ".git"))]
+                                                   "research", "uploads", "concepts", ".git"))]
         for f in fn:
             if not f.endswith(".html"):
                 continue

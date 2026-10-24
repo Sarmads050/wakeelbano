@@ -1,0 +1,161 @@
+<!-- ================= HOME ================= -->
+<div class="view on" id="v-home">
+
+  <!-- HERO: four tasks, not a pitch -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Karachi first · updated every morning</span>
+      <h1>What do you need today?<br><em>Pick one and start.</em></h1>
+      <p class="lead">WakeelBano is the working desk for Pakistani lawyers — jobs, chambers, paid drafting work and research. Free for juniors, always.</p>
+
+      <div class="tasks">
+        <a class="task" href="jobs/index.html">
+          <div class="task-ic">💼</div>
+          <b>Find a job</b>
+          <span>Legal openings across Pakistan, each dated and linked to the employer.</span>
+          <span class="task-n" id="tJobs">58 open</span>
+        </a>
+        <a class="task" href="#chambers" onclick="go('chambers');return false;">
+          <div class="task-ic">🏛️</div>
+          <b>Join a chamber</b>
+          <span>Chambers in Karachi that take pupils, and what each one expects.</span>
+          <span class="task-n" id="tChambers">8 chambers</span>
+        </a>
+        <a class="task" href="#work" onclick="go('work');return false;">
+          <div class="task-ic">✍️</div>
+          <b>Get paid drafting work</b>
+          <span>Real tasks from seniors and firms, paid on delivery.</span>
+          <span class="task-n" id="tTasks">6 tasks</span>
+        </a>
+        <a class="task" href="tools/index.html">
+          <div class="task-ic">🧾</div>
+          <b>Run the court day</b>
+          <span>Cause-list tracker, court holiday dates and a filing cost worksheet.</span>
+          <span class="task-n">Court tools</span>
+        </a>
+      </div>
+
+      <div class="hero-trust">
+        <span><b>No commission</b> on client cases</span>
+        <span><b>No rankings</b> for sale</span>
+        <span><b>Free</b> for students and juniors</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE STRIP -->
+  <div class="live-strip">
+    <div class="wrap live-in">
+      <span class="live-dot"></span>
+      <b>Today:</b>
+      <span id="liveNew">checking for new postings…</span>
+      <span class="sep">·</span>
+      <span id="liveClosing">closing dates</span>
+      <span class="sep">·</span>
+      <a href="jobs/index.html">See all openings →</a>
+    </div>
+  </div>
+
+  <!-- FRESH JOBS -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Fresh openings</span>
+        <h2>Jobs you can act on this morning</h2>
+        <p>Each card opens the original listing — we never stand between you and the employer.</p>
+      </div>
+      <div class="jobmini-grid" id="homeJobs">
+        <div class="empty">Loading the latest openings…</div>
+      </div>
+      <p style="margin-top:16px">
+        <a href="jobs/index.html" style="font-weight:800">All openings →</a>
+        &nbsp;·&nbsp;
+        <a href="jobs/index.html#p-alerts">Get them by email or WhatsApp</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- VERIFIABLE NUMBERS -->
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Why trust it</span>
+        <h2>Every number on this site can be checked</h2>
+        <p>We do not publish anything we cannot point to a source for.</p>
+      </div>
+      <div class="nums">
+        <div class="num"><b id="nJobs">58</b><span>open legal jobs, each linked to the employer who posted it</span><i>sourced &amp; dated</i></div>
+        <div class="num"><b id="nChambers">8</b><span>chambers that take pupils, with the documents they ask for</span><i>listed with terms</i></div>
+        <div class="num"><b>Rs 0</b><span>cost to a junior lawyer — no commission, no listing fee</span><i>written into the rules</i></div>
+        <div class="num"><b>1</b><span>rating per completed job — a senior can only rate work that was done</span><i>enforced in the database</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE LADDER -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Your stage</span>
+        <h2>Tell us where you are — the route changes</h2>
+        <p>The steps are fixed by the Bar Council. The confusion is about the order, the fees and the timing.</p>
+      </div>
+      <div class="ladder">
+        <a class="step" href="career/law-gat/index.html"><b>Law student</b><span>Law-GAT, internships, what to learn before graduating</span></a>
+        <a class="step you" href="career/bar-council-enrollment/index.html"><b>Graduated</b><span>Enrolment, pupillage, the six months that decide everything</span></a>
+        <a class="step" href="career/first-30-days-in-chamber/index.html"><b>Junior advocate</b><span>First paid work, drafting, cause-list discipline</span></a>
+        <a class="step" href="career/high-court-license/index.html"><b>High Court</b><span>Two years in, licence, and the cases that follow</span></a>
+        <a class="step" href="career/lawyer-salary-pakistan/index.html"><b>Your own chamber</b><span>Juniors, systems, fees and the money side</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETHICS -->
+  <section>
+    <div class="wrap">
+      <div class="ethics">
+        <h2>What WakeelBano will never do</h2>
+        <p>Trust in this profession is built slowly and lost in one WhatsApp forward. These rules are permanent, not marketing.</p>
+        <ul>
+          <li>Take a commission on a client's case</li>
+          <li>Sell a "best lawyer" ranking</li>
+          <li>Send clients to whoever pays most</li>
+          <li>Charge a junior lawyer for anything</li>
+          <li class="ok">Show the source of every job and salary</li>
+          <li class="ok">Rate a lawyer only after completed work</li>
+          <li class="ok">Publish the method behind every number</li>
+          <li class="ok">Remove a listing the day it closes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPLOYER -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="employer">
+        <div>
+          <h3>Chamber or firm? Post the opening free for 30 days.</h3>
+          <p>You get enrolled lawyers with their enrolment year and a writing sample. No recruiter fee.</p>
+        </div>
+        <a class="btn btn-gold" href="jobs/index.html#p-post">Post an opening</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band">
+    <div class="wrap faq">
+      <div class="sec-head">
+        <span class="kicker">Questions</span>
+        <h2>Frequently asked</h2>
+      </div>
+      <details open><summary>What is WakeelBano?</summary><p>WakeelBano is a career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and junior advocates find a chamber and mentor, paid drafting work, lawyer jobs across Pakistan, and free case law research guides.</p></details>
+      <details><summary>Is WakeelBano free for junior lawyers?</summary><p>Yes. Students, fresh graduates and junior advocates use the platform free. Chambers, law firms, universities and sponsors pay for listings, subscriptions and workshops.</p></details>
+      <details><summary>Does WakeelBano give legal advice?</summary><p>No. It is a technology platform that provides career resources, listings, research guidance and tools to lawyers. It does not give legal advice, represent clients, or take commission on client case referrals.</p></details>
+      <details><summary>How do I find a chamber for pupillage?</summary><p>Pupillage is mandatory, but placement is not arranged by bar councils, so personal contact matters. Filter chambers by practice area, court, language and terms — including whether a stipend is offered — then send a request directly.</p></details>
+      <details><summary>What are the court tools?</summary><p>Three free tools: a cause-list tracker for your own matters, a court holiday calculator that counts working days, and a filing cost worksheet that adds up court fee, process fee and copies. They are worksheets, not legal advice — confirm the figures at the court office.</p></details>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en-PK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WakeelBano — homepage concept</title>
+<style>
+:root{--navy:#0B1B2B;--navy2:#12293D;--gold:#C9A227;--gold2:#E7CE7A;--goldsoft:#FBF3DC;
+--cream:#FAF7F1;--ink:#0F1C2A;--muted:#5E6B78;--line:#E6DFD2;--green:#1F7A5C;--red:#A63A2E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6}
+h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:-.01em;line-height:1.2;margin:0}
+a{color:#1B4E7A;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7A5E00;background:var(--goldsoft);border:1px solid #EBD9A4;border-radius:99px;padding:5px 11px}
+
+/* ---------- top bar ---------- */
+.top{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(201,162,39,.3)}
+.top-in{max-width:1080px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:9px;color:#fff}
+.brand b{font-family:Georgia,serif;font-size:19px}
+.brand small{display:block;font-size:9px;letter-spacing:.2em;color:var(--gold2);text-transform:uppercase;font-weight:700;margin-top:-3px}
+.top .spacer{margin-left:auto}
+.city{font-size:13px;color:#C8D3DC;border:1px solid rgba(255,255,255,.22);border-radius:9px;padding:7px 11px}
+.lang{display:flex;border:1px solid rgba(255,255,255,.22);border-radius:9px;overflow:hidden;font-size:13px}
+.lang span{padding:7px 11px;color:#C8D3DC}
+.lang span.on{background:var(--gold);color:#2A1F00;font-weight:800}
+.top .btn{background:linear-gradient(180deg,#DDB845,#BE9A1F);color:#2A1F00;font-weight:800;border:0;border-radius:9px;padding:10px 15px;font-size:13.5px;font-family:inherit;cursor:pointer}
+
+/* ---------- hero: task first ---------- */
+.hero{background:linear-gradient(160deg,#0B1B2B,#16374F);color:#fff;padding:38px 0 34px}
+.hero .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);font-weight:800}
+.hero h1{font-size:clamp(27px,4.4vw,40px);margin:12px 0 10px;color:#fff}
+.hero h1 em{color:var(--gold2);font-style:normal}
+.hero p{color:#BCCEDC;font-size:16.5px;max-width:640px;margin:0 0 22px}
+.tasks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.task{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px;color:#fff;display:block;transition:transform .14s,border-color .14s,background .14s}
+.task:hover{transform:translateY(-3px);border-color:var(--gold);background:rgba(201,162,39,.12)}
+.task .ic{font-size:22px;line-height:1}
+.task b{display:block;font-size:16.5px;margin:9px 0 3px;font-family:Georgia,serif}
+.task span{font-size:13px;color:#A9BECD;line-height:1.45;display:block}
+.task .n{display:inline-block;margin-top:9px;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:#2A1F00;background:var(--gold2);border-radius:99px;padding:3px 8px}
+.hero .trust{margin-top:18px;font-size:13.5px;color:#93A6B5;display:flex;gap:16px;flex-wrap:wrap}
+.hero .trust b{color:#DCE7EF}
+
+/* ---------- live strip ---------- */
+.strip{background:#0F2334;border-top:1px solid rgba(201,162,39,.28);border-bottom:1px solid rgba(201,162,39,.28);color:#D6E2EB}
+.strip-in{max-width:1080px;margin:0 auto;padding:11px 20px;display:flex;gap:14px;align-items:center;font-size:13.5px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.strip-in::-webkit-scrollbar{display:none}
+.dot{width:7px;height:7px;border-radius:99px;background:#38D39F;flex:0 0 auto;box-shadow:0 0 0 4px rgba(56,211,159,.18)}
+.strip a{color:var(--gold2);font-weight:700}
+
+/* ---------- generic sections ---------- */
+section{padding:44px 0}
+.sec-head{max-width:660px;margin-bottom:22px}
+.sec-head h2{font-size:clamp(21px,3vw,28px);margin:9px 0 8px}
+.sec-head p{color:var(--muted);margin:0;font-size:15.5px}
+.white{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* trust numbers */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.num{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.num b{display:block;font-family:Georgia,serif;font-size:26px;color:var(--navy)}
+.num span{font-size:13px;color:var(--muted)}
+.num i{display:block;font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-top:6px}
+
+/* job cards */
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.job{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px;display:flex;gap:12px;align-items:flex-start}
+.job .body{min-width:0}
+.job h3{font-size:16px;margin:0 0 3px;line-height:1.35}
+.job .org{font-size:13px;color:var(--muted)}
+.job .meta{font-size:12.5px;color:#7A8794;margin-top:6px}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;border-radius:99px;padding:3px 8px;background:#F3F0E9;border:1px solid #E7E0D2;color:#3E4C59;margin-top:8px}
+.pill.hot{background:#FDECEC;border-color:#F3C9C9;color:#9B1C1C}
+.pill.new{background:var(--goldsoft);border-color:#EBD9A4;color:#7A5E00}
+
+/* ladder */
+.ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;position:relative}
+.step:before{counter-increment:s;content:counter(s);position:absolute;right:12px;top:10px;font-family:Georgia,serif;font-size:20px;color:#EBD9A4}
+.step b{display:block;font-size:14.5px;color:var(--navy);margin-bottom:4px;padding-right:22px}
+.step span{font-size:12.5px;color:var(--muted);line-height:1.45;display:block}
+.step.you{background:var(--goldsoft);border-color:#EBD9A4}
+
+/* community */
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:start}
+.qa{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.qa-row{padding:14px 16px;border-bottom:1px solid #F0EBE0}
+.qa-row:last-child{border-bottom:0}
+.qa-row b{display:block;font-size:14.5px;color:var(--navy);line-height:1.4}
+.qa-row span{font-size:13px;color:var(--muted)}
+.qa-row .who{font-size:12px;color:#9AA6B2;margin-top:5px}
+.events{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 16px}
+.ev{padding:12px 0;border-top:1px solid #F0EBE0;display:flex;gap:12px;align-items:flex-start}
+.ev:first-child{border-top:0}
+.ev .d{flex:0 0 auto;width:44px;text-align:center;background:var(--navy);color:#fff;border-radius:9px;padding:5px 0;font-size:10px;letter-spacing:.06em;text-transform:uppercase;line-height:1.25}
+.ev .d b{display:block;font-size:15px;font-family:Georgia,serif;letter-spacing:0}
+.ev b{font-size:14px;display:block;color:var(--navy)}
+.ev span{font-size:12.5px;color:var(--muted)}
+
+/* ethics */
+.ethics{background:linear-gradient(150deg,#0B1B2B,#17394F);color:#fff;border-radius:16px;padding:26px}
+.ethics h2{color:#fff;font-size:23px;margin:0 0 6px}
+.ethics p{color:#B9CBD9;font-size:14.5px;margin:0 0 16px;max-width:620px}
+.ethics ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.ethics li{font-size:14px;color:#D6E2EB;padding-left:26px;position:relative}
+.ethics li:before{content:"✕";position:absolute;left:0;top:0;color:#E08B7C;font-weight:800;font-size:12px}
+.ethics li.ok:before{content:"✓";color:#5FD3A6}
+
+/* employer band */
+.employer{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.employer h3{font-size:19px;margin:0 0 4px}
+.employer p{margin:0;font-size:14px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:800;padding:13px 20px;border-radius:11px;min-height:48px}
+.btn-gold{background:linear-gradient(180deg,#DDB845,#BE9A1F);color:#2A1F00}
+.btn-line{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+
+footer{background:#08131F;color:#93A6B5;padding:30px 0;font-size:13px;margin-top:10px}
+footer .fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px;margin-bottom:16px}
+footer h5{color:#fff;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 8px}
+footer a{color:#A9BAC8;display:block;padding:3px 0}
+.note{font-size:12.5px;color:#7A8794}
+
+@media(max-width:820px){
+  section{padding:32px 0}
+  .top-in{flex-wrap:nowrap;gap:8px;padding:9px 14px}
+  .top .spacer{margin-left:auto}
+  .top .city{display:none}
+  .brand small{display:none}
+  .brand b{font-size:17px}
+  .lang span{padding:6px 9px;font-size:12.5px}
+  .top .btn{padding:9px 12px;font-size:13px}
+  .tasks{grid-template-columns:1fr 1fr;gap:10px}
+  .nums{grid-template-columns:1fr 1fr}
+  .jobs{grid-template-columns:1fr}
+  .ladder{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  .ethics ul{grid-template-columns:1fr}
+  .employer{flex-direction:column;align-items:stretch}
+  .employer .btn{width:100%}
+  footer .fg{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+  .top .city{display:none}
+  .ladder{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#">
+      <svg width="30" height="30" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#0F2537" stroke="#C9A227" stroke-width="1.6"/>
+        <path d="M24 10v26M14 16h20" stroke="#E7CE7A" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M14 16l-5 9h10l-5-9zM34 16l-5 9h10l-5-9z" stroke="#C9A227" stroke-width="1.7"/>
+        <path d="M17 38h14" stroke="#E7CE7A" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span><b>WakeelBano</b><small>Become a lawyer</small></span>
+    </a>
+    <span class="spacer"></span>
+    <span class="city">📍 Karachi</span>
+    <span class="lang"><span class="on">English</span><span>اردو</span></span>
+    <button class="btn">Sign in</button>
+  </div>
+</header>
+
+<!-- HERO: the page asks what you need, it does not sell a product -->
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Karachi · updated every morning</div>
+    <h1>What do you need today?<br><em>Pick one and start.</em></h1>
+    <p>WakeelBano is the working desk for Pakistani lawyers. Jobs, chambers, paid drafting work and research — free for juniors, always.</p>
+
+    <div class="tasks">
+      <a class="task" href="#">
+        <div class="ic">💼</div><b>Find a job</b>
+        <span>Legal openings across Pakistan, each dated and linked to the employer</span>
+        <span class="n">58 open today</span>
+      </a>
+      <a class="task" href="#">
+        <div class="ic">🏛️</div><b>Join a chamber</b>
+        <span>Chambers in Karachi that take pupils, and what each one expects</span>
+        <span class="n">12 chambers</span>
+      </a>
+      <a class="task" href="#">
+        <div class="ic">✍️</div><b>Get paid drafting work</b>
+        <span>Real tasks from seniors and firms, paid on delivery</span>
+        <span class="n">6 tasks open</span>
+      </a>
+      <a class="task" href="#">
+        <div class="ic">📚</div><b>Research a matter</b>
+        <span>Case law, formats and statute pages you can trust</span>
+        <span class="n">40+ guides</span>
+      </a>
+    </div>
+
+    <div class="trust">
+      <span><b>No commission</b> on client cases</span>
+      <span><b>No rankings</b> for sale</span>
+      <span><b>Free</b> for students and juniors</span>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE STRIP: the reason to come back every day -->
+<div class="strip">
+  <div class="strip-in">
+    <span class="dot"></span>
+    <b>Today:</b>
+    <span>4 new jobs</span> ·
+    <span>2 closing this week</span> ·
+    <span>PPSC cycle opens in 11 days</span> ·
+    <a href="#">See all →</a>
+  </div>
+</div>
+
+<!-- TRUST: numbers a lawyer can verify -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Why trust it</span>
+      <h2>Every number on this site can be checked</h2>
+      <p>We do not publish anything we cannot point to a source for.</p>
+    </div>
+    <div class="nums">
+      <div class="num"><b>58</b><span>open legal jobs, each linked to the employer who posted it</span><i>sourced & dated</i></div>
+      <div class="num"><b>12</b><span>chambers listed for pupillage, with the documents they ask for</span><i>visited in person</i></div>
+      <div class="num"><b>Rs 0</b><span>cost to a junior lawyer — forever, no commission, no listing fee</span><i>written into the rules</i></div>
+      <div class="num"><b>1</b><span>rating per completed job — a senior can only rate work that was done</span><i>enforced in the database</i></div>
+    </div>
+  </div>
+</section>
+
+<!-- TODAY'S JOBS -->
+<section class="white">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Fresh today</span>
+      <h2>Jobs you can act on this morning</h2>
+      <p>Sorted by closing date. Every card opens the original listing — we never stand between you and the employer.</p>
+    </div>
+    <div class="jobs">
+      <div class="job"><div class="body">
+        <h3>Junior Associate — Civil Litigation</h3>
+        <div class="org">Karachi · law chamber near City Courts</div>
+        <div class="meta">0–2 years · Rs 35,000–45,000 · posted 2 hours ago</div>
+        <span class="pill hot">Closes in 3 days</span>
+      </div></div>
+      <div class="job"><div class="body">
+        <h3>Legal Officer</h3>
+        <div class="org">Sindh government department · Karachi</div>
+        <div class="meta">LLB + 4 years · Rs 115,000 · posted yesterday</div>
+        <span class="pill new">Government</span>
+      </div></div>
+      <div class="job"><div class="body">
+        <h3>Paralegal — remote, UK firm</h3>
+        <div class="org">Remote · contract</div>
+        <div class="meta">1 year · Rs 125,000–170,000 · posted yesterday</div>
+        <span class="pill new">Remote</span>
+      </div></div>
+      <div class="job"><div class="body">
+        <h3>Legal Associate — Corporate</h3>
+        <div class="org">Lahore · firm with Karachi office</div>
+        <div class="meta">2 years · not stated · posted 3 days ago</div>
+        <span class="pill">Full-time</span>
+      </div></div>
+    </div>
+    <p style="margin-top:16px"><a href="#" style="font-weight:800">All 58 openings →</a> &nbsp; <a href="#" style="color:var(--muted)">Get them by email or WhatsApp</a></p>
+  </div>
+</section>
+
+<!-- THE LADDER: where am I, what is next -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Your stage</span>
+      <h2>Tell us where you are — the site changes for you</h2>
+      <p>The route is fixed by the Bar Council. The confusion is about the order, the fees and the timing.</p>
+    </div>
+    <div class="ladder">
+      <div class="step"><b>Law student</b><span>Law-GAT, internships, what to learn before graduating</span></div>
+      <div class="step you"><b>Graduated</b><span>Enrolment, pupillage, the six months that decide everything</span></div>
+      <div class="step"><b>Junior advocate</b><span>First paid work, drafting, cause-list discipline</span></div>
+      <div class="step"><b>High Court</b><span>Two years in, licence, and the cases that follow</span></div>
+      <div class="step"><b>Chamber of your own</b><span>Juniors, systems, fees, ethics</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY: the part a product cannot fake -->
+<section class="white">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">The community</span>
+      <h2>Ask a senior. Or answer a junior.</h2>
+      <p>Karachi's chambers already work this way — juniors learn from whoever will explain. This is that system, written down.</p>
+    </div>
+    <div class="two">
+      <div class="qa">
+        <div class="qa-row">
+          <b>How do I get a chamber to take me for pupillage when I have no contacts?</b>
+          <span>Go in person with a printed CV before 11am, ask for the senior's reader, and offer to sit in court for a week unpaid…</span>
+          <div class="who">Answered by a High Court advocate, 14 years · 6 answers</div>
+        </div>
+        <div class="qa-row">
+          <b>Is Rs 25,000 a normal stipend for the first six months?</b>
+          <span>Yes in Karachi in 2026, and often late. Ask about filing work, not just appearances — that is what makes the next job…</span>
+          <div class="who">4 junior advocates answered · anonymous</div>
+        </div>
+        <div class="qa-row">
+          <b>Client wants me to file a case I think is weak. What do the conduct rules say?</b>
+          <span>You are not obliged to accept a brief, and you cannot mislead the court. The rule to read is…</span>
+          <div class="who">Answered by a chamber senior · 3 answers</div>
+        </div>
+      </div>
+      <div class="events">
+        <div class="ev"><div class="d">Nov<b>04</b></div><div><b>Drafting clinic — plaint and written statement</b><span>City Courts, 5 pm · 20 seats · free</span></div></div>
+        <div class="ev"><div class="d">Nov<b>09</b></div><div><b>How to read a cause list (live walkthrough)</b><span>Sindh High Court · 15 seats · free</span></div></div>
+        <div class="ev"><div class="d">Nov<b>18</b></div><div><b>Stipend and salary: what is normal in Karachi</b><span>Online · open to all</span></div></div>
+        <div class="ev"><div class="d">Dec<b>02</b></div><div><b>Mock interview with chamber seniors</b><span>City Courts area · 10 seats</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ETHICS: this is what a community leader publishes -->
+<section>
+  <div class="wrap">
+    <div class="ethics">
+      <h2>What WakeelBano will never do</h2>
+      <p>Trust in this profession is built slowly and lost in one WhatsApp forward. These rules are permanent, not marketing.</p>
+      <ul>
+        <li>Take a commission on a client's case</li>
+        <li>Sell a "best lawyer" ranking</li>
+        <li>Send clients to whoever pays most</li>
+        <li>Charge a junior lawyer for anything</li>
+        <li class="ok">Show the source of every job and salary</li>
+        <li class="ok">Rate a lawyer only after completed work</li>
+        <li class="ok">Publish the method behind every number</li>
+        <li class="ok">Remove a listing the day it closes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EMPLOYER SIDE -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="employer">
+      <div>
+        <h3>Chamber or firm? Post the job free for 30 days.</h3>
+        <p>You get a shortlist of enrolled lawyers, with their enrolment year and a writing sample. No recruiter fee.</p>
+      </div>
+      <button class="btn btn-gold">Post an opening</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <div style="color:#fff;font-family:Georgia,serif;font-size:17px;margin-bottom:6px">WakeelBano</div>
+        <p style="max-width:280px;margin:0">Pakistan's career platform for lawyers. Karachi first. Free for juniors, always.</p>
+      </div>
+      <div><h5>Use</h5><a href="#">Jobs</a><a href="#">Chambers</a><a href="#">Drafts</a><a href="#">Case law</a></div>
+      <div><h5>Community</h5><a href="#">Ask a senior</a><a href="#">Events</a><a href="#">WhatsApp channel</a><a href="#">Write for us</a></div>
+    </div>
+    <div class="note">Concept mockup for review — not the live homepage.</div>
+  </div>
+</footer>
+
+</body>
+</html>

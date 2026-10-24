@@ -382,6 +382,17 @@ function paintMode(){
 }
 
 /* ---------- tabs ---------- */
+/* deep links like jobs/#p-post or jobs/#alerts open that tab directly */
+function openFromHash(){
+  const h=(location.hash||'').replace('#','');
+  const name = h.startsWith('p-') ? h.slice(2) : h;
+  if(['jobs','tasks','lawyers','profile','post','alerts','how'].includes(name)){
+    show(name);
+    if(name==='alerts' && typeof initAlertSelects==='function') initAlertSelects();
+  }
+}
+window.addEventListener('hashchange', openFromHash);
+
 function show(p){
   document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
   const t=$$('p-'+p); if(t) t.classList.add('on');
@@ -703,6 +714,7 @@ loadAll().catch(e => {
   ALL.jobs = DATA.jobs; ALL.tasks = DATA.tasks; ALL.lawyers = DATA.lawyers;
   renderJobs(); renderTasks(); renderLawyers();
 });
+openFromHash();
 window.addEventListener('click', e=>{ if(e.target.classList.contains('modal')) { e.target.classList.remove('on'); document.body.style.overflow=''; } });
 </script>
 </body>

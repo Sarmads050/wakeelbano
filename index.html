@@ -245,6 +245,78 @@
     .brand small{display:none}.brand b{font-size:17px}
     .hero-stats{gap:18px}.brand .mark{width:28px;height:28px}
   }
+  /* ---------- new home ---------- */
+  .hero .tasks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+  .task{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:16px;color:#fff;display:block;
+    transition:transform .14s,border-color .14s,background .14s}
+  .task:hover{transform:translateY(-3px);border-color:var(--gold);background:rgba(201,162,39,.13)}
+  .task-ic{font-size:22px;line-height:1}
+  .task b{display:block;font-size:16.5px;margin:9px 0 4px;font-family:Georgia,serif}
+  .task span{font-size:13px;color:#A9BECD;line-height:1.45;display:block}
+  .task .task-n{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:800;letter-spacing:.05em;color:#2A1F00;
+    background:var(--gold2);border-radius:99px;padding:3px 9px}
+  .hero-trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;font-size:13.5px;color:#93A6B5}
+  .hero-trust b{color:#DCE7EF}
+
+  .live-strip{background:#0F2334;border-top:1px solid rgba(201,162,39,.28);border-bottom:1px solid rgba(201,162,39,.28);color:#D6E2EB}
+  .live-in{display:flex;gap:10px;align-items:center;font-size:13.5px;padding:11px 20px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+  .live-in::-webkit-scrollbar{display:none}
+  .live-dot{width:7px;height:7px;border-radius:99px;background:#38D39F;flex:0 0 auto;box-shadow:0 0 0 4px rgba(56,211,159,.18)}
+  .live-in a{color:var(--gold2);font-weight:800}
+  .live-in .sep{color:#48657B}
+
+  .jobmini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .jobmini{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px;display:block;transition:border-color .14s,transform .14s}
+  .jobmini:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .jobmini h3{font-size:16px;margin:0 0 3px;line-height:1.35;color:var(--navy);font-family:Georgia,serif}
+  .jobmini .org{font-size:13px;color:var(--muted)}
+  .jobmini .meta{font-size:12.5px;color:#7A8794;margin-top:6px}
+  .jobmini .pill{display:inline-block;font-size:11.5px;font-weight:700;border-radius:99px;padding:3px 8px;
+    background:#F3F0E9;border:1px solid #E7E0D2;color:#3E4C59;margin-top:8px}
+  .jobmini .pill.hot{background:#FDECEC;border-color:#F3C9C9;color:#9B1C1C}
+  .jobmini .pill.new{background:var(--gold-soft);border-color:#EBD9A4;color:#7A5E00}
+
+  .band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .num{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .num b{display:block;font-family:Georgia,serif;font-size:26px;color:var(--navy)}
+  .num span{font-size:13px;color:var(--muted);display:block;margin-top:2px}
+  .num i{display:block;font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-top:8px}
+
+  .ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;counter-reset:s}
+  .step{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;position:relative;display:block;
+    transition:border-color .14s,transform .14s}
+  .step:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;right:12px;top:10px;font-family:Georgia,serif;font-size:20px;color:#EBD9A4}
+  .step b{display:block;font-size:14.5px;color:var(--navy);margin-bottom:4px;padding-right:22px;font-family:Georgia,serif}
+  .step span{font-size:12.5px;color:var(--muted);line-height:1.45;display:block}
+  .step.you{background:var(--gold-soft);border-color:#EBD9A4}
+
+  .ethics{background:linear-gradient(150deg,#0B1B2B,#17394F);color:#fff;border-radius:16px;padding:26px}
+  .ethics h2{color:#fff;font-size:23px;margin:0 0 6px}
+  .ethics p{color:#B9CBD9;font-size:14.5px;margin:0 0 16px;max-width:620px}
+  .ethics ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+  .ethics li{font-size:14px;color:#D6E2EB;padding-left:26px;position:relative;margin:0}
+  .ethics li:before{content:"✕";position:absolute;left:0;top:0;color:#E08B7C;font-weight:800;font-size:12px}
+  .ethics li.ok:before{content:"✓";color:#5FD3A6}
+
+  .employer{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;gap:18px;
+    align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .employer h3{font-size:19px;margin:0 0 4px}
+  .employer p{margin:0;font-size:14px;color:var(--muted)}
+
+  @media (max-width:900px){
+    .hero .tasks{grid-template-columns:1fr 1fr}
+    .nums{grid-template-columns:1fr 1fr}
+    .ladder{grid-template-columns:1fr 1fr}
+    .jobmini-grid{grid-template-columns:1fr}
+    .ethics ul{grid-template-columns:1fr}
+    .employer{flex-direction:column;align-items:stretch}
+    .employer .btn{width:100%}
+  }
+  @media (max-width:520px){
+    .ladder{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
@@ -268,6 +340,7 @@
       <a href="jobs/index.html" class="ext">Jobs</a>
       <a href="case-law/index.html" class="ext">Case Law</a>
       <a href="drafts/index.html" class="ext">Drafts</a>
+      <a href="tools/index.html" class="ext">Court tools</a>
       <a href="#ai-kit" data-v="ai-kit">AI Kit</a>
       <a href="#growth" data-v="growth">Grow</a>
       <a href="#pricing" data-v="pricing">Pricing</a>
@@ -278,169 +351,151 @@
 
 <!-- ================= HOME ================= -->
 <div class="view on" id="v-home">
-  <div class="hero">
-    <div class="wrap hero-in">
-      <div>
-        <span class="eyebrow">Karachi first · Built for lawyers, by lawyers' problems</span>
-        <h1>Your law degree got you here.<br><em>Now build the practice.</em></h1>
-        <p class="lead">
-          WakeelBano is Pakistan's career-first platform for lawyers. Find a chamber and a mentor, an affordable
-          a paid junior role, reliable research guidance and a job market — in one place.
-        </p>
-        <div class="hero-cta">
-          <button class="btn btn-gold" onclick="openJoin()">Create a free account</button>
-          <button class="btn btn-ghost" onclick="go('career')">See the career roadmap →</button>
-        </div>
-        <div class="hero-stats">
-          <div><b>230,879</b><span>Enrolled lawyers in Pakistan</span></div>
-          <div><b>55,000+</b><span>On the Sindh Bar roll</span></div>
-          <div><b>Rs 43,000</b><span>Sindh minimum wage</span></div>
-          <div><b>Rs 25–50k</b><span>Typical fresh lawyer pay</span></div>
-        </div>
+
+  <!-- HERO: four tasks, not a pitch -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Karachi first · updated every morning</span>
+      <h1>What do you need today?<br><em>Pick one and start.</em></h1>
+      <p class="lead">WakeelBano is the working desk for Pakistani lawyers — jobs, chambers, paid drafting work and research. Free for juniors, always.</p>
+
+      <div class="tasks">
+        <a class="task" href="jobs/index.html">
+          <div class="task-ic">💼</div>
+          <b>Find a job</b>
+          <span>Legal openings across Pakistan, each dated and linked to the employer.</span>
+          <span class="task-n" id="tJobs">58 open</span>
+        </a>
+        <a class="task" href="#chambers" onclick="go('chambers');return false;">
+          <div class="task-ic">🏛️</div>
+          <b>Join a chamber</b>
+          <span>Chambers in Karachi that take pupils, and what each one expects.</span>
+          <span class="task-n" id="tChambers">8 chambers</span>
+        </a>
+        <a class="task" href="#work" onclick="go('work');return false;">
+          <div class="task-ic">✍️</div>
+          <b>Get paid drafting work</b>
+          <span>Real tasks from seniors and firms, paid on delivery.</span>
+          <span class="task-n" id="tTasks">6 tasks</span>
+        </a>
+        <a class="task" href="tools/index.html">
+          <div class="task-ic">🧾</div>
+          <b>Run the court day</b>
+          <span>Cause-list tracker, court holiday dates and a filing cost worksheet.</span>
+          <span class="task-n">Court tools</span>
+        </a>
       </div>
-      <div class="hero-card">
-        <h4>Today on WakeelBano</h4>
-        <div class="mini-row">
-          <div class="mini-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7CE7A" stroke-width="2"><path d="M12 3v18M5 8h14"/><circle cx="12" cy="12" r="9"/></svg></div>
-          <div><p>Chamber match</p><small>3 seniors match your practice area</small></div>
-        </div>
-        <div class="mini-row">
-          <div class="mini-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7CE7A" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1H4a1 1 0 01-1-1z"/></svg></div>
-        </div>
-        <div class="mini-row">
-          <div class="mini-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7CE7A" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
-          <div><p>Work board</p><small>4 drafting tasks · Rs 3,500–45,000</small></div>
-        </div>
-        <div class="mini-row">
-          <div class="mini-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7CE7A" stroke-width="2"><path d="M4 19.5V6a2 2 0 012-2h9l5 5v10.5a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 12h8M8 16h5"/></svg></div>
-          <div><p>Case law library</p><small>302 PPC · 489-F · 497 CrPC</small></div>
-        </div>
+
+      <div class="hero-trust">
+        <span><b>No commission</b> on client cases</span>
+        <span><b>No rankings</b> for sale</span>
+        <span><b>Free</b> for students and juniors</span>
       </div>
+    </div>
+  </section>
+
+  <!-- LIVE STRIP -->
+  <div class="live-strip">
+    <div class="wrap live-in">
+      <span class="live-dot"></span>
+      <b>Today:</b>
+      <span id="liveNew">checking for new postings…</span>
+      <span class="sep">·</span>
+      <span id="liveClosing">closing dates</span>
+      <span class="sep">·</span>
+      <a href="jobs/index.html">See all openings →</a>
     </div>
   </div>
 
-  <section style="padding:34px 0 10px">
-    <div class="wrap">
-      <div class="sec-head" style="margin-bottom:18px">
-        <span class="kicker">Start here — 10 seconds</span>
-        <h2 style="font-size:clamp(21px,2.6vw,28px)">What do you need right now?</h2>
-        <p>Pick one. Every path below takes you straight to the page that answers it — no scrolling, no guessing.</p>
-      </div>
-      <div class="grid g4" id="router"></div>
-    </div>
-  </section>
-
+  <!-- FRESH JOBS -->
   <section>
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker">Why WakeelBano exists</span>
-        <h2>Every new lawyer hits the same three walls</h2>
-        <p>The degree is finished. The sanad is issued. Then the real test starts — and nobody gives you the syllabus.</p>
+        <span class="kicker">Fresh openings</span>
+        <h2>Jobs you can act on this morning</h2>
+        <p>Each card opens the original listing — we never stand between you and the employer.</p>
       </div>
-      <div class="grid g3">
-        <div class="card">
-          <div class="num">01</div>
-          <h3>"Where do I find a senior?"</h3>
-          <p>Six months of pupillage is mandatory, but no bar council arranges the placement. Finding a chamber still depends on personal contacts — and a newcomer to the city has none.</p>
-        </div>
-        <div class="card">
-          <div class="num">02</div>
-          <h3>"I am not being paid"</h3>
-          <p>Fresh lawyers typically earn Rs 25,000–50,000 a month, while the Sindh minimum wage is Rs 43,000. Many chambers pay nothing and call it a stipend.</p>
-        </div>
-        <div class="card">
-          <div class="num">03</div>
-          <h3>"Where does my first client come from?"</h3>
-          <p>Drafting is learned by copying precedents, marketing is never taught, and years pass without a brief. The problem is not talent — it is the absence of a system.</p>
-        </div>
+      <div class="jobmini-grid" id="homeJobs">
+        <div class="empty">Loading the latest openings…</div>
       </div>
+      <p style="margin-top:16px">
+        <a href="jobs/index.html" style="font-weight:800">All openings →</a>
+        &nbsp;·&nbsp;
+        <a href="jobs/index.html#p-alerts">Get them by email or WhatsApp</a>
+      </p>
     </div>
   </section>
 
-  <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <!-- VERIFIABLE NUMBERS -->
+  <section class="band">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker">The platform</span>
-        <h2>Eight modules, one place</h2>
-        <p>Finding clients is a feature. Building your career is the product.</p>
+        <span class="kicker">Why trust it</span>
+        <h2>Every number on this site can be checked</h2>
+        <p>We do not publish anything we cannot point to a source for.</p>
       </div>
-      <div class="grid g4" id="modules"></div>
-      <div class="note" style="margin-top:22px">
-        <b>What we do not do:</b> WakeelBano takes no commission on client case referrals and sells no "best lawyer" rankings.
-        Referral fees for client cases amount to touting, which professional conduct rules prohibit. We provide routes, training,
-        training and credibility — not clients.
-      </div>
-    </div>
-  </section>
-
-
-  <section style="background:#fff;border-top:1px solid var(--line)">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">Research engine</span>
-        <h2>The thing lawyers search for most</h2>
-        <p>Across Pakistan, lawyers search for case law more than anything else — section by section, often in Urdu. Our research library is built around that demand.</p>
-      </div>
-      <div class="grid g3">
-        <a class="card" href="case-law/302-ppc/index.html" style="display:block">
-          <span class="tag">Criminal · 302 PPC</span>
-          <h3>Qatl-i-amd case law</h3>
-          <p>Punishment, elements, qisas and waiver, plus the four-step research method.</p>
-        </a>
-        <a class="card" href="case-law/489-f/index.html" style="display:block">
-          <span class="tag">Criminal · 489-F</span>
-          <h3>Cheque dishonour case law</h3>
-          <p>What must be proved, the pre-complaint checklist, and the defences commonly raised.</p>
-        </a>
-        <a class="card" href="case-law/497-crpc/index.html" style="display:block">
-          <span class="tag">Criminal · 497 CrPC</span>
-          <h3>Bail case law</h3>
-          <p>Non-bailable offences, further inquiry, and the grounds courts actually weigh.</p>
-        </a>
-      </div>
-      <div class="grid g2" style="margin-top:18px">
-        <a class="card" href="drafts/index.html" style="display:block">
-          <span class="tag blue">Draft library</span>
-          <h3>Bail, notice, plaint, vakalatnama</h3>
-          <p>Every document broken into its required parts, with the mistakes that get filings returned.</p>
-        </a>
-        <a class="card" href="career/law-gat/index.html" style="display:block">
-          <span class="tag green">Career · Law-GAT</span>
-          <h3>Law-GAT 2026</h3>
-          <p>Eligibility, syllabus, a 60-day plan and where to check your result — the entry test every graduate faces.</p>
-        </a>
-      </div>
-      <div class="grid g3" style="margin-top:18px">
-        <a class="card" href="case-law/420-ppc/index.html" style="display:block">
-          <span class="tag">Criminal · 420 PPC</span>
-          <h3>Cheating case law</h3>
-          <p>Dishonest inducement, the civil-versus-criminal test, and how defence counsel attack it.</p>
-        </a>
-        <a class="card" href="drafts/written-statement-format/index.html" style="display:block">
-          <span class="tag blue">Draft · Order VIII</span>
-          <h3>Written statement</h3>
-          <p>The paragraph-by-paragraph discipline, set-off versus counter-claim, and filing mistakes.</p>
-        </a>
-        <a class="card" href="career/cause-list-tracking/index.html" style="display:block">
-          <span class="tag green">Practice · Dates</span>
-          <h3>Cause list tracking</h3>
-          <p>Where lists are published, how to read them, and the daily routine that stops missed hearings.</p>
-        </a>
+      <div class="nums">
+        <div class="num"><b id="nJobs">58</b><span>open legal jobs, each linked to the employer who posted it</span><i>sourced &amp; dated</i></div>
+        <div class="num"><b id="nChambers">8</b><span>chambers that take pupils, with the documents they ask for</span><i>listed with terms</i></div>
+        <div class="num"><b>Rs 0</b><span>cost to a junior lawyer — no commission, no listing fee</span><i>written into the rules</i></div>
+        <div class="num"><b>1</b><span>rating per completed job — a senior can only rate work that was done</span><i>enforced in the database</i></div>
       </div>
     </div>
   </section>
 
-  <div class="band">
-    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
-      <div style="max-width:640px">
-        <h2 style="font-size:clamp(22px,3vw,31px)">WakeelBano will always be free for junior lawyers.</h2>
-        <p style="margin:10px 0 0">Chambers, firms, universities and sponsors pay. The person with nothing yet does not.</p>
-      </div>
-      <button class="btn btn-gold" onclick="openJoin()">Create a free account</button>
-    </div>
-  </div>
-
+  <!-- STAGE LADDER -->
   <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Your stage</span>
+        <h2>Tell us where you are — the route changes</h2>
+        <p>The steps are fixed by the Bar Council. The confusion is about the order, the fees and the timing.</p>
+      </div>
+      <div class="ladder">
+        <a class="step" href="career/law-gat/index.html"><b>Law student</b><span>Law-GAT, internships, what to learn before graduating</span></a>
+        <a class="step you" href="career/bar-council-enrollment/index.html"><b>Graduated</b><span>Enrolment, pupillage, the six months that decide everything</span></a>
+        <a class="step" href="career/first-30-days-in-chamber/index.html"><b>Junior advocate</b><span>First paid work, drafting, cause-list discipline</span></a>
+        <a class="step" href="career/high-court-license/index.html"><b>High Court</b><span>Two years in, licence, and the cases that follow</span></a>
+        <a class="step" href="career/lawyer-salary-pakistan/index.html"><b>Your own chamber</b><span>Juniors, systems, fees and the money side</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETHICS -->
+  <section>
+    <div class="wrap">
+      <div class="ethics">
+        <h2>What WakeelBano will never do</h2>
+        <p>Trust in this profession is built slowly and lost in one WhatsApp forward. These rules are permanent, not marketing.</p>
+        <ul>
+          <li>Take a commission on a client's case</li>
+          <li>Sell a "best lawyer" ranking</li>
+          <li>Send clients to whoever pays most</li>
+          <li>Charge a junior lawyer for anything</li>
+          <li class="ok">Show the source of every job and salary</li>
+          <li class="ok">Rate a lawyer only after completed work</li>
+          <li class="ok">Publish the method behind every number</li>
+          <li class="ok">Remove a listing the day it closes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPLOYER -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="employer">
+        <div>
+          <h3>Chamber or firm? Post the opening free for 30 days.</h3>
+          <p>You get enrolled lawyers with their enrolment year and a writing sample. No recruiter fee.</p>
+        </div>
+        <a class="btn btn-gold" href="jobs/index.html#p-post">Post an opening</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band">
     <div class="wrap faq">
       <div class="sec-head">
         <span class="kicker">Questions</span>
@@ -449,10 +504,11 @@
       <details open><summary>What is WakeelBano?</summary><p>WakeelBano is a career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and junior advocates find a chamber and mentor, paid drafting work, lawyer jobs across Pakistan, and free case law research guides.</p></details>
       <details><summary>Is WakeelBano free for junior lawyers?</summary><p>Yes. Students, fresh graduates and junior advocates use the platform free. Chambers, law firms, universities and sponsors pay for listings, subscriptions and workshops.</p></details>
       <details><summary>Does WakeelBano give legal advice?</summary><p>No. It is a technology platform that provides career resources, listings, research guidance and tools to lawyers. It does not give legal advice, represent clients, or take commission on client case referrals.</p></details>
-      <details><summary>How do I find a chamber for pupillage?</summary><p>Pupillage is mandatory, but placement is not arranged by bar councils, so personal contact matters. Filter verified chambers by practice area, court, language and terms — including whether a stipend is offered — then send a request directly.</p></details>
-      <details><summary>What do Pakistani lawyers search for most?</summary><p>Case law is the most searched topic, followed by the Law-GAT, bar council enrollment and drafting formats such as bail applications and legal notices. Our research library covers each of these.</p></details>
+      <details><summary>How do I find a chamber for pupillage?</summary><p>Pupillage is mandatory, but placement is not arranged by bar councils, so personal contact matters. Filter chambers by practice area, court, language and terms — including whether a stipend is offered — then send a request directly.</p></details>
+      <details><summary>What are the court tools?</summary><p>Three free tools: a cause-list tracker for your own matters, a court holiday calculator that counts working days, and a filing cost worksheet that adds up court fee, process fee and copies. They are worksheets, not legal advice — confirm the figures at the court office.</p></details>
     </div>
   </section>
+
 </div>
 
 <!-- ================= PROBLEM ================= -->
@@ -777,6 +833,82 @@ let WB_MODE = "local";
 function initDb(){ try { WB_MODE = WB.init(); } catch(e) { WB_MODE = "local"; } }
 initDb();
 
+
+/* ---------- home: live counts and the four newest openings ---------- */
+function daysTo(d){
+  if(!d) return null;
+  const t = new Date(String(d).slice(0,10)+'T00:00:00');
+  if(isNaN(t)) return null;
+  return Math.round((t - new Date())/86400000);
+}
+function prettyDate(d){
+  if(!d) return '';
+  const t = new Date(String(d).slice(0,10)+'T00:00:00');
+  if(isNaN(t)) return String(d);
+  return t.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+}
+function daysAgoLabel(d){
+  const t = new Date(String(d||'').slice(0,10)+'T00:00:00');
+  if(isNaN(t)) return 'recently posted';
+  const n = Math.round((new Date() - t)/86400000);
+  if(n <= 0) return 'posted today';
+  if(n === 1) return 'posted yesterday';
+  return 'posted ' + n + ' days ago';
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+async function paintHome(){
+  let jobs = [], tasks = [];
+  try { jobs = await WB.listJobs(); } catch(e) { jobs = []; }
+  try { tasks = await WB.listTasks(); } catch(e) { tasks = []; }
+
+  // if the database is empty, fall back to the bundled demo data so the page is never blank
+  if(!jobs.length && typeof DATAJOBS !== 'undefined') jobs = DATAJOBS;
+
+  const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+
+  if(jobs.length){
+    set('tJobs', jobs.length + ' open now');
+    set('nJobs', jobs.length);
+  }
+  if(tasks.length) set('tTasks', tasks.length + ' tasks open');
+
+  const chambers = (typeof MENTORS !== 'undefined') ? MENTORS.length : 0;
+  set('tChambers', chambers + ' chambers');
+  set('nChambers', chambers);
+
+  // live strip — honest about quiet days
+  const today = new Date().toISOString().slice(0,10);
+  const fresh = jobs.filter(j => String(j.posted).slice(0,10) === today).length;
+  const newest = jobs.map(j => String(j.posted||'').slice(0,10)).sort().pop();
+  const closing = jobs.filter(j => { const d = daysTo(j.deadline); return d !== null && d >= 0 && d <= 10; }).length;
+
+  set('liveNew', fresh
+    ? fresh + ' new ' + (fresh === 1 ? 'posting' : 'postings') + ' today'
+    : 'no new postings today' + (newest ? ' — newest ' + prettyDate(newest) : ''));
+  set('liveClosing', closing
+    ? closing + ' closing within 10 days'
+    : 'no closing dates stated by employers');
+
+  // four newest openings
+  const grid = document.getElementById('homeJobs');
+  if(grid){
+    const top = [...jobs].sort((a,b) => String(b.posted||'').localeCompare(String(a.posted||''))).slice(0,4);
+    grid.innerHTML = top.length ? top.map(j => {
+      const left = daysTo(j.deadline);
+      const pill = (left !== null && left >= 0 && left <= 10)
+        ? `<span class="pill hot">${left === 0 ? 'Closes today' : 'Closes in ' + left + ' day' + (left===1?'':'s')}</span>`
+        : `<span class="pill">${esc(j.type || 'Open')}</span>`;
+      return `<a class="jobmini" href="jobs/${esc(j.id)}/index.html">
+        <h3>${esc(j.t)}</h3>
+        <div class="org">${esc(j.org)} · ${esc(j.city)}</div>
+        <div class="meta">${esc(j.exp || 'Experience not stated')} · ${esc(j.pay || 'Pay not stated')} · ${esc(daysAgoLabel(j.posted))}</div>
+        ${pill}
+      </a>`;
+    }).join('') : '<div class="empty">No openings listed right now — check the jobs page.</div>';
+  }
+}
+
 /* ---------- safe storage (sandboxed previews may block localStorage) ---------- */
 const store = {
   get(k,d){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):d; }catch(e){ return d; } },
@@ -796,7 +928,7 @@ const MODULES = [
 ];
 /* ---------- instant intent router ---------- */
 const ROUTES = [
-  {i:'💼', t:'Find a legal job', d:'18 live openings across Pakistan, each linked to its source', a:"location.href='jobs/index.html'"},
+  {i:'💼', t:'Find a legal job', d:'Openings across Pakistan, each linked to its source', a:"location.href='jobs/index.html'"},
   {i:'🤝', t:'Hire a lawyer', d:'Pick by skills, cases handled and rating', a:"location.href='jobs/index.html'"},
   {i:'💸', t:'Earn from paid tasks', d:'Drafting and research work posted by seniors', a:"go('work')"},
   {i:'🏛️', t:'Get a chamber / pupillage', d:'Verified seniors with terms stated openly', a:"go('chambers')"},
@@ -806,14 +938,16 @@ const ROUTES = [
   {i:'❓', t:'New here? What is WakeelBano', d:'What the platform does, by user type', a:"location.href='what-is-wakeelbano/index.html'"},
   {i:'🔎', t:'Free research resources', d:'Official court, bar council and statute sources', a:"location.href='resources/index.html'"}
 ];
-document.getElementById('router').innerHTML = ROUTES.map(r => `
+const routerEl = document.getElementById('router');
+if(routerEl) routerEl.innerHTML = ROUTES.map(r => `
   <button class="card" style="text-align:left;cursor:pointer;font-family:inherit;width:100%" onclick="${r.a}">
     <div style="font-size:22px;line-height:1;margin-bottom:9px">${r.i}</div>
     <h3 style="font-size:16px;margin-bottom:4px">${r.t}</h3>
     <p style="font-size:13px">${r.d}</p>
   </button>`).join('');
 
-document.getElementById('modules').innerHTML = MODULES.map(m=>`
+const modulesEl = document.getElementById('modules');
+if(modulesEl) modulesEl.innerHTML = MODULES.map(m=>`
   <div class="card"><div class="num">${m.n}</div><h3 style="font-size:16.5px">${m.t}</h3><p style="font-size:13.5px">${m.d}</p></div>`).join('');
 
 /* ---------- problems ---------- */
@@ -1077,6 +1211,9 @@ runMatch();
 renderWork();
 renderAI();
 go(location.hash.replace('#','')||'home');
+
+/* home counters and the four newest openings — run once everything is defined */
+paintHome();
 </script>
 </body>
 </html>

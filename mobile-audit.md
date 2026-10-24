@@ -1,6 +1,6 @@
 # Mobile audit — WakeelBano
 
-Pages checked: **112** · pages with problems: **0**
+Pages checked: **111** · pages with problems: **0**
 
 ## What is checked
 

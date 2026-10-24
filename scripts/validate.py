@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 html_files = []
 for dp, dn, fn in os.walk(ROOT):
     # emails/ holds rendered email previews, not site pages — never checked for SEO tags
-    dn[:] = [d for d in dn if not d.startswith((".", "scripts", "research", "node_modules", ".git", "emails"))]
+    dn[:] = [d for d in dn if not d.startswith((".", "scripts", "research", "node_modules", ".git", "emails", "concepts"))]
     for f in fn:
         if f.endswith(".html"):
             html_files.append(os.path.join(dp, f))
