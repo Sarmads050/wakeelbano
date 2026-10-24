@@ -13,3 +13,10 @@ Thumbs.db
 
 # screenshots and local uploads
 uploads/
+mobile-shots/
+
+# tool caches (playwright, fontconfig, pip)
+.cache/
+mobile-shots/
+.local/
+.sudo_as_admin_successful

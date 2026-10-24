@@ -67,6 +67,25 @@ tr:hover td{background:#FFFDF8}
 .stat b{display:block;font-family:Georgia,serif;font-size:20px}
 .stat span{font-size:11.5px;color:var(--muted)}
 a{color:#1B4E7A}
+@media(max-width:820px){
+  header{padding:12px 14px;gap:8px}
+  header .right{margin-left:0;width:100%;flex-wrap:wrap;font-size:12.5px}
+  header .tag{font-size:12px}
+  header b{font-size:17px}
+  .wrap{padding:14px 12px 50px}
+  .card{padding:14px}
+  .login{margin:26px auto}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;min-height:42px;display:inline-flex;align-items:center}
+  /* tables scroll sideways rather than breaking the layout */
+  table{display:block;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+  th,td{white-space:nowrap}
+  .btn{min-height:42px;display:inline-flex;align-items:center;justify-content:center}
+  .btn-small{min-height:36px}
+  .stat{width:calc(50% - 8px);margin:0 4px 8px 0}
+  input,select{font-size:16px}   /* stops iOS zooming the page on focus */
+}
 </style>
 </head>
 <body>

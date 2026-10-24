@@ -293,6 +293,31 @@ it can read and write.
 Rotate the secret key (Project Settings → API Keys → Revoke) whenever it may have been shared
 outside `.secrets/`, then save the new value back into `.secrets/supabase_key`.
 
+## Mobile (checked, not assumed)
+
+Most lawyers who will ever open this site are on a phone, so the phone layout is tested rather
+than assumed:
+
+```bash
+python3 scripts/mobile_audit.py --write   # static rules -> mobile-audit.md
+python3 scripts/shot_mobile.py            # real Chromium at 390px -> mobile-shots/
+```
+
+What the mobile layout does differently:
+
+- **Header:** brand and the main button on the first line, the menu on a horizontally
+  scrollable second line. The old build simply hid the menu below 820px, which left a phone
+  user with no way to move between sections.
+- **Tap targets:** buttons, tabs and nav links are at least 42px tall.
+- **Inputs:** 16px, so iOS does not zoom the page when a field is focused.
+- **Tables** scroll sideways inside their own box instead of pushing the whole page wide.
+- **Long lists and grids** collapse to one column; the job page puts the apply card first.
+- **Type:** nothing below 12px, body text 15.5–16px, headings sized with `clamp()`.
+
+Last check (24 Oct 2026): 112 pages, static audit clean, and **0 pages overflow horizontally at a
+390px viewport** in headless Chromium. Screenshots of the home page, jobs list, job detail, a
+guide, a draft, case law, the admin panel and 404 are in `mobile-shots/`.
+
 ## Content rules (do not break these)
 
 - No invented case citations, no reproduced judgments, no "#1 lawyer" claims.

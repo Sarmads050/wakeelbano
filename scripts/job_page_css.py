@@ -9,7 +9,7 @@ CSS = """
 .job-page .hero .org-line{font-size:17px;color:#E3EBF2;margin:6px 0 0;font-weight:600}
 .job-page .hero .org-line span{color:#93A6B5;font-weight:400}
 .job-page .hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.job-page .pill{font-size:12.5px;font-weight:700;color:#0B2540;background:#E8EEF4;border:1px solid rgba(255,255,255,.18);
+.job-page .pill{font-size:13px;font-weight:700;color:#0B2540;background:#E8EEF4;border:1px solid rgba(255,255,255,.18);
   padding:5px 11px;border-radius:99px}
 .job-page .pill.gold{background:linear-gradient(180deg,#E7CE7A,#D2B14A);color:#2A1F00;border-color:transparent}
 .job-page .pill.warn{background:#FDECEC;color:#9B1C1C;border-color:#F3C9C9}
