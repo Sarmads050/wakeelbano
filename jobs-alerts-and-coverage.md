@@ -52,7 +52,33 @@ python3 scripts/send_alerts.py               # send
 WakeelBano business number. No Meta approval needed, works today; the Cloud API can be dropped
 into the same script later without changing the database.
 
-## 3. What is blocked on one thing from you
+## 3. Email is live (done)
+
+Resend key installed in `.secrets/resend_key` (gitignored, sending-only scope). The first real
+digest has been sent to **sarmadalisiyal50@gmail.com** — 12 Karachi openings, HTML email, every
+listing linked to its source.
+
+Two behaviours worth knowing:
+
+- **Welcome window** — a new subscriber's first digest covers the last 30 days, so signing up
+  never lands in an empty inbox.
+- **No repeats** — `last_sent_at` is stamped after each send; running the script again straight
+  away prints `nothing new`.
+
+**Sender address:** until `wakeelbano.com` is verified in Resend, mail goes out from
+`onboarding@resend.dev` and only reaches your own address. After you buy the domain, verify it in
+Resend, then write the real sender into `.secrets/resend_from`:
+
+```
+WakeelBano Job Alerts <alerts@wakeelbano.com>
+```
+
+**Automatic weekly sending:** `.github/workflows/alerts.yml` is prepared and saved as
+`scripts/alerts-workflow.yml`. GitHub refused the push because the access token has no `workflow`
+scope — add the file through the GitHub web editor, or give the token that scope. It needs four
+repository secrets: `SUPABASE_URL`, `SUPABASE_KEY`, `RESEND_KEY`, `RESEND_FROM`.
+
+## 3b. Older note — what was blocked
 
 Email sending needs a key. It takes about five minutes:
 
@@ -72,3 +98,4 @@ Until a domain is verified in Resend, only your own address can receive mail. Ve
 - subscribers table live, RLS on: anyone may subscribe, only a signed-in admin may read or delete
 - admin panel: joins · applications · jobs · profiles · ratings · **job alerts**
 - 54 pages validated, 0 broken links, deploy `success`
+- one live subscriber row (your own address, city Karachi) — delete it in the admin panel any time

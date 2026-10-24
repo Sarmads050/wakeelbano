@@ -45,8 +45,9 @@ def from_address():
         return io.open(path, encoding="utf-8").read().strip()
     return "WakeelBano <onboarding@resend.dev>"
 SITE = "https://sarmads050.github.io/wakeelbano"
-MAX_JOBS = 12
 WELCOME_DAYS = 30   # first digest for a brand-new subscriber: last 30 days of jobs
+MAX_JOBS = 0        # 0 = every matching opening, always
+FEATURED = 8        # jobs shown as full cards; the rest get compact rows with the same details   # first digest for a brand-new subscriber: last 30 days of jobs
 
 
 # ---------------------------------------------------------------- helpers
@@ -109,36 +110,228 @@ def money(job):
     return job.get("pay") or "Not stated"
 
 
-def email_html(sub, jobs):
-    name = (sub.get("email") or "").split("@")[0]
-    rows = []
-    for j in jobs:
-        rows.append(f"""
-        <tr><td style="padding:14px 0;border-bottom:1px solid #E6EAEE">
-          <a href="{j.get('source_url') or SITE + '/jobs/'}" style="color:#0B2545;font-size:16px;font-weight:700;text-decoration:none">{j.get('title')}</a>
-          <div style="color:#3E4C59;font-size:14px;margin-top:3px">{j.get('org')} &middot; {j.get('city')} &middot; {j.get('area')}</div>
-          <div style="color:#5E6B78;font-size:13px;margin-top:3px">{money(j)} &middot; {j.get('experience') or 'Any'} &middot; posted {(j.get('posted_at') or 'recently')[:10]}</div>
-          <div style="color:#7A8794;font-size:12px;margin-top:4px">Source: {j.get('source') or 'see listing'}</div>
-        </td></tr>""")
-    return f"""<!doctype html><html><body style="margin:0;background:#F4F6F8;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif">
-  <div style="max-width:600px;margin:0 auto;padding:24px">
-    <div style="background:#0B2545;color:#fff;padding:22px 24px;border-radius:12px 12px 0 0">
-      <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#C8A24A">WakeelBano</div>
-      <div style="font-size:22px;font-weight:700;margin-top:6px">New legal jobs for you</div>
-    </div>
-    <div style="background:#fff;padding:24px;border-radius:0 0 12px 12px">
-      <p style="font-size:15px;color:#3E4C59;margin:0 0 8px">Assalam-o-alaikum {name},</p>
-      <p style="font-size:15px;color:#3E4C59;margin:0 0 18px">{len(jobs)} new opening{'s' if len(jobs) != 1 else ''} matched your filters
-        ({sub.get('city') or 'All cities'} &middot; {sub.get('area') or 'All areas'}{' &middot; ' + sub['keyword'] if sub.get('keyword') else ''}).</p>
-      <table width="100%" cellpadding="0" cellspacing="0">{''.join(rows)}</table>
-      <p style="margin:22px 0 0"><a href="{SITE}/jobs/" style="background:#C8A24A;color:#0B2545;font-weight:700;text-decoration:none;padding:12px 20px;border-radius:8px;display:inline-block">See all openings</a></p>
-      <p style="font-size:12px;color:#7A8794;margin-top:22px;border-top:1px solid #E6EAEE;padding-top:14px">
-        You are getting this because you subscribed on WakeelBano.
-        Salaries and dates come from the source page — always check before applying.
-        To stop these emails, reply with "stop" — we remove the address the same day.
+WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def pretty_date(value):
+    d = parse_dt(str(value)[:10] + "T00:00:00+00:00") if value else None
+    if not d:
+        return None
+    return f"{WEEKDAYS[d.weekday()]} {d.day} {MONTHS[d.month - 1]} {d.year}"
+
+
+def days_left(value):
+    d = parse_dt(str(value)[:10] + "T00:00:00+00:00") if value else None
+    if not d:
+        return None
+    return (d - datetime.datetime.now(datetime.timezone.utc)).days
+
+
+def closing_line(job):
+    """Returns (text, is_urgent) for the last-date row."""
+    left = days_left(job.get("deadline"))
+    pretty = pretty_date(job.get("deadline"))
+    if left is None:
+        return "Last date not stated on the listing — confirm it on the source page before you apply.", False
+    if left < 0:
+        return f"Closed on {pretty}.", False
+    if left == 0:
+        return f"<b>Closes today</b> — {pretty}.", True
+    if left <= 10:
+        return f"<b>Closing soon</b> — {left} day{'s' if left != 1 else ''} left ({pretty}).", True
+    return f"Last date: {pretty}.", False
+
+
+def meta_line(label, value):
+    if not value:
+        return ""
+    return (f'<tr><td style="padding:2px 0;font-size:14px;color:#7A8794;width:104px;'
+            f'vertical-align:top">{label}</td>'
+            f'<td style="padding:2px 0;font-size:15px;color:#1F2D3A">{value}</td></tr>')
+
+
+def job_card(job, index, total):
+    title = job.get("title") or "Legal opening"
+    org = job.get("org") or ""
+    city = job.get("city") or ""
+    area = job.get("area") or ""
+    jtype = job.get("job_type") or ""
+    sector = job.get("sector") or ""
+    exp = job.get("experience") or "Not stated"
+    pay = job.get("pay") or "Not stated"
+    posted = pretty_date(job.get("posted_at"))
+    closing, urgent = closing_line(job)
+    how = job.get("how_to_apply") or (
+        "Open the original listing with the link below and apply through the employer's own channel.")
+    url = job.get("source_url") or (SITE + "/jobs/")
+    source = job.get("source") or "WakeelBano"
+
+    badge = ""
+    if urgent:
+        badge = ('<span style="display:inline-block;background:#FDECEC;color:#9B1C1C;'
+                 'font-size:12px;font-weight:700;padding:3px 8px;border-radius:99px;'
+                 'margin-left:6px">&#9200; Urgent</span>')
+
+    return f"""
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+           style="width:100%;margin:0 0 14px;border:1px solid #E3E8EE;border-radius:12px;background:#FFFFFF">
+      <tr><td style="padding:16px 16px 6px">
+        <div style="font-size:12px;color:#9AA6B2;letter-spacing:.09em;text-transform:uppercase;font-weight:700">Job {index} of {total}</div>
+        <div style="font-size:18px;line-height:1.3;font-weight:700;color:#0B2545;margin-top:4px">{title}{badge}</div>
+        <div style="font-size:15px;color:#3E4C59;margin-top:3px">{org}</div>
+      </td></tr>
+      <tr><td style="padding:4px 16px 0">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%">
+          {meta_line("Location", city)}
+          {meta_line("Practice", area + ((" &middot; " + sector) if sector else ""))}
+          {meta_line("Type", jtype)}
+          {meta_line("Experience", exp)}
+          {meta_line("Pay", pay)}
+          {meta_line("Posted", posted)}
+        </table>
+      </td></tr>
+      <tr><td style="padding:10px 16px 0">
+        <div style="font-size:15px;line-height:1.5;color:{'#9B1C1C' if urgent else '#3E4C59'};background:{'#FDF3F3' if urgent else '#F7F9FB'};border-radius:8px;padding:10px 12px">
+          {closing}
+        </div>
+      </td></tr>
+      <tr><td style="padding:12px 16px 0">
+        <div style="font-size:13px;font-weight:700;color:#0B2545;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">How to apply</div>
+        <div style="font-size:15px;line-height:1.55;color:#1F2D3A">{how}</div>
+      </td></tr>
+      <tr><td style="padding:14px 16px 16px">
+        <a href="{url}" style="display:block;background:#0B2545;color:#FFFFFF;text-decoration:none;
+           font-size:15px;font-weight:700;text-align:center;padding:13px 16px;border-radius:9px">
+           Open this job &amp; apply &rarr;</a>
+        <div style="font-size:12px;color:#9AA6B2;margin-top:8px;line-height:1.5">
+          Source: {source} &middot; verify the deadline and salary on the source before applying.
+        </div>
+      </td></tr>
+    </table>"""
+
+
+def order_jobs(jobs):
+    """Urgent deadlines first, then newest postings. A lawyer should never have to
+    scroll past a job that closes tomorrow to reach one from last month."""
+    def key(j):
+        left = days_left(j.get("deadline"))
+        urgent = left if left is not None and left >= 0 else 9999
+        posted = str(j.get("posted_at") or "")
+        return (urgent, [-ord(c) for c in posted])
+    return sorted(jobs, key=key)
+
+
+def job_row(job):
+    """Compact row for the long tail: still carries location, experience, pay,
+    last date and the apply instruction, just without the big card."""
+    title = job.get("title") or "Legal opening"
+    url = job.get("source_url") or (SITE + "/jobs/")
+    closing, urgent = closing_line(job)
+    bits = []
+    for label, value in (("Location", job.get("city")),
+                         ("Type", job.get("job_type")),
+                         ("Experience", job.get("experience")),
+                         ("Pay", job.get("pay"))):
+        if value and value != "Not stated":
+            bits.append(f"{label}: {value}")
+    how = job.get("how_to_apply") or ""
+    return f"""
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+           style="width:100%;border-top:1px solid #EDF1F4">
+      <tr><td style="padding:13px 0">
+        <a href="{url}" style="font-size:16px;font-weight:700;color:#0B2545;text-decoration:none;line-height:1.35">{title}</a>
+        <div style="font-size:14px;color:#3E4C59;margin-top:2px">{job.get('org') or ''}</div>
+        <div style="font-size:13px;color:#7A8794;margin-top:4px;line-height:1.5">{' &middot; '.join(bits)}</div>
+        <div style="font-size:13px;color:{'#9B1C1C' if urgent else '#7A8794'};margin-top:3px;line-height:1.5">{closing}</div>
+        <div style="font-size:13px;color:#5E6B78;margin-top:5px;line-height:1.5"><b style="color:#0B2545">How to apply:</b> {how}</div>
+      </td></tr>
+    </table>"""
+
+
+def section(title, subtitle, body):
+    return f"""
+    <tr><td style="background:#FFFFFF;padding:18px 20px 0">
+      <div style="font-size:17px;font-weight:700;color:#0B2545">{title}</div>
+      {f'<div style="font-size:13.5px;color:#7A8794;margin-top:3px;line-height:1.5">{subtitle}</div>' if subtitle else ''}
+    </td></tr>
+    <tr><td style="background:#FFFFFF;padding:10px 20px 0">{body}</td></tr>"""
+
+
+def email_html(sub, jobs, total_open=None):
+    name = (sub.get("email") or "there").split("@")[0]
+    head = f"{len(jobs)} legal job{'s' if len(jobs) != 1 else ''}"
+    order = order_jobs(jobs)
+    urgent = [j for j in order if (days_left(j.get("deadline")) is not None
+                                   and 0 <= days_left(j.get("deadline")) <= 10)]
+    rest = [j for j in order if j not in urgent]
+    featured = rest[:max(0, FEATURED - len(urgent))]
+    tail = [j for j in rest if j not in featured]
+
+    blocks = []
+    if urgent:
+        blocks.append(section("&#9200; Closing soon",
+                              "These have a stated last date within ten days. Apply first.",
+                              "".join(job_card(j, i + 1, len(urgent)) for i, j in enumerate(urgent))))
+    if featured:
+        blocks.append(section("Newest openings", "Full details for each role.",
+                              "".join(job_card(j, i + 1, len(featured)) for i, j in enumerate(featured))))
+    if tail:
+        blocks.append(section(f"All other openings ({len(tail)})",
+                              "Location, experience, pay, last date and how to apply for every one of them.",
+                              "".join(job_row(j) for j in tail)))
+    cards = "".join(blocks)
+    return f"""<!doctype html>
+<html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WakeelBano job alert</title></head>
+<body style="margin:0;padding:0;background:#F1F4F7;-webkit-text-size-adjust:100%">
+<div style="display:none;font-size:1px;color:#F1F4F7">{head} matched your filters</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F1F4F7">
+<tr><td align="center" style="padding:16px 10px">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+         style="width:100%;max-width:600px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">
+
+    <tr><td style="background:#0B2545;border-radius:14px 14px 0 0;padding:22px 20px">
+      <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C8A24A;font-weight:700">WakeelBano</div>
+      <div style="font-size:23px;line-height:1.25;font-weight:700;color:#FFFFFF;margin-top:6px">{head} for you</div>
+      <div style="font-size:14px;color:#B8C7D4;margin-top:8px">
+        {sub.get('city') or 'All cities'} &middot; {sub.get('area') or 'All areas'}{(' &middot; ' + sub['keyword']) if sub.get('keyword') else ''}
+      </div>
+    </td></tr>
+
+    <tr><td style="background:#FFFFFF;padding:18px 20px 4px">
+      <p style="font-size:15px;line-height:1.6;color:#3E4C59;margin:0 0 14px">
+        Assalam-o-alaikum {name}, here are the openings that match your filters.
+        Every one of them is a real listing, and the button in each card takes you to the original source.
       </p>
-    </div>
-  </div></body></html>"""
+    </td></tr>
+
+    {cards}
+
+    <tr><td style="background:#FFFFFF;padding:6px 20px 20px">
+      <a href="{SITE}/jobs/" style="display:block;background:#C8A24A;color:#0B2540;text-decoration:none;
+         font-size:15px;font-weight:700;text-align:center;padding:13px 16px;border-radius:9px">
+         See all {total_open or ''} openings on WakeelBano &rarr;</a>
+    </td></tr>
+
+    <tr><td style="background:#FFFFFF;border-radius:0 0 14px 14px;padding:0 20px 22px">
+      <div style="border-top:1px solid #E3E8EE;padding-top:14px;font-size:12.5px;line-height:1.6;color:#8A97A4">
+        You are getting this because you subscribed to job alerts on WakeelBano.
+        Salaries and dates come from the source page — always confirm before applying.<br>
+        To stop these emails, reply with <b>stop</b> and we remove the address the same day.
+      </div>
+    </td></tr>
+
+    <tr><td style="padding:14px 20px;font-size:12px;color:#9AA6B2;text-align:center">
+      WakeelBano &middot; <a href="{SITE}/jobs/" style="color:#7A8794">Jobs</a> &middot;
+      <a href="{SITE}/" style="color:#7A8794">Home</a>
+    </td></tr>
+
+  </table>
+</td></tr></table>
+</body></html>"""
 
 
 def send_resend(key, to, subject, html):
@@ -193,7 +386,9 @@ def main():
         fresh = [j for j in jobs
                  if matches(sub, j)
                  and (not cutoff or (parse_dt(j.get("created_at")) or datetime.datetime.now(datetime.timezone.utc)) > cutoff)]
-        fresh = fresh[:MAX_JOBS]
+        fresh = order_jobs(fresh)
+        if MAX_JOBS:
+            fresh = fresh[:MAX_JOBS]
         if not fresh:
             print(f"  - {sub['email']}: nothing new")
             continue
@@ -217,7 +412,9 @@ def main():
             print(f"  ! failed {sub['email']}: {code} {body}")
 
     if args.to and args.test and key:
-        html = email_html({"email": args.to, "city": "All cities", "area": "All areas"}, jobs[:5])
+        sample = order_jobs(jobs)
+        html = email_html({"email": args.to, "city": "All cities", "area": "All areas"},
+                          sample, total_open=len(jobs))
         code, body = send_resend(key, args.to, "WakeelBano test alert", html)
         print(f"test email: {code} {body}")
 

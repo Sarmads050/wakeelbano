@@ -94,6 +94,25 @@ python3 scripts/jobs_normalize.py            # dry run
 python3 scripts/jobs_normalize.py --apply    # rewrite job_type + sector in Supabase
 ```
 
+### What the email and the cards show
+
+Two columns answer the questions a lawyer actually has before applying:
+`how_to_apply` (one instruction, derived from the source) and `deadline` (only where the source
+states a date — never guessed). Fill them with:
+
+```bash
+python3 scripts/jobs_apply_info.py            # dry run
+python3 scripts/jobs_apply_info.py --apply    # write to Supabase
+```
+
+The alert email is built for a phone: single column, 16px text, one card per job with location,
+practice area, type, experience, pay, posted date, how to apply and a full-width button to the
+original listing. Jobs with a last date inside ten days are pulled to the top in a
+"Closing soon" section. To stay under Gmail's 102 KB clipping limit, the eight most important
+roles get full cards and the rest get compact rows that still carry every one of those fields
+(`FEATURED` in `scripts/send_alerts.py`). Every matching opening is always sent — `MAX_JOBS = 0`
+means no cap.
+
 ### Job alerts (`jobs/` → "🔔 Job alerts" tab)
 
 A lawyer subscribes with an email and/or a WhatsApp number plus city, area of law, stage and

@@ -393,6 +393,17 @@ function daysAgo(d){
   const n = Math.round((new Date('__TODAY__') - new Date(d))/86400000);
   return n<=0 ? 'today' : n+' day'+(n>1?'s':'')+' ago';
 }
+function deadlineInfo(d){
+  const t = new Date(d + 'T00:00:00');
+  const left = Math.round((t - new Date())/86400000);
+  const pretty = t.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  if(isNaN(left)) return {text:'', urgent:false};
+  if(left < 0) return {text:`Closed on ${pretty}.`, urgent:false};
+  if(left === 0) return {text:`Closes today — ${pretty}.`, urgent:true};
+  if(left <= 10) return {text:`Closing soon — ${left} day${left!==1?'s':''} left (${pretty}).`, urgent:true};
+  return {text:`Last date: ${pretty}.`, urgent:false};
+}
+
 function renderJobs(){
   const q = ($$('q').value||'').toLowerCase();
   const city = $$('fCity').value, area = $$('fArea').value, type = $$('fType').value;
@@ -427,6 +438,8 @@ function renderJobs(){
           ${(j.tags||[]).slice(0,3).map(t=>`<span class="bg">${esc(t)}</span>`).join('')}
         </div>
         <p>${esc(j.desc)}</p>
+        ${j.deadline ? `<p style="margin:0 0 8px;font-size:13.5px;color:${deadlineInfo(j.deadline).urgent?'#9B1C1C':'#3E4C59'};font-weight:600">${esc(deadlineInfo(j.deadline).text)}</p>` : ''}
+        ${j.howToApply ? `<p style="margin:0 0 10px;font-size:13.5px;color:#3E4C59"><b style="color:#0B2545">How to apply:</b> ${esc(j.howToApply)}</p>` : ''}
         <div class="src">Source: ${j.url ? `<a href="${esc(j.url)}" target="_blank" rel="nofollow noopener">${esc(j.src)}</a>` : esc(j.src)} — verify the deadline on the employer's page.</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">

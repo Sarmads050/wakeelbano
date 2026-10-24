@@ -46,7 +46,8 @@
       sector: r.sector || "",
       exp: r.experience || "Not stated", pay: r.pay || "Not stated",
       desc: r.description || "", tags: r.tags || [], src: r.source || "WakeelBano",
-      url: r.source_url || "", posted: (r.posted_at || "").slice(0, 10)
+      url: r.source_url || "", posted: (r.posted_at || "").slice(0, 10),
+      deadline: r.deadline || "", howToApply: r.how_to_apply || ""
     };
   }
   function mapTask(r) {
