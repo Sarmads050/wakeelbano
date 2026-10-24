@@ -13,17 +13,22 @@ near the courts, paid drafting work, and free case law research guides.
 | Path | What it is |
 |---|---|
 | `index.html` | Single-file app prototype: home, problem research, career navigator, chamber match, rooms, work board, AI kit, growth school, pricing. Vanilla JS, no build step, works offline. |
-| `case-law/` | Research hub + 302 PPC, 489-F PPC, 497 CrPC pages |
-| `drafts/` | Drafting hub + bail application, legal notice, plaint, vakalatnama |
-| `career/` | Career hub + Law-GAT, enrollment, how to become a lawyer, salary, High Court licence |
-| `karachi/` | Karachi hub + lawyer jobs, lawyer room for rent |
+| `case-law/` | Research hub + 302 PPC, 489-F PPC, 497 CrPC, 420 PPC, 406 PPC, 506 PPC pages |
+| `drafts/` | Drafting hub + bail application, legal notice, notice reply, plaint, written statement, vakalatnama, affidavit, rent agreement, power of attorney |
+| `career/` | Career hub + Law-GAT, enrollment, how to become a lawyer, salary, High Court licence, cause list tracking, lawyer CV, first 30 days in a chamber |
+| `karachi/` | Karachi hub + lawyer jobs, lawyer room for rent, chamber seat rent, City Courts guide |
 | `about/` | Entity page (what the platform is and does not do) |
-| `scripts/content_pages.py` | **All page copy and data** — the only file to edit for content changes |
-| `scripts/build_pages.py` | Generator: writes all HTML pages, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` |
+| `scripts/content_pages.py` | Core page copy and data — the file to edit for content changes |
+| `scripts/content_pages_more.py` | Wave-2 pages (drafts, case law, practice, Karachi) plus extra hub tiles |
+| `404.html` | Not-found page (noindex) |
+| `CNAME` | GitHub Pages custom domain: `wakeelbano.com` |
+| `scripts/build_pages.py` | Generator: writes all 34 pages, `404.html`, `CNAME`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` |
 | `scripts/validate.py` | Checks broken internal links, JSON-LD validity, one `<h1>`/title/canonical per page, dead links in `llms.txt` |
 | `scripts/repair_quotes.py` | Utility: converts unescaped straight quotes in content text to typographic quotes |
 | `scripts/push.sh` | Commit + push using a token in `.secrets/gh_token` |
 | `research/` | Demand research (what Pakistani lawyers search, pain points) behind the content plan |
+
+**Size of the site:** 33 indexable URLs — 1 home page, 4 hubs, 27 guides, 1 about page, plus a 404.
 
 ## Editing content
 

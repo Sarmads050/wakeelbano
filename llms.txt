@@ -2,37 +2,52 @@
 
 > Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and junior advocates find a chamber and mentor, verified rooms and seat sharing near the courts, paid drafting work, and free case law research guides. Junior lawyers use it free; chambers, firms and universities pay.
 
-Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information only, not legal advice. No commission on client case referrals, and no lawyer rankings. All guidance is drawn from Pakistani statutes, bar council notifications and official court publications, with sources listed on each page.
+Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information only, not legal advice. No commission on client case referrals, and no lawyer rankings. Guidance is drawn from Pakistani statutes, bar council notifications and official court publications, with sources listed on every page.
 
 ## Core pages
 - [What WakeelBano is: a career platform for Pakistani lawyers; who it serves and how it is funded.](https://wakeelbano.com/)
 - [Entity page: what the platform does, what it deliberately does not do, and how content is produced.](https://wakeelbano.com/about/)
 
-## Case law research (most searched topic among Pakistani lawyers)
-- [Hub: where to find Pakistani case law free, and a four-step research method.](https://wakeelbano.com/case-law/)
-- [Section 302 PPC, qatl-i-amd: punishment, elements, qisas, research method.](https://wakeelbano.com/case-law/302-ppc/)
-- [Section 489-F PPC, cheque dishonour: elements, checklist, defences.](https://wakeelbano.com/case-law/489-f/)
-- [Section 497 CrPC, bail in non-bailable offences: grounds and authorities.](https://wakeelbano.com/case-law/497-crpc/)
+## Case Law Pakistan (https://wakeelbano.com/case-law/)
+- [Section-wise case law research guides for Pakistani lawyers: 302 PPC, 489-F PPC and 497 CrPC bail. Free databases, a four-step research method and a citation checklist.](https://wakeelbano.com/case-law/)
+- [302 PPC case law: Qatl-i-amd: elements, qisas and the research method](https://wakeelbano.com/case-law/302-ppc/index.html)
+- [489-F PPC case law: Cheque dishonour: complaint, defence and research](https://wakeelbano.com/case-law/489-f/index.html)
+- [497 CrPC case law: Bail in non-bailable offences: grounds and authorities](https://wakeelbano.com/case-law/497-crpc/index.html)
+- [420 PPC — cheating: Dishonest inducement, proof and the civil-versus-criminal divide](https://wakeelbano.com/case-law/420-ppc/index.html)
+- [406 PPC — breach of trust: Entrustment and misappropriation, and why most such cases are called civil](https://wakeelbano.com/case-law/406-ppc/index.html)
+- [506 PPC — criminal intimidation: Threats, proof and the two punishment levels](https://wakeelbano.com/case-law/506-ppc/index.html)
 
-## Legal drafting formats
-- [Hub: the common skeleton of every Pakistani court draft.](https://wakeelbano.com/drafts/)
-- [Bail application structure under sections 496, 497 and 498 CrPC.](https://wakeelbano.com/drafts/bail-application-format/)
-- [Legal notice parts, delivery proof and deadlines.](https://wakeelbano.com/drafts/legal-notice-format/)
-- [Plaint requirements under Order VII CPC.](https://wakeelbano.com/drafts/plaint-format/)
-- [Vakalatnama clauses, authority and acceptance.](https://wakeelbano.com/drafts/vakalatnama-format/)
+## Legal Drafts Library (https://wakeelbano.com/drafts/)
+- [Court-tested structures for Pakistani legal drafts: bail application, legal notice, civil plaint and vakalatnama. Every section, clause and common filing mistake explained.](https://wakeelbano.com/drafts/)
+- [Bail application format: Sections 496, 497 and 498 CrPC — structure and grounds](https://wakeelbano.com/drafts/bail-application-format/index.html)
+- [Legal notice format: Recovery, cheque and rent notices, with proof of delivery](https://wakeelbano.com/drafts/legal-notice-format/index.html)
+- [Plaint format: Order VII CPC — what a plaint must contain](https://wakeelbano.com/drafts/plaint-format/index.html)
+- [Vakalatnama format: Authority, acceptance and stamp](https://wakeelbano.com/drafts/vakalatnama-format/index.html)
+- [Written statement format: Order VIII CPC — the paragraph-by-paragraph reply](https://wakeelbano.com/drafts/written-statement-format/index.html)
+- [Affidavit format: Jurat, attestation and the mistakes that void an affidavit](https://wakeelbano.com/drafts/affidavit-format/index.html)
+- [Rent agreement format: Sindh tenancy clauses that prevent disputes](https://wakeelbano.com/drafts/rent-agreement-format/index.html)
+- [Power of attorney format: Special versus general authority, and revocation](https://wakeelbano.com/drafts/power-of-attorney-format/index.html)
+- [Legal notice reply: How to answer a notice without creating evidence against yourself](https://wakeelbano.com/drafts/legal-notice-reply-format/index.html)
 
-## Career and licensing
-- [Hub: the full path from LLB to the High Court.](https://wakeelbano.com/career/)
-- [Law-GAT: what it is, eligibility, syllabus, 60-day plan, result.](https://wakeelbano.com/career/law-gat/)
-- [Advocate enrollment: eligibility, documents, pupillage, verification.](https://wakeelbano.com/career/bar-council-enrollment/)
-- [Roadmap from 12th grade to the Supreme Court.](https://wakeelbano.com/career/how-to-become-lawyer-pakistan/)
-- [Salary ranges in Pakistan and why chambers pay what they pay.](https://wakeelbano.com/career/lawyer-salary-pakistan/)
-- [High Court licence: two years of practice, process, practice record.](https://wakeelbano.com/career/high-court-license/)
+## Career: From Sanad to the High Court (https://wakeelbano.com/career/)
+- [The full Pakistani legal career path: Law-GAT, bar council enrollment, pupillage, realistic salary ranges and the High Court licence — stage by stage.](https://wakeelbano.com/career/)
+- [Law-GAT 2026: Test date, syllabus, past papers and result](https://wakeelbano.com/career/law-gat/index.html)
+- [Bar council enrollment: Eligibility, documents, pupillage and fees](https://wakeelbano.com/career/bar-council-enrollment/index.html)
+- [How to become a lawyer: Roadmap from 12th grade to the Supreme Court](https://wakeelbano.com/career/how-to-become-lawyer-pakistan/index.html)
+- [Lawyer salary in Pakistan: Realistic ranges and the reason they are low](https://wakeelbano.com/career/lawyer-salary-pakistan/index.html)
+- [High Court licence: Two years of practice, the process and the record](https://wakeelbano.com/career/high-court-license/index.html)
+- [Cause list tracking: Never miss a date: the daily routine that works](https://wakeelbano.com/career/cause-list-tracking/index.html)
+- [Lawyer CV format: A one-page CV that gets a reply](https://wakeelbano.com/career/lawyer-cv-format/index.html)
+- [First 30 days in a chamber: A week-by-week plan for a new pupil](https://wakeelbano.com/career/first-30-days-in-chamber/index.html)
 
-## Karachi
-- [Karachi for lawyers: court choice, rent and network.](https://wakeelbano.com/karachi/)
-- [Where legal jobs are in Karachi, and which are never advertised.](https://wakeelbano.com/karachi/lawyer-jobs/)
-- [Room and chamber seat-share costs near the courts.](https://wakeelbano.com/karachi/lawyer-room-for-rent/)
+## Karachi for Lawyers (https://wakeelbano.com/karachi/)
+- [Practical Karachi guides for lawyers: chamber and firm jobs, room rent and chamber seat sharing near City Courts, Garden, Saddar and Malir.](https://wakeelbano.com/karachi/)
+- [Lawyer jobs in Karachi: Chambers, firms, in-house and freelance work](https://wakeelbano.com/karachi/lawyer-jobs/index.html)
+- [Rooms and seat sharing: Punjab Colony, Garden, Saddar and Malir](https://wakeelbano.com/karachi/lawyer-room-for-rent/index.html)
+- [Case law library: Section-wise research guides](https://wakeelbano.com/case-law/index.html)
+- [Chamber for rent: Seat share costs and what to check before paying](https://wakeelbano.com/karachi/chamber-seat-rent/index.html)
+- [City Courts guide: Filing, etiquette and the first month at City Courts](https://wakeelbano.com/karachi/city-courts-guide/index.html)
 
 ## Optional
 - [Sitemap](https://wakeelbano.com/sitemap.xml)
+- [Full text export](https://wakeelbano.com/llms-full.txt)

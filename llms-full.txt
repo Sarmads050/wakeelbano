@@ -1,6 +1,6 @@
 # WakeelBano — full text export
 
-Everything below is public content from wakeelbano.com, in plain text for AI agents and researchers.
+Public content from wakeelbano.com, in plain text for AI agents and researchers.
 
 ## What is WakeelBano?
 URL: https://wakeelbano.com/about/
@@ -547,4 +547,462 @@ A: It depends on the nature and valuation of the suit. Confirm the current sched
 
 Q: Can a plaint be amended?
 A: Generally yes, with the court's permission, but the earlier it is done the better. Amendments become harder once trial has progressed.
+
+
+## 420 PPC Case Law — Cheating and Dishonest Inducement
+URL: https://wakeelbano.com/case-law/420-ppc/
+
+Section 420 PPC punishes cheating that dishonestly induces the victim to deliver property. The prosecution must prove a false representation, dishonest intention at the time of the promise, and delivery of property as a result. Punishment is up to seven years and fine.
+
+- Statute: Pakistan Penal Code 1860, section 420
+- Offence: Cheating and thereby dishonestly inducing delivery of property
+- Punishment: Imprisonment up to 7 years and fine
+- Nature: Cognizable, non-bailable, compoundable with the court's permission
+- Key proof point: Dishonest intention existing at the time the promise was made
+- Most common defence: The transaction was a civil dispute dressed as a criminal case
+### What must the prosecution prove under section 420 PPC?
+Four elements: a deception, a dishonest or fraudulent intention at that moment, delivery of property as a consequence, and the resulting loss.
+Deception — a false or misleading representation, express or implied, made knowingly. Inducement — the complainant relied on it and handed over money or property. Dishonest intention at the time — the intent existed when the promise was made, not afterwards. Damage or loss — the property was delivered and the complainant suffered. The decisive question in almost every 420 case is the fourth element in reverse: was there a dishonest intention when the money was taken, or did a commercial deal simply fail later? Courts read the whole conduct — the agreement, the payments, the correspondence — not just one broken promise.
+
+### How is section 420 different from 406 PPC and 489-F PPC?
+420 is about being tricked into parting with property, 406 is about betraying trust after property is handed over, and 489-F is about a cheque that bounces.
+Section Core idea Typical facts 420 PPC Deception before delivery A buyer induces payment by showing a forged allotment letter 406 PPC Entrustment, then dishonest misappropriation A partner keeps money collected on behalf of the firm 489-F PPC A dishonoured cheque given to discharge an obligation A cheque returned unpaid for insufficient funds Charges are sometimes added together, but each needs its own evidence. Adding 406 to a 420 FIR does not save a weak deception case.
+
+### Which reported judgments should you actually read?
+Read the leading Supreme Court judgments on dishonest intention and on the criminal-versus-civil divide, then read two from your own High Court on your facts.
+Do not rely on a citation you have not opened. Work in this order: Search PLD, SCMR and CLD for the phrase dishonest intention at the inception — that is the language judgments actually use. Add your subject matter to the search: 420 PPC plus agreement to sell , construction contract or investment . Facts decide these cases. Prefer a two-judge or three-judge Supreme Court decision over a single-judge High Court note when you need a principle. Check that the judgment has not been overruled — read the later cases that cite it. Verification rule: every citation you put in a bail application, complaint or written argument must be traced to the report itself, with page number. AI tools invent citations; the discipline is yours.
+
+### How do defence counsel usually attack a 420 case?
+By showing the dispute is civil, that the intention was honest at the time, that accounts were maintained, or that the complainant was a business party who took a commercial risk.
+The transaction was commercial — a loan, a partnership or a sale that later failed. No deception — every document was genuine and the complainant knew the position. Intention was honest — part payments, continued dealings and messages showing good faith. Accounts exist — the money is traceable and the dispute is about calculation. Delay and motive — the complaint was filed after pressure, negotiation or a counter-dispute.
+
+### What is the practical research method for a 420 file?
+Build a chronology first, then a document bundle, then search authority on the exact fact pattern you have.
+Chronology: every date, payment, message and document on one page. Identify the single representation you say was false, and quote the document that contains it. List the evidence proving intention at that date — not later conduct alone. Search case law on the same subject matter, not on 420 in general. Confirm limitation, forum and the FIR or complaint route with your senior before filing.
+
+Q: Is 420 PPC bailable?
+A: It is generally treated as non-bailable, but bail is a matter of judicial discretion and depends on the facts. Always check the current schedule of the Criminal Procedure Code and the practice of your court rather than assuming.
+
+Q: Can a 420 case be settled between the parties?
+A: Compounding is possible only with the permission of the court, and it does not erase the record automatically. Take your senior's advice before any compromise.
+
+Q: Can the same transaction give rise to a civil suit and a criminal case?
+A: Yes in principle, but courts are alert to criminal complaints used purely to pressure a civil debtor. The test remains dishonest intention at the inception.
+
+Q: Where can a lawyer in Karachi read 420 judgments free?
+A: PLD, SCMR and CLD volumes in a chamber or bar library, and the official Supreme Court and Sindh High Court websites for recent reported judgments. Always verify the copy you use.
+
+
+## 406 PPC Case Law — Criminal Breach of Trust
+URL: https://wakeelbano.com/case-law/406-ppc/
+
+Section 406 PPC punishes criminal breach of trust: property is handed over in trust, and the person entrusted then dishonestly misappropriates, converts or disposes of it. Punishment is up to three years, or fine, or both.
+
+- Statute: Pakistan Penal Code 1860, section 406
+- Offence: Criminal breach of trust
+- Punishment: Up to 3 years imprisonment, or fine, or both
+- First element: Entrustment — the property must be handed over with confidence
+- Second element: Dishonest misappropriation, conversion or disposal
+- Common example: Money collected on behalf of a firm, committee or family and not accounted for
+### What are the two elements of section 406?
+Entrustment and dishonest misappropriation. Remove either one and the offence collapses into a civil claim.
+Element What proof is needed Entrustment Delivery of property with confidence for a purpose — a receipt, an agreement, a bank trail, a written acknowledgement Dishonest misappropriation Use or disposal inconsistent with the purpose: denial of receipt, false accounts, sale of entrusted goods, refusal to return with dishonest intent Note the direction of the offence. In 420 the victim is tricked before handing over property; in 406 the property is handed over honestly and betrayed afterwards.
+
+### Why is 406 so often dismissed as a civil dispute?
+Because a failure to pay back is not automatically a crime. Courts look for dishonest intention, not only a broken promise to return money.
+A loan not repaid is a civil debt, unless dishonest intention is shown. Disputes about accounts, profit shares and calculations belong in a civil court. Written acknowledgements and admissions change the picture materially — keep them. Where the money is traceable and part of it was returned, the dishonest-intent argument weakens.
+
+### How should you research a 406 matter?
+Search on the entrustment document and the mode of misappropriation, not on the section number alone.
+Isolate the document that proves entrustment. Without it, rethink the case. Set out precisely what was misappropriated and when the purpose was departed from. Search judgments using the words of the offence: entrustment , misappropriation , criminal breach of trust , combined with your subject such as partnership or employment . Read any authority that treats a similar fact pattern as civil, and address it in your own arguments.
+
+Q: Is 406 compoundable?
+A: Compounding is allowed only with the permission of the court. Ask your senior and check the current schedule before advising anyone.
+
+Q: What is the punishment under section 406 PPC?
+A: Up to three years imprisonment, or fine, or both, for the general offence. Sections 407 to 409 deal with aggravated cases involving higher punishment.
+
+Q: Can an employer file a 406 case against an employee over salary advances?
+A: It depends on evidence of entrustment and dishonest intent. Salary advances and disputed dues are usually civil matters unless there is clear evidence of misappropriation.
+
+
+## 506 PPC Case Law — Criminal Intimidation
+URL: https://wakeelbano.com/case-law/506-ppc/
+
+Section 506 PPC punishes criminal intimidation: threatening injury to a person, their reputation or their property to cause alarm or to force an act. Punishment is up to two years or fine, rising to seven years where the threat is of death or grievous injury.
+
+- Statute: Pakistan Penal Code 1860, section 506
+- Offence: Criminal intimidation
+- Basic punishment: Up to 2 years imprisonment, or fine, or both
+- Aggravated punishment: Up to 7 years and fine where death or grievous hurt is threatened
+- Usual proof: Screenshots, call recordings, witnesses, written communication
+- Common defence: The words were a general expression of anger, not a threat
+### What makes something a criminal threat?
+Three ingredients: a threat of injury, made with intent to cause alarm or to pressurise the person, and communication of that threat to the person concerned.
+Threat of injury to body, reputation or property — including a threat to expose or defame. Intention — to cause alarm, or to compel an act or omission. Communication — the person threatened must learn of it; a message that never reaches anyone is not intimidation. Words spoken in anger with no target, intent or follow-through are usually not enough. Context decides.
+
+### Which punishment applies?
+Two years in the ordinary case, seven years where the threat is of death or grievous injury.
+Threat Punishment Any injury to person, reputation or property Up to 2 years, or fine, or both Death, or grievous injury, or destruction of property by fire Up to 7 years and fine
+
+### How is a threat proved in practice?
+By preserving the communication properly, and by showing the effect it had on the complainant.
+Preserve the original device and the raw file — a screenshot alone invites challenge. Note the date, time, number and identity of the sender. Record the complainant's reaction: did they change behaviour, pay the money demanded, move house? Find a witness who was told about the threat at the time. Do not edit, annotate or forward a compromised copy to the court; produce the original. Practice point: threats connected to extortion, land grabbing or demand for money often carry other charges as well. Read the whole FIR before deciding the defence.
+
+Q: Is 506 bailable?
+A: Ordinarily 506 is considered bailable, but the aggravated form can change the position. Confirm against the current Criminal Procedure Code schedule.
+
+Q: Can I file a private complaint for a threat?
+A: Yes. A complaint can be filed before the competent magistrate, along with a police complaint. Follow the path your senior advises given the evidence.
+
+Q: Are WhatsApp messages enough as evidence?
+A: They can be, if the original device is produced and the identity of the sender is established. Electronic evidence needs careful handling under the Qanun-e-Shahadat 1984.
+
+
+## Written Statement Format (Pakistan)
+URL: https://wakeelbano.com/drafts/written-statement-format/
+
+A written statement is the defendant's reply to a plaint. It must deal with every allegation paragraph by paragraph, raise the legal objections first, and add a set-off or counter-claim only where the facts justify one. Order VIII CPC governs it.
+
+- Governing law: Code of Civil Procedure 1908, Order VIII
+- Who files it: The defendant, after service of summons and the plaint
+- Time: Within the period fixed by the court on service — often 30 days
+- Shape: Paragraph-by-paragraph reply matching the plaint, plus separate grounds
+- Failure to file: The court may proceed ex parte or decide on the record
+- Verification: Required, with signature of the defendant and the advocate
+### What must a written statement contain?
+Preliminary objections, the reply to each plaint paragraph, fresh facts relied on, any set-off or counter-claim, and a verification.
+Heading and title — court, case number, parties, and the title Written Statement. Preliminary objections — jurisdiction, limitation, maintainability, cause of action, valuation, non-joinder of parties. Reply on merits — numbered to match the plaint, not the defendant's story. Additional facts — facts the defendant will prove, each in its own paragraph. Set-off or counter-claim — only if a separate, quantified claim exists. Verification — that the contents are true to the defendant's belief, with the signature and place and date of signing.
+
+### Why do courts reject so many written statements?
+Usually because allegations are answered vaguely instead of being admitted or denied, and because the reply does not follow the plaint paragraph by paragraph.
+The rule to remember: silence is not a denial. An allegation that is not specifically denied or expressly admitted is likely to be taken as admitted. Every paragraph needs one of three answers — admitted, denied, or not admitted for want of knowledge. Do not write a general denial of the entire plaint. Do not answer with a legal argument where a fact was alleged. Do not raise a set-off without a figure and a basis. Do not leave preliminary objections buried in the middle of the merits.
+
+### What is the difference between a set-off and a counter-claim?
+A set-off defends with a reciprocal debt; a counter-claim makes a claim of its own, and needs court fees and separate relief.
+Feature Set-off (Order VIII rule 6) Counter-claim (Order VIII rule 6-A) Purpose Extinguish or reduce the plaintiff's claim Obtain relief against the plaintiff Effect Defence only Treated as a separate suit Court fee Generally not on the set-off Required, like a plaint Risk Lost if not pleaded Lost if not pleaded in the reply, though the court has power to allow later
+
+### What are the most common drafting mistakes?
+Mismatched paragraph numbering, missing verification, no date or place, inconsistent facts against the earlier reply, and unsigned annexures.
+Paragraph numbers that do not correspond with the plaint — the court cannot follow the reply. Verification that does not state what is admitted and what is denied. Facts pleaded without any witness or document to prove them. Raising limitation in the merits instead of in the preliminary objections. Copying a format from another case, leaving another party's name or facts inside.
+
+Q: What happens if the written statement is not filed in time?
+A: The court may decide the suit without it, or may allow filing subject to costs and conditions. Time limits are applied strictly in commercial cases; always check the order passed in your specific matter.
+
+Q: Can a written statement be amended later?
+A: Yes, the court may allow amendment under Order VI rule 17, but not to change the case completely or where it is barred by limitation. Amendment is discretionary.
+
+Q: Does a counter-claim need separate court fees?
+A: Yes. A counter-claim is treated as a plaint for the purposes of the Civil Courts Ordinance 1962 and the Court Fees Act, and relief in it is independent of the defence.
+
+
+## Affidavit Format (Pakistan)
+URL: https://wakeelbano.com/drafts/affidavit-format/
+
+An affidavit is a written statement of facts that the deponent swears or affirms to be true before an authorised officer. It must identify the deponent, state facts in numbered paragraphs, show the place and date of swearing, and carry the jurat and the attestation.
+
+- Statutes: Oaths Act 1873; Code of Civil Procedure 1908, Order XIX
+- Who can attest: Notary public, oath commissioner, or a court officer empowered to administer oaths
+- Contents: Facts only, in the deponent's own knowledge unless stated on belief
+- Numbering: Paragraph-wise, complete sentences, no argument or opinion
+- Annexures: Documents exhibited and referred to in the body
+- Consequence: A false affidavit exposes the deponent to proceedings for perjury
+### What is the structure of a valid affidavit?
+Title, description of the deponent, numbered facts, annexures, jurat, and the attestation block.
+Title — court and case, or, for a general affidavit, the purpose in one line. Deponent details — full name, age, CNIC number and occupation, and place of residence. Opening — that the deponent is competent to swear the affidavit and understands the facts. Numbered paragraphs — one fact per paragraph, chronologically ordered. Source of knowledge — say where the fact comes from, and mark believed facts as stated on belief. Exhibits — each document named and marked as an annexure. Jurat — sworn or affirmed at a named place on a stated date, before a named officer. Common failure: the deponent signs but the officer's attestation, seal or licence number is missing. That single omission can push an affidavit out of consideration.
+
+### What must the jurat say?
+It must record that the contents were read over and explained to the deponent, that the deponent understood them, and that the oath was taken before the named officer on a stated date.
+A workable jurat in Pakistani practice reads, in substance: Verified that the contents were read over and explained to the deponent, who understood them, and that the statement is true to the best of the deponent's knowledge, information and belief. Sworn / affirmed at [place] on [date] before [name and designation of the attesting officer]. Signature of the deponent, with the officer's signature, stamp and licence number. Where the deponent cannot read, the officer must record that the affidavit was read and explained in a language the deponent understands.
+
+### Which mistakes make an affidavit risky?
+Opinion instead of fact, facts the deponent cannot know, legal argument, no exhibit labels, and conflicting statements in an earlier affidavit.
+Opinion and law — the affidavit is for facts; arguments belong in the plaint or application. Hearsay without disclosure — always state the source. Over-claiming — anything false or reckless invites proceedings for perjury and destroys credibility. Unlabelled annexures — refer to documents by annexure letter in the body. Stale templates — depends on the court; a district court affidavit and a High Court affidavit differ in heading and sometimes in format requirements.
+
+Q: Can an affidavit be sworn in English if the deponent only speaks Urdu?
+A: It can, but the officer must record that it was read over and explained in a language the deponent understood. Otherwise the affidavit is open to challenge.
+
+Q: Does an affidavit need stamp paper?
+A: In Pakistani practice court affidavits are usually prepared on plain paper and attested by a notary or oath commissioner, while some purpose-specific affidavits are executed on stamp paper. Confirm the local requirement with the office of the court or the sub-registrar.
+
+Q: Is an affidavit evidence on its own?
+A: Not automatically. It is used where the law or the court's order permits, and the deponent can still be required to appear for cross-examination. Read Order XIX CPC and the court's specific order.
+
+
+## Rent Agreement Format (Sindh)
+URL: https://wakeelbano.com/drafts/rent-agreement-format/
+
+A rent agreement in Sindh should state the parties, the premises, the rent and its due date, the security deposit and its return, the notice period for each side, who pays utilities and repairs, and whether subletting is allowed. The Sindh Rented Premises Ordinance 1979 governs tenancies.
+
+- Governing law: Sindh Rented Premises Ordinance 1979
+- Who uses it: Landlord and tenant, usually for 11 months or another agreed term
+- Essentials: Parties, premises, rent, deposit, duration, notice, repairs, utilities
+- Dispute forum: Rent controller / civil court, depending on the relief sought
+- Stamp and registration: Rates and requirements change — confirm with the sub-registrar
+- Lawyer's role: Drafting, checking title and authority, and advising on notice and eviction grounds
+### Which clauses prevent most rent disputes?
+Deposit return, notice period, repair responsibility, utility bills and subletting — the five clauses that lawyers most often find missing.
+Clause What to write Deposit Amount, what it can be adjusted against, and a clear deadline for return after vacant possession Notice How many days each side must give, and how the notice must be served Repairs Structural repairs to the landlord, day-to-day to the tenant, with a cost limit Utilities Who pays which meter, and what happens if the previous bill is unpaid Subletting Allowed or not, in plain words, with written consent required Inspection Right to inspect on notice, and photographs or a schedule of condition at handover
+
+### What documents should a tenant check before signing?
+The landlord's title or authority to let, the CNIC of the landlord, the utility bills, and any prior tenancy or litigation on the premises.
+Ownership — sale deed, allotment letter, or a lease in the landlord's name. Authority — if the signer is not the owner, a power of attorney or written authority from the owner. Encumbrance — any pending mortgage, court case or previous tenant dispute. Identification — CNIC copies signed across the photograph and attached to the agreement. Inventory — a signed list of fixtures, fittings and meter readings at handover. For lawyers: a short written note to the client listing these checks is better practice than a long oral explanation. Keep a signed copy on the file.
+
+### How does a tenancy end lawfully?
+By expiry of the term, by mutual agreement, or by notice as the agreement and the ordinance require — eviction on the street is not a lawful option.
+Serve notice in the manner the agreement requires, and keep proof of service. State the ground relied on: expiry, non-payment, personal need, misuse of the premises. Give a realistic date for vacant possession and settle the deposit against arrears. If the tenant does not vacate, apply to the rent controller or the court on the available ground. Do not change locks, cut water or disconnect utilities to force a vacancy; that creates a separate cause of action.
+
+Q: Is an 11-month rent agreement required in Pakistan?
+A: An 11-month term is commonly used, partly to keep the agreement outside certain registration requirements for longer leases. Confirm the current stamp and registration position with the sub-registrar before relying on it.
+
+Q: What stamp duty applies to a rent agreement in Sindh?
+A: The rate depends on the term and the rent, and it is changed by notification. Check the current rates with the sub-registrar's office or the Sindh Stamp Rules rather than using an old figure.
+
+Q: Can a landlord keep the security deposit?
+A: Only to the extent of unpaid rent, bills or damage as stated in the agreement. A general retention without a written basis invites a claim.
+
+
+## Power of Attorney Format (Pakistan)
+URL: https://wakeelbano.com/drafts/power-of-attorney-format/
+
+A power of attorney authorises one person to act for another. A special power of attorney is limited to particular acts, such as appearing in one case or executing one sale; a general power of attorney covers wider powers. It must identify the parties, list the powers, state the term, and be properly attested and, where required, registered.
+
+- Statute: Power of Attorney Act 1882; Registration Act 1908 for registration
+- Two types: Special (specific acts) and general (broad authority)
+- Execution: Signed by the donor, attested by witnesses, and notarised
+- For court work: The vakalatnama is used for representation, not a power of attorney
+- For property: Registration is normally required where the power concerns an immovable property
+- Revocation: In writing, communicated to the holder, and often registered if the original was registered
+### What must a power of attorney contain?
+Identity of donor and holder, an exact list of powers, any limits, the term, and a clear statement of when the authority ends.
+Title — Special or General Power of Attorney, and its purpose. Parties — donor and attorney with full names, parentage, CNIC and address. Recitals — why the authority is being given, in one or two paragraphs. Operative clauses — numbered powers. Be exact: to sign, to sell, to appear, to receive. Limits — what the attorney may not do without fresh written authority. Term and revocation — duration and how it can be revoked. Execution block — donor's signature, witnesses, notary attestation, and registration endorsement where applicable.
+
+### Special or general — which one should you draft?
+Choose the narrowest authority that does the job. A general power of attorney is the most abused document in property matters.
+Special General Scope One transaction, one case, one act Wide, continuing authority Risk Low High — misuse, unauthorised sales, borrowed signatures Use it for Selling one plot, appearing in one matter, collecting one payment Managing affairs during a long absence, when there is no alternative Lawyer's duty Identify the donor and confirm the instructions directly Insist on registration, a short term, and accounting obligations Standing practice: never execute a general power of attorney for immovable property on the strength of a phone instruction. Verify the donor in person or by a documented video call with CNIC.
+
+### How is it attested, registered and revoked?
+Signed before witnesses and a notary; registered where the transaction requires it; revoked in writing and, ideally, by a registered deed of revocation.
+Attestation — witnesses must be present and must sign; the notary records the donor's identity. Registration — a power relating to immovable property is normally presented for registration before the sub-registrar. Revocation — a written deed, delivered to the attorney and notified to the parties who dealt on the strength of it; register the revocation if the original was registered. Death of the donor — the authority ends automatically. Ensure the record reflects it.
+
+Q: Can a power of attorney be used to appear in court?
+A: A lawyer appears on a vakalatnama. A power of attorney may authorise someone to instruct a lawyer or act in related matters, but the vakalatnama is the document courts require for representation. Do not mix the two.
+
+Q: Is a power of attorney executed abroad valid in Pakistan?
+A: It can be, if it is executed and attested in the manner the law requires, and usually notarised and then authenticated through the Pakistani mission concerned. Confirm the current requirement with the sub-registrar and the consular section.
+
+Q: What if an attorney sells property beyond the powers granted?
+A: The transaction can be challenged on the ground that the act was outside the authority granted. Both the attorney and the purchaser may face consequences. Act quickly and preserve the original deed.
+
+
+## Legal Notice Reply Format (Pakistan)
+URL: https://wakeelbano.com/drafts/legal-notice-reply-format/
+
+A reply to a legal notice should be sent within the time given in the notice, deny the allegations specifically, state your own facts with dates, attach the documents you rely on, and keep the tone factual. Never admit a liability you have not verified, and never ignore a notice.
+
+- Time to reply: Within the period stated in the notice; 7 to 15 days is common
+- Mode of reply: Registered post with acknowledgement due, and a copy by email or courier
+- Core content: Paragraph-wise reply, own version of facts, documents, and a reserved-rights clause
+- Evidence value: An unreplied notice can support the sender's version; a careless reply can be used against you
+- Drafting rule: Admit only what is true and verified; deny everything else specifically
+### What should a reply to a legal notice contain?
+A paragraph-wise response, your own account of the facts, the documents that support it, and a clear position on what you are willing to do.
+Reference — the notice's date, its reference number and the sender's name. Paragraph-wise reply — number each answer to match the notice. Your version — facts with dates and documents, in a separate section with a heading. Legal position — the sections or clauses you rely on, only if you are sure of them. Offer or refusal — say plainly whether you will pay, perform or deny, and on what terms. Reservation — that all rights and defences are reserved, and that the reply is without prejudice where that is genuinely intended. Proof of dispatch — keep the postal receipt and acknowledgement card.
+
+### What should a reply never do?
+Never ignore it, never admit a debt you have not verified, never threaten, and never send it without proof of dispatch.
+Ignoring the notice — silence is often read as acceptance in commercial disputes. Emotional language — the reply will be read in court years later; keep it factual. Admitting liability casually — an admission can be used against your client. Raising every defence at once — inconsistent defences weaken the strong one. No proof of service — a reply that cannot be shown to have been received is of little use. Practical note: many cheque cases turn on whether the notice of demand was properly served. Preserve the receipt, the tracking record and the returned envelope.
+
+### How long does the sender have to file after the notice?
+It depends on the statute behind the notice. For a dishonoured cheque under 489-F PPC practice, timing of the notice and the complaint matters; for civil claims, limitation runs from the cause of action.
+Do not rely on a general figure. Check: The statute named in the notice, and whether it prescribes a period. The limitation applicable to the underlying claim in the Limitation Act 1908. The date of service , not the date of the letter.
+
+Q: Should I reply to a legal notice if the claim is false?
+A: Yes. A short, specific denial with your documents is far safer than silence, which can be used to support the sender's story.
+
+Q: Can I reply myself without a lawyer?
+A: You can send a factual reply, but a badly worded admission can cost more than the fee. Have a lawyer read the notice before you answer it.
+
+Q: Does a reply stop the other side from going to court?
+A: No. It sets out your position, which may encourage settlement, but the sender can still file. The reply becomes part of the record.
+
+
+## Cause List Tracking for Pakistani Lawyers
+URL: https://wakeelbano.com/career/cause-list-tracking/
+
+A cause list is the court's daily schedule of cases. Track it by checking the official court source for your court every evening, matching your case register against it, and confirming the result of each hearing the same day. Never depend on a client or a colleague to tell you a date.
+
+- What it is: The court's list of cases fixed for a particular day
+- Where published: Official court websites, court notice boards, and the bar association's list
+- When to check: The evening before, and again in the morning before appearing
+- Core tool: Your own case register: file number, next date, purpose, court, fee status
+- Cost of a missed date: Costs, ex parte orders, warrants, or dismissal for non-prosecution
+- Best practice: One source of truth, updated daily, backed up
+### Where are cause lists published in Pakistan?
+Official court websites publish daily and weekly cause lists; district courts rely heavily on notice boards and the bar association's list, and court staff can confirm a fixed date.
+Sindh High Court — daily cause lists are published on the court's official website, normally in the evening for the next working day. District and City Courts — printed lists on the notice board, plus the list circulated at the bar room. Confirm with the reader or the court office. Supreme Court — cause lists are published on the Supreme Court website for each bench. Special courts and tribunals — check with the office directly; publication online is not guaranteed. Verification rule: treat any date received by WhatsApp as unconfirmed until you have seen it on the official list or been told by the court office. Screenshots get edited and forwarded with the wrong date.
+
+### How do you read a cause list quickly?
+Find your court and bench first, then scan for the case number — not the party names, which are often spelled inconsistently.
+Confirm the court, bench and judge heading. The same case can appear before a different bench. Search the case number and year , then cross-check the parties. Note the serial number , the purpose (arguments, evidence, order) and the time slot if shown. Mark whether the matter is listed as fixed or in the supplementary list, which is often heard later in the day. Write the serial number on your file cover before you leave the chamber.
+
+### What should a simple case register contain?
+One line per case with the court, file number, parties, next date, purpose, fee position and what happened at the last hearing.
+Column Why it matters Court, bench, judge Decides where you stand at 9 a.m. File and case number, year The only reliable identifier in a cause list Parties, short form Quick recognition under time pressure Next date and purpose Drives the evening check Last order, one line Prevents repeating an argument already decided Fee and payment status Stops you appearing on an unpaid brief Documents due Ensures the file is complete before the date A spreadsheet is enough. The point is one register, updated the same day, not five notebooks and a phone gallery.
+
+### What is a workable daily routine?
+Evening: check tomorrow's lists against the register. Morning: re-check, then report each hearing result before you leave court.
+6 p.m. — open the official list for each court where you have a matter tomorrow. 6.30 p.m. — update the register, message the client the time and court, and prepare the file the night before. 8.30 a.m. — re-check the supplementary list before entering the courtroom. After each hearing — write the one-line order and the next date in the register, not on a loose paper. Weekly — back up the register and review matters with no date for more than 30 days.
+
+Q: What happens if a lawyer misses a hearing?
+A: The court may pass an ex parte order, dismiss the matter for non-prosecution, issue warrants, or impose costs. Recovery usually needs an application for restoration or recall, which costs time and money.
+
+Q: Can a client check the cause list themselves?
+A: They can read the public list, but the responsibility for tracking stays with the advocate. Set the expectation at the first meeting: dates are confirmed by the chamber, not by rumour.
+
+Q: Is there one app for all Pakistani cause lists?
+A: No single official app covers every court. Practitioners use the individual court websites plus their own register. Any third-party app should be treated as a convenience, never as the source of truth.
+
+
+## Lawyer CV Format for Pakistan
+URL: https://wakeelbano.com/career/lawyer-cv-format/
+
+A Pakistani legal CV should fit on one page: name and contact, bar enrollment status, education with grades, internships described by what you did, drafting and research skills, languages, and two referees. Chambers hire on demonstrated work, not adjectives.
+
+- Length: One page for students and juniors; two only after five years
+- Order: Contact, enrollment status, education, experience, skills, languages, referees
+- What wins interviews: Specific drafting and court exposure, with numbers
+- What loses them: Generic phrases such as hardworking, and no dates
+- Attach: A short covering note and, if asked, two writing samples
+### What should a one-page legal CV contain?
+Contact details, enrollment or Law-GAT status, education, internships with real descriptions, skills with evidence, languages, and referees.
+Header — name, city, phone, professional email, LinkedIn URL. No photo unless asked. Status line — one line: LLB (year, university), Law-GAT status, Sindh Bar Council enrollment number if issued. Education — degree, institution, year, and grades if they are good. Legal experience — internships and pupillage: chamber or firm, court, dates, and what you drafted or observed. Skills — drafting, research databases, court filing, language, typing speed in Urdu and English. Extras — moots, publications, legal aid work, positions held. Referees — two, with designation and a working phone number, and their permission.
+
+### How do you describe an internship properly?
+Use verbs and objects: what you drafted, for which court, how many, and under whose supervision.
+Weak Strong Worked in a law chamber and learned a lot Drafted 14 bail applications and 6 legal notices for a criminal practice at City Courts, Karachi; maintained a daily cause-list register for 40 files Did research work Prepared case-law memos on 489-F PPC and 497 CrPC, verifying every citation against PLD and SCMR volumes Good communication skills Drafted client correspondence in English and Urdu; translated a 12-page agreement for filing Rule: if a line cannot be proved in an interview with a document or a story, delete it.
+
+### What gets a junior CV rejected?
+No dates, unexplained gaps, invented experience, blurry formatting, and applying to chambers whose practice area is nowhere in the CV.
+Targeting nothing — a criminal chamber reads a CV full of corporate tax work and moves on. Vague claims — every senior has heard I am a hardworking quick learner. No writing sample — if you claim drafting, keep two samples ready. Careless errors — a misspelt court name or a wrong case citation ends the conversation. Wrong email — a casual address costs interviews. Use name-based email.
+
+Q: Should a fresh graduate include a photo on a legal CV?
+A: Usually not. Pakistani legal employers focus on education, drafting exposure and references. Keep the page clean and let the content speak.
+
+Q: Is it acceptable to email chambers directly?
+A: Yes. Keep the email to four lines: who you are, what you want, what you offer, and the attached CV. Then follow up once, in person, with a printed copy.
+
+Q: How long should a covering email be?
+A: Four to six lines. Seniors read on a phone between hearings. State your university, your enrollment status and which days you are available.
+
+
+## Your First 30 Days in a Chamber
+URL: https://wakeelbano.com/career/first-30-days-in-chamber/
+
+In your first 30 days, learn the court routine, build a personal precedent file, volunteer for drafting, and keep a written record of everything you did. Usefulness earns a stipend faster than waiting for one.
+
+- Week 1: Court geography, filing counter, cause list, chamber routine
+- Week 2: Read five complete files end to end and summarise each
+- Week 3: Draft three documents and have them corrected in red
+- Week 4: Ask for one independent task and deliver it early
+- Keep forever: A precedent file of your own corrected drafts
+- Mistake to avoid: Sitting silent, waiting to be taught
+### Week 1 — what should you learn first?
+Where things are and how the day runs: the courtrooms, the filing counter, the reader's office, the cause list, and the chamber's own routine.
+Walk the court complex with a clerk. Learn the filing counter, the copying agency, the stamp vendor and the library. Ask which court the chamber appears in most, and read three days of cause lists for it. Learn the chamber's filing system and never return a file to the wrong shelf. Write down names and roles: reader, clerk, naib qasid, court stenographer. Arrive before your senior, every day, in the first month.
+
+### Week 2 — how do you learn from files?
+Read five complete files end to end, then write a one-page summary of each: parties, facts, stage, next date, and the weak point.
+Take a file that has reached arguments, not a brand-new one. Read the plaint or FIR, the reply, the orders and the last application. Write the chronology yourself — do not copy the senior's note. Identify the single weakest link in the case and say why. Compare your note with the senior's and ask what you missed. Why this works: in six months you will have read a hundred files and written a hundred summaries. That record is worth more to an employer than your transcript.
+
+### Week 3 — how do you start drafting?
+Copy the structure, not the facts. Draft by hand, get it corrected, and keep the corrected version in your own precedent file.
+Ask for a document you have seen before: a legal notice, an application for adjournment, a bail application. Draft from the file, never from a template with someone else's facts left inside. Submit with a note of the points you were unsure about — seniors respect flagged doubts. Keep the corrected draft. Highlight every change you did not expect. Never file anything you have not read end to end yourself.
+
+### Week 4 — how do you become paid, not just present?
+Ask for one task you can own completely, deliver it early, and then ask directly about the terms of your seat.
+Volunteer for a research memo, a set of case summaries or a cause-list register. Deliver a day before the deadline, with sources checked. Ask for feedback in one question: what would make this usable as filed? At the end of the month, ask about hours, stipend and what you will be taught. Put the agreed terms in writing — even a short WhatsApp message that the senior confirms. Reality check: many chambers in Karachi pay nothing for the first months. Decide in advance how long you can sustain that, and plan the work-board income that covers the gap.
+
+Q: Should a pupil ask for a stipend in the first month?
+A: Not usually in the first week, but by the end of the first month it is reasonable to ask about terms. Ask in a scheduled conversation, not in the corridor, and be clear about what you are already delivering.
+
+Q: What if the chamber gives no work at all?
+A: Ask for specific work, and give a deadline you control. If nothing changes after six weeks, the seat is not a training seat, and it is reasonable to look elsewhere without burning the relationship.
+
+Q: How many hours should a junior expect to work?
+A: Court hours plus chamber hours, typically six days a week in a litigation practice. Agree the expectations in writing so that both sides know what the first year looks like.
+
+
+## Lawyer Chamber for Rent in Karachi
+URL: https://wakeelbano.com/karachi/chamber-seat-rent/
+
+A shared chamber seat in Karachi usually costs Rs 6,000 to 15,000 a month, depending on the court vicinity, the size of the chamber and whether a clerk is included. Always agree in writing what the seat includes before paying.
+
+- Typical seat share: Rs 6,000 to 15,000 a month
+- Usually included: Desk, chair, cupboard, electricity, and shared use of the library
+- Often extra: Clerk's salary, stationery, internet, chamber maintenance
+- Best locations: Around City Courts, Saddar, Garden and near the Sindh High Court
+- Usual arrangement: Two or three juniors share one chamber and split the rent
+- Written record needed: Rent, inclusions, notice period, and who holds the key
+### What does a chamber seat actually cost?
+Between Rs 6,000 and Rs 15,000 a month for a shared seat, with the higher end near the High Court and in chambers with a library and clerk.
+Arrangement Typical monthly cost What you get Desk in a shared chamber Rs 6,000 – 9,000 Desk, chair, cupboard, shared library Seat plus clerk support Rs 10,000 – 15,000 Adds filing, copying and cause-list help Small independent chamber Rs 20,000 and above Own room, often with utilities separate Figures are indicative for 2026 and vary street to street. Treat them as a starting point for negotiation, not a rate card.
+
+### What should a junior check before sharing a chamber?
+Who the tenant of record is, what the rent includes, how the key is held, whether the senior is present daily, and whether client files will be safe.
+Tenancy — the chamber's own lease and the person legally entitled to sublet space. Inclusions — electricity, internet, cleaning, clerk, stationery. Get a list, not a promise. Security — a locker or cupboard you alone can lock, and a written inventory. Use of the library — borrowing rules, and whether reports may leave the chamber. Notice — how many days must either side give before leaving. Client meetings — whether you may meet your own clients there, and at what hours. Do not pay a deposit without a receipt that names the payer, the amount, the period covered and what the deposit secures.
+
+### How does seat sharing between juniors work in practice?
+Two or three juniors take one chamber, split the rent and utilities, and agree a rota for who receives clients and how files are stored.
+Agree the split in writing: rent, utilities, clerk, stationery. Allocate desks and storage physically, so nothing is ambiguous. Set rules on client meetings — booked slots, no overlapping appointments. Keep separate files, in separately locked cupboards. Fix an exit clause: 30 days' notice, deposit returned after the final utility bill.
+
+### Is a chamber seat worth the money in the first year?
+Yes, if it puts you within walking distance of your court and gives you a place clients can visit. It is a cost of doing business, not a luxury.
+Compare it with the alternative: Working from home means no walk-in clients and no library. Paying for a separate room costs two to three times more for the same utility. A shared seat near the court saves travel time, which is the scarcest resource of a junior. On a Rs 30,000 stipend, a Rs 8,000 seat is 27% of income — but it is the difference between being a lawyer with an address and one without.
+
+Q: Can a chamber seat be shared by a man and a woman advocate?
+A: Shared professional space is a matter for the parties to agree, and many chambers allocate separate desks and storage. What matters is a written arrangement that both sides are comfortable with; harassment at the workplace is separately governed by law.
+
+Q: Do I need a separate chamber to take my own clients?
+A: No, but you need a place where a client can sit and where your files are safe. Confirm with your senior or co-sharers that you may meet your own clients there.
+
+Q: What is a fair deposit for a chamber seat?
+A: Commonly one month's rent. Anything higher should be justified in writing and covered by a receipt that states the terms of return.
+
+
+## Karachi City Courts: A Guide for New Lawyers
+URL: https://wakeelbano.com/karachi/city-courts-guide/
+
+The City Courts complex in Karachi is where most civil, criminal and family trials begin. New lawyers should learn the filing counter, the cause list, the courtrooms of their own cases and basic courtroom etiquette before anything else.
+
+- What sits here: Civil, criminal, family and miscellaneous trial matters
+- Main tasks: Filing, scrutiny, cause list, appearances, copies of orders
+- First week goal: Know the filing counter, the copying agency and your courtrooms
+- Carry daily: CNIC, bar card, vakalatnamas, court fee stamps, diary, cause list
+- Timing: Arrive before the court sits; the list is called early
+- Local rules: Filing requirements and scrutiny objections vary by court — read the notice board
+### What happens at the filing counter?
+Your plaint or application is presented, checked for court fee and annexures, and either registered or returned with objections.
+Complete the court fee and stamp requirements before you reach the counter. Keep the plaint or petition, annexures, vakalatnama and identity documents in one tagged set. Present the file; the office checks pagination, court fee and the list of documents. If objections are raised, note them exactly and clear them the same day — do not wait for the next date. Collect the receipt or diary number before you leave. Photograph it. Most common objection: missing court fee or an unnumbered annexure. Both are avoidable and both delay registration by days.
+
+### How should a junior behave inside a courtroom?
+Quietly, early and prepared: know your serial number, stand when your case is called, address the court with the correct title, and never interrupt another advocate.
+Enter before the court sits and take a seat at the back, not at the bar table. Keep the file open at the last order, with the next date visible. Stand and state your appearance briefly: name, party and capacity. Never argue over another counsel's time. Wait your turn and ask politely for a pass. Write the order down as it is dictated. Do not rely on memory or on a later copy.
+
+### What should you carry every day?
+CNIC, bar card, vakalatnamas, court fee stamps, diary, cause list, pen, stapler, and the file for each matter listed that day.
+Item Why CNIC and bar card Needed at the gate and for identification before a court Signed vakalatnamas You cannot appear without authority on the file Court fee stamps Applications are often filed at short notice Cause list copy Fast scanning when the court is already sitting Diary and two pens Orders are dictated, not emailed Stapler, tags, glue Files are assembled in the corridor, not the chamber
+
+### How do you use the first month at City Courts well?
+Attach yourself to one courtroom for a week, watch how matters are called, and record the phrases and steps you will need to copy.
+Spend a full week in one courtroom and write down the daily routine. Learn how applications are moved: exemptions, adjournments, exhibits, orders. Collect the standard forms actually used by that court's office. Introduce yourself to the reader and the clerk — politely, once, with your name and chamber. Build a personal list of the ten phrases you must be able to say without thinking.
+
+Q: Do I need a separate licence to appear at City Courts in Karachi?
+A: A lower court advocate, licensed and enrolled through the provincial bar council, can appear before the civil and criminal courts. Confirm your own enrollment status with the Sindh Bar Council.
+
+Q: Can a pupil appear in court alone?
+A: A pupil appears with or under the supervision of the senior, in accordance with the chamber arrangement and the court's practice. Do not appear independently on a brief you are not authorised to handle.
+
+Q: Where can I get copies of orders?
+A: From the copying agency of the court concerned, on an application, once the order is on the file. Keep the receipt and follow up the same week.
 

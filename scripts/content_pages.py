@@ -1297,3 +1297,14 @@ network is verified and working.</p>
     "related": [("Case law library", "case-law/index.html"),
                 ("Career guides", "career/index.html")],
 }
+
+
+# ---------------------------------------------------------------- wave 2
+# Extra high-demand pages (drafts, case law, career, Karachi) plus new hub tiles.
+from content_pages_more import MORE_PAGES, HUB_ADDITIONS
+
+PAGES.extend(MORE_PAGES)
+for _hub in HUBS:
+    for _t, _d, _u in HUB_ADDITIONS.get(_hub["slug"], []):
+        if all(c[0] != _t for c in _hub["children"]):
+            _hub["children"].append((_t, _d, _u))

@@ -340,59 +340,36 @@ def build_about(p):
 
 
 def write_llms_txt(urls):
-    """Curated llms.txt — a plain-text map of the most citation-worthy pages."""
-    groups = {
-        "Core pages": [
-            ("https://wakeelbano.com/", "What WakeelBano is: a career platform for Pakistani lawyers; who it serves and how it is funded."),
-            ("https://wakeelbano.com/about/", "Entity page: what the platform does, what it deliberately does not do, and how content is produced."),
-        ],
-        "Case law research (most searched topic among Pakistani lawyers)": [
-            ("https://wakeelbano.com/case-law/", "Hub: where to find Pakistani case law free, and a four-step research method."),
-            ("https://wakeelbano.com/case-law/302-ppc/", "Section 302 PPC, qatl-i-amd: punishment, elements, qisas, research method."),
-            ("https://wakeelbano.com/case-law/489-f/", "Section 489-F PPC, cheque dishonour: elements, checklist, defences."),
-            ("https://wakeelbano.com/case-law/497-crpc/", "Section 497 CrPC, bail in non-bailable offences: grounds and authorities."),
-        ],
-        "Legal drafting formats": [
-            ("https://wakeelbano.com/drafts/", "Hub: the common skeleton of every Pakistani court draft."),
-            ("https://wakeelbano.com/drafts/bail-application-format/", "Bail application structure under sections 496, 497 and 498 CrPC."),
-            ("https://wakeelbano.com/drafts/legal-notice-format/", "Legal notice parts, delivery proof and deadlines."),
-            ("https://wakeelbano.com/drafts/plaint-format/", "Plaint requirements under Order VII CPC."),
-            ("https://wakeelbano.com/drafts/vakalatnama-format/", "Vakalatnama clauses, authority and acceptance."),
-        ],
-        "Career and licensing": [
-            ("https://wakeelbano.com/career/", "Hub: the full path from LLB to the High Court."),
-            ("https://wakeelbano.com/career/law-gat/", "Law-GAT: what it is, eligibility, syllabus, 60-day plan, result."),
-            ("https://wakeelbano.com/career/bar-council-enrollment/", "Advocate enrollment: eligibility, documents, pupillage, verification."),
-            ("https://wakeelbano.com/career/how-to-become-lawyer-pakistan/", "Roadmap from 12th grade to the Supreme Court."),
-            ("https://wakeelbano.com/career/lawyer-salary-pakistan/", "Salary ranges in Pakistan and why chambers pay what they pay."),
-            ("https://wakeelbano.com/career/high-court-license/", "High Court licence: two years of practice, process, practice record."),
-        ],
-        "Karachi": [
-            ("https://wakeelbano.com/karachi/", "Karachi for lawyers: court choice, rent and network."),
-            ("https://wakeelbano.com/karachi/lawyer-jobs/", "Where legal jobs are in Karachi, and which are never advertised."),
-            ("https://wakeelbano.com/karachi/lawyer-room-for-rent/", "Room and chamber seat-share costs near the courts."),
-        ],
-    }
+    """Curated llms.txt plus a plain-text export, both generated from content_pages."""
+    core = [
+        (BASE, "What WakeelBano is: a career platform for Pakistani lawyers; who it serves and how it is funded."),
+        (BASE + "about/", "Entity page: what the platform does, what it deliberately does not do, and how content is produced."),
+    ]
     out = [f"# {BRAND}", "",
            "> Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and "
            "junior advocates find a chamber and mentor, verified rooms and seat sharing near the courts, paid drafting "
            "work, and free case law research guides. Junior lawyers use it free; chambers, firms and universities pay.",
            "",
            "Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information only, not legal advice. "
-           "No commission on client case referrals, and no lawyer rankings. All guidance is drawn from Pakistani "
-           "statutes, bar council notifications and official court publications, with sources listed on each page.",
-           ""]
-    for group, items in groups.items():
-        out.append(f"## {group}")
-        for u, d in items:
-            out.append(f"- [{d}]({u})")
+           "No commission on client case referrals, and no lawyer rankings. Guidance is drawn from Pakistani statutes, "
+           "bar council notifications and official court publications, with sources listed on every page.",
+           "", "## Core pages"]
+    for u, d in core:
+        out.append(f"- [{d}]({u})")
+    out.append("")
+    for h in C.HUBS:
+        out.append(f"## {h['h1']} ({BASE}{h['url']})")
+        out.append(f"- [{h['desc']}]({BASE}{h['url']})")
+        for t, d, u in h.get("children", []):
+            out.append(f"- [{t}: {d}]({BASE}{child_url(h['url'], u)})")
         out.append("")
-    out += ["## Optional", "- [Sitemap](https://wakeelbano.com/sitemap.xml)", ""]
+    out += ["## Optional", f"- [Sitemap]({BASE}sitemap.xml)", f"- [Full text export]({BASE}llms-full.txt)", ""]
     io.open(os.path.join(ROOT, "llms.txt"), "w", encoding="utf-8").write("\n".join(out))
 
-    # llms-full.txt — expanded plain-text export of the priority pages
+    # llms-full.txt — expanded plain-text export of every page
+    import re as _re
     full = [f"# {BRAND} — full text export", "",
-            "Everything below is public content from wakeelbano.com, in plain text for AI agents and researchers.", ""]
+            "Public content from wakeelbano.com, in plain text for AI agents and researchers.", ""]
     for p in [C.ABOUT] + C.PAGES:
         full.append(f"## {p['h1']}")
         full.append(f"URL: {BASE}{p['url']}")
@@ -407,10 +384,8 @@ def write_llms_txt(urls):
                 full.append(f"### {sec['h2']}")
             if sec.get("answer"):
                 full.append(sec["answer"])
-            import re as _re
             txt = _re.sub(r"<[^>]+>", " ", sec["html"])
-            txt = _re.sub(r"\s+", " ", txt).strip()
-            full.append(txt)
+            full.append(_re.sub(r"\s+", " ", txt).strip())
             full.append("")
         for q, a in p.get("faqs", []):
             full.append(f"Q: {q}")
@@ -443,6 +418,31 @@ def main():
     io.open(out, "w", encoding="utf-8").write(build_about(a))
     urls.append((a["url"], "0.9", "monthly"))
     print("page ", a["slug"])
+
+    # 404 page (GitHub Pages serves this for any unknown path)
+    body404 = """
+<section class="hero"><div class="wrap">
+  <div class="kicker">404</div>
+  <h1>This page does not exist</h1>
+  <p>The link may be old, or the page may have moved. Everything on WakeelBano is reachable from the guides below.</p>
+  <div class="answer">Start with the case law library, the draft formats or the career roadmap — the three places lawyers go first.</div>
+</div></section>
+<main class="wrap">
+  <div class="grid">
+    <a class="tile" href="case-law/index.html"><b>Case law library</b><span>302 PPC, 489-F, 497 CrPC and 420 PPC research guides</span></a>
+    <a class="tile" href="drafts/index.html"><b>Draft formats</b><span>Bail, notice, plaint, vakalatnama and more</span></a>
+    <a class="tile" href="career/index.html"><b>Career roadmap</b><span>Law-GAT, enrollment, High Court licence</span></a>
+  </div>
+  <p style="margin-top:24px"><a href="index.html">Return to the home page</a></p>
+</main>"""
+    io.open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(
+        page("Page not found — WakeelBano", "That page does not exist. Start from the case law library, the draft formats or the career roadmap.",
+             "", body404, "404.html").replace('<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">',
+                                              '<meta name="robots" content="noindex, follow">'))
+    print("file   404.html")
+
+    # CNAME for GitHub Pages custom domain
+    io.open(os.path.join(ROOT, "CNAME"), "w", encoding="utf-8").write("wakeelbano.com\n")
 
     # sitemap
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
