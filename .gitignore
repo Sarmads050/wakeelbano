@@ -1,0 +1,12 @@
+# secrets — token kabhi commit nahi
+.secrets/
+.gh_token
+.env
+.env.*
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

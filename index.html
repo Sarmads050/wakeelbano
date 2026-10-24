@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanad — Karachi's Lawyer Ecosystem</title>
+<style>
+  :root{
+    --navy:#0B1B2B; --navy2:#12293D; --navy3:#1B3A52;
+    --gold:#C9A227; --gold2:#E7CE7A; --gold-soft:#FBF3DC;
+    --cream:#FAF7F1; --white:#fff; --ink:#0F1C2A;
+    --muted:#5E6B78; --line:#E6DFD2; --green:#1F7A5C; --red:#A63A2E;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(11,27,43,.05), 0 8px 28px rgba(11,27,43,.07);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.serif{font-family:Georgia,"Times New Roman",serif; font-weight:700; letter-spacing:-.01em; line-height:1.2; margin:0}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .gold{color:var(--gold)}
+  .muted{color:var(--muted)}
+
+  /* ---------- top bar ---------- */
+  header.top{
+    position:sticky;top:0;z-index:60;background:rgba(11,27,43,.97);
+    backdrop-filter:blur(8px); border-bottom:1px solid rgba(201,162,39,.28);
+  }
+  .top-in{display:flex;align-items:center;gap:18px;height:66px;max-width:1140px;margin:0 auto;padding:0 18px}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;flex:0 0 auto}
+  .brand .mark{width:34px;height:34px;flex:0 0 auto}
+  .brand b{font-family:Georgia,serif;font-size:21px;letter-spacing:.02em}
+  .brand small{display:block;font-size:9.5px;letter-spacing:.22em;color:var(--gold2);text-transform:uppercase;font-weight:600;margin-top:-3px}
+  nav.main{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto}
+  nav.main::-webkit-scrollbar{display:none}
+  nav.main a{
+    color:#C8D3DC;font-size:13px;font-weight:600;padding:9px 10px;border-radius:9px;white-space:nowrap;
+  }
+  @media (max-width:1180px){ nav.main a{padding:8px 8px;font-size:12.5px} }
+  nav.main a:hover{background:rgba(255,255,255,.07);color:#fff}
+  nav.main a.active{background:rgba(201,162,39,.16);color:var(--gold2)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;
+    font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 20px;border-radius:11px;
+    transition:transform .12s ease, box-shadow .12s ease, background .15s;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-gold{background:linear-gradient(180deg,#DDB845,#BE9A1F);color:#2A1F00;box-shadow:0 6px 18px rgba(201,162,39,.28)}
+  .btn-gold:hover{box-shadow:0 8px 26px rgba(201,162,39,.38)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.28)}
+  .btn-ghost:hover{background:rgba(255,255,255,.09)}
+  .btn-dark{background:var(--navy);color:#fff}
+  .btn-dark:hover{background:var(--navy3)}
+  .btn-line{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-line:hover{border-color:var(--gold)}
+  .top .btn{padding:9px 16px;font-size:13.5px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(201,162,39,.22), transparent 60%),
+      radial-gradient(700px 480px at 5% 110%, rgba(31,122,92,.18), transparent 60%),
+      linear-gradient(160deg,#0B1B2B 0%, #10283C 55%, #0C2033 100%);
+    color:#fff;padding:64px 0 72px;position:relative;overflow:hidden;
+  }
+  .hero:after{
+    content:"";position:absolute;inset:0;opacity:.05;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+    background-size:56px 56px;
+  }
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold2);font-weight:700;border:1px solid rgba(201,162,39,.4);padding:6px 12px;border-radius:99px;background:rgba(201,162,39,.09)
+  }
+  .hero h1{font-size:clamp(30px,4.4vw,50px);margin:18px 0 16px;line-height:1.08}
+  .hero h1 em{font-style:normal;color:var(--gold2)}
+  .hero p.lead{font-size:17.5px;color:#D3DEE7;max-width:560px;margin:0 0 26px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+  .hero-stats{display:flex;gap:26px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
+  .hero-stats div b{display:block;font-family:Georgia,serif;font-size:25px;color:#fff}
+  .hero-stats div span{font-size:12px;color:#9FB0BE;letter-spacing:.03em}
+
+  /* hero card */
+  .hero-card{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:22px;
+    backdrop-filter:blur(6px);box-shadow:0 24px 60px rgba(0,0,0,.25);
+  }
+  .hero-card h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:14px}
+  .mini-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.13)}
+  .mini-row:last-child{border:0}
+  .mini-ico{width:34px;height:34px;border-radius:10px;background:rgba(201,162,39,.18);display:grid;place-items:center;flex:0 0 auto}
+  .mini-row p{margin:0;font-size:13.5px;color:#E6EEF4;font-weight:600}
+  .mini-row small{color:#93A6B5;font-size:11.5px}
+
+  /* ---------- sections ---------- */
+  section{padding:66px 0}
+  .sec-head{max-width:720px;margin-bottom:36px}
+  .sec-head h2{font-size:clamp(25px,3.3vw,36px);margin:10px 0 12px}
+  .sec-head p{color:var(--muted);font-size:16px;margin:0}
+  .kicker{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:800}
+  .view{display:none}
+  .view.on{display:block;animation:fade .28s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+    box-shadow:var(--shadow);transition:transform .16s ease, box-shadow .16s ease, border-color .16s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(11,27,43,.1);border-color:#D9CFB8}
+  .card h3{font-size:18.5px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14.5px;margin:0}
+  .num{
+    width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-family:Georgia,serif;
+    font-weight:700;color:var(--navy);background:var(--gold-soft);border:1px solid #EBD9A4;margin-bottom:14px;font-size:16px
+  }
+  .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px;background:var(--gold-soft);color:#7A5E00;margin-bottom:12px}
+  .tag.green{background:#E4F3EC;color:#14664A}
+  .tag.red{background:#FBE9E6;color:#8E3226}
+  .tag.blue{background:#E7EEF6;color:#2A4E72}
+  .stat-big{font-family:Georgia,serif;font-size:30px;color:var(--navy);line-height:1}
+  .stat-big small{font-size:13px;font-family:inherit;color:var(--muted);font-weight:500}
+
+  /* pills / filters */
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+  .chip{
+    border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:99px;font-size:13.5px;font-weight:600;
+    color:#3E4C59;cursor:pointer;font-family:inherit;transition:all .14s
+  }
+  .chip:hover{border-color:var(--gold)}
+  .chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+  select,input,textarea{
+    font-family:inherit;font-size:14.5px;padding:11px 13px;border-radius:10px;border:1px solid var(--line);
+    background:#fff;color:var(--ink);width:100%;
+  }
+  select:focus,input:focus,textarea:focus{outline:2px solid rgba(201,162,39,.45);outline-offset:1px}
+  label.field{display:block;font-size:12.5px;font-weight:700;color:#3E4C59;margin-bottom:6px;letter-spacing:.02em}
+
+  /* roadmap */
+  .track-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+  .track{
+    text-align:left;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;font-family:inherit;
+    transition:all .15s
+  }
+  .track:hover{border-color:var(--gold)}
+  .track.on{border-color:var(--gold);background:var(--gold-soft);box-shadow:0 8px 22px rgba(201,162,39,.16)}
+  .track b{display:block;font-size:15px;margin-bottom:4px}
+  .track span{font-size:12.5px;color:var(--muted)}
+  .progress-wrap{display:flex;align-items:center;gap:14px;margin:0 0 24px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .bar{flex:1;height:10px;background:#EEE8DC;border-radius:99px;overflow:hidden}
+  .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,#C9A227,#E7CE7A);transition:width .35s ease}
+  .step{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:12px;transition:border-color .15s}
+  .step.done{border-color:#BFE0D2;background:#F7FCF9}
+  .step .check{
+    width:26px;height:26px;flex:0 0 auto;border-radius:8px;border:2px solid #CFC5B0;background:#fff;cursor:pointer;
+    display:grid;place-items:center;margin-top:2px;transition:all .15s
+  }
+  .step.done .check{background:var(--green);border-color:var(--green)}
+  .step .check svg{opacity:0;transition:opacity .15s}
+  .step.done .check svg{opacity:1}
+  .step h4{font-size:16.5px;margin-bottom:5px}
+  .step p{margin:0;font-size:14px;color:var(--muted)}
+  .step .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:#7A8794}
+  .step .meta b{color:var(--navy);font-weight:700}
+
+  /* match cards */
+  .mentor{display:flex;gap:16px;align-items:flex-start}
+  .avatar{
+    width:54px;height:54px;border-radius:14px;flex:0 0 auto;display:grid;place-items:center;
+    font-family:Georgia,serif;font-weight:700;font-size:19px;color:#fff;background:linear-gradient(145deg,#1B3A52,#0B1B2B)
+  }
+  .match-pct{
+    margin-left:auto;font-family:Georgia,serif;font-size:15px;font-weight:700;color:var(--green);
+    background:#E4F3EC;border-radius:9px;padding:5px 9px;height:fit-content;white-space:nowrap
+  }
+  .meta-line{font-size:13px;color:var(--muted);margin:6px 0 10px}
+  .meta-line b{color:var(--navy)}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .badge{font-size:11.5px;font-weight:600;color:#3E4C59;background:#F3F0E9;border:1px solid #E7E0D2;padding:3px 9px;border-radius:99px}
+
+  /* listing cards */
+  .listing .price{font-family:Georgia,serif;font-size:22px;color:var(--navy);margin:4px 0 2px}
+  .listing .price span{font-size:12.5px;font-family:inherit;color:var(--muted);font-weight:500}
+  .listing h3{font-size:16.5px;margin-bottom:4px}
+  .listing .loc{font-size:13px;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+  .pill-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  .listing .foot{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:12px;margin-top:12px}
+  .verified{font-size:11.5px;font-weight:800;color:var(--green);display:flex;align-items:center;gap:5px}
+  .apply{
+    font-size:12.5px;font-weight:800;color:var(--navy);background:var(--gold-soft);border:1px solid #EBD9A4;
+    padding:7px 12px;border-radius:9px;cursor:pointer;font-family:inherit
+  }
+  .apply:hover{background:#F6E9BD}
+
+  /* AI kit */
+  .prompt{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column}
+  .prompt h4{font-size:15.5px;margin-bottom:8px}
+  .prompt p{font-size:13.5px;color:var(--muted);margin:0 0 12px;flex:1}
+  .prompt canvas,.prompt .quote{
+    background:#F7F5EF;border:1px dashed #DED6C4;border-radius:10px;padding:11px;font-size:12.5px;color:#4A5763;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.5;white-space:pre-wrap;margin-bottom:12px;max-height:112px;overflow:hidden
+  }
+  .copy{align-self:flex-start;font-size:12.5px;font-weight:800;background:var(--navy);color:#fff;border:0;padding:8px 14px;border-radius:9px;cursor:pointer;font-family:inherit}
+  .copy:hover{background:var(--navy3)}
+
+  /* pricing */
+  .price-card{position:relative;display:flex;flex-direction:column}
+  .price-card.hot{border-color:var(--gold);box-shadow:0 16px 44px rgba(201,162,39,.18)}
+  .price-card .amt{font-family:Georgia,serif;font-size:34px;color:var(--navy);line-height:1;margin:8px 0 2px}
+  .price-card .amt span{font-size:13px;font-family:inherit;color:var(--muted)}
+  .price-card ul{list-style:none;padding:0;margin:18px 0 22px;font-size:14px;color:#3E4C59}
+  .price-card li{display:flex;gap:9px;padding:6px 0;align-items:flex-start}
+  .price-card li:before{content:"";width:16px;height:16px;flex:0 0 auto;margin-top:3px;border-radius:50%;background:#E4F3EC;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F7A5C' stroke-width='3'><path d='M20 6L9 17l-5-5'/></svg>");background-size:11px;background-position:center;background-repeat:no-repeat}
+  .price-card .btn{margin-top:auto;width:100%}
+  .ribbon{position:absolute;top:-11px;right:16px;background:var(--gold);color:#2A1F00;font-size:10.5px;font-weight:900;letter-spacing:.1em;padding:4px 10px;border-radius:6px;text-transform:uppercase}
+
+  /* dark band */
+  .band{background:linear-gradient(150deg,#0B1B2B,#15354D);color:#fff;padding:56px 0}
+  .band h2{color:#fff}
+  .band p{color:#BFCFDC}
+
+  /* footer */
+  footer{background:#08131F;color:#93A6B5;padding:44px 0 26px;font-size:14px}
+  footer h5{color:#fff;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px}
+  footer a{color:#A9BAC8;display:block;padding:4px 0;font-size:13.5px}
+  footer a:hover{color:var(--gold2)}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px;margin-bottom:28px}
+  .foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px}
+
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(8,19,31,.66);display:none;place-items:center;z-index:100;padding:18px}
+  .modal.on{display:grid}
+  .modal-box{background:#fff;border-radius:18px;max-width:480px;width:100%;padding:26px;box-shadow:0 30px 70px rgba(0,0,0,.35);max-height:92vh;overflow:auto}
+  .modal-box h3{font-size:22px;margin-bottom:6px}
+  .modal-box p{font-size:14px;color:var(--muted);margin:0 0 18px}
+  .close-x{float:right;background:#F3F0E9;border:0;width:32px;height:32px;border-radius:9px;cursor:pointer;font-size:16px;color:#5E6B78}
+  .form-row{margin-bottom:13px}
+  .ok-box{background:#E4F3EC;border:1px solid #BFE0D2;color:#14664A;border-radius:11px;padding:14px;font-size:14px;margin-bottom:14px}
+
+  .note{background:var(--gold-soft);border:1px solid #EBD9A4;border-radius:12px;padding:14px 16px;font-size:13.5px;color:#6B5300}
+  .empty{background:#fff;border:1px dashed var(--line);border-radius:14px;padding:34px;text-align:center;color:var(--muted);font-size:14.5px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+  .checklist{list-style:none;padding:0;margin:14px 0 0}
+  .checklist li{display:flex;gap:10px;font-size:14.5px;color:#3E4C59;padding:5px 0}
+  .checklist li:before{content:"—";color:var(--gold);font-weight:800}
+
+  @media (max-width:900px){
+    .hero-in{grid-template-columns:1fr;gap:30px}
+    .g3,.g4{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .two-col{grid-template-columns:1fr}
+    .track-picker{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    .g2,.g3,.g4{grid-template-columns:1fr}
+    section{padding:46px 0}
+    .hero{padding:44px 0 52px}
+    .top-in{height:58px;gap:10px}
+    .brand small{display:none}
+    .brand b{font-size:18px}
+    nav.main a{font-size:12.5px;padding:8px 9px}
+    .top .btn{padding:8px 12px;font-size:12.5px}
+    .hero-stats{gap:18px}
+    .brand .mark{width:28px;height:28px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#home" onclick="go('home');return false;">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#0F2537" stroke="#C9A227" stroke-width="1.6"/>
+        <path d="M24 10v26M14 16h20" stroke="#E7CE7A" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M14 16l-5 9h10l-5-9zM34 16l-5 9h10l-5-9z" stroke="#C9A227" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M17 38h14" stroke="#E7CE7A" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span><b>SANAD</b><small>Lawyer Ecosystem</small></span>
+    </a>
+    <nav class="main" id="nav">
+      <a href="#home" data-v="home" class="active">Home</a>
+      <a href="#problems" data-v="problems">Problem</a>
+      <a href="#career" data-v="career">Career</a>
+      <a href="#mentors" data-v="mentors">Mentors</a>
+      <a href="#rooms" data-v="rooms">Rehail</a>
+      <a href="#kaam" data-v="kaam">Kaam</a>
+      <a href="#aikit" data-v="aikit">AI Kit</a>
+      <a href="#growth" data-v="growth">Growth</a>
+      <a href="#pricing" data-v="pricing">Pricing</a>
+    </nav>
+    <button class="btn btn-gold" onclick="openJoin()">Join free</button>
+  </div>
+</header>
+
+<!-- ================= HOME ================= -->
+<div class="view on" id="v-home">
+  <div class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow">Karachi first · Built for lawyers, by lawyers' problems</span>
+        <h1>Sanad milti hai.<br>Raasta <em>hum dete hain.</em></h1>
+        <p class="lead">
+          Pakistan ka pehla <b>lawyer-to-lawyer ecosystem</b> — pupillage aur mentor, rehail aur chamber,
+          kaam aur AI, aur apni pehchaan banana. Naye wakeel ke liye, Karachi se shuru.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-gold" onclick="openJoin()">Muft account banayein</button>
+          <button class="btn btn-ghost" onclick="go('career')">Career roadmap dekhein →</button>
+        </div>
+        <div class="hero-stats">
+          <div><b>2.3 lakh</b><span>Lawyers in Pakistan</span></div>
+          <div><b>55,000+</b><span>On Sindh Bar roll</span></div>
+          <div><b>Rs 43,000</b><span>Sindh minimum wage</span></div>
+          <div><b>71%</b><span>Lawyers get leads online</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h4>Aaj ka Sanad dashboard</h4>
+        <div class="mini-row">
+          <div class="mini-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7CE7A" stroke-width="2"><path d="M12 3v18M5 8h14"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div><p>Pupillage match</p><small>3 seniors aap ke profile se match</small></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7CE7A" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1H4a1 1 0 01-1-1z"/></svg></div>
+          <div><p>Rehail: Punjab Colony</p><small>6 verified rooms · Rs 12,000–28,000</small></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7CE7A" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+          <div><p>Kaam Board</p><small>4 drafting tasks · Rs 3,000–15,000</small></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E7CE7A" stroke-width="2"><path d="M12 2a5 5 0 015 5v3l2 4H5l2-4V7a5 5 0 015-5z"/><path d="M9 18a3 3 0 006 0"/></svg></div>
+          <div><p>AI Kit</p><small>Plaint, notice, bail — verified prompts</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Why Sanad exists</span>
+        <h2>Har naye lawyer ki kahani ek jaisi hai</h2>
+        <p>Degree mil gayi. Sanad mil gayi. Phir shuru hota hai asli imtihaan — jismein koi syllabus nahi hota.</p>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <div class="num">01</div>
+          <h3>"Senior kaise dhoondein?"</h3>
+          <p>6 mahine ki pupillage lazmi hai, magar Bar Council kisi ki placement nahi karwata. Sab kuch reference se hota hai — jo naya banda shehar mein aaya hai, us ke paas reference kahan se aaye?</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h3>"Tankhwah nahi milti"</h3>
+          <p>Fresh lawyer ko Rs 25,000–50,000 — jab ke Sindh ka minimum wage Rs 43,000 hai. Bohat chambers mein stipend zero. Log "salary" ki jagah "stipend" keh dete hain.</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h3>"Pehla client kahan se?"</h3>
+          <p>Drafting copy karke sikhi jati hai, marketing sikhayi nahi jati, aur brief-less saal guzar jate hain. Talent nahi, system ki kami hai.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">The ecosystem</span>
+        <h2>Aath modules, ek hi chhat ke neeche</h2>
+        <p>Client dhoondna sirf ek feature hai. Asli product aap ki <b>career</b> hai.</p>
+      </div>
+      <div class="grid g4" id="modules"></div>
+      <div class="note" style="margin-top:22px">
+        <b>Note:</b> Sanad kisi client ki case referral par commission nahi leta aur na hi "case dilwa denge" ka wada karta hai — ye Bar Council ke rules aur professional ethics ke khilaf hoga. Hum sirf <b>raasta, training, rehail aur pehchaan</b> dete hain.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="two-col">
+        <div>
+          <span class="kicker">Karachi pilot</span>
+          <h2 style="font-size:30px;margin:10px 0 14px">Punjab Colony se shuru kyun?</h2>
+          <p class="muted" style="font-size:16px">
+            Karachi ke court areas ke aas paas lawyers ka sab se ghana network hai — City Courts, Saddar, Garden,
+            Punjab Colony, Gulshan. Naye lawyer ko yahan teen cheezein chahiye: <b>sasta rehail</b>, <b>qareeb chamber</b>,
+            aur <b>aisa banda jo raasta bataye</b>. Teeno ek hi mohalle mein mil sakti hain.
+          </p>
+          <ul class="checklist">
+            <li>Verified rooms, PG aur seat-sharing listings — broker ke bina</li>
+            <li>Chamber-share: ek hi chamber, 2–3 juniors, rent split</li>
+            <li>Mohalle ke seniors ka mentor network — "jo dost hote hain" wala system, formal banaya hua</li>
+            <li>Mahine ka kharcha plan: rehail + khana + transport + bar fee = realistic budget</li>
+          </ul>
+          <button class="btn btn-dark" style="margin-top:18px" onclick="go('rooms')">Rehail listings dekhein</button>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="background:linear-gradient(150deg,#0B1B2B,#1B3A52);padding:22px;color:#fff">
+            <div style="font-size:11px;letter-spacing:.16em;color:#E7CE7A;font-weight:800">MONTHLY BUDGET — JUNIOR LAWYER</div>
+            <div style="font-family:Georgia,serif;font-size:26px;margin-top:6px">Rs 47,000 <span style="font-size:13px;font-family:inherit;color:#9FB0BE">/ month</span></div>
+          </div>
+          <div style="padding:20px">
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px"><span>Rehail (share)</span><b>18,000</b></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px"><span>Khana + utilities</span><b>12,000</b></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px"><span>Transport (court)</span><b>6,000</b></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px"><span>Bar fee + misc</span><b>3,000</b></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;font-size:14px"><span>Bachat / emergency</span><b>8,000</b></div>
+            <div class="note" style="margin-top:10px;font-size:12.5px">Agar stipend Rs 30,000 hai, to share kiye baghair ye possible nahi. Isi liye Rehail ecosystem ka hissa hai.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="max-width:620px">
+        <h2 style="font-size:clamp(23px,3vw,32px)">Junior lawyer ke liye Sanad hamesha muft rahega.</h2>
+        <p style="margin:10px 0 0">Paisa seniors, firms, universities aur sponsors se aata hai — us bande se nahi jis ke paas abhi kuch nahi.</p>
+      </div>
+      <button class="btn btn-gold" onclick="openJoin()">Free account banayein</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PROBLEMS ================= -->
+<div class="view" id="v-problems">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Research-backed</span>
+        <h2>Lawyers ko asal mein kya takleef hai</h2>
+        <p>Ye fehrist guess nahi hai — newspapers, bar council data, research papers aur lawyers ki apni awaaz se banayi gayi hai.</p>
+      </div>
+      <div class="chips" id="problemChips"></div>
+      <div class="grid g3" id="problemGrid"></div>
+    </div>
+  </section>
+
+  <section style="background:#fff;border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Numbers jo bolte hain</span>
+        <h2>Chaar aankre jo sab kuch bata dete hain</h2>
+      </div>
+      <div class="grid g4">
+        <div class="card"><div class="stat-big">230,879</div><p style="margin-top:10px">Pakistan mein enrolled lawyers (LJCP 2024)</p></div>
+        <div class="card"><div class="stat-big">Rs 25–50k</div><p style="margin-top:10px">Fresh lawyer ki tankhwah, jab minimum wage Rs 43,000 hai</p></div>
+        <div class="card"><div class="stat-big">12–17%</div><p style="margin-top:10px">Legal profession mein khatoon lawyers ka hissa</p></div>
+        <div class="card"><div class="stat-big">6 months</div><p style="margin-top:10px">Pupillage — jis ki placement ka koi system nahi</p></div>
+      </div>
+      <div class="note" style="margin-top:20px">Sources: Law &amp; Justice Commission of Pakistan, Dawn, The News, Express Tribune, Profit, Foreign Policy, ICJ, Sindh Bar Council portal.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Already solved?</span>
+        <h2>Jo platforms pehle se maujood hain — aur jo nahi hain</h2>
+        <p>Imaandari se: client marketplace ka market bhar chuka hai. Aap ka mauqa wahan hai jahan koi nahi hai.</p>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <span class="tag blue">Already crowded</span>
+          <h3>Client dhoondne wale platforms</h3>
+          <p>WakeelDesk, SJP, LawHub, ZOR, Katchery, Wakalat, Pakistan Law Bot — sab ka model ek hi: client ko lawyer chahiye. Lawyer ki career, training, rehail ya growth inka product nahi.</p>
+        </div>
+        <div class="card" style="border-color:var(--gold);background:#FFFDF7">
+          <span class="tag">White space</span>
+          <h3>Lawyer-to-lawyer ecosystem</h3>
+          <p>Chamber match, verified rehail, kaam board, AI training, personal brand — koi bhi player ye poora stack ek jagah nahi de raha. Karachi-first hona aap ka faida hai.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CAREER ================= -->
+<div class="view" id="v-career">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Career Navigator</span>
+        <h2>Sanad se career tak — step by step</h2>
+        <p>Apna stage chunein. Har step tick karein — progress isi browser mein save hoti hai. (Demo mode.)</p>
+      </div>
+      <div class="track-picker" id="trackPicker"></div>
+      <div class="progress-wrap">
+        <b style="font-size:14px;white-space:nowrap" id="progLabel">0 / 0 complete</b>
+        <div class="bar"><i id="progBar"></i></div>
+        <button class="btn btn-line" style="padding:8px 14px;font-size:13px" onclick="resetProgress()">Reset</button>
+      </div>
+      <div id="roadmap"></div>
+      <div class="note" style="margin-top:18px">
+        <b>Disclaimer:</b> Ye general guidance hai. Enrollment fees, forms aur requirements waqt ke saath badalte hain —
+        final confirmation hamesha Sindh Bar Council / Pakistan Bar Council se karein.
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= MENTORS ================= -->
+<div class="view" id="v-mentors">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Chamber Match</span>
+        <h2>Sahi senior, sahi chamber</h2>
+        <p>Pupillage ka sab se bara masla reference hai. Yahan aap apni zaroorat batayein — verified chambers se match karein.</p>
+      </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="grid g4" style="gap:14px">
+          <div><label class="field">Practice area</label><select id="mArea"><option>Koi bhi</option><option>Criminal</option><option>Civil</option><option>Family</option><option>Corporate / Tax</option><option>Constitutional</option></select></div>
+          <div><label class="field">Court</label><select id="mCourt"><option>Koi bhi</option><option>City Courts</option><option>Sindh High Court</option><option>District &amp; Sessions</option><option>Supreme Court</option></select></div>
+          <div><label class="field">Mujhe chahiye</label><select id="mNeed"><option>Pupillage (6 months)</option><option>Paid associate position</option><option>Mentorship only</option><option>Chamber seat share</option></select></div>
+          <div><label class="field">Zaban</label><select id="mLang"><option>Koi bhi</option><option>Urdu</option><option>English</option><option>Sindhi</option></select></div>
+        </div>
+        <button class="btn btn-dark" style="margin-top:16px" onclick="runMatch()">Match dikhayein</button>
+        <span class="muted" style="font-size:13px;margin-left:12px" id="matchNote"></span>
+      </div>
+      <div class="grid g2" id="mentorGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ROOMS ================= -->
+<div class="view" id="v-rooms">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Rehail</span>
+        <h2>Verified rooms, PG aur chamber-share</h2>
+        <p>Punjab Colony, Garden, Saddar, Gulshan, Jamshed Road — court ke qareeb, broker ke bina. Har listing manually verify hoti hai.</p>
+      </div>
+      <div class="chips" id="areaChips"></div>
+      <div class="grid g4" style="gap:12px;margin-bottom:22px">
+        <div><label class="field">Max budget (Rs)</label><input id="rBudget" type="number" value="30000" min="5000" step="1000"></div>
+        <div><label class="field">Type</label><select id="rType"><option>Koi bhi</option><option>Room</option><option>PG / Hostel</option><option>Seat share</option><option>Chamber share</option></select></div>
+        <div><label class="field">Suitable for</label><select id="rGender"><option>Koi bhi</option><option>Male</option><option>Female</option><option>Family / Couple</option></select></div>
+        <div style="display:flex;align-items:flex-end"><button class="btn btn-dark" style="width:100%" onclick="renderRooms()">Filter</button></div>
+      </div>
+      <div class="grid g3" id="roomGrid"></div>
+      <p class="muted" style="font-size:13px;margin-top:18px">⚠️ Demo data. Live version mein har listing SBC-verified owner aur (career ke liye) CNIC check ke saath aayegi. Sanad kabhi deposit apne paas nahi rakhta.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ================= KAAM ================= -->
+<div class="view" id="v-kaam">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Kaam Board</span>
+        <h2>Brief-less dinon ka ilaaj</h2>
+        <p>Drafting, research, vetting, translation, remote paralegal — seniors ka overflow kaam juniors tak. Court band ho to bhi income chalti rahe.</p>
+      </div>
+      <div class="chips" id="kaamChips"></div>
+      <div class="grid g2" id="kaamGrid"></div>
+      <div class="note" style="margin-top:20px">
+        <b>Earning rule:</b> Sanad 10–15% platform fee leta hai, payment escrow mein rehti hai, aur kaam milne ke baad hi release hoti hai. Junior se koi signup fee nahi.
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= AI KIT ================= -->
+<div class="view" id="v-aikit">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">AI Kit</span>
+        <h2>AI aap ki jagah nahi lega — magar use karne wala le jayega</h2>
+        <p>Pakistan mein LawGPT, DigiLawyer, AI Attorney jaise tools maujood hain. Masla tool nahi, <b>tareeqa</b> hai. Ye ready prompts copy karein aur apne facts daalein.</p>
+      </div>
+      <div class="chips" id="aiChips"></div>
+      <div class="grid g3" id="aiGrid"></div>
+    </div>
+  </section>
+  <section style="background:#fff;border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:22px">
+        <span class="kicker">Guardrails</span>
+        <h2>Chaar rules — in ke baghair AI aap ko nuqsan dega</h2>
+      </div>
+      <div class="grid g4">
+        <div class="card"><span class="tag red">Rule 1</span><h3>Citation verify karein</h3><p>AI ka diya hua case ya section khud parhein. Fake citation court mein aap ki izzat kha jaata hai.</p></div>
+        <div class="card"><span class="tag red">Rule 2</span><h3>Client data kabhi nahi</h3><p>Naam, CNIC, address, case number — AI mein kabhi na daalein. Anonymise karein.</p></div>
+        <div class="card"><span class="tag red">Rule 3</span><h3>Draft, phir sudhaarein</h3><p>AI first draft deta hai; final draft aap ka hota hai. Har clause par apna judgement lagayein.</p></div>
+        <div class="card"><span class="tag red">Rule 4</span><h3>Zimmedari aap ki</h3><p>Court mein jo file jaata hai, us ka banane wala aap hain — tool nahi.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= GROWTH ================= -->
+<div class="view" id="v-growth">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Growth School</span>
+        <h2>Pehla client internet se — bina rules toray</h2>
+        <p>Global data: 71% lawyers social media se leads paate hain. Pakistan mein bhi log Google, Facebook aur YouTube par lawyer dhoondte hain. Farq sirf ye hai ke <b>kaise</b> post karein.</p>
+      </div>
+      <div class="grid g2" style="margin-bottom:34px">
+        <div class="card">
+          <span class="tag green">Allowed</span>
+          <h3>Jo aap kar sakte hain</h3>
+          <ul class="checklist">
+            <li>Law ko aam zaban mein samjhana (video, post, blog)</li>
+            <li>Public judgments aur law changes par commentary</li>
+            <li>Apna education, experience aur practice areas batana</li>
+            <li>Free legal awareness sessions, webinars, clinics</li>
+            <li>Client reviews — client ki ijazat se, bina case detail ke</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag red">Careful</span>
+          <h3>Jo aap ko nahi karna chahiye</h3>
+          <ul class="checklist">
+            <li>"Karachi ka #1 lawyer" type jhoote dawe</li>
+            <li>Kisi case ka result guarantee karna</li>
+            <li>Client ki pehchaan ya case detail share karna</li>
+            <li>Court ke andar ya judge ke samne publicity</li>
+            <li>Touts / dalalon ke zariye case lena</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-bottom:22px">
+        <span class="kicker">Starter plan</span>
+        <h2>Aap ke pehle 7 din ka content calendar</h2>
+      </div>
+      <div class="grid g3" id="growthGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PRICING ================= -->
+<div class="view" id="v-pricing">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Pricing</span>
+        <h2>Junior ke liye muft. Hamesha.</h2>
+        <p>Sanad ka model simple hai: jo abhi shuru kar raha hai, us se nahi. Paisa un se aata hai jinke paas already kaam hai.</p>
+      </div>
+      <div class="grid g3">
+        <div class="card price-card">
+          <span class="tag">Students &amp; juniors</span>
+          <h3>Sanad Free</h3>
+          <div class="amt">Rs 0 <span>/ hamesha</span></div>
+          <ul>
+            <li>Career Navigator + checklists</li>
+            <li>Verified profile aur roll-number badge</li>
+            <li>Rehail listings dekhna aur apply karna</li>
+            <li>Chamber Match — 3 requests / month</li>
+            <li>AI Kit (basic prompts)</li>
+            <li>Kaam Board par apply</li>
+          </ul>
+          <button class="btn btn-line" onclick="openJoin()">Free join karein</button>
+        </div>
+        <div class="card price-card hot">
+          <div class="ribbon">Most useful</div>
+          <span class="tag">Seniors &amp; chambers</span>
+          <h3>Chamber Pro</h3>
+          <div class="amt">Rs 2,500 <span>/ month</span></div>
+          <ul>
+            <li>Verified chamber profile</li>
+            <li>Unlimited pupil requests aur filtering</li>
+            <li>Kaam Board par tasks post karna (10/month)</li>
+            <li>3 kaam ke liye escrow + payment protection</li>
+            <li>"Verified Senior" badge</li>
+            <li>Growth School workshops — 2 free seats</li>
+          </ul>
+          <button class="btn btn-gold" onclick="openJoin()">Chamber list karein</button>
+        </div>
+        <div class="card price-card">
+          <span class="tag green">Universities / firms</span>
+          <h3>Institution</h3>
+          <div class="amt">Rs 60,000 <span>/ year se</span></div>
+          <ul>
+            <li>Law college internship placement pipeline</li>
+            <li>Students ki internship tracking dashboard</li>
+            <li>Firm ke liye hiring dashboard</li>
+            <li>Co-branded workshops (CPD)</li>
+            <li>Annual legal-career report</li>
+          </ul>
+          <button class="btn btn-line" onclick="openJoin()">Baat karein</button>
+        </div>
+      </div>
+      <div class="note" style="margin-top:24px">
+        <b>Kya nahi bechte:</b> case referral, "ranking" ya "guaranteed client" — kuch bhi nahi. Sirf tools, training, reach aur verified network.
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:12px">
+          <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true" style="width:30px;height:30px">
+            <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#0F2537" stroke="#C9A227" stroke-width="1.6"/>
+            <path d="M24 10v26M14 16h20" stroke="#E7CE7A" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M14 16l-5 9h10l-5-9zM34 16l-5 9h10l-5-9z" stroke="#C9A227" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M17 38h14" stroke="#E7CE7A" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <span><b style="font-size:19px">SANAD</b></span>
+        </div>
+        <p style="max-width:280px;font-size:13.5px;line-height:1.6">Karachi ka lawyer ecosystem. Sanad se career tak — mentor, rehail, kaam aur pehchaan, ek jagah.</p>
+      </div>
+      <div>
+        <h5>Ecosystem</h5>
+        <a href="#career" onclick="go('career');return false;">Career Navigator</a>
+        <a href="#mentors" onclick="go('mentors');return false;">Chamber Match</a>
+        <a href="#rooms" onclick="go('rooms');return false;">Rehail</a>
+        <a href="#kaam" onclick="go('kaam');return false;">Kaam Board</a>
+      </div>
+      <div>
+        <h5>Learn</h5>
+        <a href="#aikit" onclick="go('aikit');return false;">AI Kit</a>
+        <a href="#growth" onclick="go('growth');return false;">Growth School</a>
+        <a href="#problems" onclick="go('problems');return false;">The Problem</a>
+        <a href="#pricing" onclick="go('pricing');return false;">Pricing</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="#join" onclick="openJoin();return false;">Join free</a>
+        <a href="#join" onclick="openJoin();return false;">Become a mentor</a>
+        <a href="#join" onclick="openJoin();return false;">List a room</a>
+        <a href="#join" onclick="openJoin();return false;">Partner with us</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Sanad — Karachi pilot. Demo prototype.</span>
+      <span>Sanad koi legal advice nahi deta · Bar Council rules ka ehtiram karta hai</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= JOIN MODAL ================= -->
+<div class="modal" id="joinModal">
+  <div class="modal-box">
+    <button class="close-x" onclick="closeJoin()">✕</button>
+    <h3>Sanad mein shamil hon</h3>
+    <p>Karachi pilot ke pehle 500 members ke liye — sab kuch free.</p>
+    <div id="joinForm">
+      <div class="form-row"><label class="field">Aap ka naam</label><input id="jName" placeholder="Adv. Ali Raza"></div>
+      <div class="form-row"><label class="field">WhatsApp number</label><input id="jPhone" placeholder="03xx xxxxxxx" inputmode="tel"></div>
+      <div class="form-row"><label class="field">Aap ka stage</label>
+        <select id="jStage">
+          <option>Law student</option>
+          <option>Fresh graduate (LLB done)</option>
+          <option>Pupil / trainee</option>
+          <option>Junior advocate (0–3 years)</option>
+          <option>Advocate (3+ years)</option>
+          <option>Senior / Chamber owner</option>
+        </select>
+      </div>
+      <div class="form-row"><label class="field">Mujhe sab se zyada kya chahiye</label>
+        <select id="jNeed">
+          <option>Pupillage / chamber</option>
+          <option>Rehail (room / share)</option>
+          <option>Kaam / freelance</option>
+          <option>Career guidance</option>
+          <option>Mentor ke taur par shamil hona</option>
+        </select>
+      </div>
+      <button class="btn btn-gold" style="width:100%" onclick="submitJoin()">Submit karein</button>
+      <p style="font-size:11.5px;margin-top:12px">Demo form — data sirf aap ke browser mein save hota hai, kahin nahi bhejta.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   SANAD — demo data + interactions (no backend, no external assets)
+   ============================================================ */
+
+/* ---------- modules ---------- */
+const MODULES = [
+  {n:'01',t:'Career Navigator',d:'LLB se High Court tak — har step, har document, har deadline. "Mujhe pata nahi kya karna hai" ka jawab.'},
+  {n:'02',t:'Chamber Match',d:'Verified seniors aur chambers. Pupillage, paid associate, ya sirf mentorship — clearly likha hua, reference ke baghair.'},
+  {n:'03',t:'Rehail',d:'Punjab Colony se Garden tak — verified rooms, PG, seat-share aur chamber-share. Broker nahi, trust.'},
+  {n:'04',t:'Kaam Board',d:'Seniors ka overflow kaam juniors tak: drafting, research, vetting, translation. Escrow payment.'},
+  {n:'05',t:'AI Kit',d:'Pakistan-specific prompts aur verification checklists. AI ka istemal, AI par bharosa nahi.'},
+  {n:'06',t:'Growth School',d:'Pehle 10 clients ka plan: LinkedIn, YouTube, local SEO — aur wo sab jo Bar Council rules ke andar hai.'},
+  {n:'07',t:'Sanad Verified',d:'Bar Council roll se cross-check kiya hua badge. Public ke liye trust, aap ke liye pehchaan.'},
+  {n:'08',t:'Chamber OS',d:'Cause list, file notes, fee ledger, WhatsApp reminders. Phase 2 mein — jab network ban jaye.'}
+];
+document.getElementById('modules').innerHTML = MODULES.map(m=>`
+  <div class="card"><div class="num">${m.n}</div><h3 style="font-size:17px">${m.t}</h3><p style="font-size:13.5px">${m.d}</p></div>`).join('');
+
+/* ---------- problems ---------- */
+const PROBLEMS = [
+  {tag:'money', label:'Paisa', title:'Tankhwah minimum wage se bhi kam', stat:'Rs 25,000–50,000 / month',
+   body:'Fresh lawyer ki starting salary Sindh ke minimum wage (Rs 43,000) se bhi kam hoti hai. Bohat chambers mein stipend zero. Isi liye log doosri professions ki taraf bhagte hain.'},
+  {tag:'money', label:'Paisa', title:'Lump-sum fee model', stat:'Junior = cost, revenue nahi',
+   body:'Pakistan mein per-case lump-sum fee hoti hai, hourly billing nahi. Senior ke liye junior ka waqt bachana zaroori nahi hota — is liye staffing lean rakhi jati hai.'},
+  {tag:'entry', label:'Entry', title:'Pupillage ka koi system nahi', stat:'6 months · reference-based',
+   body:'6 mahine senior ke chamber mein lazmi hain — magar placement ki zimmedari koi nahi leta. Jo shaher se bahar se aaya hai ya first-generation lawyer hai, us ke paas network hi nahi.'},
+  {tag:'skills', label:'Skills', title:'Degree hai, practice nahi', stat:'Theory vs practice gap',
+   body:'Plaint kahan file hoti hai, court mein kaise bolna hai, client kaise handle karna hai — ye law college nahi sikhata. Drafting "photocopy dukaan" se seekhi jati hai.'},
+  {tag:'clients', label:'Clients', title:'Brief-less saalon ka safar', stat:'Pehla client kahan se?',
+   body:'Naye lawyer ke paas na referral chain hoti hai, na marketing ki training. Aur jo marketing karte hain, unhe Bar Council rules ka andaza nahi hota.'},
+  {tag:'entry', label:'Entry', title:'Fake lawyers aur touts', stat:'Trust deficit',
+   body:'Sindh Bar Council khud imposters declare karta raha hai. Public confuse hai, aur genuine naye lawyer ko apni credibility sabit karne mein saal lag jate hain.'},
+  {tag:'money', label:'Paisa', title:'Rehail ka masla (Karachi)', stat:'Rs 20,000+ single room',
+   body:'Rs 30,000 ki income par Karachi mein room milna mushkil. Jo log network rakhte hain, unka masla hal ho jata hai — baqi log 3-4 bandon ke saath adjust karte hain ya door se aate hain.'},
+  {tag:'women', label:'Women', title:'Khatoon lawyers ka dropout', stat:'12–17% representation',
+   body:'Harassment ke complaints ka mechanism courts aur chambers mein lagoo nahi hota. Career break ke baad wapsi ka koi raasta nahi. Sirf Sindh mein ~13% lawyers khatoon hain.'},
+  {tag:'skills', label:'Skills', title:'Structured CPD nahi', stat:'0 mandatory hours',
+   body:'UK/India mein continuing education mandatory hai. Pakistan mein nahi — is liye 10 saal ka experience bhi 1 saal ka experience 10 baar ho sakta hai.'}
+];
+const PROBLEM_CHIPS = [['all','Sab'],['money','Paisa'],['entry','Entry & sanad'],['skills','Skills'],['clients','Clients'],['women','Women']];
+let problemFilter='all';
+function renderProblems(){
+  document.getElementById('problemChips').innerHTML = PROBLEM_CHIPS.map(([k,l])=>
+    `<button class="chip ${problemFilter===k?'on':''}" onclick="setProblemFilter('${k}')">${l}</button>`).join('');
+  const list = PROBLEMS.filter(p=>problemFilter==='all'||p.tag===problemFilter);
+  document.getElementById('problemGrid').innerHTML = list.map(p=>`
+    <div class="card">
+      <span class="tag ${p.tag==='women'?'red':(p.tag==='clients'?'green':'')}">${p.label}</span>
+      <h3>${p.title}</h3>
+      <div style="font-size:12.5px;font-weight:800;color:var(--gold);letter-spacing:.04em;margin:2px 0 10px;text-transform:uppercase">${p.stat}</div>
+      <p>${p.body}</p>
+    </div>`).join('') || `<div class="empty">Is filter mein kuch nahi.</div>`;
+}
+function setProblemFilter(k){problemFilter=k;renderProblems();}
+
+/* ---------- career roadmap ---------- */
+const TRACKS = {
+  student:{label:'Law student',sub:'LLB 3rd–5th year',steps:[
+    {id:'st1',t:'Ek practice area chunein (aur likh lein)',d:'Criminal, civil, family, corporate, tax, constitutional. Sirf interest nahi — market dekhein: Karachi mein kis kaam ki demand hai.',meta:[['Time','1 week'],['Cost','—']]},
+    {id:'st2',t:'Teen mukhtalif internships',d:'Ek trial court chamber, ek law firm, ek in-house legal department. Har jagah se ek "log book" banayein: kya dekha, kya draft kiya.',meta:[['Time','3 summers'],['Cost','—']]},
+    {id:'st3',t:'Drafting ki 30 copies likhein',d:'Photocopy se copy nahi — khud likhein: plaint, written statement, bail application, legal notice, affidavit. Har hafte 2.',meta:[['Time','4 months'],['Cost','—']]},
+    {id:'st4',t:'Moot court + legal writing',d:'Do moots aur do published articles/blogs. Ye aap ki CV aur LinkedIn ka asli hissa bante hain.',meta:[['Time','ongoing']]},
+    {id:'st5',t:'Law-GAT ki tayyari',d:'Bar Council ka test — timing aur syllabus bar council se confirm karein. 60 din ka study plan banayein.',meta:[['Time','2 months']]},
+    {id:'st6',t:'Legal English par kaam',d:'Roz 20 minute: ek judgment parhein, us ka 5-line summary likhein. Ye skill aap ko baqi batch se alag karegi.',meta:[['Time','daily']]}
+  ]},
+  fresh:{label:'Fresh graduate',sub:'LLB done · Law-GAT / enrollment',steps:[
+    {id:'fs1',t:'Documents ka ek folder banayein',d:'LLB degree + transcripts, CNIC, photos, character certificate, Law-GAT result. Sab ki scanned copies cloud par.',meta:[['Time','2 days']]},
+    {id:'fs2',t:'Law-GAT aur enrollment process',d:'Sindh Bar Council ki current requirements, fees aur forms unki website/office se confirm karein — ye waqt ke saath badalte hain.',meta:[['Time','1–3 months']]},
+    {id:'fs3',t:'Senior / chamber shortlist',d:'5 chambers ki list banayein: practice area, court, reputation, aur kya wo pupil ko kuch dete hain. Sanad Chamber Match yahan kaam aata hai.',meta:[['Time','1 week']]},
+    {id:'fs4',t:'Chamber visit — CV haath mein',d:'Phone se pehle visit karein. Ek page ki CV, saaf likha hua: kya seekhna hai, kitna waqt de sakte hain, kis area mein interest hai.',meta:[['Time','2 weeks']]},
+    {id:'fs5',t:'Pupillage ka "learning contract"',d:'Shuru mein hi tay karein: timing, kaam ki qism, stipend (agar ho), aur kya seekhne ko milega. Zubani wada likh lein.',meta:[['Time','day 1']]},
+    {id:'fs6',t:'Roz 1 page likhein',d:'Har din jo case dekha us ka 1-page note. 6 mahine baad ye aap ki asli degree hogi.',meta:[['Time','daily']]}
+  ]},
+  junior:{label:'Junior advocate',sub:'Sanad done · 0–5 years',steps:[
+    {id:'js1',t:'Apna court aur area fix karein',d:'City Courts, Malir, ya SHC — sab jagah bhaagte rehna income nahi deta. Ek court, 2–3 case types.',meta:[['Time','1 month']]},
+    {id:'js2',t:'Apna system banayein',d:'Har case ka file number, next date, fee aur status — ek register ya sheet mein. WhatsApp screenshots case management nahi hai.',meta:[['Time','1 week']]},
+    {id:'js3',t:'Pehla pehchaan profile',d:'Sanad verified profile + LinkedIn + ek WhatsApp Business account. Saaf likha hua: kya karte hain, kis court mein, kaise contact karein.',meta:[['Time','1 week'],['Cost','Rs 0']]},
+    {id:'js4',t:'20 logon ko batayein',d:'Batchmates, teachers, mohalle ke dukandar, property dealer, bank ka staff. Pehla case aksar referral se aata hai, ad se nahi.',meta:[['Time','ongoing']]},
+    {id:'js5',t:'Kaam Board se cashflow',d:'Khali waqt mein drafting/research tasks lein. Isse mahina chalega aur portfolio banega.',meta:[['Time','ongoing']]},
+    {id:'js6',t:'Har mahine ek content piece',d:'Ek video ya post: "kirayedar ke haqooq", "bail kaise hoti hai". 12 mahine = 12 pieces = Google par naam.',meta:[['Time','monthly']]},
+    {id:'js7',t:'2 saal ka record rakhein',d:'High Court license ke liye practice ka record chahiye — har appearance, har file. Aaj se maintain karein.',meta:[['Time','2 years']]}
+  ]}
+};
+let track='fresh';
+/* safe storage: sandboxed preview iframes me localStorage block ho sakta hai */
+const store = {
+  get(k,d){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):d; }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+let progress = store.get('sanad.progress', {});
+function renderTracks(){
+  document.getElementById('trackPicker').innerHTML = Object.entries(TRACKS).map(([k,t])=>`
+    <button class="track ${track===k?'on':''}" onclick="setTrack('${k}')"><b>${t.label}</b><span>${t.sub}</span></button>`).join('');
+  renderRoadmap();
+}
+function setTrack(k){track=k;renderTracks();}
+function renderRoadmap(){
+  const steps = TRACKS[track].steps;
+  const done = steps.filter(s=>progress[track+'.'+s.id]).length;
+  const pct = Math.round(done/steps.length*100);
+  document.getElementById('progBar').style.width = pct+'%';
+  document.getElementById('progLabel').textContent = `${done} / ${steps.length} complete · ${pct}%`;
+  document.getElementById('roadmap').innerHTML = steps.map((s,i)=>{
+    const isDone = !!progress[track+'.'+s.id];
+    return `<div class="step ${isDone?'done':''}">
+      <button class="check" onclick="toggleStep('${s.id}')" aria-label="mark done">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </button>
+      <div style="flex:1">
+        <h4>${i+1}. ${s.t}</h4>
+        <p>${s.d}</p>
+        <div class="meta">${s.meta.map(([k,v])=>`<span>${k}: <b>${v}</b></span>`).join('')}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function toggleStep(id){
+  const key = track+'.'+id;
+  progress[key] = !progress[key];
+  store.set('sanad.progress', progress);
+  renderRoadmap();
+}
+function resetProgress(){
+  Object.keys(progress).forEach(k=>{if(k.startsWith(track+'.')) delete progress[k];});
+  store.set('sanad.progress', progress);
+  renderRoadmap();
+}
+
+/* ---------- mentors ---------- */
+const MENTORS = [
+  {name:'Adv. Kamran Siddiqui', area:'Criminal', court:'City Courts', years:19, lang:['Urdu','English'], need:['Pupillage (6 months)','Paid associate position'], paid:'Stipend Rs 20,000', slots:2, init:'KS'},
+  {name:'Adv. Farah Naaz', area:'Family', court:'District & Sessions', years:12, lang:['Urdu','English'], need:['Pupillage (6 months)','Mentorship only'], paid:'Unpaid (learning-focused)', slots:1, init:'FN'},
+  {name:'Barrister Owais Ahmed', area:'Corporate / Tax', court:'Sindh High Court', years:14, lang:['English','Urdu'], need:['Paid associate position'], paid:'Rs 60,000–80,000', slots:1, init:'OA'},
+  {name:'Adv. Rizwan Ali Brohi', area:'Civil', court:'City Courts', years:9, lang:['Urdu','Sindhi'], need:['Chamber seat share','Mentorship only'], paid:'Seat share Rs 8,000/mo', slots:3, init:'RB'},
+  {name:'Adv. Sana Qureshi', area:'Constitutional', court:'Sindh High Court', years:11, lang:['English','Urdu'], need:['Pupillage (6 months)'], paid:'Stipend Rs 25,000', slots:1, init:'SQ'},
+  {name:'Adv. Muhammad Iqbal', area:'Civil', court:'District & Sessions', years:24, lang:['Urdu'], need:['Pupillage (6 months)','Paid associate position'], paid:'Stipend Rs 18,000', slots:2, init:'MI'}
+];
+function runMatch(){
+  const a=document.getElementById('mArea').value, c=document.getElementById('mCourt').value,
+        n=document.getElementById('mNeed').value, l=document.getElementById('mLang').value;
+  const scored = MENTORS.map(m=>{
+    let s=62;
+    if(a!=='Koi bhi' && m.area===a) s+=14;
+    if(a!=='Koi bhi' && m.area!==a) s-=16;
+    if(c!=='Koi bhi' && m.court===c) s+=9;
+    if(l!=='Koi bhi' && m.lang.includes(l)) s+=6;
+    if(m.need.includes(n)) s+=8;
+    return {...m, score:Math.max(41,Math.min(97,s))};
+  }).sort((x,y)=>y.score-x.score).slice(0,4);
+  document.getElementById('matchNote').textContent = `${scored.length} chambers ne aap ki zaroorat se match kiya`;
+  document.getElementById('mentorGrid').innerHTML = scored.map(m=>`
+    <div class="card">
+      <div class="mentor">
+        <div class="avatar">${m.init}</div>
+        <div style="flex:1">
+          <h3 style="font-size:16.5px">${m.name}</h3>
+          <div class="meta-line">${m.area} · <b>${m.court}</b> · ${m.years} saal</div>
+        </div>
+        <div class="match-pct">${m.score}% match</div>
+      </div>
+      <div class="badges">
+        ${m.lang.map(x=>`<span class="badge">${x}</span>`).join('')}
+        <span class="badge">${m.slots} seat${m.slots>1?'s':''} open</span>
+        <span class="badge" style="background:#E4F3EC;border-color:#BFE0D2;color:#14664A">Verified</span>
+      </div>
+      <div style="font-size:13.5px;color:var(--muted);margin-bottom:14px"><b style="color:var(--navy)">Terms:</b> ${m.paid}</div>
+      <button class="btn btn-line" style="width:100%;padding:10px" onclick="openJoin()">Request bhejein</button>
+    </div>`).join('');
+}
+
+/* ---------- rooms ---------- */
+const ROOMS = [
+  {t:'Single room, shared flat', area:'Punjab Colony', type:'Room', price:14000, for:'Male', note:'2 lawyers ke saath share, court 10 min'},
+  {t:'PG for male lawyers', area:'Punjab Colony', type:'PG / Hostel', price:11500, for:'Male', note:'Khana shamil, 4 beds, study table'},
+  {t:'Room in 2-bed flat', area:'Garden East', type:'Room', price:18000, for:'Male', note:'Furnished, City Courts 8 min'},
+  {t:'PG for female lawyers', area:'Saddar', type:'PG / Hostel', price:16500, for:'Female', note:'Family building, security guard, warden'},
+  {t:'Chamber seat share', area:'City Courts vicinity', type:'Chamber share', price:8000, for:'Male', note:'1 desk + cupboard, 2 juniors already'},
+  {t:'Seat share in chamber', area:'Near Sindh High Court', type:'Chamber share', price:12000, for:'Female', note:'Separate desk, library access'},
+  {t:'Small family flat', area:'Jamshed Road', type:'Room', price:28000, for:'Family / Couple', note:'1 bed drawing, 2nd floor, lift'},
+  {t:'Room near Malir court', area:'Malir', type:'Room', price:12000, for:'Male', note:'Walk to court, water 24h'},
+  {t:'Shared room (2 persons)', area:'Gulshan-e-Iqbal', type:'Room', price:9500, for:'Male', note:'Bus route to City Courts'}
+];
+let areaFilter='Sab';
+function renderRooms(){
+  const areas=['Sab',...new Set(ROOMS.map(r=>r.area))];
+  document.getElementById('areaChips').innerHTML = areas.map(a=>
+    `<button class="chip ${areaFilter===a?'on':''}" onclick="setArea('${a.replace(/'/g,"\\'")}')">${a}</button>`).join('');
+  const budget=parseInt(document.getElementById('rBudget').value||30000,10);
+  const type=document.getElementById('rType').value, gen=document.getElementById('rGender').value;
+  const list=ROOMS.filter(r=>
+    (areaFilter==='Sab'||r.area===areaFilter) && r.price<=budget &&
+    (type==='Koi bhi'||r.type===type) && (gen==='Koi bhi'||r.for===gen));
+  document.getElementById('roomGrid').innerHTML = list.map(r=>`
+    <div class="card listing">
+      <span class="tag ${r.type==='Chamber share'?'blue':''}">${r.type}</span>
+      <h3>${r.t}</h3>
+      <div class="loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5E6B78" stroke-width="2"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>${r.area}</div>
+      <div class="price">Rs ${r.price.toLocaleString()} <span>/ month</span></div>
+      <div class="pill-row" style="margin-top:10px"><span class="badge">${r.for}</span><span class="badge">${r.note}</span></div>
+      <div class="foot">
+        <span class="verified"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1F7A5C" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Verified</span>
+        <button class="apply" onclick="openJoin()">Contact</button>
+      </div>
+    </div>`).join('') || `<div class="empty" style="grid-column:1/-1">Is filter par koi listing nahi mili — budget barhayein ya area badlein.</div>`;
+}
+function setArea(a){areaFilter=a;renderRooms();}
+
+/* ---------- kaam ---------- */
+const KAAM = [
+  {cat:'Drafting', t:'Written statement — rent case', fee:'Rs 12,000', by:'Senior, City Courts', due:'5 din', desc:'3 saal purana rent dispute. Facts aur documents diye jayenge; pehla draft chahiye.'},
+  {cat:'Research', t:'Case law memo — service matter', fee:'Rs 8,000', by:'Advocate, SHC', due:'3 din', desc:'Service tribunal ke 6 judgments ka summary aur ratio extract karna hai.'},
+  {cat:'Remote', t:'Legal research for UK firm (remote)', fee:'Rs 45,000 / month', by:'Verified firm', due:'Part-time', desc:'Contract review aur research. English zaroori. 15–20 ghante hafte mein.'},
+  {cat:'Drafting', t:'Legal notice — cheque bounce', fee:'Rs 3,500', by:'Junior-friendly', due:'2 din', desc:'Simple Section 489-F notice. Template maujood hai, sirf facts add karne hain.'},
+  {cat:'Content', t:'Urdu legal explainer script', fee:'Rs 6,000', by:'Growth School', due:'4 din', desc:'"Kirayedar ke haqooq" par 3-minute video ka script, aam zaban mein.'},
+  {cat:'Drafting', t:'Bail application — trial court', fee:'Rs 10,000', by:'Advocate, Malir', due:'2 din', desc:'Grounds diye jayenge. Junior ke liye best pehla paid task.'}
+];
+let kaamFilter='Sab';
+function renderKaam(){
+  const cats=['Sab','Drafting','Research','Remote','Content'];
+  document.getElementById('kaamChips').innerHTML=cats.map(c=>`<button class="chip ${kaamFilter===c?'on':''}" onclick="setKaam('${c}')">${c}</button>`).join('');
+  const list=KAAM.filter(k=>kaamFilter==='Sab'||k.cat===kaamFilter);
+  document.getElementById('kaamGrid').innerHTML=list.map(k=>`
+    <div class="card">
+      <span class="tag ${k.cat==='Remote'?'green':''}">${k.cat}</span>
+      <h3>${k.t}</h3>
+      <p>${k.desc}</p>
+      <div class="pill-row" style="margin-top:12px"><span class="badge">${k.by}</span><span class="badge">Due: ${k.due}</span></div>
+      <div class="foot" style="display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:12px">
+        <b style="font-family:Georgia,serif;font-size:19px;color:var(--navy)">${k.fee}</b>
+        <button class="apply" onclick="openJoin()">Apply</button>
+      </div>
+    </div>`).join('');
+}
+function setKaam(c){kaamFilter=c;renderKaam();}
+
+/* ---------- AI kit ---------- */
+const AI = [
+  {cat:'Drafting', t:'Plaint ka pehla draft', p:'You are a Pakistani civil court drafting assistant. Facts: [FACTS]. Court: [CITY/DISTRICT COURT]. Relief: [RELIEF].\n\nDraft a plaint under the Code of Civil Procedure 1908 with: (1) title & suit valuation, (2) cause of action with dates, (3) jurisdiction & limitation paragraph, (4) numbered paragraphs of facts, (5) prayer. Keep language as used in Sindh district courts. Do NOT invent citation. Mark missing facts as [TO CONFIRM].'},
+  {cat:'Drafting', t:'Legal notice (rent / cheque / recovery)', p:'Draft a legal notice on behalf of [CLIENT] to [OPPONENT] under [STATUTE].\n\nFacts: [FACTS]. Demands: [AMOUNTS/ACTIONS]. Days given: 15. Include: heading, reference, chronology, default, statutory basis, demand, consequence of non-compliance, preservations of rights. Keep it under 1.5 pages. Flag any facts needed for limitation.'},
+  {cat:'Research', t:'Case law memo (IRAC)', p:'Research Pakistani case law on: [QUESTION].\n\nProduce: (1) Issue framed in one line; (2) Applicable statute with exact sections; (3) 5 authorities — court, citation, year, and the ratio in 2 lines; (4) application to facts [FACTS]; (5) conclusion.\n\nEvery authority must include citation I can verify in PLD/SCMR/CLD. If you are unsure of a citation, write "VERIFY" instead of guessing.'},
+  {cat:'Drafting', t:'Bail application (trial court)', p:'Prepare a bail application under Section 497 CrPC for [ACCUSED], FIR No. [X] at PS [Y], offences [SECTIONS].\n\nStructure: heading, brief facts, ground-wise arguments (false implication, investigation complete, no flight risk, delay, evidence in custody), prayer. Cite principles only where confident; otherwise mark [VERIFY].'},
+  {cat:'Client', t:'Client ko aasan zaban mein samjhana', p:'Turn this legal analysis into a WhatsApp message for a non-lawyer client in Karachi: [ANALYSIS].\n\nRules: Roman Urdu with English legal terms in brackets, max 150 words, no legal jargon without explanation, tell them the next step and the cost range, end with a date for follow-up. Do not promise outcomes.'},
+  {cat:'Growth', t:'Post aap ke practice area par', p:'Write a LinkedIn post by a Karachi advocate on: [TOPIC].\n\nRules: 120–180 words, one real insight from practice, no case names or client details, no guarantees or rankings, ends with a soft invitation to discuss. Also give 3 alternative hooks and a 40-word caption for Instagram.'}
+];
+let aiFilter='Sab';
+function renderAI(){
+  const cats=['Sab','Drafting','Research','Client','Growth'];
+  document.getElementById('aiChips').innerHTML=cats.map(c=>`<button class="chip ${aiFilter===c?'on':''}" onclick="setAI('${c}')">${c}</button>`).join('');
+  const list=AI.filter(a=>aiFilter==='Sab'||a.cat===aiFilter);
+  document.getElementById('aiGrid').innerHTML=list.map((a,i)=>`
+    <div class="prompt">
+      <span class="tag ${a.cat==='Growth'?'green':(a.cat==='Research'?'blue':'')}">${a.cat}</span>
+      <h4>${a.t}</h4>
+      <div class="quote" id="p_${aiFilter}_${i}">${a.p.replace(/</g,'&lt;')}</div>
+      <button class="copy" onclick="copyPrompt('p_${aiFilter}_${i}', this)">Copy prompt</button>
+    </div>`).join('');
+}
+function setAI(c){aiFilter=c;renderAI();}
+function copyPrompt(id, btn){
+  const txt = document.getElementById(id).textContent;
+  const done = ()=>{const o=btn.textContent;btn.textContent='Copied ✓';setTimeout(()=>btn.textContent=o,1400);};
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>fallback());
+  } else fallback();
+  function fallback(){
+    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');done();}catch(e){alert('Copy nahi ho saka — text select karke manually copy karein.');}
+    document.body.removeChild(ta);
+  }
+}
+
+/* ---------- growth calendar ---------- */
+const GROWTH = [
+  {d:'Day 1–2', t:'Apna profile theek karein', d:'LinkedIn headline: "Advocate, [practice area] — [court], Karachi". Photo, education, bar enrollment number, aur 3 practice areas. Sanad profile link daalein.'},
+  {d:'Day 3', t:'Ek asaan sawal ka jawab', d:'"Kirayedar ko notice kaise milta hai?" — 120 words, aam zaban. Facebook group ya LinkedIn par post karein, logon ki language mein.'},
+  {d:'Day 4', t:'Ek video (60 second)', d:'Mobile se record karein: ek common ghalti jo log karte hain. Subtitle zaroor. YouTube + Instagram Reels.'},
+  {d:'Day 5', t:'Referral list banayein', d:'20 naam likhein: batchmates, teachers, property dealers, accountants, dukandar. Sab ko personally batayein aap kya karte hain.'},
+  {d:'Day 6', t:'Ek judgment explain karein', d:'Pichhle hafte ka koi public judgment — 1 post mein: kya hua, court ne kya kaha, aam aadmi ke liye kya matlab.'},
+  {d:'Day 7', t:'Review aur plan', d:'Kaun sa post chala? Konse platform se 1 bhi message aaya? Next hafte usi format ko dohrayein. Har hafte ek cheez.'}
+];
+document.getElementById('growthGrid').innerHTML = GROWTH.map(g=>`
+  <div class="card"><span class="tag">${g.d}</span><h3 style="font-size:16.5px">${g.t}</h3><p>${g.d}</p></div>`).join('');
+
+/* ---------- router ---------- */
+const VIEWS=['home','problems','career','mentors','rooms','kaam','aikit','growth','pricing'];
+function go(v){
+  if(!VIEWS.includes(v)) v='home';
+  document.querySelectorAll('.view').forEach(el=>el.classList.remove('on'));
+  const target=document.getElementById('v-'+v);
+  if(target) target.classList.add('on');
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.dataset.v===v));
+  try{ if(location.hash!=='#'+v) history.replaceState(null,'','#'+v); }catch(e){}
+  window.scrollTo({top:0,behavior:'instant'});
+}
+window.addEventListener('hashchange',()=>go(location.hash.replace('#','')));
+
+/* ---------- join modal ---------- */
+function openJoin(){document.getElementById('joinModal').classList.add('on');document.body.style.overflow='hidden';}
+function closeJoin(){document.getElementById('joinModal').classList.remove('on');document.body.style.overflow='';}
+document.getElementById('joinModal').addEventListener('click',e=>{if(e.target.id==='joinModal')closeJoin();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeJoin();});
+function submitJoin(){
+  const name=document.getElementById('jName').value.trim();
+  const phone=document.getElementById('jPhone').value.trim();
+  if(!name||!phone){alert('Naam aur WhatsApp number likhein.');return;}
+  const lead={name,phone,stage:document.getElementById('jStage').value,need:document.getElementById('jNeed').value,at:new Date().toISOString()};
+  const all = store.get('sanad.leads', []);
+  all.push(lead);
+  store.set('sanad.leads', all);
+  document.getElementById('joinForm').innerHTML=`
+    <div class="ok-box"><b>Shukriya, ${name.split(' ')[0]}!</b><br>Aap Karachi pilot ki list mein shamil hain. Live version mein pehla WhatsApp message 48 ghante mein aayega.</div>
+    <p style="font-size:13px;color:var(--muted)">Aap ka stage: <b>${lead.stage}</b> · Zaroorat: <b>${lead.need}</b></p>
+    <button class="btn btn-line" style="width:100%" onclick="closeJoin()">Band karein</button>`;
+}
+
+/* ---------- init ---------- */
+renderProblems();
+renderTracks();
+runMatch();
+renderRooms();
+renderKaam();
+renderAI();
+go(location.hash.replace('#','')||'home');
+</script>
+</body>
+</html>
