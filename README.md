@@ -18,6 +18,9 @@ near the courts, paid drafting work, and free case law research guides.
 | `career/` | Career hub + Law-GAT, enrollment, how to become a lawyer, salary, High Court licence, cause list tracking, lawyer CV, first 30 days in a chamber |
 | `karachi/` | Karachi hub + lawyer jobs, lawyer room for rent, chamber seat rent, City Courts guide |
 | `about/` | Entity page (what the platform is and does not do) |
+| `what-is-wakeelbano/` | "What does it do for me?" — one section per user type (the page an AI assistant should quote) |
+| `methodology/` | How guides are researched, sourced and corrected (trust / E-E-A-T signal) |
+| `resources/` | Free official legal research sources in Pakistan |
 | `jobs/` | **Job market + lawyer directory**: 18 sourced legal openings, 6 paid tasks, 8 lawyer profiles, apply / post / rate flows |
 | `family/` | Family law hub + khula and divorce, maintenance, child custody, dower |
 | `service/` | Service law hub + labour court, wrongful termination, salary recovery |
@@ -37,10 +40,12 @@ near the courts, paid drafting work, and free case law research guides.
 | `scripts/validate.py` | Checks broken internal links, JSON-LD validity, one `<h1>`/title/canonical per page, dead links in `llms.txt` |
 | `scripts/repair_quotes.py` | Utility: converts unescaped straight quotes in content text to typographic quotes |
 | `scripts/push.sh` | Commit + push using a token in `.secrets/gh_token` |
+| `scripts/set_verification.py` | `google=CODE bing=CODE` → writes the meta tags site-wide, rebuilds, validates |
+| `marketing/distribution-plan.md` | Ready-to-post LinkedIn / Reddit / Quora / Facebook copy + the links/mentions plan |
 | `scripts/db.py` | Database helper: `counts`, `rows`, `insert`, `update`, `delete`, `sql` (keys from `.secrets/`) |
 | `research/` | Demand research (what Pakistani lawyers search, pain points) behind the content plan |
 
-**Size of the site:** 43 indexable URLs — home, job market, 6 hubs, 34 guides, about, plus a 404.
+**Size of the site:** 46 indexable URLs — home, job market, 6 hubs, 37 guides, about, plus a 404.
 
 ## The job market (`jobs/`)
 
@@ -138,6 +143,21 @@ When `wakeelbano.com` is bought:
 3. GitHub → Settings → Pages → Custom domain `wakeelbano.com`, then tick **Enforce HTTPS**
 4. Rebuild with `CUSTOM_DOMAIN=wakeelbano.com python3 scripts/build_pages.py` to write the
    `CNAME` file into the repo
+
+## Search console verification
+
+1. Google Search Console → *Add property* → **URL prefix** → `https://sarmads050.github.io/wakeelbano/`
+2. Bing Webmaster Tools → *Add site* → same URL (this one matters most: ChatGPT search reads Bing)
+3. Copy the `content="..."` value each console gives you, then:
+
+```bash
+python3 scripts/set_verification.py google=THE_GOOGLE_CODE bing=THE_BING_CODE
+bash scripts/push.sh "Add search console verification"
+```
+
+Wait for the GitHub Pages build, then press **Verify** in each console and submit
+`sitemap.xml`. Codes live in `scripts/site_config.py` (`GOOGLE_VERIFY`, `BING_VERIFY`), so they
+travel with every future build.
 
 ## Keys and secrets
 

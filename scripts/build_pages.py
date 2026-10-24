@@ -9,7 +9,7 @@ Usage: python3 scripts/build_pages.py
 import io, os, json, html, posixpath
 import content_pages as C
 
-from site_config import SITE_URL  # noqa: E402
+from site_config import SITE_URL, GOOGLE_VERIFY, BING_VERIFY, SOCIAL  # noqa: E402
 
 BASE = SITE_URL
 BRAND = "WakeelBano"
@@ -133,8 +133,18 @@ def esc(t):
     return html.escape(t, quote=True)
 
 
+def _verify_tags():
+    out = ""
+    if GOOGLE_VERIFY:
+        out += f'\n<meta name="google-site-verification" content="{GOOGLE_VERIFY}">'
+    if BING_VERIFY:
+        out += f'\n<meta name="msvalidate.01" content="{BING_VERIFY}">'
+    return out
+
+
 def page(title, desc, slug, body, canonical, schema=None):
     root = "../" * slug.count("/")
+    verify_tags = _verify_tags()
     sch = ('<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False) + "</script>") if schema else ""
     return f"""<!DOCTYPE html>
 <html lang="en-PK">
@@ -157,7 +167,7 @@ def page(title, desc, slug, body, canonical, schema=None):
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230F2537'/%3E%3Cpath d='M24 10v26M14 16h20M17 38h14' stroke='%23E7CE7A' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
-<style>{CSS}</style>
+<style>{CSS}</style>{verify_tags}
 {sch}
 </head>
 <body>
@@ -207,6 +217,23 @@ def faq_html(faqs):
     return f'<section class="faq"><h2>Frequently asked questions</h2>{items}</section>'
 
 
+def org_node():
+    node = {
+        "@type": "Organization",
+        "@id": BASE + "#org",
+        "name": BRAND,
+        "url": BASE,
+        "description": ("Career platform for Pakistani lawyers: chamber and pupillage matching, "
+                        "verified rooms and seat sharing, paid drafting work, a legal job market, "
+                        "lawyer profiles with earned ratings, and free case law research guides."),
+        "address": {"@type": "PostalAddress", "addressLocality": "Karachi",
+                    "addressRegion": "Sindh", "addressCountry": "PK"},
+    }
+    if SOCIAL:
+        node["sameAs"] = list(SOCIAL)
+    return node
+
+
 def child_url(parent_url, rel):
     """Resolve a hub child link (relative to the hub folder) to a root-relative URL."""
     folder = parent_url.rsplit("/", 1)[0] + "/"
@@ -221,7 +248,7 @@ def article_schema(p):
         "inLanguage": "en-PK",
         "mainEntityOfPage": {"@type": "WebPage", "@id": BASE + p["url"]},
         "author": {"@type": "Organization", "name": BRAND, "url": BASE},
-        "publisher": {"@type": "Organization", "name": BRAND, "url": BASE},
+        "publisher": org_node(),
         "datePublished": TODAY,
         "dateModified": TODAY,
         "about": {"@type": "Thing", "name": p.get("kicker", "Legal information")},

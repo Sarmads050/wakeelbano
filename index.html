@@ -7,6 +7,8 @@
 <meta name="description" content="WakeelBano helps Pakistani lawyers find a chamber and mentor, verified rooms and seat sharing near the courts, paid drafting work, and free case law research guides. Always free for junior lawyers.">
 <meta name="keywords" content="wakeel bano, lawyer in karachi, case law pakistan, law gat 2026, bar council enrollment, lawyer jobs in karachi, lawyer room for rent karachi, legal drafting pakistan">
 <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="google-site-verification" content="">
+<meta name="msvalidate.01" content="">
 <link rel="canonical" href="https://sarmads050.github.io/wakeelbano/">
 <meta name="theme-color" content="#0B1B2B">
 <meta name="geo.region" content="PK-SD">
@@ -764,6 +766,9 @@
         <a href="case-law/index.html">Case law library</a>
         <a href="drafts/index.html">Draft formats</a>
         <a href="career/index.html">Career guides</a>
+        <a href="what-is-wakeelbano/index.html">What is WakeelBano?</a>
+        <a href="resources/index.html">Free research resources</a>
+        <a href="methodology/index.html">How we research</a>
         <a href="about/index.html">About WakeelBano</a>
       </div>
       <div>
@@ -843,7 +848,9 @@ const ROUTES = [
   {i:'🛏️', t:'Find a room or seat', d:'Punjab Colony, Garden, Saddar, near the courts', a:"go('rooms')"},
   {i:'📚', t:'Research case law', d:'302 PPC, 489-F, 497 CrPC, 420 PPC and more', a:"location.href='case-law/index.html'"},
   {i:'📝', t:'Draft a document', d:'Bail, notice, plaint, statement, affidavit', a:"location.href='drafts/index.html'"},
-  {i:'🎯', t:'Start my career', d:'Step-by-step: LLB to High Court licence', a:"go('career')"}
+  {i:'🎯', t:'Start my career', d:'Step-by-step: LLB to High Court licence', a:"go('career')"},
+  {i:'❓', t:'New here? What is WakeelBano', d:'What the platform does, by user type', a:"location.href='what-is-wakeelbano/index.html'"},
+  {i:'🔎', t:'Free research resources', d:'Official court, bar council and statute sources', a:"location.href='resources/index.html'"}
 ];
 document.getElementById('router').innerHTML = ROUTES.map(r => `
   <button class="card" style="text-align:left;cursor:pointer;font-family:inherit;width:100%" onclick="${r.a}">

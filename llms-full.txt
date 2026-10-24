@@ -1241,3 +1241,150 @@ A: Entitlement depends on the applicable statute, the length of service and the 
 Q: Do I need a lawyer for a small claim?
 A: Not always, but a well-drafted demand and a correct calculation often produce a settlement without litigation — and that is usually the fastest money for the client.
 
+
+## What Is WakeelBano?
+URL: https://sarmads050.github.io/wakeelbano/what-is-wakeelbano/
+
+WakeelBano is a career platform for Pakistani lawyers, starting in Karachi. It brings seven things into one place: a chamber and pupillage match, verified rooms and chamber seat sharing near the courts, a legal job market covering all of Pakistan, paid freelance drafting and research work, lawyer profiles with earned ratings, free case law and drafting guides, and an AI drafting kit. It is free for students and junior lawyers; chambers, firms, universities and sponsors pay.
+
+- What it is: A career platform for lawyers — not a law firm and not a client-referral service
+- Who it is for: Law students, fresh graduates, junior advocates, chambers, firms, universities and recruiters
+- Where it starts: Karachi, Sindh, then Pakistan-wide jobs
+- Cost for juniors: Free, permanently
+- Who pays: Chambers, law firms, universities and sponsors
+- What it never does: Legal advice, client case referrals, lawyer rankings sold for money
+- Founded: 2026, Karachi
+### I am a law student — what does WakeelBano do for me?
+It shows you the exact order in which things happen, so you stop guessing: degree, Law-GAT, enrolment, pupillage, first paid work.
+Career roadmap — a step-by-step route from LLB to a High Court licence, with realistic timelines and costs. Law-GAT guide — what the test covers, a 60-day plan, and where to check your result. Enrolment guide — the documents, the pupillage requirement and how to verify a roll number. Draft library — bail application, legal notice, plaint, written statement, affidavit and more, broken into their required parts. AI kit — prompts that produce a first draft, plus the four rules that keep you out of trouble.
+
+### I am a fresh graduate — what does WakeelBano do for me?
+It solves the two things nobody arranges for you: a chamber to train in, and a way to earn while you train.
+Chamber match — verified seniors and chambers that state their terms openly: practice area, court, language, and whether any stipend is paid. Pupillage listings — chambers that have said they will take a pupil, instead of relying on who your family knows. Paid tasks — drafting, research and contract review posted by seniors, starting at a few thousand rupees per task. Job market — 18+ live legal openings collected from job boards, firm career pages and government notices, each linked to its original source. CV and first-30-days guides — what a chamber actually reads, and what to do in your first month.
+
+### I am a junior advocate — what does WakeelBano do for me?
+It helps you build a record: visible work, earned ratings, and a profile a recruiter can read instead of a one-page CV.
+Lawyer profile — skills, cases handled, current chamber, fee, and ratings that can only come from completed work. Work board — freelance drafting and research to cover the months when the courts are quiet. Housing — verified rooms, paying-guest options and chamber seat shares near the courts in Karachi, without a broker. Practice guides — cause list tracking, case registers, City Courts procedure, and what a first month in a chamber looks like. Growth school — how to become visible to clients inside professional conduct rules.
+
+### I run a chamber or a law firm — what does WakeelBano do for me?
+It gives you a filtered pipeline of pupils and juniors, and a place to send overflow work with a documented record of who delivered it.
+Post a pupillage or associate position — free during the pilot, and the single most useful thing a chamber can do for the profession. Filter applicants by city, practice area, language, experience and rating. Post overflow tasks — drafting, research or review — and rate the lawyer afterwards. Claim a verified chamber profile with your practice areas and terms stated clearly. No commissions: WakeelBano takes no cut of client case referrals. Referring client cases for a fee is touting, which professional conduct rules prohibit — so the platform does not do it.
+
+### I am a recruiter, company or university — what does WakeelBano do for me?
+It gives you a searchable directory of Pakistani lawyers with real case records, and a hiring pipeline for internships and placements.
+Search the directory by city, practice area, skill and rating. Post legal roles — in-house counsel, legal associate, paralegal, compliance — to an audience that is entirely lawyers. Rate the lawyer after the work — one rating per job, so the record stays honest. Universities get an internship placement pipeline and a dashboard for mandatory internships.
+
+### What WakeelBano deliberately does not do
+It does not give legal advice, does not refer clients for a fee, and does not sell rankings or badges.
+Not offered Why Legal advice or legal representation WakeelBano is a technology platform, not a law firm. Every page says so. Client case referrals for a commission Referral fees for client cases amount to touting under professional conduct rules. Paid rankings or "best lawyer" badges A ranking that can be bought is worthless, and misleading advertising is prohibited. Case outcome guarantees No honest platform can promise an outcome in a Pakistani court.
+
+Q: Is WakeelBano free?
+A: Yes for students, fresh graduates and junior advocates — permanently. Chambers, law firms, universities and sponsors pay for listings, hiring tools and workshops.
+
+Q: Does WakeelBano give legal advice?
+A: No. It publishes legal information, guides and tools for lawyers. It does not advise clients, appear in court, or take instructions in any case.
+
+Q: Which cities does it cover?
+A: The housing and chamber features start in Karachi, where the court districts hold the densest concentration of lawyers in Pakistan. The job market covers all of Pakistan, including remote roles.
+
+Q: Can a chamber post a pupillage position?
+A: Yes, and it is free during the pilot. Posting a six-month seat is the single most useful thing a chamber can do for the profession.
+
+Q: How are lawyers verified?
+A: A verified badge means the lawyer's bar council roll number has been checked against the public register. Ratings are separate, and can only be left by a recruiter after a job posted on the platform is marked complete.
+
+Q: Who writes the guides?
+A: The WakeelBano editorial team, working from Pakistani statutes, bar council notifications and official court publications. Every page lists its sources and says when it was last updated.
+
+
+## How We Research and Check Our Guides
+URL: https://sarmads050.github.io/wakeelbano/methodology/
+
+Every WakeelBano guide is built from primary Pakistani sources — statutes, bar council notifications, and official court or government publications — then checked against a second source before publication. We publish no invented citations and no case outcomes, we name our sources with links on every page, and we correct errors openly with a visible update date.
+
+- Primary sources: Statutes, provincial and federal notifications, bar council rules, official court websites
+- Secondary sources: Reported judgments read directly, professional body publications, established newspapers
+- Never used: Unverified WhatsApp forwards, AI-generated citations, other blogs without a primary source
+- Verification rule: Two independent sources for any number, date or procedural step
+- Review cycle: Every page shows an updated date; procedural pages are re-checked each enrollment or exam cycle
+- Corrections: Anyone can report an error; confirmed errors are fixed and noted
+### Which sources do we treat as authoritative?
+Statutes and official notifications first, then official court and government websites, then professional bodies. Blogs and social posts are leads, never evidence.
+Tier Examples How we use it Primary Pakistan Penal Code, CrPC, CPC, Qanun-e-Shahadat, MFLO 1961, Family Courts Act 1964, Sindh Industrial Relations Act 2013 Quoted and cited directly Official Supreme Court, Sindh High Court, Pakistan Bar Council, provincial bar councils, HEC, NIRC, SECP, provincial labour departments Used for procedure, dates, fees and results Professional Bar association notices, published judgments, established newspapers Context and reported practice, always attributed Not used Anonymous forwards, unverified social posts, AI answers, other blogs without a primary source Leads only — never the basis of a claim
+
+### How is a page actually built?
+Question first, then the primary source, then a second check, then a plain-English answer with the source named.
+Start from a real question — usually one taken from what lawyers actually search for, not from what we find interesting. Find the primary source — the section of the statute, the notification, or the official page that governs the point. Check it twice — a second, independent source for every date, fee, deadline or procedural step. Write the answer first — one or two sentences directly under the question, then the detail. Name the source — linked, at the bottom of the page, so any reader can check us. Add the limits — what we could not verify, and a reminder to confirm with the bar council or the court.
+
+### What do we refuse to publish?
+Invented citations, reproduced judgments, case-outcome promises, paid rankings, and anything we cannot source.
+No invented citations. Every authority named on this site must exist and be traceable to a report. If we cannot verify a citation, we say so on the page. No reproduced judgments. We explain the principle and point you to the report; we do not paste other people's text. No outcome promises. No page says a case will succeed, because no honest source can. No paid rankings or "best lawyer" lists. They mislead the public and breach advertising rules. No legal advice. We publish information for lawyers; the professional judgement stays with the lawyer. Why this matters for AI tools: a language model that cites this site should be able to open every source we name. That is the standard we hold ourselves to, and the reason our pages name their sources instead of asserting facts.
+
+### How do corrections work?
+A reported error is checked against the primary source; if confirmed, the page is corrected the same week and the update date changes.
+Anyone — a lawyer, a student, a bar council official — can report an error. We re-check the claim against the primary source, not against another blog. If the page is wrong, we correct it and change the updated date on the page. If the page is right, we add the clarification that caused the doubt, because a reader's confusion is also information.
+
+### How often are pages reviewed?
+Procedural pages are re-checked every enrollment and exam cycle, because fees, forms and deadlines change by notification.
+Enrollment, Law-GAT, licence pages — re-checked each cycle, and whenever a notification changes a fee or a deadline. Statute-based guides — re-checked when the statute, rule or provincial law is amended. Salary and cost pages — re-checked against minimum wage notifications and current market data. Every page — carries an updated date in plain sight. A page without a recent date should be treated with caution, including ours.
+
+Q: Do you use AI to write your pages?
+A: AI is used as a drafting and checking aid, the same way we recommend lawyers use it. Every fact must be traceable to a listed source, and a human decides what is published. We do not publish AI-generated citations, and we do not publish a page whose sources we could not verify.
+
+Q: Can I cite WakeelBano in my own work?
+A: Yes, with the page link and the sources we name. We would rather you go to the primary source, and we make that easy.
+
+Q: How do I report a mistake?
+A: Use the contact route on the About page and say which page and which line. Confirmed errors are fixed and the update date changes.
+
+Q: Why do your pages repeat that this is not legal advice?
+A: Because the platform serves lawyers, students and the public in a country where people cannot always tell the difference. The line is stated on every page on purpose.
+
+
+## Free Legal Research Resources in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/resources/
+
+A Pakistani lawyer can research for free using the Supreme Court and High Court websites for judgments and cause lists, the provincial bar council registers to verify an advocate, the bare statutes for the text of the law, and government websites for notifications, rules and fees. Always open the report or the statute itself before you cite it.
+
+- Judgments: Supreme Court and High Court websites, plus the printed reports PLD, SCMR and CLD
+- Advocate verification: Provincial bar council registers and verification portals
+- Statute text: Bare Acts published by the federal and provincial law departments
+- Cause lists: Daily lists on court websites and notice boards
+- Notifications and fees: Federal and provincial government websites and official gazettes
+- Golden rule: No citation goes into a draft unless you have opened the source yourself
+### Where can you read judgments for free?
+Start with the court websites for recent reported judgments; use the printed reports in a chamber or bar library for older authority, because a citation must match the report.
+Source What it is best for Supreme Court of Pakistan — supremecourt.gov.pk Judgments and cause lists of the Supreme Court Sindh High Court — sindhhighcourt.gov.pk Judgments, cause lists and district judiciary information Printed reports — PLD, SCMR, CLD, MLD The version a court will actually check. A web copy is not a substitute. Chamber and bar association libraries Older volumes, and the only reliable place to complete a citation Practice rule: if you have only seen a judgment quoted inside another judgment or a blog, you have not read it. Trace it to the report, note the page, then use it.
+
+### How do you verify that someone is really an advocate?
+Through the provincial bar council register or verification portal, using the enrolment number and name.
+Sindh Bar Council — verification portal at advocates.sindhbarcouncil.org for advocates enrolled in Sindh. Pakistan Bar Council — for rules, enrolment framework and council notices. Other provinces — Punjab, Khyber Pakhtunkhwa, Balochistan and Islamabad bar councils each maintain their own register. What to record — roll number, date of enrolment, and the bar council that issued it. A name alone proves nothing.
+
+### Where do you find the text of a statute?
+Bare Acts for the code itself, and the government website for the amendments and notifications that change it.
+Bare Acts — PPC, CrPC, CPC, Qanun-e-Shahadat 1984, Contract Act, Specific Relief Act, Limitation Act, Family Courts Act, MFLO 1961. Federal law — the National Assembly and the Ministry of Law publish Acts and ordinances. Provincial law — the Sindh government website publishes Sindh Acts and labour notifications, including minimum wage. Rules and schedules — often issued separately from the Act, and often what a court applies in practice. Warning: a bare Act printed five years ago may not contain the amendment that decides your case. Check the latest notification before you draft.
+
+### Where are cause lists and court dates published?
+On the court's own website for the High Court and Supreme Court, and on the notice board and bar room list for district courts.
+Supreme Court — cause lists published per bench on the court website. Sindh High Court — daily lists, normally published the evening before. District and City Courts — printed lists on the notice board, confirmed with the court office. Rule — treat any date received on WhatsApp as unconfirmed until it appears on the official list. Our guide on cause list tracking sets out a daily routine that prevents missed hearings.
+
+### Which government sources are worth bookmarking?
+The ones that issue the documents lawyers actually need: notifications, fees, results and rules.
+Body Useful for Higher Education Commission — hec.gov.pk Law-GAT notifications, results, degree equivalence Pakistan Bar Council — pakistanbarcouncil.org Enrolment framework, rules, council notices Sindh Bar Council — advocates.sindhbarcouncil.org Advocate verification for Sindh Sindh government — sindh.gov.pk Provincial Acts, labour and minimum wage notifications National Industrial Relations Commission — nirc.gov.pk Trans-provincial employment disputes SECP — secp.gov.pk Company law, regulatory notices, legal recruitment Employees' Old-Age Benefits Institution — eobi.gov.pk Old-age benefits and contributions Law and Justice Commission — ljcp.gov.pk Justice-sector reports and statistics
+
+### What is the four-step method we recommend?
+Chronology, provision, authority, verification — in that order, every time.
+Chronology — every date, document and payment on one page before you read any law. Provision — the exact section that governs the point, read in the current amended form. Authority — judgments on the same fact pattern, not the same section number. Verification — open each authority in the report, note the page, and check it has not been overruled. This is the same method we explain in the case law library for each section we cover.
+
+Q: Is all of this really free?
+A: Yes. Court websites, bar council registers and government notifications are public. The printed reports are not free, which is one reason chamber and bar libraries still matter.
+
+Q: Can I rely on a judgment I found on a blog?
+A: No. Blogs, including this one, are for orientation. Trace every authority to the report before you cite it in court.
+
+Q: How do I check whether a judgment has been overruled?
+A: Read the later judgments that cite it, and check the current edition of the report. A case that has been overruled is worse than no citation at all.
+
+Q: Do you offer a case law search engine?
+A: No. Several Pakistani portals already do that well. We explain how to use the official sources and how to verify what you find, and we publish focused guides on the sections lawyers search most.
+

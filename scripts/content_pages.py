@@ -1316,3 +1316,10 @@ from content_pages_family_service import PAGES_3, FAMILY_HUB, SERVICE_HUB
 
 HUBS.extend([FAMILY_HUB, SERVICE_HUB])
 PAGES.extend(PAGES_3)
+
+
+# ---------------------------------------------------------------- wave 4
+# Pages that explain the platform itself to readers and to AI engines.
+from content_pages_resources import PAGES_4
+
+PAGES.extend(PAGES_4)
