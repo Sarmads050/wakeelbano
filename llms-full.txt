@@ -1388,3 +1388,168 @@ A: Read the later judgments that cite it, and check the current edition of the r
 Q: Do you offer a case law search engine?
 A: No. Several Pakistani portals already do that well. We explain how to use the official sources and how to verify what you find, and we publish focused guides on the sections lawyers search most.
 
+
+## Specific Performance in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/civil/specific-performance/
+
+Specific performance asks the court to force the seller to transfer property that was agreed to be sold. The buyer must prove a valid agreement, that he was ready and willing to perform, that he did perform or tendered performance, and that he asked for the transfer within limitation.
+
+- Statute: Specific Relief Act 1877, section 12
+- Plaintiff must prove: Agreement, readiness and willingness, tender of price, and limitation
+- Limitation: Runs from the date fixed for performance; check the Limitation Act 1908 before drafting
+- Court fee: Ad valorem on the value of the property — check the provincial Court Fees Act
+- Most common defence: The buyer was never ready and willing, or the suit is time-barred
+- Alternative relief: Damages or refund, pleaded in the same suit
+### What must the buyer prove?
+Four things: a concluded agreement, readiness and willingness, actual tender or an excuse for not tendering, and that the suit is within time.
+Agreement — written and signed, identifying the property precisely, with the price and the date fixed for performance. Readiness and willingness — money available, no legal bar on the buyer, and conduct consistent with wanting to complete. Tender — offer of the balance price to the seller, or proof of why no tender was possible. Notice — a written demand giving the seller a final opportunity before filing. Limitation — the date the clock started, calculated and pleaded in the plaint itself. The evidence that decides these cases: bank statements or a sale of other assets showing the buyer had the money. A buyer who cannot show funds on the date of performance loses, even with a perfectly drafted agreement.
+
+### Which defences actually succeed?
+Readiness and willingness, limitation, a defective or incomplete agreement, a third-party purchaser without notice, and the seller's own incapacity to transfer.
+Defence What the defendant must show Not ready and willing The buyer had no funds and never tendered the balance Time-barred The date fixed for performance is older than the limitation period No concluded agreement Essential terms were still being negotiated Third-party rights A bona fide purchaser bought the property before the suit and without notice Impossibility The property was already lawfully transferred or is no longer the seller's Courts treat the remedy as discretionary, so even a good claim can be refused where damages are the fairer outcome.
+
+### What is the drafting checklist?
+Identify the property exactly, plead the agreement and its performance dates, plead readiness and willingness, attach the documents, and quantify the court fee.
+Property description — plot number, area, scheme, survey number and boundaries, matching the revenue record. Agreement details — date, price, payment schedule, date of performance, possession. Performance pleaded — what was paid, what was tendered, when, and how. Readiness and willingness — a specific paragraph with the evidence of funds. Notice — date, mode and proof of service. Relief — specific performance, or in the alternative refund with damages, plus costs and any injunction. Court fee — correct ad valorem valuation, or the suit is returned at scrutiny.
+
+Q: Is specific performance a right or a discretion?
+A: It is a discretionary remedy. The court can refuse it and award damages or refund instead, which is why the alternative relief must always be pleaded.
+
+Q: Can it be claimed over agricultural land?
+A: Depends on the transaction, the revenue record and any statutory restriction on transfer. Check the provincial law on agricultural land before drafting.
+
+Q: What if the seller has already sold to someone else?
+A: The buyer's remedy may shift to damages, and the third party's status as a bona fide purchaser without notice becomes the central question. Act fast and consider an injunction.
+
+
+## Injunction and Stay Orders (Order XXXIX CPC)
+URL: https://sarmads050.github.io/wakeelbano/civil/order-39-injunction/
+
+A court grants a temporary injunction under Order XXXIX CPC when the plaintiff shows a prima facie case, irreparable loss that cannot be compensated in money, and that the balance of convenience favours protecting the property or the position until the suit is decided.
+
+- Statute: Code of Civil Procedure 1908, Order XXXIX rules 1 and 2
+- Three tests: Prima facie case, irreparable loss, balance of convenience
+- Types: Temporary (during the suit) and permanent (in the decree)
+- Speed matters: Delay in applying is itself an argument against the relief
+- Practical form: Status quo orders are the most common relief granted
+- Cost: Court fee on the application, plus an ad interim order that can be appealed
+### What are the three tests a court applies?
+Prima facie case, irreparable injury, and the balance of convenience — all three, not just one.
+Test What it means in practice Prima facie case The documents show a real question to try — not a certain win, but more than a suspicion Irreparable injury Harm that money cannot fix, such as construction, demolition, or transfer to a third party Balance of convenience Who suffers more if the court gets it wrong — usually settled by maintaining the existing position The most common outcome in Pakistan is a status quo order: nobody changes the position on the ground until the suit is decided. Ask for it in clear words in the application.
+
+### How is the application drafted?
+Facts, the right relied on, the three tests with documents, the urgency, and a prayer that says exactly what must not happen.
+Title and application number — in the pending suit, under Order XXXIX rules 1 and 2. Facts — dated and short, with the documents that prove the right. Prima facie case — a separate paragraph, referring to specific annexures. Irreparable loss — say what will be lost and why money is not enough. Balance of convenience — show that the other side loses nothing by waiting, and you lose everything. Conduct and delay — explain any gap between the cause of action and the application. Prayer — "restrain the defendant from … selling / constructing / alienating / dispossessing" and status quo. Affidavit and annexures — a supporting affidavit, properly attested.
+
+### Why are injunction applications refused?
+Delay, no clear right, disputed questions of fact that need trial, and a prayer that is too vague to enforce.
+Delay — a plaintiff who waits six months has answered the urgency question himself. No demonstrable right — the documents do not show title, possession or a concluded agreement. Money is enough — where compensation can fix the loss, an injunction usually will not. Vague prayer — an order the defendant cannot understand is an order the court will not pass. Concealment — an application that hides an earlier suit or an earlier transfer is dismissed with costs.
+
+Q: What is the difference between a temporary and a permanent injunction?
+A: A temporary injunction under Order XXXIX protects the position while the suit is pending. A permanent injunction is granted in the decree itself after trial, and is the final relief.
+
+Q: Can an injunction order be appealed?
+A: An order granting or refusing a temporary injunction is appealable under Order XLIII CPC. Check the appeal route and limitation immediately if the order goes against your client.
+
+Q: What if the other side disobeys the order?
+A: Apply for contempt and for attachment under Order XXXIX rule 2-A. Keep a dated record of the breach, with photographs and witnesses.
+
+
+## Execution of a Decree (Order XXI CPC)
+URL: https://sarmads050.github.io/wakeelbano/civil/order-21-execution/
+
+Execution is the process of enforcing a decree that has already been passed. The decree-holder files an execution petition under Order XXI CPC, applies for attachment and sale of the judgment-debtor's property or for delivery of possession, and does it within the limitation period that runs from the decree.
+
+- Statute: Code of Civil Procedure 1908, Order XXI
+- Who files: The decree-holder, in the court that passed the decree or the court that can execute it
+- Limitation: Runs from the date of the decree — check the Limitation Act 1908 immediately
+- Main remedies: Attachment and sale of property, delivery of possession, arrest in some cases
+- Common obstacle: Objections to attachment, and property already transferred to a third party
+- Best practice: Start execution early; a decree-holder who waits loses assets to other creditors
+### How does an execution petition work?
+Identify the decree and what remains unpaid, list the judgment-debtor's assets, and ask for the specific mode of execution.
+Decree details — suit number, date of decree, and the exact amount or relief still unexecuted. Calculation — principal, costs and any interest the decree allows, on one page. Assets — property, bank accounts, vehicles or business interests, with evidence such as a fard or registration record. Mode of execution — attachment and sale, delivery of possession, or both. Notice — the court issues notice to the judgment-debtor, who may object. Follow through — sale proclamation, auction, and confirmation before the money reaches your client. Where decrees die: the decree-holder does not identify any asset. An execution petition that names no property is a piece of paper. Do the asset work before you file.
+
+### What objections can the judgment-debtor raise?
+That the decree is satisfied, that the property is exempt or belongs to a third party, or that the execution is barred by limitation.
+Objection How the decree-holder answers it Decree already satisfied Demand the receipts; check the court record for any deposit Property belongs to a third party Trace the title and the timing of any transfer after the suit began Property is exempt Check the exemption list in the CPC; some property cannot be attached Execution time-barred Show the date of the decree and any earlier execution application that kept it alive
+
+### What should a lawyer tell the client before filing suit?
+A decree is only worth what can be recovered. Identify assets at the start, and consider attachment before judgment.
+Realistic advice — a decree against a person with no assets is not a win. Attachment before judgment — under Order XXXVIII CPC, where the defendant may dispose of property to defeat a decree. Cost-benefit — execution fees, publication costs and auction expenses add up. Timing — every month of delay is another chance for the debtor to transfer the property.
+
+Q: Can a decree be executed in another city?
+A: Yes. A decree can be transferred for execution to the court that has jurisdiction over the judgment-debtor's property or person. Apply for transfer and follow the record.
+
+Q: What is attachment before judgment?
+A: An order under Order XXXVIII CPC preventing a defendant from disposing of property so that a future decree can be satisfied. It requires evidence that the defendant intends to obstruct execution.
+
+Q: Does interest keep running?
+A: Only as the decree provides. Read the decree carefully and calculate exactly what it allows before you claim a figure.
+
+
+## Partition of Joint Property in Pakistan
+URL: https://sarmads050.github.io/wakeelbano/civil/partition-suit/
+
+A partition suit asks the court to divide jointly owned property according to each owner's share. The court first passes a preliminary decree declaring the shares, then appoints a commission to divide the property by metes and bounds, and finally passes a final decree.
+
+- Statute: Code of Civil Procedure 1908, Order XX rule 18; substantive right under the relevant personal law
+- Who can sue: Any co-owner who is denied his share
+- First step: A preliminary decree that fixes each party's share
+- Second step: A commission to divide the property, or sale where division is not possible
+- Key document: The revenue record (fard) and the title deed
+- Practical point: Partition is a right; a co-owner cannot be forced to stay in joint ownership
+### How does a partition suit proceed?
+Shares are fixed first, then the property is divided by a commission, and the final decree puts each owner in possession of his portion.
+Plead the shares — how the property came to be jointly owned, and the exact share of each party. Attach the record — fard, sale deeds, inheritance documents and any earlier family settlement. Preliminary decree — the court declares the shares of all co-owners. Commission — a local commissioner examines whether physical division is possible. Division or sale — if division is possible, the property is divided; if not, it may be sold and proceeds shared. Final decree and possession — each owner gets possession of his portion, with a mutation where needed. Time saver: a clear fard and an agreed family tree at the start can cut a year out of a partition suit. Most delay comes from disputes about who the heirs are, not about the property.
+
+### What documents decide a partition case?
+The revenue record, the title documents, the family tree, and any previous settlement or mutation.
+Fard / record of rights — current entries, and the history of mutations. Title deeds — sale deeds, allotment letters, or inheritance mutations. Family tree — with CNIC numbers, agreed if possible, since it fixes the shares. Prior settlements — any written family arrangement, and whether it was acted upon. Possession evidence — who has been in occupation, and of which portion.
+
+### Can one co-owner sell his share without asking the others?
+A co-owner can generally transfer his own undivided share, but the purchaser steps into his shoes as a co-owner — which is why partition suits often follow such a sale.
+The buyer acquires the seller's share, with all its disputes. That is why prudent buyers insist on a partition or a written family settlement before paying. Where a co-owner has sold without disclosing the joint ownership, the other co-owners may have separate claims, including for the specific portion they occupied.
+
+Q: Is a court fee payable on a partition suit?
+A: Court fee rules differ by province and by whether the plaintiff is in possession of his share. Check the provincial Court Fees Act and the value fixed in the plaint.
+
+Q: Can partition be refused?
+A: Partition is generally a right of a co-owner, but the court may refuse division where it would destroy the value of the property, and order a sale instead.
+
+Q: What if the property cannot be physically divided?
+A: The court can order a sale and distribution of the proceeds, or allot a portion to one co-owner with compensation to the others.
+
+
+## 498 CrPC — Pre-Arrest Bail
+URL: https://sarmads050.github.io/wakeelbano/case-law/498-crpc/
+
+Pre-arrest bail under section 498 CrPC is an exceptional remedy. The applicant must show that the case is mala fide, that he has been implicated to harass him, or that there are exceptional circumstances — and courts treat it as a last resort, not as a routine step after an FIR.
+
+- Statute: Criminal Procedure Code 1898, section 498
+- Nature: Exceptional and discretionary — not a matter of right
+- Grounds: Mala fide, ulterior motive, no reasonable likelihood of arrest, or exceptional circumstances
+- Forum: Sessions court or High Court, depending on the case and stage
+- Key documents: FIR, applicant's account, and material showing the motive
+- Risk: An application that fails can smooth the way for arrest
+### When does pre-arrest bail actually succeed?
+When the applicant shows the case itself is an abuse of process, or that the facts do not fit the offence alleged at all.
+Mala fide — the FIR follows a property dispute, a family dispute or a refusal to pay, and the criminal case is pressure. No connection to the offence — the applicant is named but the material shows he was elsewhere or had no role. Delay and conduct — the applicant appears before the court voluntarily and has not absconded. Exceptional circumstances — age, health, or a purely civil dispute dressed as a crime. Honest advice to the client: pre-arrest bail is not a routine step. If the facts genuinely attract the offence, an unsuccessful application weakens the later regular bail application.
+
+### What should the file contain?
+The FIR, the applicant's own account, the documents behind the dispute, and anything that shows when and why the complaint appeared.
+Certified copy of the FIR, with the date and the police station. The applicant's account, in an affidavit, dated and specific. The underlying documents — the sale agreement, the cheque, the family dispute, the prior civil suit. Evidence of the motive — messages, prior complaints, the timeline of the dispute. Any order already passed in related proceedings. A short chronology, because these applications are decided on the story the documents tell.
+
+### What are the procedural steps?
+File before the appropriate court, serve notice, argue interim protection, and expect conditions on any relief granted.
+Forum — sessions court or High Court, depending on the offence and where the case is pending. Interim protection — ask for protection until the next date, or the purpose of the application is defeated. Conditions — courts usually impose conditions such as joining the investigation and not leaving the jurisdiction. Duration — relief is normally time-bound, and the applicant must then seek regular bail. Compliance — a breach of any condition is itself a reason to cancel the relief.
+
+Q: Is pre-arrest bail a right?
+A: No. It is an exceptional discretionary relief, granted where the process of law is being misused. Regular bail after arrest is a different application with different tests.
+
+Q: Can it be filed directly in the High Court?
+A: It can, but practice varies with the case and the stage. Follow the route used in your own court and check the current rules before filing.
+
+Q: What happens if the application is dismissed?
+A: The applicant loses the protection of the court and the arrest may follow. That is why the documents — not the drafting — decide whether to file at all.
+

@@ -101,6 +101,7 @@ NAV = """<nav>
 <a href="{root}drafts/index.html">Drafts</a>
 <a href="{root}jobs/index.html">Jobs</a>
 <a href="{root}family/index.html">Family</a>
+<a href="{root}civil/index.html">Civil</a>
 <a href="{root}service/index.html">Service</a>
 <a href="{root}about/index.html">About</a>
 <a class="cta" href="{root}index.html#join">Join free</a>

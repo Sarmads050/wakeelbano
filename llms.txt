@@ -19,6 +19,7 @@ Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information on
 - [420 PPC — cheating: Dishonest inducement, proof and the civil-versus-criminal divide](https://sarmads050.github.io/wakeelbano/case-law/420-ppc/index.html)
 - [406 PPC — breach of trust: Entrustment and misappropriation, and why most such cases are called civil](https://sarmads050.github.io/wakeelbano/case-law/406-ppc/index.html)
 - [506 PPC — criminal intimidation: Threats, proof and the two punishment levels](https://sarmads050.github.io/wakeelbano/case-law/506-ppc/index.html)
+- [498 CrPC — pre-arrest bail: Exceptional relief: grounds, documents and the risks](https://sarmads050.github.io/wakeelbano/case-law/498-crpc/index.html)
 
 ## Legal Drafts Library (https://sarmads050.github.io/wakeelbano/drafts/)
 - [Court-tested structures for Pakistani legal drafts: bail application, legal notice, civil plaint and vakalatnama. Every section, clause and common filing mistake explained.](https://sarmads050.github.io/wakeelbano/drafts/)
@@ -63,6 +64,13 @@ Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information on
 - [Labour court guide: Which forum, which law, and how to file](https://sarmads050.github.io/wakeelbano/service/labour-court-pakistan/index.html)
 - [Wrongful termination: Domestic inquiry, retrenchment and reinstatement](https://sarmads050.github.io/wakeelbano/service/wrongful-termination-pakistan/index.html)
 - [Salary recovery: Unpaid wages, gratuity, provident fund and the claim route](https://sarmads050.github.io/wakeelbano/service/salary-recovery-pakistan/index.html)
+
+## Civil and Property Litigation in Pakistan (https://sarmads050.github.io/wakeelbano/civil/)
+- [The four suits that carry most civil practice in Pakistan: specific performance of an agreement to sell, injunction and stay orders, execution of a decree, and partition of joint property. Procedure, documents and drafting.](https://sarmads050.github.io/wakeelbano/civil/)
+- [Specific performance: Specific Relief Act 1877 — forcing the sale that was agreed](https://sarmads050.github.io/wakeelbano/civil/specific-performance/index.html)
+- [Injunction and stay orders: Order XXXIX CPC — the three tests a court applies](https://sarmads050.github.io/wakeelbano/civil/order-39-injunction/index.html)
+- [Execution of a decree: Order XXI CPC — how a decree actually becomes money](https://sarmads050.github.io/wakeelbano/civil/order-21-execution/index.html)
+- [Partition of joint property: Co-owned property, shares and the preliminary decree](https://sarmads050.github.io/wakeelbano/civil/partition-suit/index.html)
 
 ## Jobs and hiring
 - [Legal jobs in Pakistan, freelance tasks and the lawyer directory](https://sarmads050.github.io/wakeelbano/jobs/) — aggregated openings with links to the original postings, lawyer profiles with skills, cases handled and ratings, and hiring tools for chambers and firms.

@@ -24,6 +24,7 @@ near the courts, paid drafting work, and free case law research guides.
 | `jobs/` | **Job market + lawyer directory**: 18 sourced legal openings, 6 paid tasks, 8 lawyer profiles, apply / post / rate flows |
 | `family/` | Family law hub + khula and divorce, maintenance, child custody, dower |
 | `service/` | Service law hub + labour court, wrongful termination, salary recovery |
+| `civil/` | Civil and property hub + specific performance, injunction (Order XXXIX), execution (Order XXI), partition |
 | `scripts/content_pages.py` | Core page copy and data — the file to edit for content changes |
 | `scripts/content_pages_more.py` | Wave-2 pages (drafts, case law, practice, Karachi) plus extra hub tiles |
 | `404.html` | Not-found page (noindex) |
@@ -45,7 +46,7 @@ near the courts, paid drafting work, and free case law research guides.
 | `scripts/db.py` | Database helper: `counts`, `rows`, `insert`, `update`, `delete`, `sql` (keys from `.secrets/`) |
 | `research/` | Demand research (what Pakistani lawyers search, pain points) behind the content plan |
 
-**Size of the site:** 46 indexable URLs — home, job market, 6 hubs, 37 guides, about, plus a 404.
+**Size of the site:** 52 indexable URLs — home, job market, 7 hubs, 42 guides, about, plus a 404.
 
 ## The job market (`jobs/`)
 

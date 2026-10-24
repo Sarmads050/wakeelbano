@@ -1323,3 +1323,15 @@ PAGES.extend(PAGES_3)
 from content_pages_resources import PAGES_4
 
 PAGES.extend(PAGES_4)
+
+
+# ---------------------------------------------------------------- wave 5
+# Civil and property litigation hub, plus pre-arrest bail.
+from content_pages_civil import PAGES_5, CIVIL_HUB, HUB_ADDITIONS_5
+
+HUBS.append(CIVIL_HUB)
+PAGES.extend(PAGES_5)
+for _hub in HUBS:
+    for _t, _d, _u in HUB_ADDITIONS_5.get(_hub["slug"], []):
+        if all(c[0] != _t for c in _hub["children"]):
+            _hub["children"].append((_t, _d, _u))
