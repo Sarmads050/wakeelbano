@@ -6,7 +6,10 @@ Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information on
 
 ## Core pages
 - [What WakeelBano is: a career platform for Pakistani lawyers; who it serves and how it is funded.](https://sarmads050.github.io/wakeelbano/)
+- [What the platform does for each user type — law student, fresh graduate, junior advocate, chamber, recruiter, university.](https://sarmads050.github.io/wakeelbano/what-is-wakeelbano/)
 - [Entity page: what the platform does, what it deliberately does not do, and how content is produced.](https://sarmads050.github.io/wakeelbano/about/)
+- [How guides are researched: primary Pakistani sources, two-source verification, no invented citations, corrections policy.](https://sarmads050.github.io/wakeelbano/methodology/)
+- [Free official legal research sources in Pakistan: court websites, bar council registers, bare statutes, notifications, and how to verify a citation.](https://sarmads050.github.io/wakeelbano/resources/)
 
 ## Case Law Pakistan (https://sarmads050.github.io/wakeelbano/case-law/)
 - [Section-wise case law research guides for Pakistani lawyers: 302 PPC, 489-F PPC and 497 CrPC bail. Free databases, a four-step research method and a citation checklist.](https://sarmads050.github.io/wakeelbano/case-law/)

@@ -374,7 +374,10 @@ def write_llms_txt(urls):
     """Curated llms.txt plus a plain-text export, both generated from content_pages."""
     core = [
         (BASE, "What WakeelBano is: a career platform for Pakistani lawyers; who it serves and how it is funded."),
+        (BASE + "what-is-wakeelbano/", "What the platform does for each user type — law student, fresh graduate, junior advocate, chamber, recruiter, university."),
         (BASE + "about/", "Entity page: what the platform does, what it deliberately does not do, and how content is produced."),
+        (BASE + "methodology/", "How guides are researched: primary Pakistani sources, two-source verification, no invented citations, corrections policy."),
+        (BASE + "resources/", "Free official legal research sources in Pakistan: court websites, bar council registers, bare statutes, notifications, and how to verify a citation."),
     ]
     out = [f"# {BRAND}", "",
            "> Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and "
