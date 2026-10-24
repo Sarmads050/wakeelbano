@@ -26,7 +26,14 @@ near the courts, paid drafting work, and free case law research guides.
 | `404.html` | Not-found page (noindex) |
 | `CNAME` | GitHub Pages custom domain: `wakeelbano.com` |
 | `scripts/build_pages.py` | Generator: writes every content page, `404.html`, `CNAME`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` |
-| `scripts/build_jobs.py` | Generator for `jobs/index.html` — job data, lawyer profiles, apply/post/rate flows |
+| `scripts/build_jobs.py` | Builds `jobs/index.html` from the template + data |
+| `scripts/jobs_template.html` | The job-market page template (HTML + app JS) |
+| `scripts/jobs_data.py` | Job, task and lawyer datasets — edit here |
+| `assets/wb-db.js` | Data layer: Supabase when configured, localStorage otherwise |
+| `assets/supabase-config.js` | Where the Supabase URL and anon key go (empty = demo mode) |
+| `supabase/schema.sql` | Database tables, rating rules and RLS policies |
+| `supabase/seed.sql` | Generated seed data (`scripts/gen_supabase.py`) |
+| `supabase/README.md` | 10-minute database setup guide |
 | `scripts/validate.py` | Checks broken internal links, JSON-LD validity, one `<h1>`/title/canonical per page, dead links in `llms.txt` |
 | `scripts/repair_quotes.py` | Utility: converts unescaped straight quotes in content text to typographic quotes |
 | `scripts/push.sh` | Commit + push using a token in `.secrets/gh_token` |
@@ -46,10 +53,13 @@ rating). The page is a single self-contained app:
 - recruiters post a job; lawyers apply; a recruiter rates the lawyer after the work is completed
 - "My profile" builds a lawyer profile (skills, cases, chamber, rate)
 
-**Current storage:** applications, postings, profiles and ratings are kept in `localStorage`, so
-the flows are demonstrable on a static host but not shared between users. To go live, connect a
-backend (Supabase or Firebase free tier is enough): tables `jobs`, `tasks`, `lawyers`,
-`applications`, `ratings`. The UI already expects exactly those fields.
+**Storage:** `assets/wb-db.js` is the only place that talks to the database. With a Supabase URL
+and anon key in `assets/supabase-config.js` it runs **live** (shared jobs, profiles, applications
+and ratings); with them empty it falls back to `localStorage` so the page always works.
+Setup: see `supabase/README.md` (10 minutes, free tier).
+
+One rating per completed job is enforced by `unique (lawyer_id, job_id)` in the schema — that
+constraint, not the UI, is what makes ratings trustworthy.
 
 **Job freshness:** listings are dated and each links to its source. Re-run the aggregation
 monthly and delete expired entries — a stale job list destroys trust faster than a short one.

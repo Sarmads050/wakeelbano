@@ -123,6 +123,7 @@ footer a{color:#A9BAC8}
 </div></section>
 
 <div class="wrap">
+  <div id="modeBar" style="margin-top:16px"></div>
   <div class="tabs">
     <button class="tab on" data-p="jobs">Jobs (18)</button>
     <button class="tab" data-p="tasks">Freelance tasks (6)</button>
@@ -273,14 +274,27 @@ footer a{color:#A9BAC8}
 
 <div class="modal" id="mProfile"><div class="mbox" id="mProfileBox"></div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/supabase-config.js"></script>
+<script src="../assets/wb-db.js"></script>
 <script>
-const DATA = {"jobs": [{"id": "j01", "t": "Legal Associate", "org": "CureMD", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "2 years", "pay": "Not stated", "posted": "2026-10-17", "tags": ["Contract management", "Compliance", "Data privacy", "LLB/LLM"], "desc": "Contract management, compliance monitoring and regulatory research for a healthcare IT group. Drafting and contract review are the core of the role.", "src": "Rozee.pk", "url": "https://www.rozee.pk/job/jsearch/q/legal"}, {"id": "j02", "t": "Associate Lawyer (remote)", "org": "Muzy & Meraris LLP", "city": "Remote", "area": "Corporate", "type": "Full-time · Remote", "exp": "5 years", "pay": "Not stated", "posted": "2026-10-21", "tags": ["Due diligence", "Cross-border", "Legal opinions", "Pleadings"], "desc": "Full-service firm in Lahore hiring a remote associate for transactional document review, legal opinions and litigation support.", "src": "Rozee.pk", "url": "https://www.rozee.pk/job/jsearch/q/legal"}, {"id": "j03", "t": "Legal Associate", "org": "Zeta Technologies", "city": "Islamabad", "area": "Corporate", "type": "Full-time · Onsite", "exp": "1–2 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-15", "tags": ["Contract management", "Legal research", "MS Word drafting"], "desc": "Support the company's legal function: contract management, legal research and assistance to senior counsel.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-associate-jobs.html"}, {"id": "j04", "t": "Litigation Associate (per case)", "org": "MMMLA", "city": "Karachi", "area": "Litigation", "type": "Per case", "exp": "1 year", "pay": "Per case fee", "posted": "2026-10-19", "tags": ["LLB mandatory", "Trial court", "Fresh graduates welcome"], "desc": "DHA-based practice paying per case. Described as suitable for fresh graduates who want real court exposure.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-associate-jobs.html"}, {"id": "j05", "t": "Advocate / Lawyer (family & civil)", "org": "Al Haqq Law Firm", "city": "Karachi", "area": "Family", "type": "Full-time", "exp": "5 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-10", "tags": ["Family law", "Civil law", "DHA Phase 5", "Mon–Sat"], "desc": "Family and civil practice at DHA Phase 5. The firm asks for exact case counts from lower and higher courts in the CV.", "src": "Al Haqq Law Firm careers", "url": "https://alhaqqlawfirm.com/careers/"}, {"id": "j06", "t": "Part-time Legal Officer (Advocate High Court)", "org": "Coscop Investment Management", "city": "Karachi", "area": "Civil", "type": "Part-time / retainer", "exp": "3 years", "pay": "Up to Rs 70,000", "posted": "2026-09-25", "tags": ["High Court licence", "Land/revenue", "Title verification", "Field visits"], "desc": "Retainership covering drafting, title verification and litigation in civil and land matters. Own conveyance required.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-assistant-l-karachi-jobs.html"}, {"id": "j07", "t": "Lawyer / Legal Operations Associate", "org": "MKS Law", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "1–3 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-12", "tags": ["Legal ops", "Document review", "No independent advice"], "desc": "Support role inside a law firm: document review, legal operations and research under supervision.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-officer-l-lahore-jobs.html"}, {"id": "j08", "t": "Corporate Lawyer", "org": "Abacus", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "3–5 years", "pay": "Not stated", "posted": "2026-10-08", "tags": ["Bar licence mandatory", "Commercial law", "Regulatory"], "desc": "Corporate and commercial advisory with a focus on regulatory work and contract drafting.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-corporate-law-l-lahore-jobs.html"}, {"id": "j09", "t": "Paralegal / Legal Assistant (London litigation firm)", "org": "LexLaw", "city": "Lahore", "area": "Remote support", "type": "Full-time · Office based", "exp": "0–2 years", "pay": "Rs 125,000 – 170,000", "posted": "2026-10-02", "tags": ["English drafting", "UK litigation support", "SEO legal writing"], "desc": "Office-based support for a London litigation practice: drafting, legal research and blog writing in English.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-csr-jobs-for-US-based-law-firms-in-lahore-l-lahore-jobs.html"}, {"id": "j10", "t": "Data Privacy Legal Officer", "org": "Anekor", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "3+ years", "pay": "Rs 200,000 – 250,000", "posted": "2026-09-17", "tags": ["Data protection", "Compliance", "Policy drafting"], "desc": "Privacy and compliance role: policy drafting, regulatory mapping and internal advisory.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-advisor,-legal-officer,-legal-affairs-l-lahore-jobs.html"}, {"id": "j11", "t": "Associate — Taxation", "org": "Mandviwalla & Zafar", "city": "Lahore", "area": "Tax", "type": "Full-time · Onsite", "exp": "2–5 years", "pay": "Rs 120,000 – 220,000", "posted": "2026-10-10", "tags": ["Tax law", "Appeals", "Advisory"], "desc": "Tax practice role at a leading firm: advisory, appeals and drafting.", "src": "Legal Alphabet (Pakistan legal jobs)", "url": "https://legalalphabet.com/pakistan/jobs"}, {"id": "j12", "t": "Associate Lawyer (internship) — Attorney General's Office", "org": "Ministry of Law and Justice", "city": "Islamabad", "area": "Government", "type": "12-month internship", "exp": "Fresh graduates", "pay": "Up to Rs 100,000 / month", "posted": "2026-08-17", "tags": ["3 posts", "Age limit 32", "Merit", "Online application only"], "desc": "Associate Lawyer internship in the Office of the Attorney General for Pakistan. 12 months, merit quota, no hand-delivered applications.", "src": "National Job Portal / Ministry of Law", "url": "https://jobspak.com/ministry-of-law-and-justice-internship-opportunity-2026/"}, {"id": "j13", "t": "Director — Prosecution & Civil Litigation", "org": "SECP", "city": "Karachi", "area": "Government", "type": "Contract", "exp": "15 years (13 as HC advocate)", "pay": "Per SECP scale", "posted": "2026-10-23", "tags": ["LLB/LLM HEC recognised", "High Court advocate", "Age limit 50"], "desc": "Senior regulatory litigation role at the Securities and Exchange Commission of Pakistan. One post in Karachi.", "src": "SECP announcement (via Bloom Pakistan)", "url": "https://bloompakistan.com/secp-announces-legal-jobs-in-major-cities/"}, {"id": "j14", "t": "Legal Assistant & Policy Advisor", "org": "Halo Informatics", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "6 months – 1 year", "pay": "Not stated", "posted": "2026-09-30", "tags": ["Lower court licence mandatory", "Age 20–25", "Compliance review"], "desc": "Entry-level compliance and legal support role. Lower court licence is mandatory; suited to a very junior lawyer.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-law,-lecturer-l-lahore-jobs.html"}, {"id": "j15", "t": "Legal Associate (fresh LLB)", "org": "Private practice, DHA Phase 8", "city": "Lahore", "area": "Litigation", "type": "Full-time · Onsite", "exp": "Fresh graduate", "pay": "Not stated", "posted": "2026-09-06", "tags": ["Mentorship", "Bar enrollment support", "Mon–Fri"], "desc": "Litigation and corporate exposure with structured mentorship; the practice supports bar council enrolment. Apply by WhatsApp.", "src": "Katcheri job notice", "url": "https://katcheri.in/legal-associate-opportunity-fresh-ll-b-graduate-lahore/"}, {"id": "j16", "t": "Associate / Intern", "org": "Abid S. Zuberi & Ayan M. Memon Law Associates", "city": "Karachi", "area": "Corporate", "type": "Associate or internship", "exp": "Any", "pay": "Not stated", "posted": "2026-10-01", "tags": ["Clifton", "Applications portal", "Cover letter required"], "desc": "Karachi firm accepting associate and intern applications through its own careers portal, with a written statement of interest.", "src": "Firm careers page", "url": "https://zmlaw.com.pk/careers-2/"}, {"id": "j17", "t": "Legal Executive", "org": "Crime Victim Services Pakistan", "city": "Lahore", "area": "Public interest", "type": "Full-time", "exp": "1–2 years", "pay": "Not stated", "posted": "2026-09-11", "tags": ["Lower courts", "Legal aid", "Client intake"], "desc": "Support legal aid clients in lower courts; referrals depend on where the lawyer practises.", "src": "Glassdoor PK", "url": "https://www.glassdoor.com/Job/legal-jobs-SRCH_IN192_KO0,5.htm"}, {"id": "j18", "t": "Legal Counsel", "org": "Treadstone Associates", "city": "Pakistan (unspecified)", "area": "Corporate", "type": "Full-time", "exp": "3–5 years", "pay": "PKR 100,000 (employer stated)", "posted": "2026-10-14", "tags": ["Advocate licence", "Civil/criminal/labour", "Independent handling"], "desc": "In-house counsel role requiring a valid advocate licence and the ability to run matters independently.", "src": "Glassdoor PK", "url": "https://www.glassdoor.com/Job/pakistan-legal-counsel-jobs-SRCH_IL.0,8_IN192_KO9,22.htm"}], "tasks": [{"id": "t01", "t": "Written statement — rent case", "cat": "Drafting", "city": "Karachi", "pay": "Rs 12,000", "days": "5 days", "by": "Verified senior, City Courts", "desc": "Three-year-old rent dispute. Facts and documents provided; a first draft is required."}, {"id": "t02", "t": "Case law memo — service matter", "cat": "Research", "city": "Remote", "pay": "Rs 8,000", "days": "3 days", "by": "Advocate, Sindh High Court", "desc": "Summarise six service tribunal judgments and extract the ratio of each, with verified citations."}, {"id": "t03", "t": "Contract review — 40 agreements", "cat": "Contracts", "city": "Remote", "pay": "Rs 45,000", "days": "2 weeks", "by": "Verified law firm", "desc": "Review and flag risk in standard distribution agreements. Strong English required."}, {"id": "t04", "t": "Legal notice — cheque dishonour", "cat": "Drafting", "city": "Karachi", "pay": "Rs 3,500", "days": "2 days", "by": "Junior-friendly", "desc": "Straightforward notice; a structure exists and the facts need to be added."}, {"id": "t05", "t": "Urdu explainer script — tenant rights", "cat": "Content", "city": "Remote", "pay": "Rs 6,000", "days": "4 days", "by": "WakeelBano Growth School", "desc": "Three-minute script in plain Urdu on what a tenant should do when served a notice."}, {"id": "t06", "t": "Bail application — trial court", "cat": "Drafting", "city": "Karachi", "pay": "Rs 10,000", "days": "2 days", "by": "Advocate, Malir", "desc": "Grounds provided. A good first paid task for a junior with bail exposure."}], "lawyers": [{"id": "l01", "n": "Adv. Kamran Siddiqui", "city": "Karachi", "area": "Criminal", "chamber": "Chamber of A. R. Siddiqui, City Courts", "since": 2007, "cases": 640, "skills": ["Bail", "Trial defence", "CrPC applications", "Cause list management"], "rate": "Rs 5,000 / appearance", "rating": 4.8, "reviews": 23, "verified": true, "bio": "Criminal defence at City Courts and Malir. Takes pupils every January and gives them charge of routine applications after three months."}, {"id": "l02", "n": "Adv. Farah Naaz", "city": "Karachi", "area": "Family", "chamber": "Independent, District & Sessions Courts Karachi", "since": 2013, "cases": 410, "skills": ["Khula", "Maintenance", "Custody", "Guardian court practice"], "rate": "Rs 4,000 / consultation", "rating": 4.9, "reviews": 31, "verified": true, "bio": "Family law practice focused on maintenance and custody. Writes plain-language client notes after every hearing."}, {"id": "l03", "n": "Barrister Owais Ahmed", "city": "Karachi", "area": "Corporate", "chamber": "Of counsel, Clifton firm", "since": 2011, "cases": 180, "skills": ["Contracts", "Due diligence", "SECP filings", "Legal opinions"], "rate": "Rs 12,000 / hour", "rating": 4.7, "reviews": 14, "verified": true, "bio": "Transactional work for SMEs and startups, including shareholder agreements and regulatory filings."}, {"id": "l04", "n": "Adv. Rizwan Ali Brohi", "city": "Karachi", "area": "Civil", "chamber": "Shared chamber, City Courts", "since": 2016, "cases": 320, "skills": ["Rent matters", "Specific performance", "Execution", "Drafting"], "rate": "Rs 3,500 / appearance", "rating": 4.6, "reviews": 19, "verified": true, "bio": "Civil litigation with a focus on rent and property. Shares his chamber with two juniors and teaches drafting on Saturdays."}, {"id": "l05", "n": "Adv. Sana Qureshi", "city": "Karachi", "area": "Constitutional", "chamber": "Associate, Sindh High Court practice", "since": 2014, "cases": 210, "skills": ["Writ petitions", "Service matters", "Legal research", "Written submissions"], "rate": "Rs 8,000 / hearing", "rating": 4.9, "reviews": 12, "verified": true, "bio": "Writ and service jurisprudence at the High Court. Publishes case notes on administrative law."}, {"id": "l06", "n": "Adv. Hamza Tariq", "city": "Lahore", "area": "Corporate", "chamber": "Legal associate, Lahore law firm", "since": 2018, "cases": 145, "skills": ["Contract drafting", "Legal research", "Compliance", "English drafting"], "rate": "Rs 6,000 / task", "rating": 4.8, "reviews": 27, "verified": true, "bio": "Remote-friendly contract and compliance work. Handles 40+ review files a month for two firms."}, {"id": "l07", "n": "Adv. Mehwish Ali", "city": "Islamabad", "area": "Service", "chamber": "Independent, Islamabad", "since": 2015, "cases": 260, "skills": ["Service tribunals", "Termination", "Salary recovery", "Pension matters"], "rate": "Rs 5,000 / hearing", "rating": 4.7, "reviews": 16, "verified": true, "bio": "Federal service matters and labour disputes; appears before tribunals and the Islamabad High Court."}, {"id": "l08", "n": "Adv. Bilal Raza", "city": "Karachi", "area": "Criminal", "chamber": "Pupil turned associate, Malir", "since": 2022, "cases": 95, "skills": ["Bail applications", "Legal research", "Cause list tracking", "Urdu drafting"], "rate": "Rs 2,500 / task", "rating": 4.5, "reviews": 9, "verified": false, "bio": "Two years post-enrolment. Takes drafting and research tasks to build a record while his chamber work continues."}]};
-const store = {
-  get(k,d){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):d; }catch(e){ return d; } },
-  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-};
+const DATA = {"jobs": [{"id": "j01", "t": "Legal Associate", "org": "CureMD", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "2 years", "pay": "Not stated", "posted": "2026-10-17", "tags": ["Contract management", "Compliance", "Data privacy", "LLB/LLM"], "desc": "Contract management, compliance monitoring and regulatory research for a healthcare IT group. Drafting and contract review are the core of the role.", "src": "Rozee.pk", "url": "https://www.rozee.pk/job/jsearch/q/legal"}, {"id": "j02", "t": "Associate Lawyer (remote)", "org": "Muzy & Meraris LLP", "city": "Remote", "area": "Corporate", "type": "Full-time · Remote", "exp": "5 years", "pay": "Not stated", "posted": "2026-10-21", "tags": ["Due diligence", "Cross-border", "Legal opinions", "Pleadings"], "desc": "Full-service firm in Lahore hiring a remote associate for transactional document review, legal opinions and litigation support.", "src": "Rozee.pk", "url": "https://www.rozee.pk/job/jsearch/q/legal"}, {"id": "j03", "t": "Legal Associate", "org": "Zeta Technologies", "city": "Islamabad", "area": "Corporate", "type": "Full-time · Onsite", "exp": "1–2 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-15", "tags": ["Contract management", "Legal research", "MS Word drafting"], "desc": "Support the company's legal function: contract management, legal research and assistance to senior counsel.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-associate-jobs.html"}, {"id": "j04", "t": "Litigation Associate (per case)", "org": "MMMLA", "city": "Karachi", "area": "Litigation", "type": "Per case", "exp": "1 year", "pay": "Per case fee", "posted": "2026-10-19", "tags": ["LLB mandatory", "Trial court", "Fresh graduates welcome"], "desc": "DHA-based practice paying per case. Described as suitable for fresh graduates who want real court exposure.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-associate-jobs.html"}, {"id": "j05", "t": "Advocate / Lawyer (family & civil)", "org": "Al Haqq Law Firm", "city": "Karachi", "area": "Family", "type": "Full-time", "exp": "5 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-10", "tags": ["Family law", "Civil law", "DHA Phase 5", "Mon–Sat"], "desc": "Family and civil practice at DHA Phase 5. The firm asks for exact case counts from lower and higher courts in the CV.", "src": "Al Haqq Law Firm careers", "url": "https://alhaqqlawfirm.com/careers/"}, {"id": "j06", "t": "Part-time Legal Officer (Advocate High Court)", "org": "Coscop Investment Management", "city": "Karachi", "area": "Civil", "type": "Part-time / retainer", "exp": "3 years", "pay": "Up to Rs 70,000", "posted": "2026-09-25", "tags": ["High Court licence", "Land/revenue", "Title verification", "Field visits"], "desc": "Retainership covering drafting, title verification and litigation in civil and land matters. Own conveyance required.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-assistant-l-karachi-jobs.html"}, {"id": "j07", "t": "Lawyer / Legal Operations Associate", "org": "MKS Law", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "1–3 years", "pay": "Rs 75,000 – 100,000", "posted": "2026-10-12", "tags": ["Legal ops", "Document review", "No independent advice"], "desc": "Support role inside a law firm: document review, legal operations and research under supervision.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-officer-l-lahore-jobs.html"}, {"id": "j08", "t": "Corporate Lawyer", "org": "Abacus", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "3–5 years", "pay": "Not stated", "posted": "2026-10-08", "tags": ["Bar licence mandatory", "Commercial law", "Regulatory"], "desc": "Corporate and commercial advisory with a focus on regulatory work and contract drafting.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-corporate-law-l-lahore-jobs.html"}, {"id": "j09", "t": "Paralegal / Legal Assistant (London litigation firm)", "org": "LexLaw", "city": "Lahore", "area": "Remote support", "type": "Full-time · Office based", "exp": "0–2 years", "pay": "Rs 125,000 – 170,000", "posted": "2026-10-02", "tags": ["English drafting", "UK litigation support", "SEO legal writing"], "desc": "Office-based support for a London litigation practice: drafting, legal research and blog writing in English.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-csr-jobs-for-US-based-law-firms-in-lahore-l-lahore-jobs.html"}, {"id": "j10", "t": "Data Privacy Legal Officer", "org": "Anekor", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "3+ years", "pay": "Rs 200,000 – 250,000", "posted": "2026-09-17", "tags": ["Data protection", "Compliance", "Policy drafting"], "desc": "Privacy and compliance role: policy drafting, regulatory mapping and internal advisory.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-legal-advisor,-legal-officer,-legal-affairs-l-lahore-jobs.html"}, {"id": "j11", "t": "Associate — Taxation", "org": "Mandviwalla & Zafar", "city": "Lahore", "area": "Tax", "type": "Full-time · Onsite", "exp": "2–5 years", "pay": "Rs 120,000 – 220,000", "posted": "2026-10-10", "tags": ["Tax law", "Appeals", "Advisory"], "desc": "Tax practice role at a leading firm: advisory, appeals and drafting.", "src": "Legal Alphabet (Pakistan legal jobs)", "url": "https://legalalphabet.com/pakistan/jobs"}, {"id": "j12", "t": "Associate Lawyer (internship) — Attorney General's Office", "org": "Ministry of Law and Justice", "city": "Islamabad", "area": "Government", "type": "12-month internship", "exp": "Fresh graduates", "pay": "Up to Rs 100,000 / month", "posted": "2026-08-17", "tags": ["3 posts", "Age limit 32", "Merit", "Online application only"], "desc": "Associate Lawyer internship in the Office of the Attorney General for Pakistan. 12 months, merit quota, no hand-delivered applications.", "src": "National Job Portal / Ministry of Law", "url": "https://jobspak.com/ministry-of-law-and-justice-internship-opportunity-2026/"}, {"id": "j13", "t": "Director — Prosecution & Civil Litigation", "org": "SECP", "city": "Karachi", "area": "Government", "type": "Contract", "exp": "15 years (13 as HC advocate)", "pay": "Per SECP scale", "posted": "2026-10-23", "tags": ["LLB/LLM HEC recognised", "High Court advocate", "Age limit 50"], "desc": "Senior regulatory litigation role at the Securities and Exchange Commission of Pakistan. One post in Karachi.", "src": "SECP announcement (via Bloom Pakistan)", "url": "https://bloompakistan.com/secp-announces-legal-jobs-in-major-cities/"}, {"id": "j14", "t": "Legal Assistant & Policy Advisor", "org": "Halo Informatics", "city": "Lahore", "area": "Corporate", "type": "Full-time", "exp": "6 months – 1 year", "pay": "Not stated", "posted": "2026-09-30", "tags": ["Lower court licence mandatory", "Age 20–25", "Compliance review"], "desc": "Entry-level compliance and legal support role. Lower court licence is mandatory; suited to a very junior lawyer.", "src": "Indeed PK", "url": "https://pk.indeed.com/q-law,-lecturer-l-lahore-jobs.html"}, {"id": "j15", "t": "Legal Associate (fresh LLB)", "org": "Private practice, DHA Phase 8", "city": "Lahore", "area": "Litigation", "type": "Full-time · Onsite", "exp": "Fresh graduate", "pay": "Not stated", "posted": "2026-09-06", "tags": ["Mentorship", "Bar enrollment support", "Mon–Fri"], "desc": "Litigation and corporate exposure with structured mentorship; the practice supports bar council enrolment. Apply by WhatsApp.", "src": "Katcheri job notice", "url": "https://katcheri.in/legal-associate-opportunity-fresh-ll-b-graduate-lahore/"}, {"id": "j16", "t": "Associate / Intern", "org": "Abid S. Zuberi & Ayan M. Memon Law Associates", "city": "Karachi", "area": "Corporate", "type": "Associate or internship", "exp": "Any", "pay": "Not stated", "posted": "2026-10-01", "tags": ["Clifton", "Applications portal", "Cover letter required"], "desc": "Karachi firm accepting associate and intern applications through its own careers portal, with a written statement of interest.", "src": "Firm careers page", "url": "https://zmlaw.com.pk/careers-2/"}, {"id": "j17", "t": "Legal Executive", "org": "Crime Victim Services Pakistan", "city": "Lahore", "area": "Public interest", "type": "Full-time", "exp": "1–2 years", "pay": "Not stated", "posted": "2026-09-11", "tags": ["Lower courts", "Legal aid", "Client intake"], "desc": "Support legal aid clients in lower courts; referrals depend on where the lawyer practises.", "src": "Glassdoor PK", "url": "https://www.glassdoor.com/Job/legal-jobs-SRCH_IN192_KO0,5.htm"}, {"id": "j18", "t": "Legal Counsel", "org": "Treadstone Associates", "city": "Pakistan (unspecified)", "area": "Corporate", "type": "Full-time", "exp": "3–5 years", "pay": "PKR 100,000 (employer stated)", "posted": "2026-10-14", "tags": ["Advocate licence", "Civil/criminal/labour", "Independent handling"], "desc": "In-house counsel role requiring a valid advocate licence and the ability to run matters independently.", "src": "Glassdoor PK", "url": "https://www.glassdoor.com/Job/pakistan-legal-counsel-jobs-SRCH_IL.0,8_IN192_KO9,22.htm"}], "tasks": [{"id": "t01", "t": "Written statement — rent case", "cat": "Drafting", "city": "Karachi", "pay": "Rs 12,000", "days": "5 days", "by": "Verified senior, City Courts", "desc": "Three-year-old rent dispute. Facts and documents provided; a first draft is required."}, {"id": "t02", "t": "Case law memo — service matter", "cat": "Research", "city": "Remote", "pay": "Rs 8,000", "days": "3 days", "by": "Advocate, Sindh High Court", "desc": "Summarise six service tribunal judgments and extract the ratio of each, with verified citations."}, {"id": "t03", "t": "Contract review — 40 agreements", "cat": "Contracts", "city": "Remote", "pay": "Rs 45,000", "days": "2 weeks", "by": "Verified law firm", "desc": "Review and flag risk in standard distribution agreements. Strong English required."}, {"id": "t04", "t": "Legal notice — cheque dishonour", "cat": "Drafting", "city": "Karachi", "pay": "Rs 3,500", "days": "2 days", "by": "Junior-friendly", "desc": "Straightforward notice; a structure exists and the facts need to be added."}, {"id": "t05", "t": "Urdu explainer script — tenant rights", "cat": "Content", "city": "Remote", "pay": "Rs 6,000", "days": "4 days", "by": "WakeelBano Growth School", "desc": "Three-minute script in plain Urdu on what a tenant should do when served a notice."}, {"id": "t06", "t": "Bail application — trial court", "cat": "Drafting", "city": "Karachi", "pay": "Rs 10,000", "days": "2 days", "by": "Advocate, Malir", "desc": "Grounds provided. A good first paid task for a junior with bail exposure."}], "lawyers": [{"id": "l01", "n": "Adv. Kamran Siddiqui", "city": "Karachi", "area": "Criminal", "chamber": "Chamber of A. R. Siddiqui, City Courts", "since": 2007, "cases": 640, "skills": ["Bail", "Trial defence", "CrPC applications", "Cause list management"], "rate": "Rs 5,000 / appearance", "rating": 4.8, "reviews": 23, "verified": true, "bio": "Criminal defence at City Courts and Malir. Takes pupils every January and gives them charge of routine applications after three months."}, {"id": "l02", "n": "Adv. Farah Naaz", "city": "Karachi", "area": "Family", "chamber": "Independent, District & Sessions Courts Karachi", "since": 2013, "cases": 410, "skills": ["Khula", "Maintenance", "Custody", "Guardian court practice"], "rate": "Rs 4,000 / consultation", "rating": 4.9, "reviews": 31, "verified": true, "bio": "Family law practice focused on maintenance and custody. Writes plain-language client notes after every hearing."}, {"id": "l03", "n": "Barrister Owais Ahmed", "city": "Karachi", "area": "Corporate", "chamber": "Of counsel, Clifton firm", "since": 2011, "cases": 180, "skills": ["Contracts", "Due diligence", "SECP filings", "Legal opinions"], "rate": "Rs 12,000 / hour", "rating": 4.7, "reviews": 14, "verified": true, "bio": "Transactional work for SMEs and startups, including shareholder agreements and regulatory filings."}, {"id": "l04", "n": "Adv. Rizwan Ali Brohi", "city": "Karachi", "area": "Civil", "chamber": "Shared chamber, City Courts", "since": 2016, "cases": 320, "skills": ["Rent matters", "Specific performance", "Execution", "Drafting"], "rate": "Rs 3,500 / appearance", "rating": 4.6, "reviews": 19, "verified": true, "bio": "Civil litigation with a focus on rent and property. Shares his chamber with two juniors and teaches drafting on Saturdays."}, {"id": "l05", "n": "Adv. Sana Qureshi", "city": "Karachi", "area": "Constitutional", "chamber": "Associate, Sindh High Court practice", "since": 2014, "cases": 210, "skills": ["Writ petitions", "Service matters", "Legal research", "Written submissions"], "rate": "Rs 8,000 / hearing", "rating": 4.9, "reviews": 12, "verified": true, "bio": "Writ and service jurisprudence at the High Court. Publishes case notes on administrative law."}, {"id": "l06", "n": "Adv. Hamza Tariq", "city": "Lahore", "area": "Corporate", "chamber": "Legal associate, Lahore law firm", "since": 2018, "cases": 145, "skills": ["Contract drafting", "Legal research", "Compliance", "English drafting"], "rate": "Rs 6,000 / task", "rating": 4.8, "reviews": 27, "verified": true, "bio": "Remote-friendly contract and compliance work. Handles 40+ review files a month for two firms."}, {"id": "l07", "n": "Adv. Mehwish Ali", "city": "Islamabad", "area": "Service", "chamber": "Independent, Islamabad", "since": 2015, "cases": 260, "skills": ["Service tribunals", "Termination", "Salary recovery", "Pension matters"], "rate": "Rs 5,000 / hearing", "rating": 4.7, "reviews": 16, "verified": true, "bio": "Federal service matters and labour disputes; appears before tribunals and the Islamabad High Court."}, {"id": "l08", "n": "Adv. Bilal Raza", "city": "Karachi", "area": "Criminal", "chamber": "Pupil turned associate, Malir", "since": 2022, "cases": 95, "skills": ["Bail applications", "Legal research", "Cause list tracking", "Urdu drafting"], "rate": "Rs 2,500 / task", "rating": 4.5, "reviews": 9, "verified": false, "bio": "Two years post-enrolment. Takes drafting and research tasks to build a record while his chamber work continues."}]};          /* offline fallback when Supabase is not configured */
+const MODE = WB.init();
 const $$ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- state ---------- */
+let ALL = { jobs: [], tasks: [], lawyers: [], ratings: {} };
+
+/* ---------- mode banner ---------- */
+function paintMode(){
+  const bar = $$('modeBar');
+  if (MODE === 'cloud') {
+    bar.innerHTML = `<div class="ok" style="margin:0"><b>Live database connected.</b> Jobs, profiles, applications and ratings are shared with everyone, and every rating is stored against a completed job.</div>`;
+  } else {
+    bar.innerHTML = `<div class="note" style="margin:0"><b>Demo mode.</b> No database is connected yet, so applications, postings and ratings are saved only in this browser. Add your Supabase URL and anon key in <code>assets/supabase-config.js</code> to switch this page to the live database.</div>`;
+  }
+}
 
 /* ---------- tabs ---------- */
 function show(p){
@@ -291,37 +305,50 @@ function show(p){
 }
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>show(b.dataset.p));
 
-/* ---------- filters fill ---------- */
+/* ---------- select fillers ---------- */
 function fillSelect(el, values, allLabel){
+  const current = el.value;
   el.innerHTML = '<option>'+allLabel+'</option>' + values.map(v=>`<option>${esc(v)}</option>`).join('');
+  if (values.includes(current)) el.value = current;
 }
-fillSelect($$('fCity'), [...new Set(DATA.jobs.map(j=>j.city))].sort(), 'All cities');
-fillSelect($$('fArea'), [...new Set(DATA.jobs.map(j=>j.area))].sort(), 'All areas');
-fillSelect($$('lCity'), [...new Set(DATA.lawyers.map(l=>l.city))].sort(), 'All cities');
-fillSelect($$('lArea'), [...new Set(DATA.lawyers.map(l=>l.area))].sort(), 'All areas');
+
+/* ---------- load ---------- */
+async function loadAll(){
+  const [jobs, tasks, lawyers, ratings] = await Promise.all([
+    WB.listJobs(), WB.listTasks(), WB.listLawyers(), WB.listMyRatings()
+  ]);
+  ALL.jobs = (jobs && jobs.length) ? jobs : DATA.jobs;
+  ALL.tasks = (tasks && tasks.length) ? tasks : DATA.tasks;
+  ALL.lawyers = (lawyers && lawyers.length) ? lawyers : DATA.lawyers;
+  ALL.ratings = ratings || {};
+  fillSelect($$('fCity'), [...new Set(ALL.jobs.map(j=>j.city))].sort(), 'All cities');
+  fillSelect($$('fArea'), [...new Set(ALL.jobs.map(j=>j.area))].sort(), 'All areas');
+  fillSelect($$('lCity'), [...new Set(ALL.lawyers.map(l=>l.city))].sort(), 'All cities');
+  fillSelect($$('lArea'), [...new Set(ALL.lawyers.map(l=>l.area))].sort(), 'All areas');
+  renderJobs(); renderTasks(); renderLawyers(); await paintProfile();
+}
 
 /* ---------- jobs ---------- */
 function daysAgo(d){
-  const ms = new Date('2026-10-24') - new Date(d);
-  const n = Math.round(ms/86400000);
+  if(!d) return 'recently';
+  const n = Math.round((new Date('2026-10-24') - new Date(d))/86400000);
   return n<=0 ? 'today' : n+' day'+(n>1?'s':'')+' ago';
 }
 function renderJobs(){
   const q = ($$('q').value||'').toLowerCase();
   const city = $$('fCity').value, area = $$('fArea').value, type = $$('fType').value;
-  const mine = store.get('wb.postedJobs', []);
-  const all = mine.concat(DATA.jobs);
-  const list = all.filter(j=>{
+  const list = ALL.jobs.filter(j=>{
     const hay = (j.t+' '+j.org+' '+j.city+' '+j.area+' '+j.desc+' '+(j.tags||[]).join(' ')).toLowerCase();
     if(q && !hay.includes(q)) return false;
     if(city!=='All cities' && j.city!==city) return false;
     if(area!=='All areas' && j.area!==area) return false;
     if(type!=='All types'){
-      if(type==='Full-time' && !/full-time/i.test(j.type)) return false;
-      if(type==='Part-time' && !/part/i.test(j.type)) return false;
-      if(type==='Remote' && !/remote/i.test(j.type+j.city)) return false;
-      if(type==='Per case' && !/per case/i.test(j.type)) return false;
-      if(type==='Internship' && !/intern/i.test(j.type)) return false;
+      const ty = (j.type||'')+' '+(j.city||'');
+      if(type==='Full-time' && !/full-time/i.test(ty)) return false;
+      if(type==='Part-time' && !/part/i.test(ty)) return false;
+      if(type==='Remote' && !/remote/i.test(ty)) return false;
+      if(type==='Per case' && !/per case/i.test(ty)) return false;
+      if(type==='Internship' && !/intern/i.test(ty)) return false;
       if(type==='Government' && j.area!=='Government') return false;
     }
     return true;
@@ -330,11 +357,11 @@ function renderJobs(){
     <div class="card job">
       <div>
         <h3>${esc(j.t)}</h3>
-        <div class="org">${esc(j.org)} · ${esc(j.city)} · posted ${esc(j.posted?daysAgo(j.posted):'just now')}</div>
+        <div class="org">${esc(j.org)} · ${esc(j.city)} · posted ${esc(daysAgo(j.posted))}</div>
         <div class="badges">
-          <span class="bg">${esc(j.type)}</span>
+          <span class="bg">${esc(j.type||'')}</span>
           <span class="bg">${esc(j.area)}</span>
-          <span class="bg">Exp: ${esc(j.exp)}</span>
+          <span class="bg">Exp: ${esc(j.exp||'Not stated')}</span>
           ${j.pay && j.pay!=='Not stated' ? `<span class="bg pay">${esc(j.pay)}</span>` : ''}
           ${(j.tags||[]).slice(0,3).map(t=>`<span class="bg">${esc(t)}</span>`).join('')}
         </div>
@@ -342,7 +369,7 @@ function renderJobs(){
         <div class="src">Source: ${j.url ? `<a href="${esc(j.url)}" target="_blank" rel="nofollow noopener">${esc(j.src)}</a>` : esc(j.src)} — verify the deadline on the employer's page.</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <button class="btn btn-gold" onclick="openApply('${esc(j.t)}','${esc(j.org)}',${!!j.url})">Apply here</button>
+        <button class="btn btn-gold" onclick="openApply('${esc(j.t)}','${esc(j.org)}',${!!j.url},'${esc(j.id)}')">Apply here</button>
         ${j.url ? `<a class="btn btn-line" href="${esc(j.url)}" target="_blank" rel="nofollow noopener" style="font-size:13px">Original post</a>` : ''}
       </div>
     </div>`).join('') : `<div class="empty">No job matches this filter. Try clearing the search or choosing "All cities".</div>`;
@@ -350,9 +377,7 @@ function renderJobs(){
 
 /* ---------- tasks ---------- */
 function renderTasks(){
-  const mine = store.get('wb.postedTasks', []);
-  const all = mine.concat(DATA.tasks);
-  $$('taskList').innerHTML = all.map(t=>`
+  $$('taskList').innerHTML = ALL.tasks.map(t=>`
     <div class="card job">
       <div>
         <h3>${esc(t.t)}</h3>
@@ -360,39 +385,42 @@ function renderTasks(){
         <div class="badges"><span class="bg">${esc(t.cat)}</span><span class="bg pay">${esc(t.pay)}</span></div>
         <p>${esc(t.desc)}</p>
       </div>
-      <div><button class="btn btn-gold" onclick="openApply('${esc(t.t)}','${esc(t.by)}',false)">Apply for task</button></div>
-    </div>`).join('');
+      <div><button class="btn btn-gold" onclick="openApply('${esc(t.t)}','${esc(t.by)}',false,'${esc(t.id)}')">Apply for task</button></div>
+    </div>`).join('') || `<div class="empty">No open tasks right now.</div>`;
 }
 
 /* ---------- lawyers ---------- */
 function starHtml(r){
   const full = Math.round(r);
-  return '★'.repeat(full) + '☆'.repeat(5-full);
+  return '★'.repeat(Math.max(0,Math.min(5,full))) + '☆'.repeat(Math.max(0,5-full));
+}
+function lawyerAgg(l){
+  const extra = ALL.ratings[l.id] || [];
+  const baseCount = Number(l.reviews||0) + Number(l.liveReviews||0);
+  const baseSum = Number(l.rating||0) * Number(l.reviews||0) + Number(l.liveRating||0) * Number(l.liveReviews||0);
+  const sum = baseSum + extra.reduce((a,b)=>a+Number(b.stars||0),0);
+  const count = baseCount + extra.length;
+  return { avg: count ? sum/count : 0, count };
 }
 function renderLawyers(){
   const q = ($$('lq').value||'').toLowerCase();
   const city = $$('lCity').value, area = $$('lArea').value;
-  const ratings = store.get('wb.ratings', {});
-  const list = DATA.lawyers.filter(l=>{
-    const hay = (l.n+' '+l.city+' '+l.area+' '+l.skills.join(' ')+' '+l.chamber+' '+l.bio).toLowerCase();
+  const list = ALL.lawyers.filter(l=>{
+    const hay = (l.n+' '+l.city+' '+l.area+' '+(l.skills||[]).join(' ')+' '+l.chamber+' '+l.bio).toLowerCase();
     if(q && !hay.includes(q)) return false;
     if(city!=='All cities' && l.city!==city) return false;
     if(area!=='All areas' && l.area!==area) return false;
     return true;
   });
   $$('lawyerList').innerHTML = list.map(l=>{
-    const extra = ratings[l.id] || [];
-    const base = l.reviews;
-    const sum = l.rating*base + extra.reduce((a,b)=>a+b.stars,0);
-    const count = base + extra.length;
-    const avg = count ? (sum/count) : 0;
+    const {avg, count} = lawyerAgg(l);
     return `<div class="card lawyer">
       <div class="av">${esc(l.n.replace('Adv. ','').replace('Barrister ','').split(' ').map(x=>x[0]).join('').slice(0,2))}</div>
       <div>
         <h3 style="font-size:16.5px">${esc(l.n)} ${l.verified?'<span class="bg" style="background:#E4F3EC;border-color:#BFE0D2;color:#14664A">Verified</span>':''}</h3>
-        <div class="org" style="font-size:13px;color:#5E6B78">${esc(l.area)} · ${esc(l.city)} · ${esc(l.chamber)} · enrolled ${l.since}</div>
+        <div class="org" style="font-size:13px;color:#5E6B78">${esc(l.area)} · ${esc(l.city)} · ${esc(l.chamber)} · enrolled ${esc(l.since)}</div>
         <div class="stars" style="margin:6px 0">${starHtml(avg)} <span style="color:#3E4C59;font-size:13px">${avg.toFixed(1)} (${count})</span></div>
-        <div class="badges">${l.skills.slice(0,4).map(s=>`<span class="bg">${esc(s)}</span>`).join('')}<span class="bg">${l.cases} cases</span></div>
+        <div class="badges">${(l.skills||[]).slice(0,4).map(s=>`<span class="bg">${esc(s)}</span>`).join('')}<span class="bg">${esc(l.cases)} cases</span></div>
         <p style="font-size:13.5px;color:#3E4C59;margin:6px 0 0">${esc(l.bio)}</p>
       </div>
       <div style="text-align:right;display:flex;flex-direction:column;gap:8px">
@@ -408,40 +436,48 @@ function renderLawyers(){
 let applyCtx = {}, rateCtx = {id:null, stars:0};
 function openM(id){$$(id).classList.add('on');document.body.style.overflow='hidden';}
 function closeM(id){$$(id).classList.remove('on');document.body.style.overflow='';}
-function openApply(title, org, hasSource){
-  applyCtx={title, org};
+function openApply(title, org, hasSource, jobId){
+  applyCtx={title, org, jobId};
   $$('apTitle').textContent = 'Apply — '+title;
   $$('apSub').textContent = org + (hasSource ? ' · Also apply at the original source listed on the card.' : '');
+  $$('apForm').style.display='';
   openM('mApply');
 }
-function submitApply(){
+async function submitApply(){
   const n=$$('apName').value.trim(), p=$$('apPhone').value.trim();
   if(!n||!p){ alert('Please enter your name and WhatsApp number.'); return; }
-  const all = store.get('wb.applications', []);
-  all.push({role:applyCtx.title, org:applyCtx.org, name:n, phone:p, why:$$('apWhy').value, at:new Date().toISOString()});
-  store.set('wb.applications', all);
-  $$('apForm').innerHTML = `<div class="ok"><b>Application saved, ${esc(n.split(' ')[0])}.</b><br>In the live version the recruiter receives it instantly and you get a WhatsApp confirmation.</div><button class="btn btn-line" style="width:100%" onclick="closeM('mApply')">Close</button>`;
+  try{
+    const res = await WB.apply({title:applyCtx.title, org:applyCtx.org, jobId:applyCtx.jobId,
+                               name:n, phone:p, note:$$('apWhy').value});
+    $$('apForm').innerHTML = `<div class="ok"><b>Application sent, ${esc(n.split(' ')[0])}.</b><br>${res.mode==='cloud'
+      ? 'It is saved in the WakeelBano database and the recruiter can read it.'
+      : 'Demo mode: it is saved in this browser only. Connect the database to send it for real.'}</div>
+      <button class="btn btn-line" style="width:100%" onclick="closeM('mApply')">Close</button>`;
+  }catch(e){
+    alert('Could not save the application: '+(e.message||e));
+  }
 }
 function openProfile(id){
-  const l = DATA.lawyers.find(x=>x.id===id); if(!l) return;
-  const ratings = store.get('wb.ratings', {})[id] || [];
+  const l = ALL.lawyers.find(x=>x.id===id); if(!l) return;
+  const {avg, count} = lawyerAgg(l);
+  const mine = ALL.ratings[id] || [];
   $$('mProfileBox').innerHTML = `
     <button class="x" onclick="closeM('mProfile')">✕</button>
     <h3>${esc(l.n)}</h3>
     <p>${esc(l.area)} · ${esc(l.city)} · ${esc(l.chamber)}</p>
-    <div class="stars" style="font-size:16px">${starHtml(l.rating)} <span style="color:#3E4C59;font-size:13px">${l.rating} from ${l.reviews} completed jobs</span></div>
-    <div class="badges" style="margin:12px 0">${l.skills.map(s=>`<span class="bg">${esc(s)}</span>`).join('')}<span class="bg">${l.cases} cases handled</span><span class="bg">Enrolled ${l.since}</span></div>
+    <div class="stars" style="font-size:16px">${starHtml(avg)} <span style="color:#3E4C59;font-size:13px">${avg.toFixed(1)} from ${count} completed jobs</span></div>
+    <div class="badges" style="margin:12px 0">${(l.skills||[]).map(s=>`<span class="bg">${esc(s)}</span>`).join('')}<span class="bg">${esc(l.cases)} cases handled</span><span class="bg">Enrolled ${esc(l.since)}</span></div>
     <p style="font-size:14px;color:#3E4C59">${esc(l.bio)}</p>
     <p style="font-size:14px"><b>Rate:</b> ${esc(l.rate)}</p>
-    ${ratings.length? `<h4 style="font-size:14px;margin:14px 0 6px">Reviews on this device</h4>` + ratings.map(r=>`<div style="border-top:1px solid #E6DFD2;padding:8px 0"><div class="stars">${starHtml(r.stars)}</div><div style="font-size:13.5px;color:#3E4C59">${esc(r.text||'No written review.')}</div></div>`).join('') : ''}
+    ${mine.length? `<h4 style="font-size:14px;margin:14px 0 6px">Reviews from this browser</h4>` + mine.map(r=>`<div style="border-top:1px solid #E6DFD2;padding:8px 0"><div class="stars">${starHtml(r.stars)}</div><div style="font-size:13.5px;color:#3E4C59">${esc(r.text||'No written review.')}</div></div>`).join('') : ''}
     <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
-      <button class="btn btn-gold" onclick="closeM('mProfile');openApply('Work with ${esc(l.n)}','${esc(l.area)} lawyer',false)">Hire / message</button>
+      <button class="btn btn-gold" onclick="closeM('mProfile');openApply('Work with ${esc(l.n)}','${esc(l.area)} lawyer',false,'')">Hire / message</button>
       <button class="btn btn-line" onclick="closeM('mProfile');openRate('${l.id}')">Rate a completed job</button>
     </div>`;
   openM('mProfile');
 }
 function openRate(id){
-  const l = DATA.lawyers.find(x=>x.id===id); if(!l) return;
+  const l = ALL.lawyers.find(x=>x.id===id); if(!l) return;
   rateCtx={id, stars:0};
   $$('rateSub').textContent = 'For work completed with '+l.n+'. Ratings can only come from a finished job.';
   drawStars();
@@ -451,29 +487,37 @@ function drawStars(){
   $$('starRow').innerHTML = [1,2,3,4,5].map(n=>`<button class="${n<=rateCtx.stars?'on':''}" onclick="setStars(${n})">★</button>`).join('');
 }
 function setStars(n){ rateCtx.stars=n; drawStars(); }
-function submitRate(){
+async function submitRate(){
   if(!rateCtx.stars){ alert('Choose 1 to 5 stars.'); return; }
-  const all = store.get('wb.ratings', {});
-  (all[rateCtx.id] = all[rateCtx.id] || []).push({stars:rateCtx.stars, text:$$('rateText').value.trim(), at:new Date().toISOString()});
-  store.set('wb.ratings', all);
-  closeM('mRate');
-  $$('rateText').value='';
-  renderLawyers();
-  alert('Rating saved. It now appears on the profile.');
+  try{
+    await WB.rate({lawyerId:rateCtx.id, stars:rateCtx.stars, review:$$('rateText').value.trim(), jobId:''});
+    ALL.ratings = await WB.listMyRatings();
+    closeM('mRate');
+    $$('rateText').value='';
+    renderLawyers();
+    alert(MODE==='cloud' ? 'Rating saved to the database. It now appears on the profile.' : 'Rating saved in this browser. Connect the database to publish it.');
+  }catch(e){
+    alert('This lawyer has already been rated for that job, or the rating could not be saved.');
+  }
 }
 
 /* ---------- profile ---------- */
-function saveProfile(e){
+async function saveProfile(e){
   e.preventDefault();
   const p = {name:$$('pfName').value, city:$$('pfCity').value, area:$$('pfArea').value,
     chamber:$$('pfChamber').value, cases:$$('pfCases').value, skills:$$('pfSkills').value,
     rate:$$('pfRate').value, bio:$$('pfBio').value};
-  store.set('wb.profile', p);
-  paintProfile();
+  try{
+    const res = await WB.saveProfile(p);
+    await paintProfile();
+    alert(res.mode==='cloud' ? 'Profile saved to the database.' : 'Profile saved in this browser (demo mode).');
+  }catch(err){
+    alert('Could not save the profile: '+(err.message||err));
+  }
 }
-function paintProfile(){
-  const p = store.get('wb.profile', null);
-  if(!p){ $$('myProfileBox').innerHTML = '<p style="color:#5E6B78;margin:0">No profile saved yet on this device.</p>'; return; }
+async function paintProfile(){
+  const p = await WB.listProfile();
+  if(!p){ $$('myProfileBox').innerHTML = '<p style="color:#5E6B78;margin:0">No profile saved yet.</p>'; return; }
   const skills = (p.skills||'').split(',').map(s=>s.trim()).filter(Boolean);
   $$('myProfileBox').innerHTML = `
     <h3 style="font-size:18px">${esc(p.name)}</h3>
@@ -481,23 +525,38 @@ function paintProfile(){
     <div class="badges">${skills.map(s=>`<span class="bg">${esc(s)}</span>`).join('')}${p.cases?`<span class="bg">${esc(p.cases)} cases</span>`:''}</div>
     ${p.bio?`<p style="font-size:14px;color:#3E4C59">${esc(p.bio)}</p>`:''}
     ${p.rate?`<p style="font-size:14px"><b>Rate:</b> ${esc(p.rate)}</p>`:''}
-    <div class="note" style="margin-bottom:0">This is what a recruiter sees. In the live version it is public at /lawyers/your-name/ with a bar council badge, and ratings appear automatically after completed work.</div>`;
+    <div class="note" style="margin-bottom:0">${MODE==='cloud'
+      ? 'Saved in the WakeelBano database. A recruiter reading your profile sees exactly this.'
+      : 'Saved in this browser only (demo mode). Connect Supabase to make it a real, shared profile.'}</div>`;
 }
 
 /* ---------- post job ---------- */
-function postJob(e){
+async function postJob(e){
   e.preventDefault();
-  const j = {id:'u'+Date.now(), t:$$('pjTitle').value, org:$$('pjOrg').value, city:$$('pjCity').value,
+  const j = {t:$$('pjTitle').value, org:$$('pjOrg').value, city:$$('pjCity').value,
     area:$$('pjArea').value, type:$$('pjType').value, exp:$$('pjExp').value||'Not stated',
-    pay:$$('pjPay').value||'Not stated', desc:$$('pjDesc').value, posted:'2026-10-24', tags:[], src:'Posted on WakeelBano', url:''};
-  const list = store.get('wb.postedJobs', []); list.unshift(j); store.set('wb.postedJobs', list);
-  e.target.innerHTML = `<div class="ok"><b>Job published.</b><br>${esc(j.t)} · ${esc(j.city)} — it now appears at the top of the Jobs tab on this device.</div>
-    <button class="btn btn-line" style="width:100%" onclick="show('jobs')">See it in the list</button>`;
-  renderJobs();
+    pay:$$('pjPay').value||'Not stated', desc:$$('pjDesc').value, contact:$$('pjContact').value};
+  try{
+    const res = await WB.postJob(j);
+    ALL.jobs = await WB.listJobs();
+    if(!ALL.jobs.length) ALL.jobs = DATA.jobs;
+    renderJobs();
+    e.target.innerHTML = `<div class="ok"><b>Job published.</b><br>${esc(j.t)} · ${esc(j.city)} — ${res.mode==='cloud'
+      ? 'it is live in the database and visible to every visitor.'
+      : 'it appears in the Jobs tab on this device (demo mode).'}</div>
+      <button class="btn btn-line" style="width:100%" onclick="show('jobs')">See it in the list</button>`;
+  }catch(err){
+    alert('Could not publish the job: '+(err.message||err));
+  }
 }
 
 /* ---------- init ---------- */
-renderJobs(); renderTasks(); renderLawyers(); paintProfile();
+paintMode();
+loadAll().catch(e => {
+  console.error(e);
+  ALL.jobs = DATA.jobs; ALL.tasks = DATA.tasks; ALL.lawyers = DATA.lawyers;
+  renderJobs(); renderTasks(); renderLawyers();
+});
 window.addEventListener('click', e=>{ if(e.target.classList.contains('modal')) { e.target.classList.remove('on'); document.body.style.overflow=''; } });
 </script>
 </body>
