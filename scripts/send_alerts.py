@@ -169,6 +169,7 @@ def job_card(job, index, total):
     how = job.get("how_to_apply") or (
         "Open the original listing with the link below and apply through the employer's own channel.")
     url = job.get("source_url") or (SITE + "/jobs/")
+    detail = f"{SITE}/jobs/{job.get('id')}/"
     source = job.get("source") or "WakeelBano"
 
     badge = ""
@@ -209,7 +210,8 @@ def job_card(job, index, total):
            font-size:15px;font-weight:700;text-align:center;padding:13px 16px;border-radius:9px">
            Open this job &amp; apply &rarr;</a>
         <div style="font-size:12px;color:#9AA6B2;margin-top:8px;line-height:1.5">
-          Source: {source} &middot; verify the deadline and salary on the source before applying.
+          Source: {source} &middot; verify the deadline and salary on the source before applying.<br>
+          <a href="{detail}" style="color:#0B2545;font-weight:700;text-decoration:none">Full details on WakeelBano &rarr;</a>
         </div>
       </td></tr>
     </table>"""
@@ -249,6 +251,11 @@ def job_row(job):
         <div style="font-size:13px;color:#7A8794;margin-top:4px;line-height:1.5">{' &middot; '.join(bits)}</div>
         <div style="font-size:13px;color:{'#9B1C1C' if urgent else '#7A8794'};margin-top:3px;line-height:1.5">{closing}</div>
         <div style="font-size:13px;color:#5E6B78;margin-top:5px;line-height:1.5"><b style="color:#0B2545">How to apply:</b> {how}</div>
+        <div style="font-size:12.5px;margin-top:4px">
+          <a href="{url}" style="color:#0B2545;font-weight:700;text-decoration:none">Apply on source &rarr;</a>
+          <span style="color:#C3CDD6">&nbsp;&middot;&nbsp;</span>
+          <a href="{SITE}/jobs/{job.get('id')}/" style="color:#7A8794;text-decoration:none">Details on WakeelBano</a>
+        </div>
       </td></tr>
     </table>"""
 

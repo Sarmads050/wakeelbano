@@ -105,13 +105,35 @@ python3 scripts/jobs_apply_info.py            # dry run
 python3 scripts/jobs_apply_info.py --apply    # write to Supabase
 ```
 
-The alert email is built for a phone: single column, 16px text, one card per job with location,
-practice area, type, experience, pay, posted date, how to apply and a full-width button to the
-original listing. Jobs with a last date inside ten days are pulled to the top in a
-"Closing soon" section. To stay under Gmail's 102 KB clipping limit, the eight most important
-roles get full cards and the rest get compact rows that still carry every one of those fields
-(`FEATURED` in `scripts/send_alerts.py`). Every matching opening is always sent — `MAX_JOBS = 0`
-means no cap.
+The alert email runs **daily** and has three sections, in this order:
+
+1. **New today** — postings since that subscriber's last digest. Full detail cards.
+2. **Closing soon** — a stated last date within ten days. Full detail cards.
+3. **From the last 7 days** — compact rows, still carrying location, type, experience, pay,
+   last date, how to apply and a link to both the source and the WakeelBano page.
+
+A job appears in exactly one section. On a day with nothing new the subject line and the first
+line of the email say **"No new jobs today"** and the email still carries the other two sections,
+so a quiet week never looks like a broken subscription. If all three sections are empty the send
+is skipped and logged.
+
+Each card and row links to the source listing (where the application is really made) and to the
+job's own page on WakeelBano.
+
+### One page per job (`jobs/<id>/`)
+
+`scripts/build_job_pages.py` writes a page for every open posting: full details, a
+"how to apply" section, and an **Apply here** button that goes straight to the original listing.
+Each page carries `JobPosting` structured data (with `baseSalary` and `validThrough` only when the
+listing states them), so Google can surface the role directly. Closed postings get no page.
+
+The browse cards on `/jobs/` open these pages; the **Apply here** button on a card goes to the
+source listing, exactly like the page does. The old "Original post" button is gone — one button,
+one meaning. Build order:
+
+```bash
+python3 scripts/build_jobs.py && python3 scripts/build_job_pages.py && python3 scripts/build_pages.py
+```
 
 ### Job alerts (`jobs/` → "🔔 Job alerts" tab)
 
