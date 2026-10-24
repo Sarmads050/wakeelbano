@@ -1152,7 +1152,7 @@ ABOUT = {
     "url": "about/",
     "title": "About WakeelBano — Pakistan's Career Platform for Lawyers",
     "h1": "What is WakeelBano?",
-    "desc": "WakeelBano is a Pakistani career platform for lawyers: chamber and mentor matching, a legal job market covering all of Pakistan, paid work, legal research guides and an AI kit for drafting.",
+    "desc": "A Karachi-first career platform for Pakistani lawyers. Here is who it is for, how it is funded and what it will never do.",
     "kicker": "About",
     "answer": "WakeelBano is a career platform for Pakistani lawyers, built for Karachi first. It helps new lawyers find a chamber and mentor, paid drafting work, legal jobs across Pakistan, and reliable research guidance — all free for junior lawyers.",
     "sections": [

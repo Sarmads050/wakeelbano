@@ -20,3 +20,6 @@ mobile-shots/
 mobile-shots/
 .local/
 .sudo_as_admin_successful
+
+# layout screenshots (layout_audit.py --shots)
+layout-shots/
