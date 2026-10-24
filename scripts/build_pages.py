@@ -441,8 +441,16 @@ def main():
                                               '<meta name="robots" content="noindex, follow">'))
     print("file   404.html")
 
-    # CNAME for GitHub Pages custom domain
-    io.open(os.path.join(ROOT, "CNAME"), "w", encoding="utf-8").write("wakeelbano.com\n")
+    # CNAME is written only when the custom domain is actually live.
+    # Usage: CUSTOM_DOMAIN=wakeelbano.com python3 scripts/build_pages.py
+    custom = os.environ.get("CUSTOM_DOMAIN", "").strip()
+    cname_path = os.path.join(ROOT, "CNAME")
+    if custom:
+        io.open(cname_path, "w", encoding="utf-8").write(custom + "\n")
+        print("file   CNAME -> " + custom)
+    elif os.path.exists(cname_path):
+        os.remove(cname_path)
+        print("file   CNAME removed (no custom domain)")
 
     # sitemap
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
