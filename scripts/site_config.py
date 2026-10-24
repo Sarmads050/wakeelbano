@@ -12,7 +12,7 @@ PLANNED_URL = "https://wakeelbano.com/"
 
 # --- search engine ownership checks -----------------------------------------
 # Paste the values the consoles give you; scripts/set_verification.py does this for you.
-GOOGLE_VERIFY = ""     # Google Search Console -> URL prefix -> HTML tag -> content="..."
+GOOGLE_VERIFY = "1YecSvlkXKZa7UucUcKV3HEsX0O-Wb51DLSnm0PTw4s"     # Google Search Console -> URL prefix -> HTML tag -> content="..."
 BING_VERIFY = ""       # Bing Webmaster Tools -> Meta tag -> content="..."
 
 # --- profile links used in Organization schema (sameAs) ---------------------
