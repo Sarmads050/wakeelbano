@@ -319,3 +319,18 @@ Rule: **English keyword pehle, Urdu explainer andar** (kyunke "lawyer" 79 vs "wa
 - [adalat.pk](https://adalat.pk), [daftar.pk](https://daftar.pk) — collision check
 - Autocomplete clusters: `case law pakistan`, `302 case law`, `law gat`, `bar council enrollment`, `bail application`, `legal notice`, `plaint format`, `vakalatnama`, `legal drafting`, `sindh high court cause list`, `lawyer in karachi`, `wakeel kaise`, `high court license pakistan`, `advocate license pakistan`, `how to become a lawyer in pakistan`
 - Market context: pehli report (`research/pakistani-lawyers-deep-research.md`)
+
+---
+
+## 10. ✅ FINAL DECISION (Oct 2026)
+
+**Naam: WakeelSaathi** — `wakeelsaathi.com` + `wakeelsaathi.pk` + `wakeelsaathi.com.pk` (teeno free verified)
+**Tagline:** "Wakeel ka pehla saathi"
+**SEO direction:** English keyword head (lawyer / advocate / case law / law gat) + Roman Urdu body —
+kyunke "lawyer" (79) "wakeel" (22) se 3.6× zyada search hota hai. Brand mein "wakeel" hai, is liye topical
+relevance free mil jati hai; content English keywords par target hoga.
+
+**Rejected:** Sanad (live competitor sanad.com.pk), Adalat (live + medicine collision), Tareeq/Tareekh
+(spelling conflict), Daftarkhana (Daftarkhwan coworking confusion).
+
+**Build status:** SEO foundation (meta, canonical, OG, JSON-LD, sitemap, robots) + 15 landing pages live in repo.
