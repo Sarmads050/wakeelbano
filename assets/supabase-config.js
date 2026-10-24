@@ -1,17 +1,13 @@
 /* WakeelBano — Supabase connection settings.
  *
- * Paste the two values from your Supabase project here:
- *   Supabase dashboard  →  Project Settings  →  API
- *     Project URL      →  SUPABASE_URL
- *     anon public key  →  SUPABASE_ANON_KEY
+ * Project URL and the PUBLISHABLE (anon) key live here. This key is designed to
+ * be public: it ships inside every browser app, and the database rules in
+ * supabase/schema.sql decide what it can read and write.
  *
- * The anon key is designed to be public (it is shipped in every browser app);
- * the database rules in supabase/schema.sql are what protect the data. Never put
- * the "service_role" key in this file.
- *
- * Leave both empty and the site runs in local demo mode.
+ * NEVER put a secret / service_role key in this file — it would let anyone
+ * bypass every rule.
  */
 window.WB_CONFIG = {
-  SUPABASE_URL: "",
-  SUPABASE_ANON_KEY: ""
+  SUPABASE_URL: "https://irseajosvdcvtxdadyj.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_HMEAIwCzmCnJ-C3NHwAg5A_lLnSUmIk"
 };
