@@ -73,6 +73,50 @@ constraint, not the UI, is what makes ratings trustworthy.
 **Job freshness:** listings are dated and each links to its source. Re-run the aggregation
 monthly and delete expired entries — a stale job list destroys trust faster than a short one.
 
+### Coverage (what "no job is missed" honestly means)
+
+Listings come from `scripts/jobs_data.py` (the original 18) plus `scripts/jobs_data_more.py`
+(42 more, ids `j19`–`j60`). Sources: Rozee.pk, Indeed Pakistan, Glassdoor PK, LinkedIn Jobs,
+legalalphabet, Mustakbil, jobz.pk, BeBee, law-firm career pages (HKN, JSA, ZM Law), SECP,
+FPSC/PPSC, Ministry of Law and the NIRC.
+
+No aggregator is exhaustive — plenty of chambers never advertise. The page therefore states its
+sources openly and lets any lawyer post a missing opening in three minutes. Postings that have
+closed are set to `status = 'closed'` in the database and appear in the "Closed — but keep the
+route" block instead of the open list (currently PPSC Ad 08/2026 and the FPSC cycle).
+
+`scripts/jobs_normalize.py` collapses the free-text `job_type` values into eight canonical ones
+(Full-time, Part-time, Contract, Remote, Per case, Internship, Trainee, Government) and derives a
+`sector` (Law firm, In-house, Government, Immigration, Remote) so the filters work:
+
+```bash
+python3 scripts/jobs_normalize.py            # dry run
+python3 scripts/jobs_normalize.py --apply    # rewrite job_type + sector in Supabase
+```
+
+### Job alerts (`jobs/` → "🔔 Job alerts" tab)
+
+A lawyer subscribes with an email and/or a WhatsApp number plus city, area of law, stage and
+optional keywords. Rows go to `public.subscribers` (SQL: `supabase/subscribers.sql`; anyone may
+insert, only a signed-in admin may read or delete). The admin panel's **Job alerts** tab lists
+them and can copy all emails / all numbers in one click.
+
+Sending email digests:
+
+```bash
+python3 scripts/send_alerts.py --dry-run            # who would get what
+python3 scripts/send_alerts.py                      # send via Resend
+python3 scripts/send_alerts.py --to you@x.com --test
+```
+
+`send_alerts.py` needs `.secrets/resend_key` (Resend free tier: 100 emails/day, 3,000/month).
+Until a sender domain is verified in Resend, only the account owner's own address can receive
+mail — enough for testing. Each send stamps `last_sent_at`, so nobody gets the same job twice.
+
+WhatsApp: the pilot uses the WakeelBano business number and the "Copy all WhatsApp numbers"
+button in the admin panel; the Meta Cloud API can be wired into the same script later without
+touching the database.
+
 ## Editing content
 
 1. Edit `scripts/content_pages.py` (plain Python dicts — no HTML framework).
