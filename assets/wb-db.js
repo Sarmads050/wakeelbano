@@ -170,6 +170,53 @@
     return { mode: "local", id: jid };
   }
 
+  async function saveLead(lead) {
+    if (mode === "cloud") {
+      var res = await client.from("leads").insert({
+        name: lead.name, phone: lead.phone, stage: lead.stage || null,
+        need: lead.need || null, city: lead.city || null,
+        source: lead.source || "home-join", device_key: deviceKey()
+      });
+      if (res.error) throw res.error;
+      return { mode: "cloud" };
+    }
+    var all = lsGet("wb.leads", []);
+    all.push({ name: lead.name, phone: lead.phone, stage: lead.stage, need: lead.need,
+               at: new Date().toISOString() });
+    lsSet("wb.leads", all);
+    return { mode: "local" };
+  }
+
+  /* ------------------------------------------------ admin (signed in only) */
+  async function signIn(email, password) {
+    if (mode !== "cloud") throw new Error("No database configured");
+    var res = await client.auth.signInWithPassword({ email: email, password: password });
+    if (res.error) throw res.error;
+    return res.data.user;
+  }
+  async function signOut() { if (client) await client.auth.signOut(); }
+  async function currentUser() {
+    if (mode !== "cloud") return null;
+    var res = await client.auth.getUser();
+    return (res.data && res.data.user) || null;
+  }
+  async function adminList(table, orderCol, ascending) {
+    var res = await client.from(table).select("*")
+      .order(orderCol || "created_at", { ascending: !!ascending });
+    if (res.error) throw res.error;
+    return res.data || [];
+  }
+  async function adminDelete(table, id) {
+    var res = await client.from(table).delete().eq("id", id);
+    if (res.error) throw res.error;
+    return true;
+  }
+  async function adminUpdate(table, id, patch) {
+    var res = await client.from(table).update(patch).eq("id", id);
+    if (res.error) throw res.error;
+    return true;
+  }
+
   async function rate(r) {
     if (mode === "cloud") {
       var res = await client.from("ratings").insert({
@@ -199,6 +246,13 @@
     saveProfile: saveProfile,
     apply: apply,
     postJob: postJob,
-    rate: rate
+    rate: rate,
+    saveLead: saveLead,
+    signIn: signIn,
+    signOut: signOut,
+    currentUser: currentUser,
+    adminList: adminList,
+    adminDelete: adminDelete,
+    adminUpdate: adminUpdate
   };
 })(window);

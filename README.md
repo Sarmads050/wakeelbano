@@ -21,6 +21,7 @@ near the courts, paid drafting work, and free case law research guides.
 | `what-is-wakeelbano/` | "What does it do for me?" — one section per user type (the page an AI assistant should quote) |
 | `methodology/` | How guides are researched, sourced and corrected (trust / E-E-A-T signal) |
 | `resources/` | Free official legal research sources in Pakistan |
+| `admin/` | Control room: join requests, job applications, posted jobs, profiles and ratings (Supabase login, noindex) |
 | `jobs/` | **Job market + lawyer directory**: 18 sourced legal openings, 6 paid tasks, 8 lawyer profiles, apply / post / rate flows |
 | `family/` | Family law hub + khula and divorce, maintenance, child custody, dower |
 | `service/` | Service law hub + labour court, wrongful termination, salary recovery |
@@ -31,6 +32,7 @@ near the courts, paid drafting work, and free case law research guides.
 | `CNAME` | GitHub Pages custom domain: `wakeelbano.com` |
 | `scripts/build_pages.py` | Generator: writes every content page, `404.html`, `CNAME`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` |
 | `scripts/build_jobs.py` | Builds `jobs/index.html` from the template + data |
+| `scripts/build_admin.py` | Builds `admin/index.html` (the control room) |
 | `scripts/jobs_template.html` | The job-market page template (HTML + app JS) |
 | `scripts/jobs_data.py` | Job, task and lawyer datasets — edit here |
 | `assets/wb-db.js` | Data layer: Supabase when configured, localStorage otherwise |
@@ -159,6 +161,18 @@ bash scripts/push.sh "Add search console verification"
 Wait for the GitHub Pages build, then press **Verify** in each console and submit
 `sitemap.xml`. Codes live in `scripts/site_config.py` (`GOOGLE_VERIFY`, `BING_VERIFY`), so they
 travel with every future build.
+
+## Admin panel
+
+1. Supabase → **Authentication → Users → Add user** → set an email and a strong password
+   (turn off "send invite" — you just need the password login).
+2. Open `https://sarmads050.github.io/wakeelbano/admin/` and sign in with those details.
+3. You get five tabs: **Join requests** (from the "Join free" form), **Job applications**,
+   **Jobs** (close or delete spam), **Lawyer profiles**, **Ratings**.
+4. WhatsApp numbers are click-to-chat links.
+
+The page is `noindex`, is not in the sitemap, and the browser only ever holds the publishable key —
+row-level security in `supabase/leads-and-admin.sql` is what limits reads to a signed-in user.
 
 ## Keys and secrets
 

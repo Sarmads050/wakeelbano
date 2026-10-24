@@ -25,16 +25,22 @@ for path in sorted(html_files):
         except Exception as e:
             problems.append(f"{rel}: JSON-LD error: {e}")
 
+    # private / noindex pages are exempt from the SEO checks
+    private = 'content="noindex' in src
+
     # --- headings / meta ---
     h1 = len(re.findall(r"<h1[ >]", src))
+    if private:
+        h1 = 1
     if h1 != 1:
         problems.append(f"{rel}: {h1} <h1> tags")
     if "<title>" not in src:
         problems.append(f"{rel}: no <title>")
-    if 'name="description"' not in src:
-        problems.append(f"{rel}: no meta description")
-    if 'rel="canonical"' not in src:
-        problems.append(f"{rel}: no canonical")
+    if not private:
+        if 'name="description"' not in src:
+            problems.append(f"{rel}: no meta description")
+        if 'rel="canonical"' not in src:
+            problems.append(f"{rel}: no canonical")
 
     # --- internal links (ignore anything inside <script> blocks: those are templates) ---
     markup = re.sub(r"<script.*?</script>", "", src, flags=re.S)

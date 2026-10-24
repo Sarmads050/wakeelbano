@@ -1,0 +1,295 @@
+# -*- coding: utf-8 -*-
+"""Build admin/index.html — the WakeelBano control room.
+
+Signs in with a Supabase email + password (create the user in the dashboard).
+Shows leads from the Join form, job applications, user-posted jobs, lawyer
+profiles and ratings, with delete / status controls.
+
+The page is noindex, not in the sitemap, and never contains a secret key: the
+browser only holds the publishable key, and row-level security decides what a
+signed-in user may read or delete.
+"""
+import io, os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from site_config import SITE_URL  # noqa: E402
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE = SITE_URL
+
+PAGE = r"""<!DOCTYPE html>
+<html lang="en-PK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — WakeelBano</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B1B2B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230F2537'/%3E%3Cpath d='M24 10v26M14 16h20M17 38h14' stroke='%23E7CE7A' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{--navy:#0B1B2B;--gold:#C9A227;--gold2:#E7CE7A;--gold-soft:#FBF3DC;--cream:#FAF7F1;
+--ink:#0F1C2A;--muted:#5E6B78;--line:#E6DFD2;--green:#1F7A5C;--red:#A63A2E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.55}
+h1,h2,h3{font-family:Georgia,serif;margin:0}
+header{background:var(--navy);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header b{font-family:Georgia,serif;font-size:18px}
+header .tag{font-size:10px;letter-spacing:.18em;color:var(--gold2);text-transform:uppercase;font-weight:800}
+header .right{margin-left:auto;display:flex;gap:8px;align-items:center;font-size:13px;color:#C8D3DC}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 1px 2px rgba(11,27,43,.04)}
+.login{max-width:400px;margin:60px auto}
+label{display:block;font-size:11.5px;font-weight:800;color:#4A5763;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+input,select{width:100%;font-family:inherit;font-size:14.5px;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:#fff}
+.row{margin-bottom:12px}
+.btn{border:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:11px 18px;border-radius:9px}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-gold{background:linear-gradient(180deg,#DDB845,#BE9A1F);color:#2A1F00}
+.btn-small{padding:6px 11px;font-size:12.5px;border-radius:7px}
+.btn-line{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.btn-red{background:#FBE9E6;color:#8E3226;border:1px solid #F0CFC9}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tab{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;color:#3E4C59}
+.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;padding:9px 10px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#4A5763;background:#F3F0E9;border-bottom:1px solid var(--line)}
+td{padding:10px;border-bottom:1px solid #F0EBE0;vertical-align:top}
+tr:hover td{background:#FFFDF8}
+.pill{font-size:11px;font-weight:800;padding:3px 8px;border-radius:99px;background:#F3F0E9;border:1px solid #E7E0D2;color:#3E4C59;white-space:nowrap}
+.pill.new{background:var(--gold-soft);border-color:#EBD9A4;color:#7A5E00}
+.pill.cloud{background:#E4F3EC;border-color:#BFE0D2;color:#14664A}
+.empty{color:var(--muted);padding:26px;text-align:center}
+.err{background:#FBE9E6;border:1px solid #F0CFC9;color:#8E3226;border-radius:10px;padding:12px;font-size:13.5px;margin-bottom:12px}
+.ok{background:#E4F3EC;border:1px solid #BFE0D2;color:#14664A;border-radius:10px;padding:12px;font-size:13.5px;margin-bottom:12px}
+.hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+.stat{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 14px;margin:0 8px 8px 0}
+.stat b{display:block;font-family:Georgia,serif;font-size:20px}
+.stat span{font-size:11.5px;color:var(--muted)}
+a{color:#1B4E7A}
+</style>
+</head>
+<body>
+<header>
+  <div><b>WakeelBano</b> <span class="tag">admin</span></div>
+  <div class="right" id="who"></div>
+</header>
+<div class="wrap">
+
+  <div id="loginBox" class="card login" style="display:none">
+    <h2 style="font-size:20px;margin-bottom:6px">Sign in</h2>
+    <p style="color:#5E6B78;font-size:13.5px;margin:0 0 16px">Use the admin account you created in Supabase → Authentication → Users.</p>
+    <div id="loginMsg"></div>
+    <form onsubmit="doLogin(event)">
+      <div class="row"><label>Email</label><input id="email" type="email" required placeholder="you@example.com"></div>
+      <div class="row"><label>Password</label><input id="pass" type="password" required placeholder="••••••••"></div>
+      <button class="btn btn-gold" style="width:100%" type="submit">Sign in</button>
+    </form>
+    <p class="hint">This page is noindex and never stores an admin key in the browser.</p>
+  </div>
+
+  <div id="app" style="display:none">
+    <div id="stats"></div>
+    <div class="tabs">
+      <button class="tab on" data-t="leads" onclick="show('leads')">Join requests</button>
+      <button class="tab" data-t="applications" onclick="show('applications')">Job applications</button>
+      <button class="tab" data-t="jobs" onclick="show('jobs')">Jobs</button>
+      <button class="tab" data-t="profiles" onclick="show('profiles')">Lawyer profiles</button>
+      <button class="tab" data-t="ratings" onclick="show('ratings')">Ratings</button>
+    </div>
+    <div class="card" id="panel"></div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/supabase-config.js"></script>
+<script src="../assets/wb-db.js"></script>
+<script>
+const $$ = id => document.getElementById(id);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const dt = s => s ? new Date(s).toLocaleString('en-GB', {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
+let MODE = 'local', CURRENT = 'leads', DATA = {};
+
+function msg(el, text, ok){ el.innerHTML = `<div class="${ok?'ok':'err'}">${esc(text)}</div>`; }
+
+async function boot(){
+  try { MODE = WB.init(); } catch(e) { MODE = 'local'; }
+  if (MODE !== 'cloud'){
+    $$('loginBox').style.display='block';
+    msg($$('loginMsg'), 'No database is connected. Add the Supabase URL and publishable key in assets/supabase-config.js first.', false);
+    return;
+  }
+  const user = await WB.currentUser();
+  if (user) enter(user); else { $$('loginBox').style.display='block'; }
+}
+
+async function doLogin(e){
+  e.preventDefault();
+  try{
+    const user = await WB.signIn($$('email').value.trim(), $$('pass').value);
+    enter(user);
+  }catch(err){
+    msg($$('loginMsg'), 'Sign-in failed: ' + (err.message || err), false);
+  }
+}
+
+async function enter(user){
+  $$('loginBox').style.display='none';
+  $$('app').style.display='block';
+  $$('who').innerHTML = `<span>${esc(user.email||'signed in')}</span>
+    <button class="btn btn-line btn-small" onclick="logout()">Sign out</button>
+    <a class="btn btn-line btn-small" href="../jobs/" target="_blank">Open site</a>`;
+  await loadAll();
+}
+
+async function logout(){ await WB.signOut(); location.reload(); }
+
+async function loadAll(){
+  try{
+    DATA.leads = await WB.adminList('leads','created_at',false);
+    DATA.applications = await WB.adminList('applications','created_at',false);
+    DATA.jobs = await WB.adminList('jobs','posted_at',false);
+    DATA.profiles = await WB.adminList('profiles','created_at',false);
+    DATA.ratings = await WB.adminList('ratings','created_at',false);
+  }catch(err){
+    $$('panel').innerHTML = `<div class="err">Could not load data: ${esc(err.message||err)}</div>`;
+    return;
+  }
+  paintStats();
+  render();
+}
+
+function paintStats(){
+  const s = [
+    ['Join requests', DATA.leads.length],
+    ['Job applications', DATA.applications.length],
+    ['Live jobs', DATA.jobs.length],
+    ['Lawyer profiles', DATA.profiles.length],
+    ['Ratings', DATA.ratings.length],
+  ];
+  $$('stats').innerHTML = s.map(([k,v]) => `<div class="stat"><b>${v}</b><span>${k}</span></div>`).join('');
+}
+
+function show(t){ CURRENT=t; document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on', b.dataset.t===t)); render(); }
+
+function render(){
+  const p = $$('panel');
+  if (CURRENT === 'leads') return p.innerHTML = tableLeads();
+  if (CURRENT === 'applications') return p.innerHTML = tableApplications();
+  if (CURRENT === 'jobs') return p.innerHTML = tableJobs();
+  if (CURRENT === 'profiles') return p.innerHTML = tableProfiles();
+  if (CURRENT === 'ratings') return p.innerHTML = tableRatings();
+}
+
+function tableLeads(){
+  if (!DATA.leads.length) return `<div class="empty">No join requests yet. They appear here the moment somebody submits the "Join free" form.</div>`;
+  return `<table><thead><tr><th>When</th><th>Name</th><th>WhatsApp</th><th>Stage</th><th>Needs</th><th>Status</th><th></th></tr></thead><tbody>` +
+    DATA.leads.map(l => `<tr>
+      <td>${esc(dt(l.created_at))}</td>
+      <td><b>${esc(l.name)}</b></td>
+      <td><a href="https://wa.me/${esc(String(l.phone).replace(/[^0-9]/g,''))}" target="_blank" rel="noopener">${esc(l.phone)}</a></td>
+      <td>${esc(l.stage)}</td>
+      <td>${esc(l.need)}</td>
+      <td><span class="pill ${l.status==='new'?'new':''}">${esc(l.status)}</span></td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-line btn-small" onclick="setLead('${l.id}','contacted')">Contacted</button>
+        <button class="btn btn-line btn-small" onclick="setLead('${l.id}','joined')">Joined</button>
+        <button class="btn btn-red btn-small" onclick="removeRow('leads','${l.id}')">Delete</button>
+      </td></tr>`).join('') + `</tbody></table>`;
+}
+
+function tableApplications(){
+  if (!DATA.applications.length) return `<div class="empty">No applications yet.</div>`;
+  return `<table><thead><tr><th>When</th><th>Role</th><th>Applicant</th><th>WhatsApp</th><th>Note</th><th>Status</th><th></th></tr></thead><tbody>` +
+    DATA.applications.map(a => `<tr>
+      <td>${esc(dt(a.created_at))}</td>
+      <td><b>${esc(a.job_title)}</b><br><span style="color:#5E6B78;font-size:12px">${esc(a.org||'')}</span></td>
+      <td>${esc(a.name)}</td>
+      <td><a href="https://wa.me/${esc(String(a.phone).replace(/[^0-9]/g,''))}" target="_blank" rel="noopener">${esc(a.phone)}</a></td>
+      <td style="max-width:280px">${esc(a.note||'')}</td>
+      <td><span class="pill">${esc(a.status)}</span></td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-line btn-small" onclick="setApp('${a.id}','shortlisted')">Shortlist</button>
+        <button class="btn btn-line btn-small" onclick="setApp('${a.id}','hired')">Hired</button>
+        <button class="btn btn-red btn-small" onclick="removeRow('applications','${a.id}')">Delete</button>
+      </td></tr>`).join('') + `</tbody></table>`;
+}
+
+function tableJobs(){
+  if (!DATA.jobs.length) return `<div class="empty">No jobs.</div>`;
+  const rows = DATA.jobs.map(j => `<tr>
+      <td>${esc(j.posted_at||'')}</td>
+      <td><b>${esc(j.title)}</b><br><span style="color:#5E6B78;font-size:12px">${esc(j.org)}</span></td>
+      <td>${esc(j.city)} · ${esc(j.area)}</td>
+      <td>${esc(j.pay||'')}</td>
+      <td><span class="pill ${j.source && j.source.indexOf('WakeelBano')===0 ? 'new':''}">${esc(j.source||'')}</span></td>
+      <td>${j.source_url ? `<a href="${esc(j.source_url)}" target="_blank" rel="noopener">source</a>` : '—'}</td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-line btn-small" onclick="closeJob('${j.id}')">Close</button>
+        <button class="btn btn-red btn-small" onclick="removeRow('jobs','${j.id}')">Delete</button>
+      </td></tr>`).join('');
+  return `<table><thead><tr><th>Posted</th><th>Role</th><th>Where</th><th>Pay</th><th>Source</th><th></th><th></th></tr></thead><tbody>${rows}</tbody></table>
+    <p class="hint">Rows with the gold "Posted on WakeelBano" pill came from the Post a job form on the site. Close them if the role has expired, or delete spam.</p>`;
+}
+
+function tableProfiles(){
+  if (!DATA.profiles.length) return `<div class="empty">No lawyer profiles yet.</div>`;
+  return `<table><thead><tr><th>When</th><th>Name</th><th>City / Area</th><th>Chamber</th><th>Cases</th><th>Skills</th><th></th></tr></thead><tbody>` +
+    DATA.profiles.map(p => `<tr>
+      <td>${esc(dt(p.created_at))}</td>
+      <td><b>${esc(p.name)}</b></td>
+      <td>${esc(p.city)} · ${esc(p.area)}</td>
+      <td>${esc(p.chamber||'—')}</td>
+      <td>${esc(p.cases||0)}</td>
+      <td style="max-width:220px">${esc((p.skills||[]).join(', '))}</td>
+      <td><button class="btn btn-red btn-small" onclick="removeRow('profiles','${p.id}')">Delete</button></td>
+      </tr>`).join('') + `</tbody></table>`;
+}
+
+function tableRatings(){
+  if (!DATA.ratings.length) return `<div class="empty">No ratings yet. A rating can only be left after a completed job.</div>`;
+  return `<table><thead><tr><th>When</th><th>Lawyer id</th><th>Stars</th><th>Review</th><th>Job</th><th></th></tr></thead><tbody>` +
+    DATA.ratings.map(r => `<tr>
+      <td>${esc(dt(r.created_at))}</td>
+      <td>${esc(r.lawyer_id)}</td>
+      <td>${'★'.repeat(r.stars||0)}</td>
+      <td style="max-width:320px">${esc(r.review||'—')}</td>
+      <td>${esc(r.job_id||'—')}</td>
+      <td><button class="btn btn-red btn-small" onclick="removeRow('ratings','${r.id}')">Delete</button></td>
+      </tr>`).join('') + `</tbody></table>`;
+}
+
+async function setLead(id, status){
+  try { await WB.adminUpdate('leads', id, {status}); await loadAll(); }
+  catch(e){ alert('Could not update: ' + (e.message||e)); }
+}
+async function setApp(id, status){
+  try { await WB.adminUpdate('applications', id, {status}); await loadAll(); }
+  catch(e){ alert('Could not update: ' + (e.message||e)); }
+}
+async function closeJob(id){
+  try { await WB.adminUpdate('jobs', id, {status:'closed'}); await loadAll(); }
+  catch(e){ alert('Could not update: ' + (e.message||e)); }
+}
+async function removeRow(table, id){
+  if(!confirm('Delete this row permanently?')) return;
+  try { await WB.adminDelete(table, id); await loadAll(); }
+  catch(e){ alert('Could not delete: ' + (e.message||e)); }
+}
+
+boot();
+</script>
+</body>
+</html>"""
+
+
+def main():
+    out = os.path.join(ROOT, "admin", "index.html")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    io.open(out, "w", encoding="utf-8").write(PAGE.replace("__BASE__", BASE))
+    print("admin/index.html written")
+
+
+if __name__ == "__main__":
+    main()

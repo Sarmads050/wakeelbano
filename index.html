@@ -821,7 +821,15 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-config.js"></script>
+<script src="assets/wb-db.js"></script>
 <script>
+/* ---------- database mode (cloud when configured, local otherwise) ---------- */
+let WB_MODE = "local";
+function initDb(){ try { WB_MODE = WB.init(); } catch(e) { WB_MODE = "local"; } }
+initDb();
+
 /* ---------- safe storage (sandboxed previews may block localStorage) ---------- */
 const store = {
   get(k,d){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):d; }catch(e){ return d; } },
@@ -1130,14 +1138,23 @@ function openJoin(){document.getElementById('joinModal').classList.add('on');doc
 function closeJoin(){document.getElementById('joinModal').classList.remove('on');document.body.style.overflow='';}
 document.getElementById('joinModal').addEventListener('click',e=>{if(e.target.id==='joinModal')closeJoin();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeJoin();});
-function submitJoin(){
+async function submitJoin(){
   const name=document.getElementById('jName').value.trim();
   const phone=document.getElementById('jPhone').value.trim();
   if(!name||!phone){alert('Please enter your name and WhatsApp number.');return;}
-  const lead={name,phone,stage:document.getElementById('jStage').value,need:document.getElementById('jNeed').value,at:new Date().toISOString()};
-  const all = store.get('wb.leads', []); all.push(lead); store.set('wb.leads', all);
+  const lead={name,phone,stage:document.getElementById('jStage').value,need:document.getElementById('jNeed').value,city:'Karachi',source:'home-join'};
+  let saved = 'local';
+  try{
+    if(WB_MODE==='cloud'){ const r = await WB.saveLead(lead); saved = r.mode; }
+    else { const all = store.get('wb.leads', []); all.push(Object.assign({at:new Date().toISOString()}, lead)); store.set('wb.leads', all); }
+  }catch(e){ saved = 'error'; }
+  const msg = saved==='cloud'
+    ? 'You are on the Karachi pilot list. We will contact you on WhatsApp within 48 hours.'
+    : (saved==='local'
+        ? 'Saved on this device. Connect the database to collect these centrally.'
+        : 'We could not save your details just now. Please try again in a minute.');
   document.getElementById('joinForm').innerHTML=`
-    <div class="ok-box"><b>Thank you, ${name.split(' ')[0]}.</b><br>You are on the Karachi pilot list. In the live version you would receive a WhatsApp message within 48 hours.</div>
+    <div class="ok-box"><b>Thank you, ${name.split(' ')[0]}.</b><br>${msg}</div>
     <p style="font-size:13px;color:var(--muted)">Stage: <b>${lead.stage}</b> · Need: <b>${lead.need}</b></p>
     <button class="btn btn-line" style="width:100%" onclick="closeJoin()">Close</button>`;
 }
