@@ -7,7 +7,10 @@ Run after editing the job, task or lawyer data:
 import io, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from jobs_data import JOBS, TASKS, LAWYERS  # noqa: E402
+from jobs_data import JOBS as _BASE_JOBS, TASKS, LAWYERS  # noqa: E402
+from jobs_data_more import EXTRA_JOBS  # noqa: E402
+
+JOBS = _BASE_JOBS + EXTRA_JOBS
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

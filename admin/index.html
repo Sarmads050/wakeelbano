@@ -77,6 +77,7 @@ a{color:#1B4E7A}
       <button class="tab" data-t="jobs" onclick="show('jobs')">Jobs</button>
       <button class="tab" data-t="profiles" onclick="show('profiles')">Lawyer profiles</button>
       <button class="tab" data-t="ratings" onclick="show('ratings')">Ratings</button>
+      <button class="tab" data-t="subscribers" onclick="show('subscribers')">Job alerts</button>
     </div>
     <div class="card" id="panel"></div>
   </div>
@@ -133,6 +134,8 @@ async function loadAll(){
     DATA.jobs = await WB.adminList('jobs','posted_at',false);
     DATA.profiles = await WB.adminList('profiles','created_at',false);
     DATA.ratings = await WB.adminList('ratings','created_at',false);
+    try { DATA.subscribers = await WB.adminList('subscribers','created_at',false); }
+    catch(e) { DATA.subscribers = []; }
   }catch(err){
     $$('panel').innerHTML = `<div class="err">Could not load data: ${esc(err.message||err)}</div>`;
     return;
@@ -151,6 +154,7 @@ function paintStats(){
     ['Live jobs', DATA.jobs.length],
     ['Lawyer profiles', DATA.profiles.length],
     ['Ratings', DATA.ratings.length],
+    ['Alert subscribers', (DATA.subscribers||[]).length],
   ];
   $$('stats').innerHTML = s.map(([k,v]) => `<div class="stat"><b>${v}</b><span>${k}</span></div>`).join('');
 }
@@ -164,6 +168,7 @@ function render(){
   if (CURRENT === 'jobs') return p.innerHTML = tableJobs();
   if (CURRENT === 'profiles') return p.innerHTML = tableProfiles();
   if (CURRENT === 'ratings') return p.innerHTML = tableRatings();
+  if (CURRENT === 'subscribers') return p.innerHTML = tableSubscribers();
 }
 
 function tableLeads(){
@@ -242,6 +247,37 @@ function tableRatings(){
       <td>${esc(r.job_id||'—')}</td>
       <td><button class="btn btn-red btn-small" onclick="removeRow('ratings','${r.id}')">Delete</button></td>
       </tr>`).join('') + `</tbody></table>`;
+}
+
+function tableSubscribers(){
+  const list = DATA.subscribers || [];
+  if (!list.length) return `<div class="empty"><b>No alert subscribers yet.</b><br><span style="font-size:13px">The form is on the <a href="../jobs/" target="_blank">jobs page</a>, "Job alerts" tab.</span></div>`;
+  const emails = list.filter(s=>s.email).map(s=>s.email).join(', ');
+  const numbers = list.filter(s=>s.whatsapp).map(s=>s.whatsapp).join(', ');
+  return `<table><thead><tr><th>When</th><th>Email</th><th>WhatsApp</th><th>City</th><th>Area</th><th>Stage</th><th>Keywords</th><th>Last sent</th><th></th></tr></thead><tbody>` +
+    list.map(x => `<tr>
+      <td>${esc(dt(x.created_at))}</td>
+      <td>${esc(x.email||'—')}</td>
+      <td>${x.whatsapp?`<a href="https://wa.me/${esc(String(x.whatsapp).replace(/[^0-9]/g,''))}" target="_blank" rel="noopener">${esc(x.whatsapp)}</a>`:'—'}</td>
+      <td>${esc(x.city||'')}</td>
+      <td>${esc(x.area||'')}</td>
+      <td>${esc(x.level||'')}</td>
+      <td>${esc(x.keyword||'—')}</td>
+      <td>${esc(x.last_sent_at?dt(x.last_sent_at):'—')}</td>
+      <td><button class="btn btn-red btn-small" onclick="removeRow('subscribers','${x.id}')">Delete</button></td>
+    </tr>`).join('') + `</tbody></table>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-line btn-small" onclick="copyList(${JSON.stringify(emails).replace(/"/g,'&quot;')}, 'emails')">Copy all emails</button>
+      <button class="btn btn-line btn-small" onclick="copyList(${JSON.stringify(numbers).replace(/"/g,'&quot;')}, 'numbers')">Copy all WhatsApp numbers</button>
+    </div>
+    <p class="hint">Email digests are sent by <code>scripts/send_alerts.py</code> (Resend). For WhatsApp during the pilot, copy the numbers and send from the WakeelBano business number.</p>`;
+}
+
+function copyList(text, what){
+  if(!text){ alert('Nothing to copy yet.'); return; }
+  navigator.clipboard.writeText(text).then(
+    ()=>alert('Copied ' + what + '.'),
+    ()=>alert('Copy failed — select the text manually.'));
 }
 
 async function setLead(id, status){

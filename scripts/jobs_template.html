@@ -130,6 +130,7 @@ footer a{color:#A9BAC8}
     <button class="tab" data-p="lawyers">Hire a lawyer (__NL__)</button>
     <button class="tab" data-p="profile">My profile</button>
     <button class="tab" data-p="post">Post a job</button>
+    <button class="tab" data-p="alerts">🔔 Job alerts</button>
     <button class="tab" data-p="how">How it works</button>
   </div>
 
@@ -139,9 +140,12 @@ footer a{color:#A9BAC8}
       <div><label class="f">Search</label><input id="q" placeholder="Drafting, corporate, bail, Lahore…" oninput="renderJobs()"></div>
       <div><label class="f">City</label><select id="fCity" onchange="renderJobs()"><option>All cities</option></select></div>
       <div><label class="f">Area of law</label><select id="fArea" onchange="renderJobs()"><option>All areas</option></select></div>
-      <div><label class="f">Type</label><select id="fType" onchange="renderJobs()"><option>All types</option><option>Full-time</option><option>Part-time</option><option>Remote</option><option>Per case</option><option>Internship</option><option>Government</option></select></div>
+      <div><label class="f">Sector</label><select id="fSector" onchange="renderJobs()"><option>All sectors</option><option>Law firm</option><option>In-house</option><option>Government</option><option>Immigration</option><option>Remote</option></select></div>
+      <div><label class="f">Type</label><select id="fType" onchange="renderJobs()"><option>All types</option><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Remote</option><option>Per case</option><option>Internship</option><option>Trainee</option><option>Government</option></select></div>
     </div>
+    <p id="jobCount" style="font-size:13px;color:var(--muted);margin:0 0 10px"></p>
     <div id="jobList"></div>
+    <div id="closedList"></div>
     <div class="note"><b>How these listings work:</b> WakeelBano aggregates public legal job postings and links each one to its source. Listings change daily — always confirm the deadline and requirements on the employer's page. If you are a recruiter, <a href="#" onclick="show('post');return false;">post the role here free</a> during the pilot.</div>
   </div>
 
@@ -214,6 +218,44 @@ footer a{color:#A9BAC8}
     </div>
   </div>
 
+  <!-- ALERTS -->
+  <div class="panel" id="p-alerts">
+    <div class="grid2">
+      <form class="card" onsubmit="submitAlert(event)">
+        <h3 style="font-size:18px;margin-bottom:6px">Get new legal jobs by email or WhatsApp</h3>
+        <p style="color:#5E6B78;font-size:14px;margin:0 0 14px">We send a digest when new openings match what you choose — not every day, and no spam. Unsubscribe with one click.</p>
+        <div class="row"><label class="f">Email</label><input id="alEmail" type="email" placeholder="you@example.com"></div>
+        <div class="row"><label class="f">WhatsApp (optional)</label><input id="alWa" placeholder="03xx xxxxxxx" inputmode="tel"></div>
+        <div class="filters" style="grid-template-columns:1fr 1fr;margin-bottom:12px">
+          <div><label class="f">City</label><select id="alCity"></select></div>
+          <div><label class="f">Area of law</label><select id="alArea"></select></div>
+        </div>
+        <div class="row"><label class="f">Your stage</label>
+          <select id="alLevel">
+            <option>Law student</option>
+            <option>Fresh graduate</option>
+            <option>Junior advocate (0–3 years)</option>
+            <option>Advocate (3+ years)</option>
+            <option>Recruiter / chamber</option>
+          </select>
+        </div>
+        <div class="row"><label class="f">Keywords (optional)</label><input id="alKeyword" placeholder="pupillage, drafting, remote"></div>
+        <button class="btn btn-gold" style="width:100%" type="submit">Send me alerts</button>
+        <p style="font-size:12px;margin-top:10px">At least one of email or WhatsApp is required. Your number is never shown publicly.</p>
+      </form>
+      <div class="card">
+        <h3 style="font-size:17px;margin-bottom:10px">How the alerts work</h3>
+        <ul style="padding-left:18px;font-size:14px;color:#3E4C59;margin:0 0 12px">
+          <li><b>Email</b> — a digest of new openings in your city and area of law.</li>
+          <li><b>WhatsApp</b> — a short message with the top three new roles and a link.</li>
+          <li><b>Only real openings</b> — the same list you see on this page, each linked to its source.</li>
+          <li><b>You control it</b> — change filters or unsubscribe any time.</li>
+        </ul>
+        <div class="note" style="margin-bottom:0"><b>Honest note:</b> email alerts are automatic. WhatsApp messages during the pilot are sent from the WakeelBano business number in batches, and join the automatic WhatsApp flow as the subscriber list grows.</div>
+      </div>
+    </div>
+  </div>
+
   <!-- HOW -->
   <div class="panel" id="p-how">
     <div class="grid2">
@@ -236,6 +278,19 @@ footer a{color:#A9BAC8}
         </ol>
       </div>
     </div>
+    <div class="card" style="margin-top:16px">
+      <h3 style="font-size:17px;margin-bottom:8px">Where we look — and what we cover</h3>
+      <p style="font-size:14px;color:#3E4C59;margin:0 0 10px">Every listing here is collected from a public source, dated, and linked back to it. We aggregate from:</p>
+      <div class="badges" style="margin-bottom:10px">
+        <span class="bg">Rozee.pk</span><span class="bg">Indeed Pakistan</span><span class="bg">Glassdoor PK</span>
+        <span class="bg">LinkedIn Jobs</span><span class="bg">Legalalphabet</span><span class="bg">Mustakbil</span>
+        <span class="bg">jobz.pk</span><span class="bg">BeBee</span><span class="bg">Firm career pages</span>
+        <span class="bg">SECP</span><span class="bg">FPSC / PPSC</span><span class="bg">Ministry of Law</span>
+        <span class="bg">NIRC</span><span class="bg">Law firm portals (HKN, JSA, ZM Law)</span>
+      </div>
+      <p style="font-size:13.5px;color:#5E6B78;margin:0"><b>Straight answer on "is anything missing":</b> no aggregator sees everything — many chambers in Karachi and Lahore never advertise at all, and placements still move through contacts. What we do guarantee is that every listing published here is real, dated and linked to its source, and that the list is reviewed monthly. If you know of an opening that is not here, post it in three minutes using the "Post a job" tab and it appears immediately.</p>
+    </div>
+
     <div class="note" style="margin-top:18px">
       <b>Why this exists:</b> a new lawyer's first problem is not knowledge, it is access — to a chamber, to a first brief, to anyone who will pay for a draft.
       This page puts every opening in one list and gives a junior lawyer a public record of work completed.
@@ -318,10 +373,14 @@ async function loadAll(){
     WB.listJobs(), WB.listTasks(), WB.listLawyers(), WB.listMyRatings()
   ]);
   ALL.jobs = (jobs && jobs.length) ? jobs : DATA.jobs;
+  try { ALL.closed = await WB.listClosedJobs(); } catch(e) { ALL.closed = []; }
   ALL.tasks = (tasks && tasks.length) ? tasks : DATA.tasks;
   ALL.lawyers = (lawyers && lawyers.length) ? lawyers : DATA.lawyers;
   ALL.ratings = ratings || {};
   fillSelect($$('fCity'), [...new Set(ALL.jobs.map(j=>j.city))].sort(), 'All cities');
+  const alCity = $$('alCity'), alArea = $$('alArea');
+  if (alCity) fillSelect(alCity, [...new Set(ALL.jobs.map(j=>j.city))].sort(), 'All cities');
+  if (alArea) fillSelect(alArea, [...new Set(ALL.jobs.map(j=>j.area))].sort(), 'All areas');
   fillSelect($$('fArea'), [...new Set(ALL.jobs.map(j=>j.area))].sort(), 'All areas');
   fillSelect($$('lCity'), [...new Set(ALL.lawyers.map(l=>l.city))].sort(), 'All cities');
   fillSelect($$('lArea'), [...new Set(ALL.lawyers.map(l=>l.area))].sort(), 'All areas');
@@ -337,22 +396,23 @@ function daysAgo(d){
 function renderJobs(){
   const q = ($$('q').value||'').toLowerCase();
   const city = $$('fCity').value, area = $$('fArea').value, type = $$('fType').value;
+  const sector = $$('fSector') ? $$('fSector').value : 'All sectors';
   const list = ALL.jobs.filter(j=>{
     const hay = (j.t+' '+j.org+' '+j.city+' '+j.area+' '+j.desc+' '+(j.tags||[]).join(' ')).toLowerCase();
     if(q && !hay.includes(q)) return false;
     if(city!=='All cities' && j.city!==city) return false;
     if(area!=='All areas' && j.area!==area) return false;
+    if(sector!=='All sectors' && (j.sector||'')!==sector) return false;
     if(type!=='All types'){
       const ty = (j.type||'')+' '+(j.city||'');
-      if(type==='Full-time' && !/full-time/i.test(ty)) return false;
-      if(type==='Part-time' && !/part/i.test(ty)) return false;
-      if(type==='Remote' && !/remote/i.test(ty)) return false;
-      if(type==='Per case' && !/per case/i.test(ty)) return false;
-      if(type==='Internship' && !/intern/i.test(ty)) return false;
-      if(type==='Government' && j.area!=='Government') return false;
+      if(type==='Remote'){ if(!/remote/i.test(ty)) return false; }
+      else if(type!=='Full-time' && (j.type||'')!==type && !new RegExp(type,'i').test(ty)) return false;
+      else if(type==='Full-time' && !/full-time/i.test(ty)) return false;
     }
     return true;
   });
+  const cnt = $$('jobCount');
+  if(cnt) cnt.textContent = `${list.length} of ${ALL.jobs.length} openings shown`;
   $$('jobList').innerHTML = list.length ? list.map(j=>`
     <div class="card job">
       <div>
@@ -360,6 +420,7 @@ function renderJobs(){
         <div class="org">${esc(j.org)} · ${esc(j.city)} · posted ${esc(daysAgo(j.posted))}</div>
         <div class="badges">
           <span class="bg">${esc(j.type||'')}</span>
+          ${j.sector ? `<span class="bg">${esc(j.sector)}</span>` : ''}
           <span class="bg">${esc(j.area)}</span>
           <span class="bg">Exp: ${esc(j.exp||'Not stated')}</span>
           ${j.pay && j.pay!=='Not stated' ? `<span class="bg pay">${esc(j.pay)}</span>` : ''}
@@ -373,6 +434,20 @@ function renderJobs(){
         ${j.url ? `<a class="btn btn-line" href="${esc(j.url)}" target="_blank" rel="nofollow noopener" style="font-size:13px">Original post</a>` : ''}
       </div>
     </div>`).join('') : `<div class="empty">No job matches this filter. Try clearing the search or choosing "All cities".</div>`;
+  const cl = $$('closedList');
+  if(cl){
+    const c = ALL.closed || [];
+    cl.innerHTML = c.length ? `<div class="card" style="margin-top:22px;background:#FBFAF7">
+      <h3 style="font-size:16px;margin-bottom:4px">Closed — but keep the route</h3>
+      <p style="font-size:13.5px;color:#5E6B78;margin:0 0 12px">Government legal posts open in cycles. These have closed, so the useful part now is knowing when and how to apply next time.</p>
+      ${c.map(j=>`<div style="border-top:1px solid var(--line);padding:11px 0">
+        <b style="font-size:15px">${esc(j.t)}</b>
+        <div style="font-size:13px;color:var(--muted)">${esc(j.org)} · ${esc(j.city)} · closed (posted ${esc(j.posted)})</div>
+        <div style="font-size:13.5px;color:#3E4C59;margin-top:4px">${esc(j.desc)}</div>
+        ${j.url?`<div class="src" style="margin-top:4px">Source: <a href="${esc(j.url)}" target="_blank" rel="nofollow noopener">${esc(j.src)}</a></div>`:''}
+      </div>`).join('')}
+    </div>` : '';
+  }
 }
 
 /* ---------- tasks ---------- */
@@ -528,6 +603,30 @@ async function paintProfile(){
     <div class="note" style="margin-bottom:0">${MODE==='cloud'
       ? 'Saved in the WakeelBano database. A recruiter reading your profile sees exactly this.'
       : 'Saved in this browser only (demo mode). Connect Supabase to make it a real, shared profile.'}</div>`;
+}
+
+/* ---------- alerts ---------- */
+async function submitAlert(e){
+  e.preventDefault();
+  const email = $$('alEmail').value.trim(), wa = $$('alWa').value.trim();
+  if(!email && !wa){ alert('Please add an email or a WhatsApp number.'); return; }
+  if(email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert('That email does not look right.'); return; }
+  try{
+    const res = await WB.subscribe({
+      email: email || null, whatsapp: wa || null,
+      city: $$('alCity').value, area: $$('alArea').value,
+      level: $$('alLevel').value, keyword: $$('alKeyword').value.trim() || null
+    });
+    e.target.innerHTML = res.already
+      ? `<div class="ok"><b>You are already subscribed.</b><br>We have your filters from before — you will get the next digest.</div>
+         <button class="btn btn-line" style="width:100%" onclick="show('jobs')">Browse jobs</button>`
+      : `<div class="ok"><b>Subscribed.</b><br>${res.mode==='cloud'
+          ? 'You will get an email digest when new roles match your filters.'
+          : 'Saved on this device (demo mode).'}</div>
+         <button class="btn btn-line" style="width:100%" onclick="show('jobs')">Browse jobs</button>`;
+  }catch(err){
+    alert('Could not subscribe: ' + (err.message||err));
+  }
 }
 
 /* ---------- post job ---------- */

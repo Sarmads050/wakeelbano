@@ -8,7 +8,14 @@ import io, json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from site_config import SITE_URL            # noqa: E402
-from jobs_data import JOBS, TASKS, LAWYERS  # noqa: E402
+from jobs_data import JOBS as _BASE_JOBS, TASKS, LAWYERS  # noqa: E402
+from jobs_data_more import EXTRA_JOBS  # noqa: E402
+
+# Postings that have closed are kept for reference (the "Closed — but keep the
+# route" block is read from the database), not counted as open openings.
+CLOSED_IDS = {"j59", "j60"}
+
+JOBS = [j for j in (_BASE_JOBS + EXTRA_JOBS) if j["id"] not in CLOSED_IDS]
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = SITE_URL

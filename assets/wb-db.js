@@ -43,6 +43,7 @@
   function mapJob(r) {
     return {
       id: r.id, t: r.title, org: r.org, city: r.city, area: r.area, type: r.job_type || "",
+      sector: r.sector || "",
       exp: r.experience || "Not stated", pay: r.pay || "Not stated",
       desc: r.description || "", tags: r.tags || [], src: r.source || "WakeelBano",
       url: r.source_url || "", posted: (r.posted_at || "").slice(0, 10)
@@ -72,6 +73,15 @@
       if (!res.error && res.data) return res.data.map(mapJob);
     }
     return lsGet("wb.postedJobs", []);
+  }
+
+  async function listClosedJobs() {
+    if (mode === "cloud") {
+      var res = await client.from("jobs").select("*")
+        .eq("status", "closed").order("posted_at", { ascending: false });
+      if (!res.error && res.data) return res.data.map(mapJob);
+    }
+    return [];
   }
 
   async function listTasks() {
@@ -187,6 +197,32 @@
     return { mode: "local" };
   }
 
+  async function subscribe(sub) {
+    var row = {
+      email: sub.email || null, whatsapp: sub.whatsapp || null,
+      city: sub.city || "All cities", area: sub.area || "All areas",
+      keyword: sub.keyword || null, level: sub.level || null,
+      device_key: deviceKey()
+    };
+    if (mode === "cloud") {
+      var res = await client.from("subscribers").insert(row);
+      if (res.error) {
+        // 23505 = already subscribed
+        if (String(res.error.code) === "23505") return { mode: "cloud", already: true };
+        throw res.error;
+      }
+      return { mode: "cloud" };
+    }
+    var all = lsGet("wb.subscribers", []);
+    var dup = all.some(function (x) {
+      return (row.email && x.email === row.email) || (row.whatsapp && x.whatsapp === row.whatsapp);
+    });
+    if (dup) return { mode: "local", already: true };
+    all.push(Object.assign({ at: new Date().toISOString() }, row));
+    lsSet("wb.subscribers", all);
+    return { mode: "local" };
+  }
+
   /* ------------------------------------------------ admin (signed in only) */
   async function signIn(email, password) {
     if (mode !== "cloud") throw new Error("No database configured");
@@ -239,6 +275,7 @@
     get mode() { return mode; },
     deviceKey: deviceKey,
     listJobs: listJobs,
+    listClosedJobs: listClosedJobs,
     listTasks: listTasks,
     listLawyers: listLawyers,
     listProfile: listProfile,
@@ -248,6 +285,7 @@
     postJob: postJob,
     rate: rate,
     saveLead: saveLead,
+    subscribe: subscribe,
     signIn: signIn,
     signOut: signOut,
     currentUser: currentUser,
