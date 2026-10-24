@@ -1,9 +1,9 @@
 # WakeelBano — full text export
 
-Public content from wakeelbano.com, in plain text for AI agents and researchers.
+Public content from sarmads050.github.io/wakeelbano, in plain text for AI agents and researchers.
 
 ## What is WakeelBano?
-URL: https://wakeelbano.com/about/
+URL: https://sarmads050.github.io/wakeelbano/about/
 
 WakeelBano is a career platform for Pakistani lawyers, built for Karachi first. It helps new lawyers find a chamber and mentor, affordable housing near the courts, paid drafting work, and reliable research guidance — all free for junior lawyers.
 
@@ -41,7 +41,7 @@ A: Karachi first, with Sindh districts next, then Lahore and Islamabad.
 
 
 ## Law-GAT 2026 — the Law Graduate Assessment Test
-URL: https://wakeelbano.com/career/law-gat/
+URL: https://sarmads050.github.io/wakeelbano/career/law-gat/
 
 Law-GAT is the assessment test that Pakistani law graduates must pass before enrolling as an advocate. It is conducted by HEC with the Pakistan Bar Council and is normally held twice a year.
 
@@ -84,7 +84,7 @@ A: The result timeline is set by HEC in each notification and published on its o
 
 
 ## 302 PPC Case Law — Qatl-i-amd
-URL: https://wakeelbano.com/case-law/302-ppc/
+URL: https://sarmads050.github.io/wakeelbano/case-law/302-ppc/
 
 Section 302 of the Pakistan Penal Code sets the punishment for qatl-i-amd (intentional murder). The court chooses between death as qisas, imprisonment for life, or a term of imprisonment, depending on the facts and on the qisas process.
 
@@ -116,7 +116,7 @@ A: Section 302 concerns qatl-i-amd and its punishment, while section 324 concern
 
 
 ## Bail Application Format (Pakistan)
-URL: https://wakeelbano.com/drafts/bail-application-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/bail-application-format/
 
 A bail application in Pakistan has seven parts: heading, title, brief facts, numbered grounds, legal basis, prayer and annexures. The grounds must be tied to facts on the record, not to general statements.
 
@@ -152,7 +152,7 @@ A: Read the reasons recorded in the order, strengthen the grounds with record-ba
 
 
 ## Legal Notice Format (Pakistan)
-URL: https://wakeelbano.com/drafts/legal-notice-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/legal-notice-format/
 
 A legal notice is a formal written demand that sets out the facts, the default, the exact relief wanted and a deadline. Written properly, it ends many disputes before a suit is filed.
 
@@ -187,7 +187,7 @@ A: Practice and the facts of your case determine this. Check the section, the cu
 
 
 ## Bar Council Enrollment — the Full Route to Sanad
-URL: https://wakeelbano.com/career/bar-council-enrollment/
+URL: https://sarmads050.github.io/wakeelbano/career/bar-council-enrollment/
 
 Enrollment as an advocate requires a recognised LLB, the prescribed test, a six-month pupillage in a senior advocate's chamber, the documents and fees, and clearance by the provincial bar council's enrollment committee.
 
@@ -230,7 +230,7 @@ A: Practice rights follow your enrollment and licence type. Confirm the position
 
 
 ## Lawyer Salary in Pakistan (2026)
-URL: https://wakeelbano.com/career/lawyer-salary-pakistan/
+URL: https://sarmads050.github.io/wakeelbano/career/lawyer-salary-pakistan/
 
 Most fresh lawyers in Pakistan earn between Rs 25,000 and Rs 50,000 a month, and many pupils are paid nothing at all, while the Sindh minimum wage for unskilled work is Rs 43,000.
 
@@ -266,7 +266,7 @@ A: There is no fixed figure. The first year or two is often very low, and income
 
 
 ## How to Become a Lawyer in Pakistan
-URL: https://wakeelbano.com/career/how-to-become-lawyer-pakistan/
+URL: https://sarmads050.github.io/wakeelbano/career/how-to-become-lawyer-pakistan/
 
 To become a lawyer in Pakistan you need a five-year LLB, the Law-GAT, a six-month pupillage and enrollment with a provincial bar council, which takes about six years in total.
 
@@ -302,7 +302,7 @@ A: It varies widely: public law colleges are inexpensive, while private universi
 
 
 ## Lawyer Jobs in Karachi
-URL: https://wakeelbano.com/karachi/lawyer-jobs/
+URL: https://sarmads050.github.io/wakeelbano/karachi/lawyer-jobs/
 
 Most legal jobs in Karachi are never advertised. Chambers hire through visits and referrals, so a one-page CV and a sample draft delivered in person works better than applying online.
 
@@ -338,7 +338,7 @@ A: Yes. Foreign firms and legal process outsourcers hire Pakistani lawyers for d
 
 
 ## Rooms and Chamber Seat Sharing in Karachi
-URL: https://wakeelbano.com/karachi/lawyer-room-for-rent/
+URL: https://sarmads050.github.io/wakeelbano/karachi/lawyer-room-for-rent/
 
 A shared room near the courts in Karachi costs about Rs 8,000 to 15,000 a month, and a chamber seat share costs Rs 6,000 to 15,000, which together make a junior stipend survivable.
 
@@ -374,7 +374,7 @@ A: A written agreement is strongly advised. Without one, disputes over deposits,
 
 
 ## High Court Licence (Advocate High Court)
-URL: https://wakeelbano.com/career/high-court-license/
+URL: https://sarmads050.github.io/wakeelbano/career/high-court-license/
 
 A High Court licence requires at least two years of practice in the subordinate courts after enrollment, an application through the bar council, the required certificates and clearance by the High Court.
 
@@ -410,7 +410,7 @@ A: Try to reconstruct it from order sheets, court copies and your senior's confi
 
 
 ## Vakalatnama Format (Pakistan)
-URL: https://wakeelbano.com/drafts/vakalatnama-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/vakalatnama-format/
 
 A vakalatnama authorises an advocate to appear, plead and act for a client in a specific case. It must identify the court, the case, the client and the advocate, and it must state the scope of authority.
 
@@ -445,7 +445,7 @@ A: Practice normally names one advocate, with arrangements for another to assist
 
 
 ## 489-F PPC — Cheque Dishonour
-URL: https://wakeelbano.com/case-law/489-f/
+URL: https://sarmads050.github.io/wakeelbano/case-law/489-f/
 
 Section 489-F of the Pakistan Penal Code deals with dishonestly issuing a cheque that is returned unpaid, where the person knew the funds were insufficient. Punishment includes imprisonment and a fine.
 
@@ -480,7 +480,7 @@ A: Yes, frequently. Any settlement should be recorded in writing and given effec
 
 
 ## 497 CrPC — Bail Case Law
-URL: https://wakeelbano.com/case-law/497-crpc/
+URL: https://sarmads050.github.io/wakeelbano/case-law/497-crpc/
 
 Section 497 CrPC governs bail in non-bailable offences. The court weighs the nature of the offence, the evidence on record, and whether further inquiry is needed before deciding.
 
@@ -515,7 +515,7 @@ A: Usually before the Sessions Court or the High Court under section 498 CrPC. C
 
 
 ## Plaint Format (Order VII CPC)
-URL: https://wakeelbano.com/drafts/plaint-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/plaint-format/
 
 A plaint is the document that starts a civil suit. Under Order VII CPC it must state the parties, the facts, the cause of action, jurisdiction, valuation, limitation and the relief sought.
 
@@ -550,7 +550,7 @@ A: Generally yes, with the court's permission, but the earlier it is done the be
 
 
 ## 420 PPC Case Law — Cheating and Dishonest Inducement
-URL: https://wakeelbano.com/case-law/420-ppc/
+URL: https://sarmads050.github.io/wakeelbano/case-law/420-ppc/
 
 Section 420 PPC punishes cheating that dishonestly induces the victim to deliver property. The prosecution must prove a false representation, dishonest intention at the time of the promise, and delivery of property as a result. Punishment is up to seven years and fine.
 
@@ -594,7 +594,7 @@ A: PLD, SCMR and CLD volumes in a chamber or bar library, and the official Supre
 
 
 ## 406 PPC Case Law — Criminal Breach of Trust
-URL: https://wakeelbano.com/case-law/406-ppc/
+URL: https://sarmads050.github.io/wakeelbano/case-law/406-ppc/
 
 Section 406 PPC punishes criminal breach of trust: property is handed over in trust, and the person entrusted then dishonestly misappropriates, converts or disposes of it. Punishment is up to three years, or fine, or both.
 
@@ -627,7 +627,7 @@ A: It depends on evidence of entrustment and dishonest intent. Salary advances a
 
 
 ## 506 PPC Case Law — Criminal Intimidation
-URL: https://wakeelbano.com/case-law/506-ppc/
+URL: https://sarmads050.github.io/wakeelbano/case-law/506-ppc/
 
 Section 506 PPC punishes criminal intimidation: threatening injury to a person, their reputation or their property to cause alarm or to force an act. Punishment is up to two years or fine, rising to seven years where the threat is of death or grievous injury.
 
@@ -660,7 +660,7 @@ A: They can be, if the original device is produced and the identity of the sende
 
 
 ## Written Statement Format (Pakistan)
-URL: https://wakeelbano.com/drafts/written-statement-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/written-statement-format/
 
 A written statement is the defendant's reply to a plaint. It must deal with every allegation paragraph by paragraph, raise the legal objections first, and add a set-off or counter-claim only where the facts justify one. Order VIII CPC governs it.
 
@@ -697,7 +697,7 @@ A: Yes. A counter-claim is treated as a plaint for the purposes of the Civil Cou
 
 
 ## Affidavit Format (Pakistan)
-URL: https://wakeelbano.com/drafts/affidavit-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/affidavit-format/
 
 An affidavit is a written statement of facts that the deponent swears or affirms to be true before an authorised officer. It must identify the deponent, state facts in numbered paragraphs, show the place and date of swearing, and carry the jurat and the attestation.
 
@@ -730,7 +730,7 @@ A: Not automatically. It is used where the law or the court's order permits, and
 
 
 ## Rent Agreement Format (Sindh)
-URL: https://wakeelbano.com/drafts/rent-agreement-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/rent-agreement-format/
 
 A rent agreement in Sindh should state the parties, the premises, the rent and its due date, the security deposit and its return, the notice period for each side, who pays utilities and repairs, and whether subletting is allowed. The Sindh Rented Premises Ordinance 1979 governs tenancies.
 
@@ -763,7 +763,7 @@ A: Only to the extent of unpaid rent, bills or damage as stated in the agreement
 
 
 ## Power of Attorney Format (Pakistan)
-URL: https://wakeelbano.com/drafts/power-of-attorney-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/power-of-attorney-format/
 
 A power of attorney authorises one person to act for another. A special power of attorney is limited to particular acts, such as appearing in one case or executing one sale; a general power of attorney covers wider powers. It must identify the parties, list the powers, state the term, and be properly attested and, where required, registered.
 
@@ -796,7 +796,7 @@ A: The transaction can be challenged on the ground that the act was outside the 
 
 
 ## Legal Notice Reply Format (Pakistan)
-URL: https://wakeelbano.com/drafts/legal-notice-reply-format/
+URL: https://sarmads050.github.io/wakeelbano/drafts/legal-notice-reply-format/
 
 A reply to a legal notice should be sent within the time given in the notice, deny the allegations specifically, state your own facts with dates, attach the documents you rely on, and keep the tone factual. Never admit a liability you have not verified, and never ignore a notice.
 
@@ -828,7 +828,7 @@ A: No. It sets out your position, which may encourage settlement, but the sender
 
 
 ## Cause List Tracking for Pakistani Lawyers
-URL: https://wakeelbano.com/career/cause-list-tracking/
+URL: https://sarmads050.github.io/wakeelbano/career/cause-list-tracking/
 
 A cause list is the court's daily schedule of cases. Track it by checking the official court source for your court every evening, matching your case register against it, and confirming the result of each hearing the same day. Never depend on a client or a colleague to tell you a date.
 
@@ -865,7 +865,7 @@ A: No single official app covers every court. Practitioners use the individual c
 
 
 ## Lawyer CV Format for Pakistan
-URL: https://wakeelbano.com/career/lawyer-cv-format/
+URL: https://sarmads050.github.io/wakeelbano/career/lawyer-cv-format/
 
 A Pakistani legal CV should fit on one page: name and contact, bar enrollment status, education with grades, internships described by what you did, drafting and research skills, languages, and two referees. Chambers hire on demonstrated work, not adjectives.
 
@@ -897,7 +897,7 @@ A: Four to six lines. Seniors read on a phone between hearings. State your unive
 
 
 ## Your First 30 Days in a Chamber
-URL: https://wakeelbano.com/career/first-30-days-in-chamber/
+URL: https://sarmads050.github.io/wakeelbano/career/first-30-days-in-chamber/
 
 In your first 30 days, learn the court routine, build a personal precedent file, volunteer for drafting, and keep a written record of everything you did. Usefulness earns a stipend faster than waiting for one.
 
@@ -934,7 +934,7 @@ A: Court hours plus chamber hours, typically six days a week in a litigation pra
 
 
 ## Lawyer Chamber for Rent in Karachi
-URL: https://wakeelbano.com/karachi/chamber-seat-rent/
+URL: https://sarmads050.github.io/wakeelbano/karachi/chamber-seat-rent/
 
 A shared chamber seat in Karachi usually costs Rs 6,000 to 15,000 a month, depending on the court vicinity, the size of the chamber and whether a clerk is included. Always agree in writing what the seat includes before paying.
 
@@ -971,7 +971,7 @@ A: Commonly one month's rent. Anything higher should be justified in writing and
 
 
 ## Karachi City Courts: A Guide for New Lawyers
-URL: https://wakeelbano.com/karachi/city-courts-guide/
+URL: https://sarmads050.github.io/wakeelbano/karachi/city-courts-guide/
 
 The City Courts complex in Karachi is where most civil, criminal and family trials begin. New lawyers should learn the filing counter, the cause list, the courtrooms of their own cases and basic courtroom etiquette before anything else.
 

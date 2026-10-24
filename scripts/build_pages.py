@@ -9,7 +9,9 @@ Usage: python3 scripts/build_pages.py
 import io, os, json, html, posixpath
 import content_pages as C
 
-BASE = "https://wakeelbano.com/"
+from site_config import SITE_URL  # noqa: E402
+
+BASE = SITE_URL
 BRAND = "WakeelBano"
 TODAY = "2026-10-24"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -369,7 +371,7 @@ def write_llms_txt(urls):
     # llms-full.txt — expanded plain-text export of every page
     import re as _re
     full = [f"# {BRAND} — full text export", "",
-            "Public content from wakeelbano.com, in plain text for AI agents and researchers.", ""]
+            f"Public content from {BASE.replace('https://', '').rstrip('/')}, in plain text for AI agents and researchers.", ""]
     for p in [C.ABOUT] + C.PAGES:
         full.append(f"## {p['h1']}")
         full.append(f"URL: {BASE}{p['url']}")

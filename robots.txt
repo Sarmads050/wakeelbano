@@ -28,5 +28,5 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://wakeelbano.com/sitemap.xml
-# AI content map: https://wakeelbano.com/llms.txt
+Sitemap: https://sarmads050.github.io/wakeelbano/sitemap.xml
+# AI content map: https://sarmads050.github.io/wakeelbano/llms.txt

@@ -77,11 +77,32 @@ Google Trends for Pakistan: `lawyer` indexes about 3.6× `wakeel`, while the bra
 (`lawyer`, `advocate`, `case law`, `law gat`) that Pakistanis actually type, with Karachi
 and section numbers for long-tail capture.
 
+## Live URL and switching domain
+
+`scripts/site_config.py` holds the single `SITE_URL` used for canonicals, Open Graph URLs,
+the sitemap, `robots.txt` and `llms.txt`.
+
+```bash
+python3 scripts/set_site_url.py https://sarmads050.github.io/wakeelbano/   # current
+python3 scripts/set_site_url.py https://wakeelbano.com/                    # when the domain is bought
+```
+
+The script rewrites `site_config.py` and the hard-coded URLs in `index.html`, then rebuilds and
+validates every page. Nothing else needs to change when the custom domain goes live.
+
 ## Deploying
 
-Static files — any host works. GitHub Pages: repository **Settings → Pages → Source:
-Deploy from a branch → `main` / root**, then point the `wakeelbano.com` DNS records at
-GitHub Pages. Custom domain files (`CNAME`) are not committed yet.
+Static files — any host works. Currently live at
+**https://sarmads050.github.io/wakeelbano/** (GitHub Pages, branch `main`, folder `/`).
+
+When `wakeelbano.com` is bought:
+
+1. `python3 scripts/set_site_url.py https://wakeelbano.com/`
+2. DNS at the registrar: four A records for the apex (`185.199.108.153`, `185.199.109.153`,
+   `185.199.110.153`, `185.199.111.153`) and `www` → CNAME → `sarmads050.github.io`
+3. GitHub → Settings → Pages → Custom domain `wakeelbano.com`, then tick **Enforce HTTPS**
+4. Rebuild with `CUSTOM_DOMAIN=wakeelbano.com python3 scripts/build_pages.py` to write the
+   `CNAME` file into the repo
 
 ## Content rules (do not break these)
 
