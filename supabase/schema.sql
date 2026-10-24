@@ -159,6 +159,17 @@ create index if not exists lawyers_city_idx   on public.lawyers (city);
 create index if not exists applications_job_idx on public.applications (job_id);
 create index if not exists ratings_lawyer_idx on public.ratings (lawyer_id);
 
+-- ---------------------------------------------------------------- API grants
+-- These make the tables reachable by the public key regardless of the
+-- "Automatically expose new tables" toggle. RLS above still decides which rows
+-- are visible, so grants without policies would expose nothing.
+grant usage on schema public to anon, authenticated;
+grant select on public.jobs, public.tasks, public.lawyers, public.profiles,
+                public.ratings, public.lawyer_ratings to anon, authenticated;
+grant insert on public.jobs, public.applications, public.ratings, public.profiles
+                to anon, authenticated;
+grant update on public.profiles to anon, authenticated;
+
 -- ---------------------------------------------------------------- hardening (later)
 -- 1. Turn on Supabase Authentication → Providers → Anonymous sign-ins.
 -- 2. Add an owner column: alter table public.profiles add column owner uuid default auth.uid();
