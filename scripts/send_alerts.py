@@ -72,9 +72,12 @@ def parse_dt(s):
         return None
     s = s.replace("Z", "+00:00")
     try:
-        return datetime.datetime.fromisoformat(s)
+        d = datetime.datetime.fromisoformat(s)
     except ValueError:
         return None
+    # dates like "2026-10-17" come back naive; treat everything as UTC so
+    # comparisons never mix aware and naive values
+    return d if d.tzinfo else d.replace(tzinfo=datetime.timezone.utc)
 
 
 def matches(sub, job):
@@ -259,61 +262,62 @@ def section(title, subtitle, body):
     <tr><td style="background:#FFFFFF;padding:10px 20px 0">{body}</td></tr>"""
 
 
-def email_html(sub, jobs, total_open=None):
+def email_html(sub, sections, total_open=None, no_new=False):
+    """sections: list of (title, subtitle, jobs, style) where style is 'card' or 'row'."""
     name = (sub.get("email") or "there").split("@")[0]
-    head = f"{len(jobs)} legal job{'s' if len(jobs) != 1 else ''}"
-    order = order_jobs(jobs)
-    urgent = [j for j in order if (days_left(j.get("deadline")) is not None
-                                   and 0 <= days_left(j.get("deadline")) <= 10)]
-    rest = [j for j in order if j not in urgent]
-    featured = rest[:max(0, FEATURED - len(urgent))]
-    tail = [j for j in rest if j not in featured]
+    count = sum(len(x[2]) for x in sections)
+
+    if no_new:
+        headline = "No new jobs today"
+        intro = ("Nothing new was posted today. Here are the roles from the last seven days "
+                 "and the ones closing soon — so you do not miss a deadline.")
+    else:
+        new_count = len(sections[0][2]) if sections else 0
+        headline = f"{new_count} new legal job{'s' if new_count != 1 else ''} today"
+        intro = ("These match your filters. Every card links to the original listing, "
+                 "where the application is actually made.")
 
     blocks = []
-    if urgent:
-        blocks.append(section("&#9200; Closing soon",
-                              "These have a stated last date within ten days. Apply first.",
-                              "".join(job_card(j, i + 1, len(urgent)) for i, j in enumerate(urgent))))
-    if featured:
-        blocks.append(section("Newest openings", "Full details for each role.",
-                              "".join(job_card(j, i + 1, len(featured)) for i, j in enumerate(featured))))
-    if tail:
-        blocks.append(section(f"All other openings ({len(tail)})",
-                              "Location, experience, pay, last date and how to apply for every one of them.",
-                              "".join(job_row(j) for j in tail)))
-    cards = "".join(blocks)
+    for title, subtitle, jobs, style in sections:
+        if not jobs:
+            continue
+        if style == "card":
+            body = "".join(job_card(j, i + 1, len(jobs)) for i, j in enumerate(jobs))
+        else:
+            body = "".join(job_row(j) for j in jobs)
+        blocks.append(section(title, subtitle, body))
+
     return f"""<!doctype html>
 <html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>WakeelBano job alert</title></head>
 <body style="margin:0;padding:0;background:#F1F4F7;-webkit-text-size-adjust:100%">
-<div style="display:none;font-size:1px;color:#F1F4F7">{head} matched your filters</div>
+<div style="display:none;font-size:1px;color:#F1F4F7">{headline} · {count} roles listed</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F1F4F7">
 <tr><td align="center" style="padding:16px 10px">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
          style="width:100%;max-width:600px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">
 
-    <tr><td style="background:#0B2545;border-radius:14px 14px 0 0;padding:22px 20px">
+    <tr><td style="background:{'#0B2545' if not no_new else '#12283D'};border-radius:14px 14px 0 0;padding:22px 20px">
       <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C8A24A;font-weight:700">WakeelBano</div>
-      <div style="font-size:23px;line-height:1.25;font-weight:700;color:#FFFFFF;margin-top:6px">{head} for you</div>
+      <div style="font-size:23px;line-height:1.25;font-weight:700;color:#FFFFFF;margin-top:6px">{headline}</div>
       <div style="font-size:14px;color:#B8C7D4;margin-top:8px">
         {sub.get('city') or 'All cities'} &middot; {sub.get('area') or 'All areas'}{(' &middot; ' + sub['keyword']) if sub.get('keyword') else ''}
       </div>
     </td></tr>
 
     <tr><td style="background:#FFFFFF;padding:18px 20px 4px">
-      <p style="font-size:15px;line-height:1.6;color:#3E4C59;margin:0 0 14px">
-        Assalam-o-alaikum {name}, here are the openings that match your filters.
-        Every one of them is a real listing, and the button in each card takes you to the original source.
+      <p style="font-size:15px;line-height:1.6;color:#3E4C59;margin:0 0 4px">
+        Assalam-o-alaikum {name}, {intro}
       </p>
     </td></tr>
 
-    {cards}
+    {''.join(blocks)}
 
     <tr><td style="background:#FFFFFF;padding:6px 20px 20px">
       <a href="{SITE}/jobs/" style="display:block;background:#C8A24A;color:#0B2540;text-decoration:none;
          font-size:15px;font-weight:700;text-align:center;padding:13px 16px;border-radius:9px">
-         See all {total_open or ''} openings on WakeelBano &rarr;</a>
+         Browse all {total_open or ''} openings on WakeelBano &rarr;</a>
     </td></tr>
 
     <tr><td style="background:#FFFFFF;border-radius:0 0 14px 14px;padding:0 20px 22px">
@@ -370,52 +374,83 @@ def main():
     print(f"subscribers: {len(subs)} · live jobs: {len(jobs)}")
 
     floor = parse_dt(args.since) if args.since else None
+    now = datetime.datetime.now(datetime.timezone.utc)
     sent = 0
+
     for sub in subs:
         if not sub.get("email"):
             continue
-        first = not sub.get("last_sent_at")
-        cutoff = parse_dt(sub.get("last_sent_at"))
-        if not cutoff:
-            # A subscriber who has never had a digest should get a welcome batch of
-            # recent openings, not silence because no job was posted after signup.
-            signed = parse_dt(sub.get("created_at")) or datetime.datetime.now(datetime.timezone.utc)
-            cutoff = signed - datetime.timedelta(days=WELCOME_DAYS)
+
+        matched = [j for j in jobs if matches(sub, j)]
+        last = parse_dt(sub.get("last_sent_at"))
+        cutoff = last or ((parse_dt(sub.get("created_at")) or now)
+                          - datetime.timedelta(days=WELCOME_DAYS))
         if floor and floor < cutoff:
             cutoff = floor
-        fresh = [j for j in jobs
-                 if matches(sub, j)
-                 and (not cutoff or (parse_dt(j.get("created_at")) or datetime.datetime.now(datetime.timezone.utc)) > cutoff)]
-        fresh = order_jobs(fresh)
-        if MAX_JOBS:
-            fresh = fresh[:MAX_JOBS]
-        if not fresh:
-            print(f"  - {sub['email']}: nothing new")
+
+        def posted(j):
+            return parse_dt(j.get("posted_at") or j.get("created_at")) or now
+
+        # 1) genuinely new since the last digest  2) closing soon  3) last seven days
+        new_jobs = order_jobs([j for j in matched if posted(j) > cutoff])
+        taken = {j["id"] for j in new_jobs}
+        closing = order_jobs([j for j in matched if j["id"] not in taken
+                              and (days_left(j.get("deadline")) is not None
+                                   and 0 <= days_left(j.get("deadline")) <= 10)])
+        taken |= {j["id"] for j in closing}
+        week = order_jobs([j for j in matched if j["id"] not in taken
+                           and (now - posted(j)).days <= 7])
+
+        sections = []
+        if new_jobs:
+            sections.append((f"New today ({len(new_jobs)})",
+                             "Posted since your last alert.", new_jobs[:FEATURED], "card"))
+        if closing:
+            sections.append(("&#9200; Closing soon",
+                             "A stated last date within ten days — apply first.",
+                             closing, "card"))
+        if week:
+            sections.append((f"From the last 7 days ({len(week)})",
+                             "Location, experience, pay, last date and how to apply for each.",
+                             week, "row"))
+
+        total = len(new_jobs) + len(closing) + len(week)
+        if not total:
+            print(f"  - {sub['email']}: no new jobs and nothing from the last week — skipped")
             continue
-        subject = (f"Welcome to WakeelBano alerts — {len(fresh)} legal job"
-                   f"{'s' if len(fresh) != 1 else ''} for you") if first else (
-                  f"{len(fresh)} new legal job{'s' if len(fresh) != 1 else ''} on WakeelBano")
-        html = email_html(sub, fresh)
+
+        if new_jobs:
+            subject = f"{len(new_jobs)} new legal job{'s' if len(new_jobs) != 1 else ''} today"
+        else:
+            subject = f"No new jobs today — {total} role{'s' if total != 1 else ''} still open"
+
+        html = email_html(sub, sections, total_open=len(matched), no_new=not new_jobs)
         if args.dry_run:
-            print(f"  * would send to {sub['email']}: {subject}")
-            for j in fresh:
-                print(f"      - {j.get('title')} @ {j.get('org')} ({j.get('city')})")
+            print(f"  * {sub['email']}: {subject}")
+            for title, _s, js, _st in sections:
+                print(f"      [{title}] {len(js)}")
+                for j in js[:6]:
+                    print(f"        - {j.get('title')} @ {j.get('org')} ({j.get('city')})")
             continue
+
         code, body = send_resend(key, sub["email"], subject, html)
         if code in (200, 201):
             db.rest("PATCH", f"subscribers?id=eq.{sub['id']}",
-                    {"last_sent_at": datetime.datetime.now(datetime.timezone.utc).isoformat()},
-                    prefer="return=minimal")
-            print(f"  + sent to {sub['email']}")
+                    {"last_sent_at": now.isoformat()}, prefer="return=minimal")
+            print(f"  + sent to {sub['email']} — {subject}")
             sent += 1
         else:
             print(f"  ! failed {sub['email']}: {code} {body}")
 
     if args.to and args.test and key:
-        sample = order_jobs(jobs)
+        every = order_jobs(jobs)
+        sample = [("New today (sample)", "What today's email looks like.",
+                   every[:6], "card"),
+                  (f"From the last 7 days ({max(0, len(every) - 6)})",
+                   "Compact rows carry the same details.", every[6:], "row")]
         html = email_html({"email": args.to, "city": "All cities", "area": "All areas"},
-                          sample, total_open=len(jobs))
-        code, body = send_resend(key, args.to, "WakeelBano test alert", html)
+                          sample, total_open=len(jobs), no_new=False)
+        code, body = send_resend(key, args.to, "WakeelBano — new email format", html)
         print(f"test email: {code} {body}")
 
     print(f"done · {sent} email(s) sent")

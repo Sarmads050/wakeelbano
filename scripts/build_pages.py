@@ -436,6 +436,17 @@ def write_llms_txt(urls):
 def main():
     urls = [("", "1.0", "weekly"), ("jobs/", "0.9", "daily")]
 
+    # one URL per open job — built by scripts/build_job_pages.py, listed here so
+    # search engines can find them without crawling the whole jobs page
+    try:
+        from jobs_data import JOBS as _J1
+        from jobs_data_more import EXTRA_JOBS as _J2
+        _closed = {"j59", "j60"}
+        for _j in [_j for _j in (_J1 + _J2) if _j["id"] not in _closed]:
+            urls.append((f"jobs/{_j['id']}/", "0.7", "weekly"))
+    except Exception as _e:      # never block a deploy over the sitemap
+        print("  jobs not added to sitemap:", _e)
+
     for h in C.HUBS:
         out = os.path.join(ROOT, h["slug"])
         os.makedirs(os.path.dirname(out), exist_ok=True)
