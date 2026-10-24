@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-WakeelSaathi — static page builder.
-scripts/content_pages.py se content uthata hai aur self-contained HTML pages banata hai
-(inline CSS — koi external dependency nahi), plus sitemap.xml aur robots.txt.
+WakeelBano — static page builder (SEO + GEO).
+Content lives in scripts/content_pages.py. Output: self-contained HTML pages,
+sitemap.xml, robots.txt (AI crawlers allowed), llms.txt and llms-full.txt.
 
 Usage: python3 scripts/build_pages.py
 """
-import io, os, json, html
+import io, os, json, html, posixpath
 import content_pages as C
 
-BASE = "https://wakeelsaathi.com/"
+BASE = "https://wakeelbano.com/"
+BRAND = "WakeelBano"
+TODAY = "2026-10-24"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = "WakeelSaathi"
 
 CSS = """
 :root{--navy:#0B1B2B;--navy2:#12293D;--navy3:#1B3A52;--gold:#C9A227;--gold2:#E7CE7A;--gold-soft:#FBF3DC;
@@ -33,20 +34,20 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(11,27,43,.97);border
 .top .cta{background:linear-gradient(180deg,#DDB845,#BE9A1F);color:#2A1F00;font-weight:800;padding:8px 14px;border-radius:9px;font-size:13px;border:0}
 .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
 .crumbs{font-size:12.5px;color:var(--muted);padding:16px 0 0}
-.crumbs a{border:0;color:var(--muted)}
-.crumbs a:hover{color:var(--navy)}
+.crumbs a{border:0;color:var(--muted)}.crumbs a:hover{color:var(--navy)}
 .crumbs span{color:#98A4B0}
-.hero{background:linear-gradient(160deg,#0B1B2B,#15354D);color:#fff;padding:34px 0 40px;margin-bottom:34px}
+.hero{background:linear-gradient(160deg,#0B1B2B,#15354D);color:#fff;padding:34px 0 38px;margin-bottom:32px}
 .hero .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);font-weight:800}
-.hero h1{font-size:clamp(26px,3.6vw,40px);margin:10px 0 12px;color:#fff}
-.hero p{color:#C8D7E3;font-size:16.5px;max-width:720px;margin:0}
+.hero h1{font-size:clamp(26px,3.6vw,39px);margin:10px 0 12px;color:#fff}
+.hero p{color:#C8D7E3;font-size:16.5px;max-width:740px;margin:0}
+.answer{background:rgba(255,255,255,.08);border-left:3px solid var(--gold);border-radius:10px;padding:14px 16px;margin:16px 0 0;font-size:16px;color:#EAF1F6;max-width:820px}
 .hero .meta{margin-top:16px;font-size:12.5px;color:#93A6B5;display:flex;gap:16px;flex-wrap:wrap}
-h2{font-size:clamp(20px,2.4vw,26px);margin:34px 0 12px}
+h2{font-size:clamp(20px,2.4vw,26px);margin:34px 0 10px}
 h3{font-size:18px;margin:22px 0 8px}
 p{margin:0 0 14px}
 ul,ol{margin:0 0 16px;padding-left:22px}
 li{margin:6px 0}
-table.tbl{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:14.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:table}
+table.tbl{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:14.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 table.tbl th{background:#F3F0E9;text-align:left;padding:11px 13px;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:#4A5763;border-bottom:1px solid var(--line)}
 table.tbl td{padding:11px 13px;border-bottom:1px solid #F0EBE0;vertical-align:top}
 table.tbl tr:last-child td{border-bottom:0}
@@ -55,7 +56,11 @@ ol.steps li{counter-increment:s;position:relative;padding:12px 16px 12px 50px;ba
 ol.steps li:before{content:counter(s);position:absolute;left:14px;top:12px;width:24px;height:24px;border-radius:7px;background:var(--gold-soft);border:1px solid #EBD9A4;color:var(--navy);font-weight:800;font-size:13px;display:grid;place-items:center}
 .callout{background:var(--gold-soft);border:1px solid #EBD9A4;border-radius:12px;padding:14px 16px;font-size:14.5px;margin:16px 0;color:#5F4A00}
 .mini{font-size:13px;color:var(--muted)}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 1px 2px rgba(11,27,43,.04),0 8px 24px rgba(11,27,43,.05)}
+.facts{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 18px;margin:8px 0 24px}
+.facts h2{margin:16px 0 6px;font-size:17px;font-family:inherit;letter-spacing:.04em;text-transform:uppercase;color:#4A5763}
+.facts dl{margin:0;display:grid;grid-template-columns:220px 1fr;gap:0}
+.facts dt{font-size:13.5px;color:var(--muted);padding:8px 0;border-top:1px solid #F0EBE0}
+.facts dd{margin:0;font-size:14px;padding:8px 0;border-top:1px solid #F0EBE0;font-weight:600;color:var(--navy)}
 .cta-box{background:linear-gradient(150deg,#0B1B2B,#17394F);color:#fff;border-radius:16px;padding:24px;margin:36px 0;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .cta-box h3{color:#fff;margin:0 0 6px;font-size:20px}
 .cta-box p{margin:0;color:#BFCFDC;font-size:14px}
@@ -68,10 +73,15 @@ ol.steps li:before{content:counter(s);position:absolute;left:14px;top:12px;width
 .faq p{margin:10px 0 0;font-size:14.5px;color:#3E4C59}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
 .grid.two{grid-template-columns:repeat(2,1fr)}
-.tile{background:#fff;border:1px solid var(--line);border-radius:13px;padding:17px;display:block;border-bottom:1px solid var(--line);transition:transform .14s,border-color .14s}
+.tile{background:#fff;border:1px solid var(--line);border-radius:13px;padding:17px;display:block;transition:transform .14s,border-color .14s}
 .tile:hover{transform:translateY(-2px);border-color:var(--gold)}
 .tile b{display:block;font-family:Georgia,serif;font-size:16px;color:var(--navy);margin-bottom:4px}
 .tile span{font-size:13px;color:var(--muted)}
+.sources{background:#fff;border:1px solid var(--line);border-radius:13px;padding:6px 18px;margin:20px 0}
+.sources h2{font-size:17px;font-family:inherit;letter-spacing:.04em;text-transform:uppercase;color:#4A5763;margin:16px 0 4px}
+.sources ul{list-style:none;padding:0;margin:0 0 12px}
+.sources li{padding:8px 0;border-top:1px solid #F0EBE0;font-size:14px}
+.sources li i{font-style:normal;color:var(--muted);font-size:12px}
 .disclaimer{background:#fff;border:1px dashed #D8CFBC;border-radius:12px;padding:16px;font-size:13px;color:#4A5763;margin:30px 0}
 .related{margin:26px 0}
 footer{background:#08131F;color:#93A6B5;padding:32px 0 22px;margin-top:50px;font-size:13.5px}
@@ -80,7 +90,7 @@ footer h5{color:#fff;font-size:11px;letter-spacing:.16em;text-transform:uppercas
 footer a{color:#A9BAC8;display:block;padding:3px 0;border:0;font-size:13px}
 footer a:hover{color:var(--gold2)}
 footer .fb{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;font-size:12px}
-@media(max-width:820px){.grid,.grid.two{grid-template-columns:1fr}footer .fg{grid-template-columns:1fr}.top nav{display:none}}
+@media(max-width:820px){.grid,.grid.two{grid-template-columns:1fr}footer .fg{grid-template-columns:1fr}.top nav{display:none}.facts dl{grid-template-columns:1fr}.facts dt{border-top:1px solid #F0EBE0}}
 """
 
 NAV = """<nav>
@@ -88,30 +98,30 @@ NAV = """<nav>
 <a href="{root}case-law/index.html">Case Law</a>
 <a href="{root}drafts/index.html">Drafts</a>
 <a href="{root}karachi/lawyer-jobs/index.html">Jobs</a>
-<a href="{root}index.html#pricing">Pricing</a>
+<a href="{root}about/index.html">About</a>
 <a class="cta" href="{root}index.html#join">Join free</a>
 </nav>"""
 
 FOOTER = """<footer><div class="wrap">
 <div class="fg">
   <div>
-    <b style="color:#fff;font-family:Georgia,serif;font-size:18px">WakeelSaathi</b>
-    <p style="max-width:300px;font-size:13px;margin-top:8px">Pakistan ke wakeelon ka ecosystem — sanad se career tak. Mentor, rehail, kaam aur pehchaan, ek jagah. Karachi se shuru.</p>
+    <b style="color:#fff;font-family:Georgia,serif;font-size:18px">WakeelBano</b>
+    <p style="max-width:310px;font-size:13px;margin-top:8px">Pakistan's career platform for lawyers — chambers, housing, paid work and research, in one place. Starting in Karachi.</p>
   </div>
   <div><h5>Career</h5>
     <a href="{root}career/law-gat/index.html">Law-GAT</a>
     <a href="{root}career/bar-council-enrollment/index.html">Enrollment</a>
     <a href="{root}career/lawyer-salary-pakistan/index.html">Salary</a>
-    <a href="{root}career/high-court-license/index.html">High Court license</a>
+    <a href="{root}career/high-court-license/index.html">High Court licence</a>
   </div>
   <div><h5>Karachi</h5>
     <a href="{root}karachi/lawyer-jobs/index.html">Lawyer jobs</a>
-    <a href="{root}karachi/lawyer-room-for-rent/index.html">Room / seat share</a>
+    <a href="{root}karachi/lawyer-room-for-rent/index.html">Rooms and seat share</a>
     <a href="{root}case-law/index.html">Case law</a>
-    <a href="{root}drafts/index.html">Drafts</a>
+    <a href="{root}about/index.html">About</a>
   </div>
 </div>
-<div class="fb">© 2026 WakeelSaathi · Legal information only, not legal advice · Bar Council rules ka ehtiram</div>
+<div class="fb">© 2026 WakeelBano · Legal information only, not legal advice · We respect bar council rules</div>
 </div></footer>"""
 
 
@@ -119,12 +129,9 @@ def esc(t):
     return html.escape(t, quote=True)
 
 
-def page(title, desc, slug, body, canonical, schema=None, og_type="article"):
-    depth = slug.count("/")
-    root = "../" * depth
-    sch = ""
-    if schema:
-        sch = ('<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False) + "</script>")
+def page(title, desc, slug, body, canonical, schema=None):
+    root = "../" * slug.count("/")
+    sch = ('<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False) + "</script>") if schema else ""
     return f"""<!DOCTYPE html>
 <html lang="en-PK">
 <head>
@@ -133,23 +140,25 @@ def page(title, desc, slug, body, canonical, schema=None, og_type="article"):
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{BASE}{canonical}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="theme-color" content="#0B1B2B">
 <meta name="geo.region" content="PK-SD"><meta name="geo.placename" content="Karachi">
-<meta property="og:type" content="{og_type}">
-<meta property="og:site_name" content="{SITE}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{BRAND}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{BASE}{canonical}">
 <meta property="og:locale" content="en_PK">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{esc(title)}">
+<meta name="twitter:description" content="{esc(desc)}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230F2537'/%3E%3Cpath d='M24 10v26M14 16h20M17 38h14' stroke='%23E7CE7A' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>{CSS}</style>
 {sch}
 </head>
 <body>
 <header class="top"><div class="top-in">
-  <a class="brand" href="{root}index.html"><b>WakeelSaathi</b><small>Wakeel ka pehla saathi</small></a>
+  <a class="brand" href="{root}index.html"><b>WakeelBano</b><small>Become a lawyer</small></a>
   {NAV.format(root=root)}
 </div></header>
 {body}
@@ -158,117 +167,141 @@ def page(title, desc, slug, body, canonical, schema=None, og_type="article"):
 </html>"""
 
 
-def crumbs(slug, title):
-    parts = [("Home", "../../index.html" if slug.count("/") >= 2 else ("../index.html" if slug.count("/") == 1 else "index.html"))]
-    segs = slug.split("/")[:-1]  # folder names
-    up = "../" * (len(segs))
-    # build breadcrumb trail for known 2-level slugs
+def crumbs(root, title, segs=None):
+    """Breadcrumb strip. segs = ancestor folder names of the current page."""
+    segs = segs or []
     labels = {"case-law": "Case Law", "drafts": "Drafts", "career": "Career", "karachi": "Karachi"}
     trail = ""
-    for i, s in enumerate(segs):
-        upath = "../" * (len(segs) - i) + "index.html"
-        lab = labels.get(s, s.title())
-        trail += f' <span>›</span> <a href="{upath}">{lab}</a>'
-    return f'<div class="wrap"><div class="crumbs"><a href="{parts[0][1]}">Home</a>{trail} <span>›</span> <span>{esc(title)}</span></div></div>'
+    for i, sx in enumerate(segs):
+        upath = root + "/".join(segs[: i + 1]) + "/index.html"
+        trail += f' <span>\u203a</span> <a href="{upath}">{labels.get(sx, sx.title())}</a>'
+    return f'<div class="wrap"><div class="crumbs"><a href="{root}index.html">Home</a>{trail} <span>\u203a</span> <span>{esc(title)}</span></div></div>'
+
+
+def facts_html(facts):
+    if not facts:
+        return ""
+    rows = "".join(f"<dt>{esc(k)}</dt><dd>{esc(v)}</dd>" for k, v in facts)
+    return f'<div class="facts"><h2>Key facts</h2><dl>{rows}</dl></div>'
+
+
+def sources_html(url_slug, sources):
+    allsrc = list(sources or []) + list(C.SOURCES_COMMON)
+    seen, items = set(), ""
+    for name, link, kind in allsrc:
+        if link in seen:
+            continue
+        seen.add(link)
+        items += f'<li><a href="{link}" rel="nofollow noopener" target="_blank">{esc(name)}</a> <i>· {esc(kind)}</i></li>'
+    return f'<div class="sources"><h2>Sources you can verify</h2><ul>{items}</ul></div>'
 
 
 def faq_html(faqs):
     if not faqs:
         return ""
-    items = "".join(
-        f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in faqs)
-    return f'<section class="faq"><h2>FAQ</h2>{items}</section>'
+    items = "".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in faqs)
+    return f'<section class="faq"><h2>Frequently asked questions</h2>{items}</section>'
 
 
-def faq_schema(url, faqs):
-    if not faqs:
-        return None
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [{"@type": "Question", "name": q,
-                        "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs],
-    }
+def child_url(parent_url, rel):
+    """Resolve a hub child link (relative to the hub folder) to a root-relative URL."""
+    folder = parent_url.rsplit("/", 1)[0] + "/"
+    return posixpath.normpath(folder + rel)
+
+
+def article_schema(p):
+    graph = [{
+        "@type": "Article",
+        "headline": p["h1"],
+        "description": p["desc"],
+        "inLanguage": "en-PK",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": BASE + p["url"]},
+        "author": {"@type": "Organization", "name": BRAND, "url": BASE},
+        "publisher": {"@type": "Organization", "name": BRAND, "url": BASE},
+        "datePublished": TODAY,
+        "dateModified": TODAY,
+        "about": {"@type": "Thing", "name": p.get("kicker", "Legal information")},
+        "isAccessibleForFree": True,
+    }, {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
+            {"@type": "ListItem", "position": 2, "name": p["h1"], "item": BASE + p["url"]},
+        ],
+    }]
+    if p.get("faqs"):
+        graph.append({
+            "@type": "FAQPage",
+            "mainEntity": [{"@type": "Question", "name": q,
+                            "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in p["faqs"]],
+        })
+    return {"@context": "https://schema.org", "@graph": graph}
 
 
 def build_article(p):
     slug = p["slug"]
-    depth = slug.count("/")
-    root = "../" * depth
+    root = "../" * slug.count("/")
     secs = ""
     for sec in p["sections"]:
         if sec.get("h2"):
             secs += f'<h2>{sec["h2"]}</h2>\n'
+        if sec.get("answer"):
+            secs += f'<p><b>{sec["answer"]}</b></p>\n'
         secs += sec["html"] + "\n"
     rel = ""
     if p.get("related"):
-        tiles = ""
-        for t, u in p["related"]:
-            tiles += f'<a class="tile" href="{root}{u}"><b>{t}</b><span>Parhein →</span></a>'
+        tiles = "".join(f'<a class="tile" href="{root}{u}"><b>{t}</b><span>Read the guide →</span></a>'
+                        for t, u in p["related"])
         rel = f'<div class="related"><h2>Related guides</h2><div class="grid">{"".join(tiles)}</div></div>'
+    answer = f'<div class="answer">{p["answer"]}</div>' if p.get("answer") else ""
     body = f"""
-{crumbs(slug, p["h1"])}
+{crumbs(root, p["h1"], slug.split("/")[:-2])}
 <section class="hero"><div class="wrap">
   <div class="kicker">{p.get("kicker","Guide")}</div>
   <h1>{p["h1"]}</h1>
-  <p>{p["lede"]}</p>
-  <div class="meta"><span>WakeelSaathi · Karachi</span><span>Last updated: October 2026</span><span>Reading time: ~5 min</span></div>
+  <p>{p["desc"]}</p>
+  {answer}
+  <div class="meta"><span>{BRAND} · Karachi</span><span>Updated: October 2026</span><span>Reading time: about 6 minutes</span></div>
 </div></section>
 <main class="wrap">
-<article>
+{facts_html(p.get("facts"))}
 {secs}
 <div class="cta-box">
   <div><h3>{C.CTA["title"]}</h3><p>{C.CTA["text"]}</p></div>
   <a class="btn" href="{root}index.html#join">Free account →</a>
 </div>
+{faq_html(p.get("faqs"))}
+{sources_html(slug, p.get("sources"))}
 {rel}
 <div class="disclaimer">{C.DISCLAIMER}</div>
-</article>
 </main>"""
-
-    schema = {
-        "@context": "https://schema.org",
-        "@graph": [
-            {"@type": "Article",
-             "headline": p["h1"],
-             "description": p["desc"],
-             "inLanguage": "en-PK",
-             "mainEntityOfPage": {"@type": "WebPage", "@id": BASE + p["url"]},
-             "author": {"@type": "Organization", "name": "WakeelSaathi"},
-             "publisher": {"@type": "Organization", "name": "WakeelSaathi"},
-             "dateModified": "2026-10-24",
-             "about": {"@type": "Thing", "name": p.get("kicker", "Legal information")}},
-            {"@type": "BreadcrumbList", "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
-                {"@type": "ListItem", "position": 2, "name": p["h1"], "item": BASE + p["url"]},
-            ]},
-        ] + ([faq_schema(p["url"], p.get("faqs"))] if p.get("faqs") else []),
-    }
-    return page(p["title"], p["desc"], slug, body, p["url"], schema)
+    return page(p["title"], p["desc"], slug, body, p["url"], article_schema(p))
 
 
 def build_hub(p):
     slug = p["slug"]
     root = "../" * slug.count("/")
-    tiles = ""
-    for t, d, u in p.get("children", []):
-        tiles += f'<a class="tile" href="{u}"><b>{t}</b><span>{d}</span></a>'
-    secs = f'<div class="grid two" style="margin-bottom:26px">{"".join(tiles)}</div>'
+    tiles = "".join(f'<a class="tile" href="{u}"><b>{t}</b><span>{d}</span></a>' for t, d, u in p.get("children", []))
+    secs = f'<div class="grid two" style="margin-bottom:26px">{tiles}</div>' if tiles else ""
     for sec in p["sections"]:
         if sec.get("h2"):
             secs += f'<h2>{sec["h2"]}</h2>\n'
+        if sec.get("answer"):
+            secs += f'<p><b>{sec["answer"]}</b></p>\n'
         secs += sec["html"] + "\n"
     rel = ""
     if p.get("related"):
-        rt = "".join(f'<a class="tile" href="{u}"><b>{t}</b><span>Parhein →</span></a>' for t, u in p["related"])
+        rt = "".join(f'<a class="tile" href="{u}"><b>{t}</b><span>Read the guide →</span></a>' for t, u in p["related"])
         rel = f'<div class="related"><h2>Related</h2><div class="grid two">{rt}</div></div>'
+    answer = f'<div class="answer">{p["answer"]}</div>' if p.get("answer") else ""
     body = f"""
-{crumbs(slug, p["h1"])}
+{crumbs(root, p["h1"], slug.split("/")[:-2])}
 <section class="hero"><div class="wrap">
   <div class="kicker">{p.get("kicker","Library")}</div>
   <h1>{p["h1"]}</h1>
-  <p>{p["lede"]}</p>
-  <div class="meta"><span>WakeelSaathi · Karachi</span><span>Last updated: October 2026</span></div>
+  <p>{p["desc"]}</p>
+  {answer}
+  <div class="meta"><span>{BRAND} · Karachi</span><span>Updated: October 2026</span></div>
 </div></section>
 <main class="wrap">
 {secs}
@@ -276,31 +309,127 @@ def build_hub(p):
   <div><h3>{C.CTA["title"]}</h3><p>{C.CTA["text"]}</p></div>
   <a class="btn" href="{root}index.html#join">Free account →</a>
 </div>
+{faq_html(p.get("faqs"))}
 {rel}
 <div class="disclaimer">{C.DISCLAIMER}</div>
 </main>"""
     schema = {
         "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": p["h1"],
-        "description": p["desc"],
-        "url": BASE + p["url"],
-        "inLanguage": "en-PK",
-        "isPartOf": {"@type": "WebSite", "name": SITE, "url": BASE},
+        "@graph": [
+            {"@type": "CollectionPage", "name": p["h1"], "description": p["desc"], "url": BASE + p["url"],
+             "inLanguage": "en-PK", "isPartOf": {"@type": "WebSite", "name": BRAND, "url": BASE},
+             "dateModified": TODAY},
+            {"@type": "ItemList", "itemListElement": [
+                {"@type": "ListItem", "position": i + 1, "name": t, "url": BASE + child_url(p["url"], u)}
+                for i, (t, d, u) in enumerate(p.get("children", []))]},
+        ],
     }
     return page(p["title"], p["desc"], slug, body, p["url"], schema)
 
 
+def build_about(p):
+    p = dict(p)
+    p.setdefault("facts", [
+        ("What it is", "A career platform for Pakistani lawyers"),
+        ("Based in", "Karachi, Sindh, Pakistan"),
+        ("Free for", "Students, fresh graduates and junior advocates"),
+        ("Paid by", "Chambers, law firms, universities and sponsors"),
+        ("Does not do", "Legal advice, client case referrals, lawyer rankings"),
+    ])
+    return build_article(p)
+
+
+def write_llms_txt(urls):
+    """Curated llms.txt — a plain-text map of the most citation-worthy pages."""
+    groups = {
+        "Core pages": [
+            ("https://wakeelbano.com/", "What WakeelBano is: a career platform for Pakistani lawyers; who it serves and how it is funded."),
+            ("https://wakeelbano.com/about/", "Entity page: what the platform does, what it deliberately does not do, and how content is produced."),
+        ],
+        "Case law research (most searched topic among Pakistani lawyers)": [
+            ("https://wakeelbano.com/case-law/", "Hub: where to find Pakistani case law free, and a four-step research method."),
+            ("https://wakeelbano.com/case-law/302-ppc/", "Section 302 PPC, qatl-i-amd: punishment, elements, qisas, research method."),
+            ("https://wakeelbano.com/case-law/489-f/", "Section 489-F PPC, cheque dishonour: elements, checklist, defences."),
+            ("https://wakeelbano.com/case-law/497-crpc/", "Section 497 CrPC, bail in non-bailable offences: grounds and authorities."),
+        ],
+        "Legal drafting formats": [
+            ("https://wakeelbano.com/drafts/", "Hub: the common skeleton of every Pakistani court draft."),
+            ("https://wakeelbano.com/drafts/bail-application-format/", "Bail application structure under sections 496, 497 and 498 CrPC."),
+            ("https://wakeelbano.com/drafts/legal-notice-format/", "Legal notice parts, delivery proof and deadlines."),
+            ("https://wakeelbano.com/drafts/plaint-format/", "Plaint requirements under Order VII CPC."),
+            ("https://wakeelbano.com/drafts/vakalatnama-format/", "Vakalatnama clauses, authority and acceptance."),
+        ],
+        "Career and licensing": [
+            ("https://wakeelbano.com/career/", "Hub: the full path from LLB to the High Court."),
+            ("https://wakeelbano.com/career/law-gat/", "Law-GAT: what it is, eligibility, syllabus, 60-day plan, result."),
+            ("https://wakeelbano.com/career/bar-council-enrollment/", "Advocate enrollment: eligibility, documents, pupillage, verification."),
+            ("https://wakeelbano.com/career/how-to-become-lawyer-pakistan/", "Roadmap from 12th grade to the Supreme Court."),
+            ("https://wakeelbano.com/career/lawyer-salary-pakistan/", "Salary ranges in Pakistan and why chambers pay what they pay."),
+            ("https://wakeelbano.com/career/high-court-license/", "High Court licence: two years of practice, process, practice record."),
+        ],
+        "Karachi": [
+            ("https://wakeelbano.com/karachi/", "Karachi for lawyers: court choice, rent and network."),
+            ("https://wakeelbano.com/karachi/lawyer-jobs/", "Where legal jobs are in Karachi, and which are never advertised."),
+            ("https://wakeelbano.com/karachi/lawyer-room-for-rent/", "Room and chamber seat-share costs near the courts."),
+        ],
+    }
+    out = [f"# {BRAND}", "",
+           "> Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and "
+           "junior advocates find a chamber and mentor, verified rooms and seat sharing near the courts, paid drafting "
+           "work, and free case law research guides. Junior lawyers use it free; chambers, firms and universities pay.",
+           "",
+           "Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information only, not legal advice. "
+           "No commission on client case referrals, and no lawyer rankings. All guidance is drawn from Pakistani "
+           "statutes, bar council notifications and official court publications, with sources listed on each page.",
+           ""]
+    for group, items in groups.items():
+        out.append(f"## {group}")
+        for u, d in items:
+            out.append(f"- [{d}]({u})")
+        out.append("")
+    out += ["## Optional", "- [Sitemap](https://wakeelbano.com/sitemap.xml)", ""]
+    io.open(os.path.join(ROOT, "llms.txt"), "w", encoding="utf-8").write("\n".join(out))
+
+    # llms-full.txt — expanded plain-text export of the priority pages
+    full = [f"# {BRAND} — full text export", "",
+            "Everything below is public content from wakeelbano.com, in plain text for AI agents and researchers.", ""]
+    for p in [C.ABOUT] + C.PAGES:
+        full.append(f"## {p['h1']}")
+        full.append(f"URL: {BASE}{p['url']}")
+        full.append("")
+        if p.get("answer"):
+            full.append(p["answer"])
+            full.append("")
+        for k, v in p.get("facts", []):
+            full.append(f"- {k}: {v}")
+        for sec in p["sections"]:
+            if sec.get("h2"):
+                full.append(f"### {sec['h2']}")
+            if sec.get("answer"):
+                full.append(sec["answer"])
+            import re as _re
+            txt = _re.sub(r"<[^>]+>", " ", sec["html"])
+            txt = _re.sub(r"\s+", " ", txt).strip()
+            full.append(txt)
+            full.append("")
+        for q, a in p.get("faqs", []):
+            full.append(f"Q: {q}")
+            full.append(f"A: {a}")
+            full.append("")
+        full.append("")
+    io.open(os.path.join(ROOT, "llms-full.txt"), "w", encoding="utf-8").write("\n".join(full))
+
+
 def main():
     urls = [("", "1.0", "weekly")]
-    # hubs
+
     for h in C.HUBS:
         out = os.path.join(ROOT, h["slug"])
         os.makedirs(os.path.dirname(out), exist_ok=True)
         io.open(out, "w", encoding="utf-8").write(build_hub(h))
         urls.append((h["url"], "0.9", "weekly"))
         print("hub  ", h["slug"])
-    # articles
+
     for p in C.PAGES:
         out = os.path.join(ROOT, p["slug"])
         os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -308,26 +437,59 @@ def main():
         urls.append((p["url"], "0.8", "monthly"))
         print("page ", p["slug"])
 
+    a = C.ABOUT
+    out = os.path.join(ROOT, a["slug"])
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    io.open(out, "w", encoding="utf-8").write(build_about(a))
+    urls.append((a["url"], "0.9", "monthly"))
+    print("page ", a["slug"])
+
     # sitemap
-    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
-          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, pr, cf in urls:
-        sm.append("  <url>")
-        sm.append(f"    <loc>{BASE}{u}</loc>")
-        sm.append("    <lastmod>2026-10-24</lastmod>")
-        sm.append(f"    <changefreq>{cf}</changefreq>")
-        sm.append(f"    <priority>{pr}</priority>")
-        sm.append("  </url>")
+        sm += ["  <url>", f"    <loc>{BASE}{u}</loc>", f"    <lastmod>{TODAY}</lastmod>",
+               f"    <changefreq>{cf}</changefreq>", f"    <priority>{pr}</priority>", "  </url>"]
     sm.append("</urlset>")
     io.open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write("\n".join(sm) + "\n")
 
-    robots = f"""User-agent: *
+    # robots.txt — search engines AND AI answer engines explicitly allowed
+    robots = f"""# WakeelBano — crawlers welcome. We publish original, sourced information for lawyers.
+
+# Search engines
+User-agent: *
+Allow: /
+
+# AI answer engines and assistants (citation welcome)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: CCBot
 Allow: /
 
 Sitemap: {BASE}sitemap.xml
+# AI content map: {BASE}llms.txt
 """
     io.open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(robots)
-    print(f"\n{len(urls)} URLs in sitemap · robots.txt written")
+
+    write_llms_txt(urls)
+    print(f"\n{len(urls)} URLs in sitemap · robots.txt and llms.txt written")
 
 
 if __name__ == "__main__":

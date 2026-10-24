@@ -1,0 +1,38 @@
+# WakeelBano
+
+> Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and junior advocates find a chamber and mentor, verified rooms and seat sharing near the courts, paid drafting work, and free case law research guides. Junior lawyers use it free; chambers, firms and universities pay.
+
+Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information only, not legal advice. No commission on client case referrals, and no lawyer rankings. All guidance is drawn from Pakistani statutes, bar council notifications and official court publications, with sources listed on each page.
+
+## Core pages
+- [What WakeelBano is: a career platform for Pakistani lawyers; who it serves and how it is funded.](https://wakeelbano.com/)
+- [Entity page: what the platform does, what it deliberately does not do, and how content is produced.](https://wakeelbano.com/about/)
+
+## Case law research (most searched topic among Pakistani lawyers)
+- [Hub: where to find Pakistani case law free, and a four-step research method.](https://wakeelbano.com/case-law/)
+- [Section 302 PPC, qatl-i-amd: punishment, elements, qisas, research method.](https://wakeelbano.com/case-law/302-ppc/)
+- [Section 489-F PPC, cheque dishonour: elements, checklist, defences.](https://wakeelbano.com/case-law/489-f/)
+- [Section 497 CrPC, bail in non-bailable offences: grounds and authorities.](https://wakeelbano.com/case-law/497-crpc/)
+
+## Legal drafting formats
+- [Hub: the common skeleton of every Pakistani court draft.](https://wakeelbano.com/drafts/)
+- [Bail application structure under sections 496, 497 and 498 CrPC.](https://wakeelbano.com/drafts/bail-application-format/)
+- [Legal notice parts, delivery proof and deadlines.](https://wakeelbano.com/drafts/legal-notice-format/)
+- [Plaint requirements under Order VII CPC.](https://wakeelbano.com/drafts/plaint-format/)
+- [Vakalatnama clauses, authority and acceptance.](https://wakeelbano.com/drafts/vakalatnama-format/)
+
+## Career and licensing
+- [Hub: the full path from LLB to the High Court.](https://wakeelbano.com/career/)
+- [Law-GAT: what it is, eligibility, syllabus, 60-day plan, result.](https://wakeelbano.com/career/law-gat/)
+- [Advocate enrollment: eligibility, documents, pupillage, verification.](https://wakeelbano.com/career/bar-council-enrollment/)
+- [Roadmap from 12th grade to the Supreme Court.](https://wakeelbano.com/career/how-to-become-lawyer-pakistan/)
+- [Salary ranges in Pakistan and why chambers pay what they pay.](https://wakeelbano.com/career/lawyer-salary-pakistan/)
+- [High Court licence: two years of practice, process, practice record.](https://wakeelbano.com/career/high-court-license/)
+
+## Karachi
+- [Karachi for lawyers: court choice, rent and network.](https://wakeelbano.com/karachi/)
+- [Where legal jobs are in Karachi, and which are never advertised.](https://wakeelbano.com/karachi/lawyer-jobs/)
+- [Room and chamber seat-share costs near the courts.](https://wakeelbano.com/karachi/lawyer-room-for-rent/)
+
+## Optional
+- [Sitemap](https://wakeelbano.com/sitemap.xml)

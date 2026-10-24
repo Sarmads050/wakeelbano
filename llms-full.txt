@@ -1,0 +1,550 @@
+# WakeelBano — full text export
+
+Everything below is public content from wakeelbano.com, in plain text for AI agents and researchers.
+
+## What is WakeelBano?
+URL: https://wakeelbano.com/about/
+
+WakeelBano is a career platform for Pakistani lawyers, built for Karachi first. It helps new lawyers find a chamber and mentor, affordable housing near the courts, paid drafting work, and reliable research guidance — all free for junior lawyers.
+
+### Who is WakeelBano for?
+Law students, fresh graduates, pupils and junior advocates in Pakistan, plus the chambers, law firms and universities that hire them.
+Law students who need to know what to do before and after graduation Fresh graduates facing the Law-GAT, pupillage and enrollment process Junior advocates looking for chambers, paid work and better visibility Seniors and firms who need reliable juniors and a verified public profile Law colleges that must place students for mandatory internships
+
+### How does WakeelBano make money?
+From chambers, firms, universities and sponsors — not from junior lawyers, who use the platform free.
+Stream Who pays Typical price (PKR) Chamber Pro subscription Seniors and chambers Rs 2,500 per month Verified listings Room and chamber owners Rs 500 – 1,000 per listing Institution plan Law colleges and firms From Rs 60,000 per year Workshops Participants and sponsors Rs 1,500 – 3,000 per seat Kaam Board commission Task posters 10 – 15% of the task value WakeelBano never charges a junior lawyer for a profile, a listing or a chamber match.
+
+### What does WakeelBano not do?
+It does not give legal advice, does not take commission on client case referrals, and does not publish or sell lawyer rankings.
+Referral fees for client cases would amount to touting, which is prohibited under professional conduct rules. Any "best lawyer in Pakistan" ranking would be misleading. We stay on the correct side of both lines: information, tools and verified connections between lawyers.
+
+### How is content on this site produced?
+From primary sources — bare Acts, bar council notifications and court publications — with the source named on every page and an explicit verification instruction.
+Our guides explain statutory frameworks and research method. We do not reproduce reported judgments, and we do not invent citations. Every page carries a date, a scope note and links to the official source you can check yourself.
+
+### Where is WakeelBano based?
+Karachi, Sindh, with an initial focus on City Courts, the Sindh High Court and the districts around them.
+The pilot starts in Karachi because that is where the largest concentration of new lawyers practises, and where the shortage of affordable rooms and paid pupillages is sharpest. Expansion to Hyderabad, Sukkur, Lahore and Islamabad follows once the Karachi network is verified and working.
+
+Q: Is WakeelBano a law firm?
+A: No. It is a technology platform. It does not provide legal advice, does not represent clients and does not act as an agent in any case.
+
+Q: Is WakeelBano free?
+A: Yes for students, fresh graduates and junior advocates. Chambers, firms, universities and sponsors pay for listings, subscriptions and workshops.
+
+Q: Does WakeelBano take a cut of a lawyer's fee?
+A: No. It never takes a share of a lawyer's professional fee, and never takes commission on client referrals.
+
+Q: Which cities does it cover?
+A: Karachi first, with Sindh districts next, then Lahore and Islamabad.
+
+
+## Law-GAT 2026 — the Law Graduate Assessment Test
+URL: https://wakeelbano.com/career/law-gat/
+
+Law-GAT is the assessment test that Pakistani law graduates must pass before enrolling as an advocate. It is conducted by HEC with the Pakistan Bar Council and is normally held twice a year.
+
+- Conducted by: Higher Education Commission (HEC) with the Pakistan Bar Council
+- Frequency: Usually twice a year; HEC confirms each cycle
+- Required for: Advocate enrollment with a provincial bar council
+- Format: Multiple-choice questions across core legal subjects
+- Result: Checked on the official HEC portal with roll number or CNIC
+### Who is eligible to sit the Law-GAT?
+Candidates need a recognised LLB or equivalent degree, identity documents and the prescribed fee. Final-year students can often apply, but confirm the current notification.
+A recognised LLB , or an equivalent degree accepted by the Pakistan Bar Council CNIC and degree or transcript details Registration fee for that cycle, paid through the route stated in the notification Foreign degree holders must first complete HEC equivalence Do this first: read the current notification on HEC's official website. Do not trust dates forwarded on WhatsApp or published on blogs, including this page.
+
+### What does the syllabus cover?
+The test centres on core subjects: constitutional law, criminal law and procedure, civil law, the law of evidence and family law, plus legal English.
+Subject What to revise Constitutional law Fundamental rights, writ jurisdiction, key constitutional provisions Criminal law Core PPC offences (qatl, hurt, property) and CrPC procedure Civil law CPC (plaint, jurisdiction, appeals), Contract Act, Specific Relief Law of evidence Qanun-e-Shahadat 1984: relevancy, burden of proof, documents Family law MFLO 1961, dissolution of marriage, custody, maintenance Legal English Comprehension, legal terminology, drafting basics
+
+### What is a realistic 60-day preparation plan?
+Spend the first ten days on bare Acts, the next fifteen on subject-wise practice questions, then past papers under time pressure, and the final week on revision only.
+Days 1–10: read the bare Acts for PPC, CrPC and CPC. Turn key sections into flashcards. Days 11–25: subject-wise practice questions. Write down the reason for every wrong answer. Days 26–40: past papers under timed conditions. Keep a list of weak areas. Days 41–52: weak areas, plus evidence and family law. Days 53–60: revision and full-length mocks. Add no new material.
+
+### Where do you check the result and answer key?
+Only on the official HEC result portal, using your roll number or CNIC. Result day traffic is heavy, so retry on the official portal rather than clicking on forwarded links.
+Warning: any "leaked result" link shared before the official announcement is usually phishing. Log in only through the official portal.
+
+### What happens after you pass?
+You apply to your provincial bar council for enrollment, which includes a prescribed pupillage in a senior advocate's chamber.
+In Sindh, the application goes to the Sindh Bar Council and includes a six-month pupillage, documents and the current fees. The full sequence is in our bar council enrollment guide .
+
+Q: How many times a year is the Law-GAT held?
+A: Usually twice a year, but HEC confirms the schedule for each cycle. Always check the official notification.
+
+Q: Can I become an advocate without the Law-GAT?
+A: The prescribed test must be passed before enrollment as an advocate. Confirm the current requirement with your provincial bar council.
+
+Q: What if I fail?
+A: You can normally attempt the next cycle. Use the gap to work in a chamber: drafting practice helps both the retest and the pupillage that follows.
+
+Q: When is the result announced?
+A: The result timeline is set by HEC in each notification and published on its official portal.
+
+
+## 302 PPC Case Law — Qatl-i-amd
+URL: https://wakeelbano.com/case-law/302-ppc/
+
+Section 302 of the Pakistan Penal Code sets the punishment for qatl-i-amd (intentional murder). The court chooses between death as qisas, imprisonment for life, or a term of imprisonment, depending on the facts and on the qisas process.
+
+- Statute: Pakistan Penal Code 1860, Chapter XVI
+- Definitions: Section 300 defines qatl-i-amd and its exceptions
+- Punishment: Section 302 — death as qisas, life imprisonment, or a term of imprisonment
+- Related sections: 299 (definitions), 301, 304, 305–310 (qisas, waiver, compounding)
+- Most searched form: “302 case law pakistan in urdu”
+### What does section 302 actually provide?
+It provides the punishment for qatl-i-amd: death as qisas where qisas is available, imprisonment for life where qisas is waived or not applicable, or imprisonment for a stated term.
+The section cannot be read alone. The chain runs through section 299 (definitions), 300 (when culpable homicide becomes qatl-i-amd), 301 (transfer of intent), 302 (punishment), and 304 to 310, which govern qisas, waiver and compounding. Read the bare Act for the exact wording before you rely on any summary.
+
+### Which issues does the court decide in a 302 case?
+Four questions dominate: whether the offence is qatl-i-amd or a lesser form, whether each element is proved, whether qisas is available or waived, and whether a lesser conviction fits the record.
+Issue What the court looks at Intent Motive, weapon, site of injury, medical evidence Proof of elements Mens rea, act, causation, official and medical record Qisas Heirs, waiver, compounding under sections 305–310 Lesser conviction Whether the record supports 304, 308 or a hurt offence instead Evidence Ocular testimony, delay in FIR, identification, recovery
+
+### How do you research 302 case law in Pakistan?
+Search the court portals using section-based key words, start from headnotes, then read the operative paragraph of every judgment and confirm it has not been reviewed.
+Search the Supreme Court and High Court portals with: "302 PPC", "qatl-i-amd", "qisas", "waiver", "304 PPC", "benefit of doubt". Use reporters such as PLD, SCMR and YLR to find the headnote, then read the operative part of the judgment itself. Check whether a later bench has reviewed, overruled or distinguished the authority. Prefer the binding authority of your own High Court before citing another province's judgment. Never file a citation you have not opened. AI tools can generate citations that do not exist, and a wrong citation is the fastest way to lose a judge's confidence.
+
+Q: What is the punishment under section 302 PPC?
+A: Death as qisas, imprisonment for life, or imprisonment for a stated term, depending on the facts and the qisas process. Always read the bare Act and the current authority.
+
+Q: Can qisas be waived in a 302 case?
+A: The qisas framework in sections 305 to 310 deals with waiver and compounding, and a waiver can change the sentence. The effect depends on your facts, so check the latest authority.
+
+Q: What is the difference between 302 and 324 PPC?
+A: Section 302 concerns qatl-i-amd and its punishment, while section 324 concerns an attempt to commit qatl. Compare the elements in the bare Act.
+
+
+## Bail Application Format (Pakistan)
+URL: https://wakeelbano.com/drafts/bail-application-format/
+
+A bail application in Pakistan has seven parts: heading, title, brief facts, numbered grounds, legal basis, prayer and annexures. The grounds must be tied to facts on the record, not to general statements.
+
+- Bailable offences: Section 496 CrPC
+- Non-bailable offences: Section 497 CrPC
+- Sessions Court and High Court powers: Section 498 CrPC
+- Illegal detention: Section 491 CrPC
+- Bail after conviction: Section 426 CrPC
+### Which section applies to your case?
+Read the sections in the FIR first: if the offence is bailable, section 496 applies; if it is non-bailable, section 497 applies and section 498 governs the higher courts.
+Provision When it applies 496 CrPC Bailable offences 497 CrPC Non-bailable offences, including the further-inquiry discretion 498 CrPC Bail powers of the Sessions Court and High Court 491 CrPC Illegal detention 426 CrPC Suspension of sentence and bail pending appeal
+
+### What does a well-drafted application look like?
+It is short. Four to six lines of facts, then numbered grounds, one legal point each, and a prayer that states exactly what the court should order.
+Heading: court, case or FIR number, police station, sections and parties. Title: "Application for grant of bail under section ___ CrPC". Brief facts: the FIR version, the accused's role, the date of arrest and the custody period. Grounds: numbered, each one a separate legal point tied to the record. Legal basis: only provisions and authorities you have verified. Prayer: a clear request, plus any conditions you accept. Verification, affidavit and vakalatnama.
+
+### Which grounds does the court actually consider?
+Grounds that are documented: investigation already complete, no flight risk, weak or suspicious evidence, delay, parity with a co-accused, and health or age factors.
+Investigation complete — no further recovery or interrogation is needed No flight risk — permanent address, family and roots in the community Weak evidence — point to specific gaps in the record, not to argument Delay — in the FIR, in arrest, or in trial Parity — a co-accused has already been granted bail, with the order cited Health, age or gender — supported by documents Practice tip: Attach facts to each ground. "The accused has been in custody for three days, the challan is filed and no recovery is on record" persuades; "the accused is innocent" does not.
+
+### What are the most common drafting mistakes?
+Confusing bail with acquittal, repeating the whole FIR, citing unverified authority, leaving the prayer vague and filing incomplete annexures.
+Bail decides release during trial, not guilt. Keep the language to that question, and check court fee and stamp requirements at the filing branch, because they vary by court and by the nature of the case.
+
+Q: Do bail applications have to be in English?
+A: Court filings are normally in English. An Urdu summary for the client is useful, but the filing itself follows the court's practice.
+
+Q: What is the difference between sections 497 and 498 CrPC?
+A: Section 497 sets out bail in non-bailable offences before the trial court, while section 498 gives the Sessions Court and High Court power to grant bail. The forum you choose decides which provision you rely on.
+
+Q: What if bail is refused?
+A: Read the reasons recorded in the order, strengthen the grounds with record-based facts, and consider the appellate forum. Check the procedure and limitation for your case type.
+
+
+## Legal Notice Format (Pakistan)
+URL: https://wakeelbano.com/drafts/legal-notice-format/
+
+A legal notice is a formal written demand that sets out the facts, the default, the exact relief wanted and a deadline. Written properly, it ends many disputes before a suit is filed.
+
+- Typical deadline: 15 days is common practice, but statutory periods vary
+- Proof of delivery: Registered post with acknowledgement due, or tracked courier
+- Common uses: Recovery of money, cheque dishonour, rent, contract breach, defamation
+- No government fee: The cost is professional fees and postage
+### When should a legal notice be sent?
+Before litigation, whenever a demand can still resolve the dispute, and whenever a statute requires prior notice as a condition for filing.
+Recovery of money — unpaid loans, invoices or services Cheque dishonour — before a 489-F PPC complaint Rent and eviction — under the applicable rented premises law Breach of contract — demanding performance or accepting termination Property and possession — warning against unlawful dispossession Defamation — demanding a retraction
+
+### What are the nine parts of a legal notice?
+Letterhead and date, correct addressee, subject line, chronology, the default, the exact demand, the deadline, the consequence and a reservation of rights.
+Letterhead, date and reference number Full name and complete postal address of the addressee A specific subject line, such as "Legal notice for recovery of Rs ___" Chronology with dates: when the agreement was made, what was delivered, what remains due The default or breach, tied to a clause or section A precise demand: the exact amount or action A deadline, commonly 15 days The consequence of non-compliance, including costs Reservation of rights and the advocate's signature
+
+### How do you prove the notice was delivered?
+Send it by registered post with acknowledgement due or a tracked courier, and keep the receipt, the tracking record and a copy of the notice in your file.
+In court, the first question is not what the notice said but whether it was served. Email or WhatsApp notices only work where the contract or the law allows them, and even then you must keep the send confirmation and a screenshot. Note: the date on the notice and the date of dispatch are different things. Courts look at both.
+
+### Is a 15-day period always required?
+No. Some statutes prescribe their own period, such as suits against the government, so check the specific section rather than assuming 15 days.
+Fifteen days is a common practice for commercial demands. Where a statute sets a period, that period governs, and the notice must comply with its form as well as its timing.
+
+Q: How much does a legal notice cost?
+A: There is no government fee. The cost is the advocate's professional fee plus registered post or courier charges. Court fee applies only when a suit or complaint is filed.
+
+Q: Can a legal notice be sent by WhatsApp?
+A: Only where the contract or the law permits electronic service, and only with proof of delivery saved. Registered post or courier remains the safer default.
+
+Q: Is a notice required before a cheque dishonour complaint?
+A: Practice and the facts of your case determine this. Check the section, the current approach of the courts, and keep proof that your demand reached the other side.
+
+
+## Bar Council Enrollment — the Full Route to Sanad
+URL: https://wakeelbano.com/career/bar-council-enrollment/
+
+Enrollment as an advocate requires a recognised LLB, the prescribed test, a six-month pupillage in a senior advocate's chamber, the documents and fees, and clearance by the provincial bar council's enrollment committee.
+
+- Governing law: Legal Practitioners and Bar Councils Act, 1973 (sections 26 and 27)
+- Minimum age: 21 years
+- Pupillage: 6 months with a senior advocate, commonly 10 years' standing
+- Regulator in Sindh: Sindh Bar Council, Karachi
+- Roll size: Sindh Bar Council registration numbers passed 55,000 in 2026
+### Who is eligible for enrollment?
+A Pakistani or AJK citizen, at least 21 years old, holding a recognised LLB or Bar-at-Law, who has passed the prescribed test and meets the character requirements.
+Citizenship of Pakistan or Azad Jammu and Kashmir Minimum age of 21 years LLB or Bar-at-Law recognised by the Pakistan Bar Council Prescribed test passed, under Pakistan Bar Council rules No disqualification under sections 26 and 27 of the 1973 Act Holders of foreign degrees must first complete HEC and Pakistan Bar Council equivalence.
+
+### What is the step-by-step process?
+Pass the Law-GAT, complete six months of pupillage, prepare the document set, apply to the provincial bar council with the fees, appear before the enrollment committee, then collect the certificate and identity card.
+Law-GAT — pass the test (see the Law-GAT guide ). Pupillage — six prescribed months in a senior's chamber. Documents — LLB degree and transcripts, CNIC, photographs, character certificate, test result and the prescribed forms. Application — file with the Sindh Bar Council in Sindh, with the enrollment fee, benevolent fund and other charges set by its rules. Enrollment committee — review and interview. Certificate and identity card — issued on approval. Figures change: fee amounts, challan routes and checklists are revised from time to time. Confirm the current requirements at the bar council office or website, not on a blog.
+
+### Why is pupillage the hardest step?
+Because there is no placement system. Pupillage is mandatory, but finding a chamber still depends almost entirely on personal contacts.
+This is the gap WakeelBano exists to close. Practical ways to make pupillage count: Take a one-page CV to a chamber visit: what you want to learn, how much time you can give, which area interests you Agree the terms at the start: hours, type of work, any stipend, and what you will be taught Write one page of notes every day — six months later that record is worth more than the degree Browse verified chambers in Chamber Match on WakeelBano
+
+### How do you verify an advocate's licence?
+Search the provincial bar council roll by name or registration number. In Sindh, the Sindh Bar Council publishes an advocate verification portal showing district, licence type and status.
+Clients and employers should always verify against the roll rather than a screenshot. It is the simplest defence against imposters, an issue the Sindh Bar Council has publicly flagged more than once.
+
+### What should you do in the first 90 days after enrollment?
+Commit to one court and a few case types, start a practice record, build a clean public profile, and tell twenty people in person what you do.
+Fix your court, area and case types — spreading thin does not generate income Record every appearance and file, because the High Court licence will need that record Set up a LinkedIn profile, WhatsApp Business and a verified listing Tell your network directly: most first briefs come from referrals, not advertising
+
+Q: How long does it take to become an advocate in Pakistan?
+A: A five-year LLB, the Law-GAT, six prescribed months of pupillage and the enrollment process: roughly six years in total, depending on individual timing.
+
+Q: Is the pupillage paid?
+A: Not necessarily. Some chambers pay a stipend and many do not, which is why agreeing the terms in writing at the start is important.
+
+Q: How much are enrollment fees?
+A: The enrollment fee, benevolent fund and other charges are set by bar council rules and are revised over time. Ask the Sindh Bar Council for the current challan and breakdown.
+
+Q: Can I practise in another province after enrolling in Sindh?
+A: Practice rights follow your enrollment and licence type. Confirm the position with the bar council concerned before taking instructions outside your province.
+
+
+## Lawyer Salary in Pakistan (2026)
+URL: https://wakeelbano.com/career/lawyer-salary-pakistan/
+
+Most fresh lawyers in Pakistan earn between Rs 25,000 and Rs 50,000 a month, and many pupils are paid nothing at all, while the Sindh minimum wage for unskilled work is Rs 43,000.
+
+- Pupillage: Rs 0 to 25,000 a month
+- Junior associate, litigation chamber: Rs 25,000 to 50,000
+- Law firm associate: Rs 50,000 to 120,000+
+- Mid-level, 3–7 years: Rs 80,000 to 250,000
+- Sindh minimum wage, 2026–27: Rs 43,000 a month
+### What are the realistic salary ranges?
+Litigation chambers pay the least and law firms the most, with corporate and in-house roles paying more than chambers at every level of experience.
+Stage Typical monthly (PKR) Note Internship or pupillage 0 – 25,000 Frequently unpaid Fresh associate, litigation chamber 25,000 – 50,000 Karachi and Lahore at the upper end Corporate law firm associate 50,000 – 120,000+ Higher pay, longer hours Mid-level, 3–7 years 80,000 – 250,000 Depends on firm type and client base Independent practice Variable Fee per case; low at first, rising with reputation Ranges are indicative and drawn from public salary discussions, market reporting and practice observation between 2023 and 2026. Your city, firm and practice area will move the number.
+
+### Why is the pay so low compared with the minimum wage?
+Because Pakistani litigation uses a lump-sum fee per case rather than hourly billing, so a junior's time is a cost to the senior rather than billable revenue.
+Lump-sum fees: there is no hourly billing culture in most chambers, so juniors are not revenue producers Training period: a fresh graduate typically needs one to two years to become useful Retention: many juniors leave within two years, which discourages investment Supply: thousands of graduates enter the market each year for a limited number of paid seats Know your position: put the chamber terms in writing. "You are here to learn" does not mean you cannot agree a minimum contribution towards expenses and a clear scope of training.
+
+### How can a junior lawyer increase income?
+Specialise in one area, master one court, take remote drafting work from foreign firms, build a visible professional profile and use idle hours for paid research and drafting.
+Specialise. A lawyer who does everything has no rate. Master one court. Learn its practice, its filing staff and its judges' expectations. Add remote work. Foreign firms pay in dollars for drafting, research and document review. Be visible. Educational content within professional conduct rules brings referrals. Fill idle time. The Kaam Board on WakeelBano lists paid drafting and research tasks.
+
+### What is a good way to negotiate chamber terms?
+Offer a specific commitment in return for a specific arrangement: hours, learning scope and a minimum monthly amount, agreed in writing.
+A workable opening: "I can commit six months, I want to work on drafting, research and court appearances, and I would like a minimum of Rs ___ a month plus one study day a week." Specific candidates get taken seriously; candidates who only ask about pay are replaced.
+
+Q: What is a fresh lawyer's salary in Pakistan?
+A: Usually Rs 25,000 to Rs 50,000 a month, depending on the city and the firm. Many chambers pay no stipend during pupillage.
+
+Q: Can a chamber legally pay below the minimum wage?
+A: This depends on how the relationship is classified and on the sector-specific rules. Many chambers treat juniors as trainees rather than employees. For your own position, take advice from a labour or employment lawyer.
+
+Q: How much do independent lawyers earn?
+A: There is no fixed figure. The first year or two is often very low, and income rises with reputation and case flow. Many lawyers supplement it with teaching, drafting or freelance work.
+
+
+## How to Become a Lawyer in Pakistan
+URL: https://wakeelbano.com/career/how-to-become-lawyer-pakistan/
+
+To become a lawyer in Pakistan you need a five-year LLB, the Law-GAT, a six-month pupillage and enrollment with a provincial bar council, which takes about six years in total.
+
+- First degree: LLB, five years after intermediate
+- Test: Law-GAT, conducted by HEC with the Pakistan Bar Council
+- Pupillage: Six prescribed months in a senior's chamber
+- First licence: Advocate, enrolled with the provincial bar council
+- High Court: After two years of practice
+### What does the full roadmap look like?
+LLB, then the Law-GAT, then pupillage, then enrollment, then two years of practice before a High Court licence and seven more before the Supreme Court.
+Stage Requirement Time LLB Intermediate plus a university admission test 5 years Law-GAT LLB and registration under the HEC notification Per test cycle Pupillage A senior advocate's chamber 6 months Enrollment Documents, fees and committee review A few months High Court licence Two years of practice and an application 2 years Supreme Court Seven years as a High Court advocate 7 years
+
+### What should you look for in an LLB programme?
+A Pakistan Bar Council recognised university, a curriculum that includes supervised internships, and a location you can afford for five years.
+Recognition: confirm HEC and Pakistan Bar Council recognition before paying any fee Cost: public colleges are far cheaper than private universities over five years Practice exposure: moots, internships and legal aid clinics matter more than the brochure Test it first: spend one summer in a chamber before committing five years
+
+### What should you do during law school that pays off later?
+Complete three different internships, write drafts by hand, do two serious moots and read one judgment a day in English.
+Three internships — a trial court chamber, a law firm and an in-house legal department. Write drafts — a plaint, written statement, bail application and notice every week, from scratch. Moot twice — oral advocacy confidence is built only by standing up. Legal English — one judgment and a five-line summary every day. Pick an area — match your interest with where the work actually is.
+
+### Where do people lose the most time?
+They study without ever entering a chamber, rely on contacts instead of skills, refuse to specialise, and leave their documents incomplete.
+Each of these costs months. A student who interns early, drafts weekly and keeps a clean document file moves through the Law-GAT and enrollment significantly faster than one who starts preparing after graduation.
+
+Q: Can I become a lawyer after 10th grade?
+A: No. You need intermediate, then a five-year LLB. After 10th grade you can only take support roles such as a court clerk or office assistant.
+
+Q: Is it possible to study law in Urdu medium?
+A: The degree and court work are in English, so legal English has to be built. Many successful lawyers come from Urdu-medium backgrounds, but drafting and reading happen in English.
+
+Q: How much does it cost to become a lawyer?
+A: It varies widely: public law colleges are inexpensive, while private universities can cost several lakh over five years, before test fees, enrollment fees and pupillage costs.
+
+
+## Lawyer Jobs in Karachi
+URL: https://wakeelbano.com/karachi/lawyer-jobs/
+
+Most legal jobs in Karachi are never advertised. Chambers hire through visits and referrals, so a one-page CV and a sample draft delivered in person works better than applying online.
+
+- Hidden market: Most chamber positions are filled through referrals
+- Pupil or trainee: Rs 0 to 25,000 a month
+- Junior chamber associate: Rs 25,000 to 50,000
+- Law firm associate: Rs 50,000 to 120,000+
+- In-house, 0–2 years: Rs 60,000 to 120,000
+### What kinds of legal jobs exist in Karachi?
+Six types: chamber associate, law firm associate, in-house counsel, public sector roles, court research assistantships and remote freelance work.
+Type What the work looks like Where Chamber associate or pupil Drafting, research, appearances with a senior City Courts and Sindh High Court chambers Law firm associate Corporate, tax, disputes and transactions Karachi's commercial districts In-house legal Contracts, compliance, litigation management Banks, telecom, FMCG, technology companies Public sector Prosecution, government legal drafting Provincial and federal departments Court research assistant Research and drafting for judges High Court and Supreme Court registries Remote freelance Drafting, research, document review From home, for foreign clients
+
+### How do you find the jobs that are never advertised?
+Visit chambers in person, ask your batchmates and seniors, watch the bar room notice board, and use verified listings rather than waiting for a job post.
+A senior or classmate who already knows your work Chamber visits with a printed CV, which work better than email Notice boards in the bar room and near the courts Your law college alumni group Verified chamber listings on WakeelBano Red flag: anyone charging a "placement fee" or promising a guaranteed job is almost always a fraud. Reputable chambers do not ask for money.
+
+### What should a one-page CV contain?
+Name and contact details, a line on your practice interest, verified counts of your drafting and court experience, internships, skills and a sample draft.
+Header: name, phone, email, city and one line on your area of interest Replace objectives with evidence: "drafted 3 bail applications, 12 legal notices, observed 40+ appearances" Internships: chamber name, court, dates and what you actually did Skills: drafting types, research databases, languages Education and status: LLB, Law-GAT, pupillage stage One sample draft attached — it demonstrates ability faster than any claim
+
+### What should you expect to be paid?
+Expect nothing to Rs 25,000 during pupillage, Rs 25,000 to 50,000 as a junior chamber associate, and more in firms and in-house roles.
+For the full breakdown, see lawyer salary in Pakistan , which explains why chambers pay what they pay.
+
+Q: How do I get my first legal job in Karachi?
+A: Go in person. Take a one-page CV and a sample draft to chambers near the courts you want to practise in, and ask your seniors for introductions. Referrals fill most openings.
+
+Q: Do law firms hire fresh graduates?
+A: Yes, but usually through internships first. A strong internship record and a writing sample matter more than grades alone.
+
+Q: Are remote legal jobs available in Pakistan?
+A: Yes. Foreign firms and legal process outsourcers hire Pakistani lawyers for drafting, research and document review, usually paid in dollars. Strong English and a writing sample are essential.
+
+
+## Rooms and Chamber Seat Sharing in Karachi
+URL: https://wakeelbano.com/karachi/lawyer-room-for-rent/
+
+A shared room near the courts in Karachi costs about Rs 8,000 to 15,000 a month, and a chamber seat share costs Rs 6,000 to 15,000, which together make a junior stipend survivable.
+
+- Shared room: Rs 8,000 – 15,000 a month
+- Paying guest with meals: Rs 10,000 – 20,000
+- Single room in a shared flat: Rs 14,000 – 25,000
+- Chamber seat share: Rs 6,000 – 15,000
+- Typical deposit: Two to three months
+### What does it actually cost to live near the courts?
+On a Rs 30,000 stipend, a shared room and a chamber seat share keep rent and travel low enough to survive the first year.
+Option Typical monthly (PKR) Note Shared room for two 8,000 – 15,000 Cheapest; utilities sometimes separate Paying guest with meals 10,000 – 20,000 Cleaner, with house rules Single room in a shared flat 14,000 – 25,000 Punjab Colony, Garden, Jamshed Road Small independent flat 25,000 – 45,000 Deposit separate Chamber seat share 6,000 – 15,000 Desk, cupboard and library access
+
+### Which areas work best for which court?
+Punjab Colony and Garden suit City Courts, Jamshed Road balances both courts, Malir is cheapest for Malir court, and Gulshan means a long daily commute.
+Punjab Colony and Garden — close to City Courts and Saddar, dense lawyer network, cheap food Saddar — transport from everywhere, but noisy and crowded at night Jamshed Road and Patel Para — mid-range, reachable to both City Courts and the High Court Malir — cheapest option if you practise at Malir court Gulshan-e-Iqbal — better housing, but long and costly daily travel Clifton and Defence — close to the High Court but outside a junior's budget
+
+### What should you check before paying a deposit?
+Verify the owner's identity, insist on a written agreement, confirm the electricity meter, water supply, security and the conditions for returning your deposit.
+Owner's CNIC — confirm whether you are dealing with the owner or a sub-letter A written rent agreement in two copies, with duration and advance stated Electricity: separate meter or shared bill, and who sets the rate Water: tank, timing and quality — a constant issue in Karachi Security: gate, guard, locks and late-entry arrangements Deposit: when and on what conditions it is returned, in writing Notice period: how many months either side must give Workspace: somewhere to keep files, plus light and internet For women lawyers: check for a family building, a warden or guard, and a separate entrance. Visit in person and speak to current residents rather than relying on assurances.
+
+### How do you avoid broker problems?
+Ask your chamber network first, deal with owners directly, and never pay a booking amount before seeing the room and signing an agreement.
+Ask seniors and colleagues — they often know of an empty seat Use your law college alumni group and the bar room notice board Deal with the owner directly before agreeing to any commission Use verified listings on the WakeelBano Rehail board, filtered by area and budget Never transfer a deposit before viewing the property. Advance payments are the most common rental fraud.
+
+Q: How much does a room cost near City Courts in Karachi?
+A: Shared rooms around Punjab Colony and Garden typically run Rs 8,000 to 15,000 a month, and a chamber seat share adds Rs 6,000 to 15,000.
+
+Q: What is a chamber seat share?
+A: Two or three lawyers share one chamber, each with a desk, and split the rent and utilities. It is the cheapest way for a new lawyer to be based near the courts.
+
+Q: Should I rent without a written agreement?
+A: A written agreement is strongly advised. Without one, disputes over deposits, notice periods and bills are common and hard to resolve.
+
+
+## High Court Licence (Advocate High Court)
+URL: https://wakeelbano.com/career/high-court-license/
+
+A High Court licence requires at least two years of practice in the subordinate courts after enrollment, an application through the bar council, the required certificates and clearance by the High Court.
+
+- Experience required: Two years in subordinate courts
+- Legal basis: Section 27, Legal Practitioners and Bar Councils Act, 1973
+- Application route: Through the provincial bar council to the High Court
+- Key documents: Practice record, good standing and dues clearance certificates
+- Supreme Court: Requires seven years as a High Court advocate
+### What are the eligibility requirements?
+You must already be enrolled as an advocate, have practised for at least two years in the subordinate courts, and satisfy the application and fitness requirements of the High Court.
+Enrollment on the provincial bar council roll At least two years of practice before subordinate courts The prescribed application form and current fees Fitness and character certificates, plus any interview the court requires Confirm current requirements and fees with the Sindh High Court and the Sindh Bar Council, because the process is updated from time to time.
+
+### What is the step-by-step process?
+Assemble your two-year practice record, file the application through the bar council, obtain the certificates, appear for review or interview, then collect the enrolment certificate.
+Build the practice record: case titles, courts, case numbers and your role in each matter File the prescribed application through the bar council Obtain good standing, dues clearance and character certificates Complete the High Court's review or interview process Receive the certificate of enrolment as an Advocate of the High Court
+
+### How should you keep a practice record?
+Keep a simple register from your first day: date, court, case number, parties, your role and the outcome, with a scanned copy of each order.
+Column What to record Date The date of the hearing Court and case number Court name and the case or FIR number Parties The case title, kept private and never published Your role Drafting, research, appearance or assistance Outcome Adjournment, order or arguments heard Copy A scanned order sheet or file note
+
+### What is the route to the Supreme Court?
+Seven years of practice as a High Court advocate, plus the prescribed fitness certificate, interviews and fees set by the Pakistan Bar Council.
+The Supreme Court route also requires a list of independently conducted cases and judgments where you appeared as lead counsel. The exact numbers and fees change, so confirm them with the Pakistan Bar Council before you begin.
+
+Q: How many years of practice are needed for a High Court licence?
+A: At least two years before the subordinate courts, under the Legal Practitioners and Bar Councils Act, 1973. Confirm the current requirement with your bar council.
+
+Q: Can I appear in the High Court without a High Court licence?
+A: No. Pleadings in the High Court require an Advocate High Court licence; a lower court advocate is limited to the subordinate courts.
+
+Q: What if I have no practice record?
+A: Try to reconstruct it from order sheets, court copies and your senior's confirmation. It is far easier to keep the register from day one.
+
+
+## Vakalatnama Format (Pakistan)
+URL: https://wakeelbano.com/drafts/vakalatnama-format/
+
+A vakalatnama authorises an advocate to appear, plead and act for a client in a specific case. It must identify the court, the case, the client and the advocate, and it must state the scope of authority.
+
+- Purpose: Authorises an advocate to act in a specific case
+- Key clause: Scope of authority — appear, plead, act, compromise
+- Acceptance: The advocate's acceptance, where the court requires it
+- Stamp: Set by the rules of the relevant court
+### What must a vakalatnama contain?
+Court and case details, client identity, advocate details with enrollment number, the scope of authority, acceptance, signature, date and the required stamp.
+The court's name and the case number or title Client details: name, parentage, CNIC and address Advocate details: name, enrollment number and chamber address An authority clause stating exactly what is authorised The advocate's acceptance, where required Signatures and date Stamp or court fee as the court's rules require Witnesses or attestation, where required
+
+### Why is the scope of authority the most important clause?
+Because “appear, plead and act” does not cover everything. Powers to compromise, withdraw or substitute must be stated explicitly.
+Filing an appeal Leading evidence Withdrawing the case Compromising or settling the matter Substituting another advocate Practice tip: State each power in plain English. Both the client and the court should read the same meaning from the document.
+
+### How does it differ by court?
+The format is broadly similar, but stamp requirements, acceptance clauses and the advocate's licence level change between subordinate courts, the High Court, the Supreme Court and tribunals.
+Court What changes District and subordinate courts Standard format; stamp per the court's rules Sindh High Court A High Court advocate's enrollment number is required Supreme Court Advocate-on-Record requirements and its own format Tribunals Each tribunal sets its own practice; ask the filing branch first
+
+### What are the common mistakes?
+Wrong or missing case numbers, a client name that does not match the CNIC, no enrollment number, a missing acceptance clause and an incomplete address.
+These errors get filings returned and waste a hearing date. An incomplete address is the most damaging, because court notices and orders never reach the client.
+
+Q: What is a vakalatnama?
+A: A document by which a client authorises an advocate to appear, plead and act on their behalf in a particular case. Without it the advocate cannot file or plead the matter.
+
+Q: How much stamp does a vakalatnama need?
+A: Stamp and court fee depend on the court and the nature of the case. Confirm the current requirement at the court's filing branch.
+
+Q: Can two advocates be named on one vakalatnama?
+A: Practice normally names one advocate, with arrangements for another to assist or substitute. Check the relevant court's rules.
+
+
+## 489-F PPC — Cheque Dishonour
+URL: https://wakeelbano.com/case-law/489-f/
+
+Section 489-F of the Pakistan Penal Code deals with dishonestly issuing a cheque that is returned unpaid, where the person knew the funds were insufficient. Punishment includes imprisonment and a fine.
+
+- Statute: Pakistan Penal Code 1860, section 489-F
+- Core element: Dishonest intention when the cheque was issued
+- Key documents: Original cheque, bank return memo, proof of the debt, notice
+- Searched as: “489-F case law”, “cheque bounce case Pakistan”
+### What must be proved in a 489-F case?
+That the cheque was issued, that it related to a debt or obligation, that it was dishonestly issued, that it was returned unpaid, and that a demand was made.
+Element Evidence usually relied on Issuance The original cheque, signature and bank record Debt or obligation Agreement, invoice, receipt, message trail Dishonest intention Knowledge of insufficient funds, account history, conduct Dishonour The bank's return memo, with the reason stated Demand The notice and proof that it reached the other side
+
+### What is the pre-complaint checklist?
+Secure the original cheque, obtain the return memo, assemble proof of the underlying debt, send a demand notice and confirm the limitation period and the correct forum.
+The original cheque, plus copies The bank return memo — the stated reason matters enormously Proof of the debt: agreement, invoices, ledgers, messages A legal notice with proof of delivery The limitation period, checked against the section and current case law The competent court, determined by territorial jurisdiction
+
+### What defences are commonly raised?
+That the cheque was given as security rather than for a debt, that no debt is proved, that the signature is not the client's, or that the dispute is essentially civil.
+The cheque was a security cheque , not payment for a debt The underlying debt is not proved The signature is disputed The element of dishonest intention is missing The demand procedure was not followed A civil dispute has been given a criminal colour Research key words: "489-F PPC", "security cheque", "dishonest intention", "quantum of sentence", "compounding".
+
+### Should the client pursue criminal, civil, or both?
+It depends what the client wants: punishment or recovery. Many matters end in a recorded settlement, and the client should decide the objective before filing.
+Criminal and civil remedies run on different tracks with different outcomes and timelines. Explain both clearly, including the cost of each, before the client commits.
+
+Q: What is the punishment under 489-F PPC?
+A: The section provides imprisonment and a fine. Read the bare Act for the exact wording and check current authority, since sentencing depends on the facts.
+
+Q: What is a security cheque?
+A: A cheque handed over as a guarantee rather than to discharge a debt. That distinction affects whether dishonest intention can be established, so research the case law carefully.
+
+Q: Can a cheque case be settled?
+A: Yes, frequently. Any settlement should be recorded in writing and given effect through the court's process.
+
+
+## 497 CrPC — Bail Case Law
+URL: https://wakeelbano.com/case-law/497-crpc/
+
+Section 497 CrPC governs bail in non-bailable offences. The court weighs the nature of the offence, the evidence on record, and whether further inquiry is needed before deciding.
+
+- Bailable offences: Section 496 CrPC
+- Non-bailable offences: Section 497 CrPC
+- Higher courts: Section 498 CrPC
+- Most cited ground: Further inquiry under the second part of section 497
+### How does the section work in practice?
+It sets a general rule against bail in serious offences, then gives the court discretion where further inquiry is warranted or where the section itself allows it.
+Read the bare Act for the exact text and sub-clauses. Practice varies, so always prefer the binding authority of your own High Court when you prepare the grounds. Remember: bail decides release during trial, not guilt. Keep the application and the arguments on that question.
+
+### Which issues does the court weigh?
+The nature and gravity of the offence, the strength of the evidence, the stage of investigation, flight risk, parity with co-accused and any specific grounds the section allows.
+Issue What to examine Nature of offence Whether it carries death or life imprisonment Further inquiry Whether the record leaves a genuine question to be tried Investigation Challan filed, recovery complete, custody period Flight risk Permanent address, family and community ties Parity A co-accused has been granted bail, with the order cited Delay Delay in trial or prolonged custody
+
+### How do you research bail authorities efficiently?
+Search by key words on the court portals, read the operative paragraph rather than the headnote, and confirm each authority has not been reviewed or distinguished.
+Key words: "497 CrPC", "further inquiry", "prohibitory clause", "bail — recovery", "bail — challan". Start with the Supreme Court, then apply your own High Court's binding authority. Read the paragraph the court actually relied on, not the summary. Check the current status: review, larger bench, or later distinguishing cases.
+
+### Where is the drafting guidance?
+The structure of the application and the grounds that work are set out in our bail application format guide.
+See bail application format in Pakistan for the seven-part structure, the sections involved and the filing mistakes to avoid.
+
+Q: When is bail granted under section 497 CrPC?
+A: When the court is satisfied on the facts and the record, commonly where further inquiry is warranted or where the section permits it. Always check the latest binding authority for your facts.
+
+Q: What does further inquiry mean?
+A: It refers to the discretion in the second part of section 497, where the record leaves a question that requires determination. Read the exact text of the section.
+
+Q: Where is a refusal of bail challenged?
+A: Usually before the Sessions Court or the High Court under section 498 CrPC. Confirm the procedure and limitation for your case type.
+
+
+## Plaint Format (Order VII CPC)
+URL: https://wakeelbano.com/drafts/plaint-format/
+
+A plaint is the document that starts a civil suit. Under Order VII CPC it must state the parties, the facts, the cause of action, jurisdiction, valuation, limitation and the relief sought.
+
+- Governed by: Code of Civil Procedure 1908, Order VII
+- Must state: Parties, facts, cause of action, jurisdiction, valuation, limitation, relief
+- Court fee: Depends on the suit's nature and valuation
+- Government suits: Usually require prior notice under the CPC
+### What must a plaint contain?
+The court, the parties, the subject matter, dated facts, the cause of action, jurisdiction, valuation and court fee, limitation, the relief, verification and the document list.
+The court's name Plaintiff and defendant details, with addresses The suit's title and subject matter The cause of action: when, where and how it arose, with dates Jurisdiction: territorial and pecuniary, with reasons Valuation and the court fee paid The relief claimed, quantified where money is involved Limitation Verification and the list of documents
+
+### How should the plaint be structured?
+Follow the court's expected order: heading, parties, subject line, numbered facts, cause of action, jurisdiction and valuation, limitation, prayer, verification and annexures.
+Heading: "In the Court of ___" with the suit number Parties: plaintiff versus defendants, with addresses Subject: one line, such as "Suit for recovery of Rs ___" Facts: numbered paragraphs in date order Cause of action: a separate heading Jurisdiction and valuation: a separate paragraph Limitation: a separate paragraph Prayer: numbered reliefs, plus costs Verification, affidavit and documents
+
+### Where do valuation and court fee go wrong?
+Under-valuing the suit or paying insufficient court fee leads to objections and delay, so confirm the current schedule at the filing branch.
+Court fee paid too low — an objection follows, and the date is lost Wrong valuation — raises a question over pecuniary jurisdiction Unquantified relief — creates a problem at the decree stage Court fee rules are set by statute and revised over time. Confirm the current position with the court, not with an old template.
+
+### What are the common mistakes?
+Mixing facts with the cause of action, omitting dates, leaving the relief vague, forgetting the document list and skipping the limitation paragraph.
+Each omission becomes the first objection raised against the suit. A plaint that answers all nine requirements in order survives scrutiny and reaches the merits faster.
+
+Q: What is the format of a plaint in Pakistan?
+A: Under Order VII CPC: court, parties, subject matter, numbered facts, cause of action, jurisdiction and valuation, limitation, prayer, verification and a list of documents.
+
+Q: How much court fee is payable?
+A: It depends on the nature and valuation of the suit. Confirm the current schedule with the relevant court's filing branch.
+
+Q: Can a plaint be amended?
+A: Generally yes, with the court's permission, but the earlier it is done the better. Amendments become harder once trial has progressed.
+

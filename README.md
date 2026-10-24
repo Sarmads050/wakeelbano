@@ -1,110 +1,85 @@
-# WakeelSaathi — Pakistan ke Wakeelon ka Ecosystem
+# WakeelBano — wakeelbano.com
 
-**Wakeel ka pehla saathi.** Pakistan ke naye wakeelon (aur Karachi khaas taur par) ke liye ek career-first
-ecosystem: chamber/mentor matching, verified rehail (rooms + chamber-share), kaam board, case law aur draft
-library, AI kit aur growth school.
+Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh
+graduates and junior advocates find a chamber and mentor, verified rooms and seat sharing
+near the courts, paid drafting work, and free case law research guides.
 
-> **Note:** Legal *information* platform hai — legal advice nahi deta, aur client case referral par commission nahi leta
-> (ye Bar Council rules ke khilaf hoga).
+- **Junior lawyers use it free.** Chambers, law firms, universities and sponsors pay.
+- **Legal information only** — no legal advice, no client case referrals, no "best lawyer" rankings.
+- **Language:** simple English across the whole site.
 
----
+## What is in this repo
 
-## Repo ka structure
-
-```
-index.html                                  → Main app (single file, no dependencies)
-case-law/index.html                         → Case law hub (SEO traffic engine)
-  case-law/302-ppc/                         → 302 PPC qatl-i-amd research guide
-  case-law/489-f/                           → Cheque dishonour 489-F
-  case-law/497-crpc/                        → Bail 497 CrPC
-drafts/index.html                           → Draft library hub
-  drafts/bail-application-format/
-  drafts/legal-notice-format/
-  drafts/plaint-format/
-  drafts/vakalatnama-format/
-career/index.html                           → Career hub
-  career/law-gat/                           → Law-GAT 2026
-  career/bar-council-enrollment/
-  career/how-to-become-lawyer-pakistan/
-  career/lawyer-salary-pakistan/
-  career/high-court-license/
-karachi/index.html                          → Karachi hub
-  karachi/lawyer-jobs/
-  karachi/lawyer-room-for-rent/
-robots.txt · sitemap.xml                    → SEO foundation
-research/                                   → Deep research reports (market + search demand + naming)
-scripts/build_pages.py                      → Landing pages generator (content → HTML)
-scripts/content_pages.py                    → Saara page content (edit yahan)
-scripts/rebrand.py                          → Brand/text replacement helper
-scripts/push.sh                             → GitHub push helper
-```
-
-## Kaise chalayein
-
-Koi build step ya server zaroori nahi — `index.html` browser mein kholein.
-
-```bash
-open index.html                  # macOS
-xdg-open index.html              # Linux
-python3 -m http.server 8000      # ya local server → http://localhost:8000
-```
-
-## Pages dobara generate karna
-
-Landing pages **generator** se bante hain (taake header/footer/schema har page par consistent rahe):
-
-```bash
-cd scripts && python3 build_pages.py
-```
-
-- Content edit karein → `scripts/content_pages.py`
-- Template / CSS / schema edit karein → `scripts/build_pages.py`
-- Run karne par saari `index.html` files + `sitemap.xml` + `robots.txt` update ho jate hain
-
-Har page **self-contained** hai (inline CSS, koi external font/CDN nahi) — is liye preview mein bhi
-poora render hota hai aur GitHub Pages par bhi fast chalta hai.
-
-## SEO foundation (already included)
-
-| Cheez | Kahan |
+| Path | What it is |
 |---|---|
-| Title + meta description (har page) | generator |
-| Canonical URLs | har page |
-| Open Graph + Twitter cards | har page |
-| JSON-LD: Organization, WebSite, LegalService, FAQPage | `index.html` |
-| JSON-LD: Article + BreadcrumbList + FAQPage | har landing page |
-| `robots.txt` + `sitemap.xml` | repo root |
-| Internal linking (hub → page → related) | generator |
-| Mobile-first, zero external assets (fast CWV) | inline CSS |
+| `index.html` | Single-file app prototype: home, problem research, career navigator, chamber match, rooms, work board, AI kit, growth school, pricing. Vanilla JS, no build step, works offline. |
+| `case-law/` | Research hub + 302 PPC, 489-F PPC, 497 CrPC pages |
+| `drafts/` | Drafting hub + bail application, legal notice, plaint, vakalatnama |
+| `career/` | Career hub + Law-GAT, enrollment, how to become a lawyer, salary, High Court licence |
+| `karachi/` | Karachi hub + lawyer jobs, lawyer room for rent |
+| `about/` | Entity page (what the platform is and does not do) |
+| `scripts/content_pages.py` | **All page copy and data** — the only file to edit for content changes |
+| `scripts/build_pages.py` | Generator: writes all HTML pages, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` |
+| `scripts/validate.py` | Checks broken internal links, JSON-LD validity, one `<h1>`/title/canonical per page, dead links in `llms.txt` |
+| `scripts/repair_quotes.py` | Utility: converts unescaped straight quotes in content text to typographic quotes |
+| `scripts/push.sh` | Commit + push using a token in `.secrets/gh_token` |
+| `research/` | Demand research (what Pakistani lawyers search, pain points) behind the content plan |
 
-**Deploy hone ke baad ye karein:**
-1. `sitemap.xml` mein domain confirm karein (abhi `https://wakeelsaathi.com/` placeholder hai)
-2. [Google Search Console](https://search.google.com/search-console) mein site add karein + sitemap submit karein
-3. Google Business Profile (agar physical presence ho) bana lein
+## Editing content
 
-## GitHub Pages par live karna
+1. Edit `scripts/content_pages.py` (plain Python dicts — no HTML framework).
+2. Rebuild and check:
+   ```bash
+   python3 scripts/build_pages.py
+   python3 scripts/validate.py
+   ```
+3. Commit and push (`scripts/push.sh "your message"`).
 
-1. Repo → **Settings** → **Pages**
-2. Source: **Deploy from a branch** → `main` → `/ (root)`
-3. URL: `https://<username>.github.io/<repo>/`
+### Page shape (`PAGES`, `HUBS`, `ABOUT`)
 
-Custom domain (wakeelsaathi.com) ke liye Pages settings mein domain add karein — DNS mein `CNAME` record
-`<username>.github.io` par point karein, phir "Enforce HTTPS" on karein.
+```python
+{
+  "slug": "career/law-gat/index.html",   # file path
+  "url":  "career/law-gat/",             # canonical URL, relative to https://wakeelbano.com/
+  "title": "<title> tag", "h1": "...", "desc": "meta description", "kicker": "Career · Entry",
+  "answer": "1–2 sentence direct answer shown under the H1",   # GEO: the snippet AI engines quote
+  "facts": [("Conducted by", "HEC with the Pakistan Bar Council"), ...],  # key-facts table
+  "sections": [{"h2": "Question-style heading", "answer": "One-line answer", "html": "<p>...</p>"}],
+  "faqs": [("Question?", "Answer.")],       # rendered + FAQPage JSON-LD
+  "sources": [("Name", "https://…", "official")],   # named, linked external sources
+  "related": [("Title", "career/.../index.html")]
+}
+```
 
-## Content ke usool
+## SEO and AI search (GEO)
 
-- **Koi invented citation nahi.** Landmark case names/citations reproduce nahi kiye jate — sirf research method,
-  statutory framework aur official sources ke links.
-- Har page par **disclaimer** (legal information, not legal advice) + "verify from official source".
-- Fees, dates aur section requirements badalte hain — har page par "current notification confirm karein" likha hai.
-- Client ke case outcomes, names ya confidential details kabhi publish na karein.
+Every page carries: one `<h1>`, a question-style H2 structure, a direct answer under the H1,
+a key-facts table with real numbers and dates, named and linked sources, FAQ markup, an
+Article + BreadcrumbList (+ FAQPage) JSON-LD graph, and a canonical URL.
 
-## Update workflow
+`robots.txt` explicitly allows search and AI crawlers: `GPTBot`, `OAI-SearchBot`,
+`ChatGPT-User`, `ClaudeBot`, `Claude-SearchBot`, `PerplexityBot`, `Perplexity-User`,
+`Google-Extended`, `Applebot-Extended`, `Bingbot`, `CCBot`.
 
-1. Chat mein change batayein ("Law-GAT page par 2027 dates ka section add karo")
-2. Content/template edit hota hai → `python3 scripts/build_pages.py`
-3. Commit + push → GitHub Pages ~1 minute mein update
+`llms.txt` (curated map with descriptions) and `llms-full.txt` (plain-text export of every
+page) are generated on every build. Google does not read `llms.txt`; OpenAI and Microsoft
+crawlers do.
 
-## Status
+### Keyword strategy (measured, not guessed)
 
-Prototype / demo. Backend, authentication, real verification pipeline aur payments abhi nahi hain.
+Google Trends for Pakistan: `lawyer` indexes about 3.6× `wakeel`, while the brand carries
+"wakeel" for topical relevance. Titles and H1s therefore use the English head terms
+(`lawyer`, `advocate`, `case law`, `law gat`) that Pakistanis actually type, with Karachi
+and section numbers for long-tail capture.
+
+## Deploying
+
+Static files — any host works. GitHub Pages: repository **Settings → Pages → Source:
+Deploy from a branch → `main` / root**, then point the `wakeelbano.com` DNS records at
+GitHub Pages. Custom domain files (`CNAME`) are not committed yet.
+
+## Content rules (do not break these)
+
+- No invented case citations, no reproduced judgments, no "#1 lawyer" claims.
+- Every number is attributed; every page ends with a "legal information, not legal advice" note.
+- No promises about case outcomes, and no client referral commission — that is touting.

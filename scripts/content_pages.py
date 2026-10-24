@@ -1,880 +1,82 @@
 # -*- coding: utf-8 -*-
 """
-WakeelSaathi — landing page content.
-Har page: SEO title, meta description, H1, sections (HTML), FAQs (FAQPage schema), internal links.
-Legal facts hamesha "verify from official source" ke saath — koi invented citation nahi.
+WakeelBano — landing page content (easy English, answer-first / GEO-optimised).
+Har page: H1 -> direct answer (1-2 lines) -> question-style H2s with answer-first paragraphs
+-> key facts (numbers/dates for AI extraction) -> named sources (citation triad) -> FAQs -> related.
+Koi invented citation nahi: sirf statutory framework, method, aur official source links.
 """
 
-DISCLAIMER = ("<b>Legal information, not legal advice.</b> Ye page sirf general information aur research guidance deta hai. "
-              "Koi judgment ya citation reproduce nahi kiya gaya — har authority <b>original official source</b> se verify karein. "
-              "Section numbers, fees aur procedures waqt ke saath badalte hain: Sindh Bar Council, Pakistan Bar Council, "
-              "HEC aur mutaliqa court ki official website/office se tasdeeq karein.")
+BRAND = "WakeelBano"
+BASE = "https://wakeelbano.com/"
 
-CTA = {
-    "title": "WakeelSaathi par muft account banayein",
-    "text": "Chamber match, verified rehail, kaam board aur AI kit — junior lawyers ke liye hamesha free.",
-}
+DISCLAIMER = ("<b>Legal information, not legal advice.</b> This page explains how the law is structured and how to "
+              "research it. We do not reproduce judgments or invent citations. Always verify sections, fees and "
+              "procedures on the official website of the Sindh Bar Council, Pakistan Bar Council, HEC or the relevant "
+              "court, because these details change.")
 
-HUB_CASE_LAW = {
-    "slug": "case-law/index.html",
-    "url": "case-law/",
-    "title": "Case Law Pakistan — Section-wise Judgment Guides | WakeelSaathi",
-    "h1": "Case Law Pakistan",
-    "desc": "Section-wise case law research guides for Pakistani lawyers: 302 PPC, 489-F PPC, 497 CrPC bail. Free databases, search method aur verification checklist.",
-    "kicker": "Research library",
-    "lede": "Pakistan mein wakeel ki sab se zyada search ki jane wali cheez: <b>case law</b>. Yahan section-wise research guides hain — kahan se search karein, kaise verify karein, aur court mein kaise use karein.",
-    "is_hub": True,
-    "childs": [
-        ("302 PPC case law", "Qatl-i-amd 302 PPC — elements, research method, Urdu guide", "case-law/302-ppc/index.html"),
-        ("489-F PPC case law", "Cheque dishonour 489-F — complaint, defence aur research", "case-law/489-f/index.html"),
-        ("497 CrPC bail case law", "Non-bailable offence mein bail — grounds aur authorities", "case-law/497-crpc/index.html"),
-    ],
-    "sections": [
-        {"h2": "Pakistan mein case law kahan se milega (free aur paid)", "html": """
-<table class="tbl">
-<thead><tr><th>Source</th><th>Kya milta hai</th><th>Cost</th></tr></thead>
-<tbody>
-<tr><td>Supreme Court of Pakistan website</td><td>Judgments, cause lists, case status</td><td>Free</td></tr>
-<tr><td>Federal Shariat Court &amp; High Courts (SHC, LHC, PHC, BHC, IHC)</td><td>Reported judgments, orders</td><td>Free</td></tr>
-<tr><td>Pakistan Law Site / Pak Law Database / LegalSearch</td><td>PLD, SCMR, YLR, CLC citations + search</td><td>Free / subscription</td></tr>
-<tr><td>PLJ (Punjab Bar Council section)</td><td>Pakistan Law Journal citations</td><td>Subscription</td></tr>
-<tr><td>AI research tools (LawGPT, DigiLawyer, Conclavity, PakLegalAI)</td><td>Fast drafting + citation hints</td><td>Free / paid</td></tr>
-</tbody>
-</table>
-<p class="mini">Note: AI tools ka output <b>hamesha verify</b> karein. Fake citation court mein aap ki izzat kha jata hai.</p>
-"""},
-        {"h2": "4-step research method (jo junior ko koi nahi sikhata)", "html": """
-<ol class="steps">
-<li><b>Section framing:</b> Pehle bare act ka exact text parhein. Elements alag likhein — har element ek issue hai.</li>
-<li><b>Headnote hunting:</b> Digest/law site par section number + key words (e.g. "302 PPC qisas waiver") search karein. 5–8 leading judgments chunein — Supreme Court pehle, phir apna High Court.</li>
-<li><b>Ratio extract:</b> Har judgment se ek line: court ne kya principle diya. Poora case summary likhne ki zaroorat nahi.</li>
-<li><b>Distinguish:</b> Apne facts se farq likhein. Yehi courtroom mein kaam aata hai — aur yehi wo hissa hai jo AI nahi kar sakta.</li>
-</ol>
-<div class="callout"><b>Verification rule:</b> Har citation teen jagah check karein — citation number, judgment ka operative part, aur latest status (appealed/reviewed).</div>
-"""},
-        {"h2": "Client-side search aur lawyer-side search ka farq", "html": """
-<p>Pakistan mein "property" aur "divorce" jaise client queries ki tadaad lawyer ki research queries se bhi zyada hai. Magar un topics par content likhte waqt yaad rakhein: <b>case outcome guarantee karna, client ke naam/facts share karna, aur "best lawyer" type dawe</b> Bar Council rules aur professional ethics ke khilaf hain. Hum sirf <b>legal information</b> dete hain.</p>
-"""},
-    ],
-    "faqs": [
-        ("Kya WakeelSaathi case law download deta hai?", "Hum judgments reproduce nahi karte. Har page research method, statutory framework aur verification checklist deta hai, aur official source ke links deta hai jahan se aap original judgment parh sakte hain."),
-        ("Pakistan mein case law free mein kahan milta hai?", "Supreme Court aur High Courts ki official websites par judgments free milte hain. PLD/SCMR jaise reporters subscription par hote hain. Kayi free portals bhi citation search dete hain — har source ki authenticity khud check karein."),
-        ("AI se case law research karna theek hai?", "Tool ke taur par theek hai, authority ke taur par nahi. AI first draft aur direction de sakta hai, magar har citation original judgment se verify karna lawyer ki zimmedari hai."),
-    ],
-}
+CTA = {"title": "Create your free WakeelBano account",
+       "text": "Chamber matching, verified rooms, paid work and legal research tools. Always free for junior lawyers."}
 
-PAGES = [
-    # ---------------- 1. LAW-GAT ----------------
-    {
-        "slug": "career/law-gat/index.html",
-        "url": "career/law-gat/",
-        "title": "Law-GAT 2026: Test Date, Syllabus, Past Papers & Result",
-        "h1": "Law-GAT 2026 — Pakistan ka Law Graduate Assessment Test",
-        "desc": "Law-GAT kya hai, kaun de sakta hai, test date aur registration, syllabus, past papers, result aur answer key kahan se check karein. Naye law graduates ke liye mukammal guide.",
-        "kicker": "Career · Entry",
-        "lede": "LLB ke baad sanad ka pehla darwaza: <b>Law-GAT</b>. Har saal hazaron graduates isi test ke intezaar mein hote hain — aur sab se zyada search bhi yahi hoti hai.",
-        "sections": [
-            {"h2": "Law-GAT kya hai?", "html": """
-<p><b>Law-GAT</b> (Law Graduate Assessment Test) ek assessment test hai jo <b>Higher Education Commission (HEC)</b> Pakistan Bar Council ke saath mil kar leta hai. Iska maqsad ye check karna hai ke law graduate ke paas practice ke liye bunyadi legal knowledge hai ya nahi.</p>
-<p>Pakistan Bar Council ke rules ke mutabiq advocate enroll hone ke liye law degree ke saath prescribed test pass karna zaroori hai. Test generally saal mein do baar hota hai — magar <b>exact dates, fees aur registration window har cycle mein badalte hain</b>.</p>
-<div class="callout"><b>Sab se pehle ye karein:</b> HEC ki official website par current Law-GAT notification dekhein. Kisi bhi WhatsApp forward ya blog ki date par bharosa na karein — including is page par.</div>
-"""},
-            {"h2": "Eligibility — kaun apply kar sakta hai", "html": """
-<ul>
-<li>Recognized university se <b>LLB</b> (ya equivalent, jo Pakistan Bar Council ne recognize kiya ho)</li>
-<li>Final year ke students bhi aksar apply karte hain — <b>current notification check karein</b></li>
-<li>CNIC / identity documents aur degree/transcript ki details</li>
-<li>Prescribed test fee — bank challan ya online (cycle ke hisaab se)</li>
-</ul>
-<p class="mini">Foreign degree holders ke liye HEC/PBC ki equivalence requirement alag hoti hai — pehle wo process complete karein.</p>
-"""},
-            {"h2": "Syllabus — kis cheez par focus karein", "html": """
-<p>Law-GAT aam taur par <b>multiple choice questions</b> par mabni hota hai aur bunyadi legal subjects cover karta hai. Aam taur par in areas par focus hota hai (current syllabus HEC se confirm karein):</p>
-<table class="tbl">
-<thead><tr><th>Area</th><th>Kya revise karein</th></tr></thead>
-<tbody>
-<tr><td>Constitutional law</td><td>Fundamental rights, writ jurisdiction, key constitutional provisions</td></tr>
-<tr><td>Criminal law</td><td>PPC ke bunyadi sections, qatl/hurt/property offences, CrPC procedure</td></tr>
-<tr><td>Civil law</td><td>CPC (plaint, jurisdiction, appeals), Contract Act, Specific Relief</td></tr>
-<tr><td>Evidence</td><td>Qanun-e-Shahadat 1984 — relevancy, burden of proof, documentary evidence</td></tr>
-<tr><td>Family &amp; personal law</td><td>MFLO 1961, dissolution of marriage, custody, maintenance</td></tr>
-<tr><td>Legal English</td><td>Comprehension, legal terms, drafting basics</td></tr>
-</tbody>
-</table>
-"""},
-            {"h2": "60-din ka study plan", "html": """
-<ol class="steps">
-<li><b>Din 1–10:</b> Bare acts parhein — PPC, CrPC, CPC ke key sections. Notes flashcards mein banayein.</li>
-<li><b>Din 11–25:</b> Subject-wise MCQs. Har ghalti ka <b>reason</b> likhein, sirf answer nahi.</li>
-<li><b>Din 26–40:</b> Past papers (timed). Weak areas ki list banayein.</li>
-<li><b>Din 41–52:</b> Weak areas + Qanun-e-Shahadat aur family law par focus.</li>
-<li><b>Din 53–60:</b> Sirf revision + full-length mocks. Naya material nahi.</li>
-</ol>
-"""},
-            {"h2": "Result aur answer key kahan check karein", "html": """
-<p>Result aur answer key <b>sirf HEC ki official website/portal</b> se check karein. Result ke din traffic bohat zyada hota hai — page slow ho to official portal par thori der baad try karein. Roll number / CNIC required hota hai.</p>
-<p class="mini">⚠️ Result declare hone se pehle kisi "leaked result" link par click na karein — ye phishing ka aam tareeqa hai.</p>
-"""},
-            {"h2": "Test pass karne ke baad kya?", "html": """
-<p>Law-GAT pass karne ke baad aap <b>provincial bar council</b> (Sindh mein Sindh Bar Council) mein advocate enrollment ke liye apply karte hain, jismein <b>senior advocate ke chamber mein pupillage</b> shamil hai. Us ka poora step-by-step plan hamare <a href="../bar-council-enrollment/index.html">Bar Council enrollment guide</a> mein hai.</p>
-"""},
-        ],
-        "faqs": [
-            ("Law-GAT kitni baar hota hai?", "Aam taur par saal mein do baar, magar exact schedule HEC har cycle mein notify karta hai. Current dates HEC ki official website se confirm karein."),
-            ("Kya Law-GAT ke bina advocate ban sakte hain?", "Pakistan Bar Council ke rules ke mutabiq enrollment ke liye prescribed test pass karna zaroori hai. Apni province ke bar council ki current requirement confirm karein."),
-            ("Law-GAT fail ho jaye to kya karein?", "Aam taur par next cycle mein dobara appear ho sakta hai. Beech ke waqt mein drafting, research aur chamber internship par kaam karein — next attempt aur pupillage dono ke liye faida hoga."),
-            ("Law-GAT ka result kab aata hai?", "Result ka waqt HEC ke notification se maloom hota hai. Sirf official portal par check karein."),
-        ],
-        "related": [("Bar Council enrollment guide", "career/bar-council-enrollment/index.html"),
-                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
-                    ("High Court license kaise milega", "career/high-court-license/index.html")],
-    },
-
-    # ---------------- 2. 302 PPC ----------------
-    {
-        "slug": "case-law/302-ppc/index.html",
-        "url": "case-law/302-ppc/",
-        "title": "302 PPC Case Law in Pakistan (Urdu Guide) | Section 302",
-        "h1": "302 PPC Case Law — Qatl-i-amd (Pakistan)",
-        "desc": "Section 302 PPC qatl-i-amd: punishment, elements, qisas aur waiver, aur 302 case law Pakistan mein kaise research karein — Urdu guide with verification checklist.",
-        "kicker": "Case law · Criminal",
-        "lede": "<b>302 PPC</b> Pakistan Penal Code ka sab se ahem aur sab se zyada research kiya jane wala section: <b>qatl-i-amd</b> (intentional murder) ki saza.",
-        "sections": [
-            {"h2": "Section 302 PPC — statutory framework", "html": """
-<p>Pakistan Penal Code 1860 ke <b>Chapter XVI</b> (Offences affecting the human body) mein qatl ke offences hain. <b>Section 300</b> qatl-i-amd ki definition aur exceptions deta hai, <b>Section 301</b> qatl-i-amd ke case mein saza ka taayun karta hai jab maqsool shakhs ke ilawa koi aur marta hai, aur <b>Section 302</b> qatl-i-amd ki saza bayan karta hai.</p>
-<p>302 ke mutabiq saza in sooraton mein di jati hai (bare act ka exact text zaroor parhein):</p>
-<ul>
-<li><b>Death as qisas</b> — jahan qisas ka raasta kushada ho</li>
-<li><b>Imprisonment for life</b> — jahan qisas maaf ho jaye ya na ho</li>
-<li>Ya <b>imprisonment</b> ek muddat tak, jo qanoon mein di gayi hai</li>
-</ul>
-<p class="mini">Saza ka taayun bohat had tak <b>qisas</b> ke system par depend karta hai — Section 299 (definitions), 305 (proof of qisas), 306 (waiver), 308 (alternate), 309/310 (compounding) isi chain ka hissa hain. Ye sab bare act se parhein.</p>
-"""},
-            {"h2": "Research ke liye issue map", "html": """
-<p>302 ke case mein court aam taur par in questions par likhta hai — inhe issues ki tarah le kar authorities dhoondein:</p>
-<table class="tbl">
-<thead><tr><th>Issue</th><th>Kya dekhein</th></tr></thead>
-<tbody>
-<tr><td>Qatl-i-amd ya qatl-i-khata?</td><td>Niyat, weapon, injury ka maqam, medical evidence</td></tr>
-<tr><td>Zaroori elements ka proof</td><td>Mens rea, actus reus, causation, medical/official evidence</td></tr>
-<tr><td>Qisas ki eligibility</td><td>Heirs, waiver, compounding (sections 305–310)</td></tr>
-<tr><td>Alternative conviction</td><td>Record se 302 ke bajaye kam section (304/308/337) ban sakta hai ya nahi</td></tr>
-<tr><td>Evidence ki qadr</td><td>Ocular evidence, delay in FIR, identification, recovery</td></tr>
-</tbody>
-</table>
-"""},
-            {"h2": "Pakistan mein 302 case law kaise search karein", "html": """
-<ol class="steps">
-<li>Supreme Court / High Court portal par judgment text search karein — keywords: "302 PPC", "qatl-i-amd", "qisas", "waiver", "304 PPC", "benefit of doubt".</li>
-<li>PLD, SCMR, YLR jaise reporters mein <b>headnote</b> se shuru karein, phir judgment ka operative part parhein.</li>
-<li>Har authority ka <b>latest status</b> check karein — shayad larger bench ne review kar diya ho.</li>
-<li>Apne High Court (Karachi ke liye Sindh High Court) ki binding precedents pehle chunein.</li>
-</ol>
-<div class="callout"><b>Warning:</b> Kisi bhi case citation ko bina original judgment dekhe file mein na lagayein. AI tools citation bana sakte hain — galat citation court mein sab se bara nuqsan hai.</div>
-"""},
-            {"h2": "Urdu mein research note kaise banayein", "html": """
-<p>Bohat seniors Urdu mein note maangte hain. Structure ye rakhein: <b>facts ek para → issues numbered → har issue par authority (ek line ratio) → apna point → conclusion</b>. Har authority ke saath citation aur paragraph number likhein taake court mein reference di ja sake.</p>
-"""},
-        ],
-        "faqs": [
-            ("302 PPC ki saza kya hai?", "Section 302 qatl-i-amd ke liye death as qisas, imprisonment for life, ya qanoon mein di gayi muddat tak imprisonment ki saza bayan karta hai. Exact wording aur qisas ke rules ke liye bare act (sections 299–310) parhein aur latest precedent dekhein."),
-            ("Kya 302 mein qisas maaf ho sakti hai?", "Qisas ka system sections 305 se 310 tak regulate hota hai, jismein waiver aur compounding shamil hain. Is surat mein saza badal sakti hai — apne facts par latest authority zaroor check karein."),
-            ("302 case law Urdu mein kahan milega?", "Judgments ka original text English mein hota hai. Urdu guides aur summaries milti hain, magar court mein cite karne ke liye original judgment hi use karein. Official court websites free search deti hain."),
-            ("302 aur 324 mein kya farq hai?", "302 qatl-i-amd (murder) ki saza ka section hai, jab ke 324 attempt to commit qatl (ya qatl ki koshish) se mutalliq hai. Dono bare act se parh kar elements compare karein."),
-        ],
-        "related": [("497 CrPC bail case law", "case-law/497-crpc/index.html"),
-                    ("Bail application format", "drafts/bail-application-format/index.html"),
-                    ("Case law hub", "case-law/index.html")],
-    },
-
-    # ---------------- 3. BAIL APPLICATION ----------------
-    {
-        "slug": "drafts/bail-application-format/index.html",
-        "url": "drafts/bail-application-format/",
-        "title": "Bail Application Format in Pakistan (PDF & Word Guide)",
-        "h1": "Bail Application Format — Pakistan",
-        "desc": "Bail application ka format Pakistan mein: 496, 497, 498 CrPC ke farq, application ka structure, grounds, aur common mistakes — junior lawyer ke liye practical guide.",
-        "kicker": "Drafts · Criminal",
-        "lede": "Bail application wo pehli drafting hai jo har junior lawyer se maangi jati hai. Format ration se nahi aata — <b>structure aur grounds</b> se aata hai.",
-        "sections": [
-            {"h2": "Pehle section samjhein — bailable, non-bailable, aur konsa bail?", "html": """
-<table class="tbl">
-<thead><tr><th>Section</th><th>Kis surat mein</th></tr></thead>
-<tbody>
-<tr><td>496 CrPC</td><td>Bailable offence mein bail (aam taur par as of right)</td></tr>
-<tr><td>497 CrPC</td><td>Non-bailable offence mein bail — court ki discretion, aur kuch cases mein special rules</td></tr>
-<tr><td>498 CrPC</td><td>Sessions Court / High Court ko bail ka power</td></tr>
-<tr><td>491 CrPC</td><td>Illegal detention ke khilaf (habeas corpus)</td></tr>
-<tr><td>426 CrPC</td><td>Conviction ke baad appeal mein suspension of sentence/bail</td></tr>
-</tbody>
-</table>
-<p class="mini">Pehle FIR ke sections dekhein aur tay karein ke offence bailable hai ya non-bailable — ghalat section par application dene se waqt zaya hota hai.</p>
-"""},
-            {"h2": "Application ka standard structure", "html": """
-<ol class="steps">
-<li><b>Heading:</b> Court ka naam, case number/FIR number, police station, section(s), aur parties.</li>
-<li><b>Title:</b> "Application for grant of bail under section ___ CrPC on behalf of the accused".</li>
-<li><b>Brief facts:</b> 4–6 lines — FIR version, accused ka role, arrest ki date, custody ki muddat.</li>
-<li><b>Grounds:</b> numbered — har ground ek separate legal point.</li>
-<li><b>Legal basis:</b> sirf wahi sections/authorities jo aap ne khud verify kiye hain.</li>
-<li><b>Prayer:</b> clear — "accused ko bail par release kiya jaye" + conditions.</li>
-<li><b>Verification + affidavit + vakalatnama</b> attached.</li>
-</ol>
-"""},
-            {"h2": "Grounds jo court sunta hai (facts ke saath, sirf dawa nahi)", "html": """
-<ul>
-<li><b>Investigation mukammal</b> — accused se mazeed recovery/pur-tashaddud ki zaroorat nahi</li>
-<li><b>Bail ke baad farar ka koi asar</b> nahi — roots in society, permanent address, family</li>
-<li><b>Evidence kamzor ya sirf suspicion</b> — record se uthaye gaye sample points</li>
-<li><b>Delay in FIR / delay in arrest</b> — dates ke saath</li>
-<li><b>Co-accused ko bail mil chuki hai</b> — parity, judgment ka reference</li>
-<li><b>Medical / age / health</b> — documented grounds</li>
-<li><b>Remand aur custody ki muddat</b> — trial mein deri</li>
-</ul>
-<div class="callout"><b>Practice tip:</b> Grounds ko <b>facts</b> se bandhein: "accused 3 din se custody mein hai, challan pesh ho chuka hai, record par koi recovery nahi" — aisi lines court zyada sunti hain.</div>
-"""},
-            {"h2": "Common mistakes jo application kamzor karti hain", "html": """
-<ul>
-<li>Bail aur "acquittal" ki baat mix karna — bail ka maqsad trial ke doran release hai, bari nahi.</li>
-<li>Grounds mein poori FIR dobara likhna (justice ke liye facts ka summary kaafi hai).</li>
-<li>Bina verified authority cite karna.</li>
-<li>Prayer vague chhorna — court ko exactly batayein kya chahiye.</li>
-<li>Court fee/stamp aur annexures ka adhoora set.</li>
-</ul>
-"""},
-            {"h2": "Court fee, stamp aur annexures", "html": """
-<p>Court fee aur stamp paper ki zaroorat <b>court aur case ki qism</b> ke hisaab se badalti hai. Mutaliqa court ke filing branch se current requirement confirm karein — aur application ki copies (court + opponent) tayyar rakhein.</p>
-"""},
-        ],
-        "faqs": [
-            ("Bail application format Pakistan mein kahan milega?", "Har court ka apna practice hota hai. Neeche wahi structure use karein jo courts accept karte hain: heading, facts, numbered grounds, prayer, verification. WakeelSaathi par AI Kit se pehla draft ban sakta hai — final draft hamesha apni review se."),
-            ("Bail application Urdu mein likh sakte hain?", "Aam taur par applications English mein likhi jati hain, magar kuch courts/Urdu ki ijazat dete hain. Apne court ke practice ke mutabiq chalein. Aam aadmi ko samjhane ke liye Urdu summary alag se dein."),
-            ("497 aur 498 CrPC mein kya farq hai?", "497 non-bailable offences mein trial court ke bail ka framework deta hai; 498 Sessions Court aur High Court ko bail ke powers deta hai. Aap ki application ka authority depends karta hai ke aap kis court mein ja rahe hain."),
-            ("Bail ki application reject ho jaye to kya karein?", "Record par reasons dekhein, grounds ko facts ke saath mazboot karein, aur appellate forum (Sessions/High Court) ka raasta dekhein. Har step par limitation aur procedure verify karein."),
-        ],
-        "related": [("497 CrPC case law", "case-law/497-crpc/index.html"),
-                    ("Legal notice format", "drafts/legal-notice-format/index.html"),
-                    ("302 PPC case law", "case-law/302-ppc/index.html")],
-    },
-
-    # ---------------- 4. LEGAL NOTICE ----------------
-    {
-        "slug": "drafts/legal-notice-format/index.html",
-        "url": "drafts/legal-notice-format/",
-        "title": "Legal Notice Format in Pakistan (Recovery, Cheque, Rent)",
-        "h1": "Legal Notice Format — Pakistan",
-        "desc": "Legal notice format Pakistan mein: recovery of money, cheque dishonour aur rent ke notices ka structure, 15-din ka rule, delivery proof aur common mistakes.",
-        "kicker": "Drafts · Civil",
-        "lede": "Legal notice case ka pehla marhala hai — aur bohat dafa pura case <b>notice par hi hal</b> ho jata hai. Format se zyada matter us ke andar ka precision karta hai.",
-        "sections": [
-            {"h2": "Legal notice kab bhejni chahiye", "html": """
-<ul>
-<li><b>Recovery of money</b> — udhaar, invoice, services ka payment</li>
-<li><b>Cheque dishonour</b> — 489-F PPC ka raasta (complaint se pehle notice dena practice hai)</li>
-<li><b>Rent / eviction</b> — Sindh Rented Premises Ordinance ke under procedure</li>
-<li><b>Contract breach</b> — performance ka demand ya termination</li>
-<li><b>Property / possession</b> — illegal dispossession ki warning</li>
-<li><b>Defamation</b> — retraction ka demand</li>
-</ul>
-"""},
-            {"h2": "Notice ka standard structure", "html": """
-<ol class="steps">
-<li><b>Letterhead + date + reference number</b></li>
-<li><b>Addressee</b> — poora naam aur mukammal pata (registered address best)</li>
-<li><b>Subject line:</b> "Legal notice for recovery of Rs ___" — seedha aur specific</li>
-<li><b>Chronology:</b> dates ke saath facts — agreement kab hua, kya diya, kya baqi hai</li>
-<li><b>Default ya breach:</b> kya ghalat hua aur kaunsa clause/section</li>
-<li><b>Demand:</b> exact amount, ya exact action, aur <b>reasonable time</b> (aam taur par 15 din)</li>
-<li><b>Consequence:</b> "is ke bawajood adaigi na hui to qanooni karrawai hogi, jiske tamam kharchay aap par honge"</li>
-<li><b>Reservation of rights</b> — aage mazeed legal action ka haq mehfooz</li>
-<li><b>Signature + advocate ki details</b></li>
-</ol>
-"""},
-            {"h2": "Delivery proof — notice ka sab se ahem hissa", "html": """
-<p>Court mein notice ka sab se bara sawal hota hai: <b>"bheja gaya ya nahi?"</b> Is liye:</p>
-<ul>
-<li><b>Registered post with acknowledgement due (AD)</b> — receipt aur AD card sambhal ke rakhein</li>
-<li><b>Courier</b> — tracking + delivery slip, company ka letterhead</li>
-<li><b>Email/WhatsApp</b> — sirf tab jab contract mein allowed ho; screenshot + sent confirmation</li>
-<li><b>Notice ki copy</b> apni file mein, dispatch proof ke saath</li>
-</ul>
-<div class="callout"><b>Note:</b> Notice par likhi hui date aur dispatch ki date alag hoti hai. Court dono dekhti hai.</div>
-"""},
-            {"h2": "15 din ka rule — aur kya galat samajha jata hai", "html": """
-<p>Har notice mein 15 din lazmi nahi hota — ye <b>case ki qism aur qanoon</b> par depend karta hai (maslan kuch statutory notices ke liye makhsoos muddat hoti hai, jaise sarkari idaron ke khilaf suits mein). <b>Reasonable time</b> dena aam practice hai, magar section-specific requirement bare act se check karein.</p>
-"""},
-            {"h2": "Common mistakes", "html": """
-<ul>
-<li>Amount ke figures aur words mein farq</li>
-<li>Ghalat addressee ya purana pata → notice "serve" nahi hota</li>
-<li>Facts mein koi date ghalat → opponent ka pehla attack</li>
-<li>Demand vague ("qanooni karrawai") bina amount/action ke</li>
-<li>Threat ya dhamki ki zaban — professional tone rakhein</li>
-</ul>
-"""},
-        ],
-        "faqs": [
-            ("Legal notice ka format Pakistan mein kya hota hai?", "Structure: letterhead, date, addressee ka mukammal pata, subject line, dates ke saath facts, default/breach, clear demand, time period, consequence, reservation of rights, aur signature. Ye format courts aur opponents dono ke liye clear hota hai."),
-            ("Legal notice bhejne ki koi fee hoti hai?", "Koi sarkari fee nahi hoti. Kharcha advocate ki professional fee aur registered post/courier ka hota hai. Court fee sirf suit/complaint file karne par lagti hai."),
-            ("Kya WhatsApp par legal notice bhej sakte hain?", "Aam taur par registered post/courier reliable hota hai. WhatsApp/email sirf tab jab contract ya law mein allowed ho, aur proof (screenshot + delivery confirmation) save ho."),
-            ("Cheque bounce case mein notice zaroori hai?", "489-F PPC ke complaint mein notice dene ki practice aur facts par depend karta hai. Apni facts par court ka latest approach aur section ka text check karein, aur proof of delivery rakhein."),
-        ],
-        "related": [("Cheque dishonour 489-F case law", "case-law/489-f/index.html"),
-                    ("Plaint format", "drafts/plaint-format/index.html"),
-                    ("Bail application format", "drafts/bail-application-format/index.html")],
-    },
-
-    # ---------------- 5. BAR COUNCIL ENROLLMENT ----------------
-    {
-        "slug": "career/bar-council-enrollment/index.html",
-        "url": "career/bar-council-enrollment/",
-        "title": "Bar Council Enrollment in Pakistan — Step by Step Guide 2026",
-        "h1": "Bar Council Enrollment — Sanad ka poora raasta",
-        "desc": "Advocate enrollment kaise hota hai: eligibility, documents, 6 mahine ki pupillage, fees, enrollment number check, aur Sindh Bar Council ka process — step by step.",
-        "kicker": "Career · Licensing",
-        "lede": "Law degree aur sanad ke darmiyan jo process hai, wo kisi ne aap ko theek se nahi bataya. Yahan poora raasta hai — <b>documents se verification tak</b>.",
-        "sections": [
-            {"h2": "Eligibility (Legal Practitioners &amp; Bar Councils Act, 1973)", "html": """
-<ul>
-<li>Pakistan (ya AJK) ka shehri</li>
-<li>Kam az kam <b>21 saal</b> ki umar</li>
-<li>Pakistan Bar Council se recognized <b>LLB ya Bar-at-Law</b></li>
-<li>Prescribed <b>test</b> (Law-GAT) pass — PBC rules ke mutabiq</li>
-<li>Character/fitness requirements aur koi disqualification na hona (Act ke sections 26 &amp; 27)</li>
-</ul>
-<p class="mini">Foreign degree walon ke liye PBC/HEC ki equivalence alag process hai — pehle wo complete karein.</p>
-"""},
-            {"h2": "Step-by-step process", "html": """
-<ol class="steps">
-<li><b>Law-GAT</b> — pass karein (dekhein <a href="../law-gat/index.html">Law-GAT guide</a>).</li>
-<li><b>Senior advocate ka chamber</b> — <b>6 mahine ki pupillage</b> prescribed hai, generally 10 saal standing wale senior ke saath.</li>
-<li><b>Documents tayyar karein</b> — LLB degree + transcripts, CNIC, photographs, character certificate, test result, aur prescribed forms.</li>
-<li><b>Provincial bar council</b> (Sindh mein Sindh Bar Council) ko application — fees: enrollment fee bar council kay rules ke mutabiq (PBC aur provincial hissa alag), plus benevolent fund.</li>
-<li><b>Enrollment Committee / interview</b> — fitness aur training ka review.</li>
-<li><b>Certificate + ID card</b> — sanad aur advocate ID issue hoti hai.</li>
-</ol>
-<div class="callout"><b>Fees aur forms har saal update ho sakte hain.</b> Current fee, challan aur checklist bar council ke office/website se confirm karein — kisi blog ki purani list par na chalein.</div>
-"""},
-            {"h2": "Pupillage — jahan sab se zyada log phanste hain", "html": """
-<p>Pupillage ka matlab hai kisi senior ke chamber mein baith kar case files, drafting, court appearances aur client handling seekhna. Masla ye hai ke <b>placement ka koi system nahi</b> — sab reference se hota hai.</p>
-<p><b>Isay practical banayein:</b></p>
-<ul>
-<li>Chamber visit se pehle ek page ki CV — kya seekhna hai, kitna waqt de sakte hain, kis area mein interest hai</li>
-<li>Shuru mein hi tay karein: timing, kaam ki qism, stipend (agar ho), aur kya sikhaya jayega</li>
-<li>Roz ek page ka note — kaun sa case, kya hua, kya seekha (6 mahine baad ye aap ki asli degree hogi)</li>
-<li>WakeelSaathi par <a href="../../index.html#mentors">Chamber Match</a> se verified chambers ki list dekh sakte hain</li>
-</ul>
-"""},
-            {"h2": "Enrollment number check aur verification", "html": """
-<p>Aap ka enrollment number aur status <b>provincial bar council ke roll</b> par hota hai. Sindh ke liye Sindh Bar Council ka advocate verification portal maujood hai jahan naam, registration number, district aur license type (LC/HC) search ho sakta hai.</p>
-<p>Client ya employer verification chahe to <b>roll se cross-check</b> karein — screenshots par bharosa na karein. Ye fake lawyers aur imposters ke khilaf sab se aasaam tareeqa hai.</p>
-"""},
-            {"h2": "Enrollment ke baad pehle 90 din", "html": """
-<ul>
-<li>Apna <b>court, area aur case type</b> fix karein — sab jagah bhaagna income nahi deta</li>
-<li>Apna record rakhein — har appearance, har file (High Court license ke liye practice record chahiye hoga)</li>
-<li>Ek saaf profile banayein: LinkedIn + WhatsApp Business + verified listing</li>
-<li>20 logon ko personally batayein — pehla case referral se aata hai, ad se nahi</li>
-</ul>
-"""},
-        ],
-        "faqs": [
-            ("Advocate banne ke liye kitne saal lagte hain?", "LLB (aam taur par 5 saal) + Law-GAT + 6 mahine pupillage + enrollment process. Total aam taur par 6 saal ke qareeb. Individual timings bar council ke process par depend karti hain."),
-            ("Pupillage kitne mahine ki hoti hai?", "Prescribed pupillage aam taur par 6 mahine ki hai, senior advocate ke chamber mein. Exact requirement apne provincial bar council ke current rules se confirm karein."),
-            ("Kya pupillage ke doran stipend milta hai?", "Koi lazmi nahi. Kuch chambers stipend dete hain, bohat nahi dete. Isi liye shuru mein terms likh lena behtar hai. WakeelSaathi par chambers apne terms khud likhte hain."),
-            ("Enrollment ke liye kitni fee lagti hai?", "Enrollment fee, benevolent fund aur other charges bar council ke rules ke mutabiq hote hain aur waqt ke saath badalte hain. Sindh Bar Council se current challan/breakdown confirm karein."),
-        ],
-        "related": [("Law-GAT guide", "career/law-gat/index.html"),
-                    ("How to become a lawyer in Pakistan", "career/how-to-become-lawyer-pakistan/index.html"),
-                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html")],
-    },
-
-    # ---------------- 6. LAWYER SALARY ----------------
-    {
-        "slug": "career/lawyer-salary-pakistan/index.html",
-        "url": "career/lawyer-salary-pakistan/",
-        "title": "Lawyer Salary in Pakistan 2026 — Junior, Mid, Senior",
-        "h1": "Lawyer Salary in Pakistan (2026)",
-        "desc": "Pakistan mein lawyer ki salary: fresh graduate, junior associate, litigation chamber, corporate firm aur independent practice ke realistic ranges. Sindh minimum wage se comparison.",
-        "kicker": "Career · Money",
-        "lede": "Sab se zyada poocha jane wala sawal, aur sab se zyada jhoot bola jane wala jawab. Yahan <b>realistic numbers</b> hain — aur woh wajah jis ki bina par ye numbers aise hain.",
-        "sections": [
-            {"h2": "Realistic ranges (2026)", "html": """
-<table class="tbl">
-<thead><tr><th>Stage</th><th>Typical monthly (PKR)</th><th>Note</th></tr></thead>
-<tbody>
-<tr><td>Internship / pupillage</td><td>0 – 25,000</td><td>Bohat chambers mein zero; kuch mein stipend</td></tr>
-<tr><td>Fresh associate (litigation chamber)</td><td>25,000 – 50,000</td><td>Karachi/Lahore mein upper end</td></tr>
-<tr><td>Corporate law firm associate</td><td>50,000 – 120,000+</td><td>Top firms zyada, working hours bhi zyada</td></tr>
-<tr><td>Mid-level (3–7 saal)</td><td>80,000 – 250,000</td><td>Firm type aur client base par depend</td></tr>
-<tr><td>Independent practice</td><td>Variable</td><td>Fee per case; pehle saal bohat kam, phir reputation se barhta hai</td></tr>
-</tbody>
-</table>
-<p class="mini">Numbers indicative hain — city, firm, practice area aur aap ki negotiation par depend karte hain. Source: public salary discussions, industry reporting aur market observation (2023–2026).</p>
-"""},
-            {"h2": "Sindh minimum wage se comparison — asli tasveer", "html": """
-<p>Sindh mein unskilled worker ka minimum wage <b>Rs 43,000</b> (2026-27) hai. Yani ek <b>5 saal padha hua law graduate</b> aksar us se kam par kaam kar raha hota hai — aur kai jagah "salary" ke bajaye "<b>stipend</b>" keh kar minimum wage law ko bypass kiya jata hai.</p>
-<div class="callout"><b>Apne haq janу:</b> Chamber terms likhwaayein. “Aap seekh rahe hain” ka matlab ye nahi ke kuch bhi na mile — kam az kam transport/kharcha aur clear learning scope tay karein.</div>
-"""},
-            {"h2": "Salary kam kyun hoti hai (structural wajah)", "html": """
-<ul>
-<li><b>Lump-sum per-case fee:</b> Pakistan mein hourly billing aam nahi. Senior ke liye junior ka waqt "revenue" nahi, "cost" hota hai.</li>
-<li><b>Training period:</b> Fresh graduate ko productive hone mein aam taur par 1–2 saal lagte hain.</li>
-<li><b>Retention:</b> Juniors 1–2 saal mein chale jate hain, is liye firms invest karne se katraate hain.</li>
-<li><b>Supply:</b> Har saal hazaron graduates, magar paid seats kam.</li>
-</ul>
-"""},
-            {"h2": "Income barhane ke 5 practical raaste", "html": """
-<ol class="steps">
-<li><b>Ek practice area mein specialise</b> — "sab kuch" karne wale ki koi rate nahi hoti.</li>
-<li><b>Court-specific mastery</b> — ek court, us ki practice, us ke judges ki expectations.</li>
-<li><b>Remote legal work</b> — foreign firms ke liye drafting/research (Upwork, direct clients). Rates USD mein.</li>
-<li><b>Content + visibility</b> — jo wakeel online samajh aata hai, us ke paas referral aata hai (rules ke andar rehte hue).</li>
-<li><b>Kaam Board</b> — khali waqt mein seniors ka overflow drafting/research kaam.</li>
-</ol>
-"""},
-            {"h2": "Negotiation script (jo kaam karti hai)", "html": """
-<p><b>Interview/chamber meeting mein:</b> "Sir, main 6 mahine aap ke saath serious commitment kar raha hoon. Main drafting, research aur court appearance par kaam karna chahta hoon. Iske liye minimum monthly ___ aur hafte mein ek din study/CPD ka rakh sakte hain?"</p>
-<p>Specific demand + specific commitment = serious candidate. Sirf "kitna milega?" poochne wala candidate replace ho jata hai.</p>
-"""},
-        ],
-        "faqs": [
-            ("Fresh lawyer ki salary Pakistan mein kitni hoti hai?", "Aam taur par Rs 25,000–50,000 per month, city aur firm par depend. Bohat chambers mein pupillage ke doran stipend zero bhi hota hai. Corporate firms mein range zyada hoti hai."),
-            ("Kya lawyer ki salary minimum wage se kam ho sakti hai?", "Legal position aur employment classification par depend karta hai — bohat chambers juniors ko “trainee/stipend” treat karte hain. Apni situation ke liye kisi labour/employment lawyer se proper advice lein."),
-            ("Independent practice mein kitna milta hai?", "Koi fixed jawab nahi. Pehle 1–2 saal aksar bohat kam, phir reputation aur case flow ke saath barhta hai. Kai wakeel side income (teaching, drafting, freelance) se guzara karte hain."),
-            ("Corporate aur litigation salary mein farq kyun hai?", "Corporate firms hourly/retainer billing aur international clients par chalte hain, is liye associate ki value measurable hoti hai. Litigation mein lump-sum per-case fee model hai."),
-        ],
-        "related": [("Lawyer jobs in Karachi", "karachi/lawyer-jobs/index.html"),
-                    ("How to become a lawyer", "career/how-to-become-lawyer-pakistan/index.html"),
-                    ("Room for rent for lawyers", "karachi/lawyer-room-for-rent/index.html")],
-    },
-
-    # ---------------- 7. HOW TO BECOME A LAWYER ----------------
-    {
-        "slug": "career/how-to-become-lawyer-pakistan/index.html",
-        "url": "career/how-to-become-lawyer-pakistan/",
-        "title": "How to Become a Lawyer in Pakistan (After 12th) — 2026 Guide",
-        "h1": "How to Become a Lawyer in Pakistan",
-        "desc": "12th ke baad lawyer kaise banein: LLB admission, Law-GAT, pupillage, bar council enrollment, High Court license — poora roadmap timeline ke saath.",
-        "kicker": "Career · Roadmap",
-        "lede": "School/college se Supreme Court tak — poora raasta, kis stage par kya chahiye, aur kahan log waqt zaya karte hain.",
-        "sections": [
-            {"h2": "Poora roadmap ek nazar mein", "html": """
-<table class="tbl">
-<thead><tr><th>Stage</th><th>Kya chahiye</th><th>Waqt</th></tr></thead>
-<tbody>
-<tr><td>1. LLB</td><td>12th/intermediate + recognized university ka admission test</td><td>5 saal (ya 3 saal after BA)</td></tr>
-<tr><td>2. Law-GAT</td><td>LLB + HEC notification ke mutabiq registration</td><td>Cycle ke hisaab se</td></tr>
-<tr><td>3. Pupillage</td><td>Senior advocate (aam taur par 10+ saal standing) ka chamber</td><td>6 mahine (prescribed)</td></tr>
-<tr><td>4. Enrollment</td><td>Documents + fees + committee review</td><td>Kuch mahine</td></tr>
-<tr><td>5. Lower court practice</td><td>Sanad + court work</td><td>2 saal</td></tr>
-<tr><td>6. High Court license</td><td>2 saal practice + application + fitness</td><td>—</td></tr>
-<tr><td>7. Supreme Court</td><td>HC advocate ke taur par 7 saal practice</td><td>—</td></tr>
-</tbody>
-</table>
-"""},
-            {"h2": "12th ke baad: LLB admission", "html": """
-<ul>
-<li><b>Universities:</b> Karachi mein Karachi University, S.M. Law College, Hamdard, Iqra, SZABIST, Bahria, aur bohat se private law colleges. HEC/PBC recognized hona lazmi hai.</li>
-<li><b>Duration:</b> 5 saal ka LLB programme (HEC ke revised curriculum ke mutabiq internship bhi shamil hai).</li>
-<li><b>Fees:</b> Government colleges sasti, private universities bohat mehngi — 5 saal ka total lakhon mein.</li>
-<li><b>Degree se pehle:</b> Ho sakta hai to ek internship zaroor karein — ye aap ka faisla badal sakta hai.</li>
-</ul>
-"""},
-            {"h2": "Law school mein kya karein jo baad mein kaam aaye", "html": """
-<ol class="steps">
-<li><b>Teen mukhtalif internships</b> — trial court chamber, law firm, aur in-house legal department.</li>
-<li><b>Drafting likhna seekhein</b> — photocopy se copy nahi. Har hafte ek draft: plaint, written statement, bail, notice.</li>
-<li><b>Moot court</b> — do moots, serious wale. Oral advocacy ka confidence yahan banta hai.</li>
-<li><b>Legal English</b> — roz 20 minute ek judgment + 5-line summary.</li>
-<li><b>Ek practice area pehchannein</b> — interest + market demand dono dekhein.</li>
-</ol>
-"""},
-            {"h2": "Kahan log sab se zyada waqt zaya karte hain", "html": """
-<ul>
-<li><b>Sirf padhai, zero internship</b> — degree mil jati hai, kaam karna nahi aata</li>
-<li><b>Sirf "connections" par bharosa</b> — network zaroori hai, magar skill ke baghair network bhi kaam nahi karta</li>
-<li><b>Har practice area ek saath</b> — 3 saal baad bhi koi pehchaan nahi banti</li>
-<li><b>Documents ka adhoora set</b> — enrollment mein mahine zaya</li>
-</ul>
-"""},
-            {"h2": "Law ke baghair bhi legal career?", "html": """
-<p>Haan: paralegal, legal researcher, court clerk (munshi) ka kaam, legal content writing, compliance, aur legal tech. Ye entry points hain — kuch log inhi se LLB karte hain, kuch inhi mein aa jate hain. Magar advocate ka darja sirf LLB + enrollment se milta hai.</p>
-"""},
-        ],
-        "faqs": [
-            ("12th ke baad lawyer banne mein kitne saal lagte hain?", "5 saal LLB + Law-GAT + 6 mahine pupillage + enrollment process — total aam taur par 6 saal ke qareeb, individual timings par depend."),
-            ("Kya 10th ke baad lawyer ban sakte hain?", "Nahi. Advocate banne ke liye 12th/intermediate ke baad LLB degree zaroori hai. 10th ke baad aap entry-level legal support roles (office assistant, file clerk) mein ja sakte hain."),
-            ("Kya lawyer banne ke liye Urdu medium se ho sakta hai?", "Degree English medium mein hoti hai, is liye legal English par kaam karna padega. Urdu medium walay bohat se wakeel kamyab hain — magar drafting aur reading English mein karni hoti hai."),
-            ("Lawyer ki starting salary kitni hoti hai?", "Rs 25,000–50,000 per month aam range hai, city aur firm par depend. Corporate firms zyada dete hain."),
-        ],
-        "related": [("Bar Council enrollment", "career/bar-council-enrollment/index.html"),
-                    ("Law-GAT guide", "career/law-gat/index.html"),
-                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html")],
-    },
-
-    # ---------------- 8. LAWYER JOBS KARACHI ----------------
-    {
-        "slug": "karachi/lawyer-jobs/index.html",
-        "url": "karachi/lawyer-jobs/",
-        "title": "Lawyer Jobs in Karachi — Chamber, Firm & In-House 2026",
-        "h1": "Lawyer Jobs in Karachi",
-        "desc": "Karachi mein lawyer jobs: chambers, law firms, corporate in-house, legal freelancing aur internship. Kahan apply karein, CV kaise banayein, aur salary expectations.",
-        "kicker": "Karachi · Jobs",
-        "lede": "Karachi mein “lawyer jobs” ki search har mahine chalti hai — magar sab se zyada kaam <b>un jobs</b> ka hota hai jo advertise hi nahi hotin.",
-        "sections": [
-            {"h2": "Job ki 6 qismein", "html": """
-<table class="tbl">
-<thead><tr><th>Type</th><th>Kya karna hota hai</th><th>Kahan</th></tr></thead>
-<tbody>
-<tr><td>Chamber associate / pupil</td><td>Drafting, research, court appearances senior ke saath</td><td>City Courts, Sindh High Court vicinity chambers</td></tr>
-<tr><td>Law firm associate</td><td>Corporate, tax, disputes, transaction side</td><td>Karachi ke commercial areas</td></tr>
-<tr><td>In-house legal</td><td>Contracts, compliance, litigation management</td><td>Banks, telecom, FMCG, IT companies</td></tr>
-<tr><td>Government / public sector</td><td>Prosecution, AG office, legal drafting units</td><td>Provincial aur federal departments</td></tr>
-<tr><td>Court research assistant</td><td>Judges ke liye research aur drafting</td><td>High Court / Supreme Court registries</td></tr>
-<tr><td>Freelance / remote</td><td>Drafting, research, document review (foreign clients)</td><td>Ghar se — Upwork etc.</td></tr>
-</tbody>
-</table>
-"""},
-            {"h2": "Hidden job market — asli mauqay kahan hain", "html": """
-<p>Karachi mein aam taur par 70–80% chamber positions <b>advertise nahi</b> hotin. Wo aise milti hain:</p>
-<ul>
-<li>Senior ya classmate jo aap ko jaanta hai</li>
-<li>Chamber visit — CV haath mein le kar (email se zyada kaam karta hai)</li>
-<li>Court ke deewar/electric pole par lagay chhote notices, aur bar room ki notice board</li>
-<li>Law college ka alumni group</li>
-<li>WakeelSaathi jaisi verified listing jahan chamber apna zaroorat likhta hai</li>
-</ul>
-<div class="callout"><b>Yaad rakhein:</b> Paisa maangne wale “job agent” fake hote hain. Koi serious chamber job ke liye pehle paisa nahi maangta.</div>
-"""},
-            {"h2": "CV jo kaam karti hai (1 page)", "html": """
-<ul>
-<li><b>Header:</b> naam, phone, email, city, aur ek line — kaunsa area</li>
-<li><b>Objectives ki jagah "what I can do":</b> "3 bail applications, 12 legal notices drafted, 40+ court appearances observed"</li>
-<li><b>Internships</b> — chamber ka naam, court, dates, kya kaam kiya</li>
-<li><b>Skills:</b> drafting types, research databases (PLD/SCMR, law sites), zaban (Urdu/English/Sindhi)</li>
-<li><b>Education + enrollment status</b> (Law-GAT, pupillage stage)</li>
-<li><b>Ek sample draft attach</b> — aap ki asli ability sab se zyada yahi dikhati hai</li>
-</ul>
-"""},
-            {"h2": "Salary expectations (realistic)", "html": """
-<ul>
-<li>Pupil / trainee: Rs 0–25,000 (kai jagah zero)</li>
-<li>Junior associate (chamber): Rs 25,000–50,000</li>
-<li>Law firm associate: Rs 50,000–120,000+</li>
-<li>In-house (0–2 saal): Rs 60,000–120,000</li>
-</ul>
-<p class="mini">Detailed breakdown: <a href="../../career/lawyer-salary-pakistan/index.html">Lawyer salary in Pakistan</a>.</p>
-"""},
-        ],
-        "faqs": [
-            ("Karachi mein lawyer ki job kaise mile?", "Sab se effective tareeqa chamber visit + referral hai: seniors ko personally milna, ek page CV aur ek sample draft ke saath. Online listings madad karti hain magar hidden market bara hai."),
-            ("Kya fresh graduate ko job milti hai?", "Pupillage/associate positions milti hain, magar paid hona guaranteed nahi. Pehle 1–2 saal seekhne par focus karein aur terms likhwaayein."),
-            ("Lawyer job ke liye paisa dena chahiye?", "Nahi. Koi bhi “job guarantee” ya “placement fee” maangne wala shakhs aam taur par fake hota hai. Reputed chamber paisa nahi maangta."),
-            ("Remote legal jobs Pakistan mein mil sakti hain?", "Haan — foreign law firms ke liye drafting, research aur document review. English skill aur sample work zaroori hai. Rates aam taur par USD mein hote hain."),
-        ],
-        "related": [("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
-                    ("Room for rent in Karachi", "karachi/lawyer-room-for-rent/index.html"),
-                    ("Bar Council enrollment", "career/bar-council-enrollment/index.html")],
-    },
-
-    # ---------------- 9. ROOM FOR RENT ----------------
-    {
-        "slug": "karachi/lawyer-room-for-rent/index.html",
-        "url": "karachi/lawyer-room-for-rent/",
-        "title": "Room for Rent in Karachi for Lawyers — Punjab Colony, Garden",
-        "h1": "Wakeel ke liye Room / Seat Share — Karachi",
-        "desc": "Karachi mein lawyer ke liye room, PG aur chamber seat share: Punjab Colony, Garden, Saddar, Malir, Gulshan ke budget ranges, kya check karein aur broker se kaise bachein.",
-        "kicker": "Karachi · Rehail",
-        "lede": "Naye wakeel ki sab se bari tension: <b>rehail</b>. Rs 30,000 ki income par Karachi mein room milna mushkil hai — magar network wale log ye masla hal kar lete hain. Hum wahi network formal bana rahe hain.",
-        "sections": [
-            {"h2": "Budget ka haqeeqat-based breakdown", "html": """
-<table class="tbl">
-<thead><tr><th>Option</th><th>Typical monthly (PKR)</th><th>Note</th></tr></thead>
-<tbody>
-<tr><td>Shared room (2 log)</td><td>8,000 – 15,000</td><td>Sab se sasta; utilities alag ya shamil</td></tr>
-<tr><td>PG / hostel (khana shamil)</td><td>10,000 – 20,000</td><td>Clean, security, magar rules</td></tr>
-<tr><td>Single room in shared flat</td><td>14,000 – 25,000</td><td>Punjab Colony, Garden, Jamshed Road</td></tr>
-<tr><td>Separate small flat</td><td>25,000 – 45,000</td><td>Deposit alag (2–3 mahine)</td></tr>
-<tr><td>Chamber seat share (court ke qareeb)</td><td>6,000 – 15,000</td><td>Desk + cupboard + library access</td></tr>
-</tbody>
-</table>
-<p class="mini">Rs 30,000 stipend par: rehail 12–18k + khana 8–12k + transport 4–6k = pehle mahine hi tight. Is liye <b>seat share + shared room</b> ka combination sab se practical hai.</p>
-"""},
-            {"h2": "Kaun se ilaqay court ke liye behtar hain", "html": """
-<ul>
-<li><b>Punjab Colony / Garden</b> — City Courts aur Saddar ke qareeb, lawyers ka ghana network, khana sasta</li>
-<li><b>Saddar</b> — har jagah se transport, magar raat mein shor aur bheer</li>
-<li><b>Jamshed Road / Patel Para</b> — darmiyani budget, court aur SHC dono ka access</li>
-<li><b>Malir</b> — Malir court ke liye, sasta, magar City Courts door</li>
-<li><b>Gulshan-e-Iqbal</b> — behtar rehail, magar roz safar aur bara kharcha</li>
-<li><b>Clifton / Defence</b> — high court ke qareeb, magar junior ke budget se bahar</li>
-</ul>
-"""},
-            {"h2": "Room lete waqt 8 cheezein check karein", "html": """
-<ol class="steps">
-<li><b>Malik ki identity</b> — CNIC dekhein aur note karein (owner hai ya sub-letter?)</li>
-<li><b>Rent agreement</b> — likha hua, 2 copies, duration aur advance clear</li>
-<li><b>Bijli ka bill</b> — separate meter hai ya shared? Rate kaun tay karta hai?</li>
-<li><b>Paani</b> — tanki, timing aur quality (Karachi ka sab se bara issue)</li>
-<li><b>Security</b> — gate, guard, lock, aur raat mein entry ka system</li>
-<li><b>Deposit ki wapsi</b> — kab aur kis condition par? Likhein.</li>
-<li><b>Notice period</b> — kitne mahine pehle batana hoga (dono taraf)</li>
-<li><b>Study/work environment</b> — file rakhne ki jagah, light, internet</li>
-</ol>
-<div class="callout"><b>Khatoon lawyers ke liye:</b> family building, warden, security guard aur separate entrance zaroor check karein. Sirf "safe hai" kehne par bharosa na karein — visit karein, doosri residents se poochein.</div>
-"""},
-            {"h2": "Broker ke bajaye kya karein", "html": """
-<ul>
-<li>Chamber ke seniors aur colleagues se poochein — unke paas khali seat ka pata hota hai</li>
-<li>Law college ke alumni group aur bar room notice board</li>
-<li>Direct owner se deal karein — "commission" dene se pehle sochein</li>
-<li>WakeelSaathi Rehail listings — <b>verified</b>, area aur budget filter ke saath</li>
-</ul>
-<p class="mini">⚠️ Kabhi bhi room dekhne se pehle advance/booking payment na karein. Advance hamesha agreement ke baad.</p>
-"""},
-        ],
-        "faqs": [
-            ("Karachi mein wakeel ke liye sasta room kahan milega?", "Punjab Colony, Garden, Jamshed Road aur Malir mein shared rooms aam taur par Rs 8,000–25,000 per month milte hain. Court ke qareeb chamber seat share Rs 6,000–15,000 mein milta hai."),
-            ("Chamber seat share kya hota hai?", "Ek chamber mein 2–3 wakeel desk aur space share karte hain aur rent/kharcha taqseem karte hain. Naye wakeel ke liye ye sab se sasta tareeqa hai court ke qareeb rehne ka."),
-            ("Kya bina rent agreement room le sakte hain?", "Technically le sakte hain, magar ye risky hai — deposit, notice period aur bills par jhagra ho jata hai. Likha hua agreement dono taraf ki hifazat hai."),
-            ("Female lawyer ke liye safe rehail kaise dhoondein?", "Family building, warden ya security guard, separate entrance aur verified owner — ye check karein. Ek visit karein aur mojooda residents se baat karein. Verified listings par hi bharosa karein."),
-        ],
-        "related": [("Lawyer jobs in Karachi", "karachi/lawyer-jobs/index.html"),
-                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
-                    ("Bar Council enrollment", "career/bar-council-enrollment/index.html")],
-    },
-
-    # ---------------- 10. HIGH COURT LICENSE ----------------
-    {
-        "slug": "career/high-court-license/index.html",
-        "url": "career/high-court-license/",
-        "title": "High Court License in Pakistan — Requirements & Process",
-        "h1": "High Court License (Advocate High Court)",
-        "desc": "High Court license Pakistan: 2 saal practice ki requirement, application process, fitness certificate, documents aur practice record kaise maintain karein.",
-        "kicker": "Career · Licensing",
-        "lede": "Lower court se High Court — ye promotion nahi, naya license hai. 2 saal ka practice record aaj se maintain karna shuru karein, warna baad mein jodna mushkil hota hai.",
-        "sections": [
-            {"h2": "Eligibility", "html": """
-<ul>
-<li>Advocate ke taur par enrollment (provincial bar council roll par)</li>
-<li><b>Kam az kam 2 saal</b> subordinate courts mein practice (Act ke section 27 ke mutabiq)</li>
-<li>Prescribed application form + fees</li>
-<li>High Court ki fitness/character requirements aur interview (agar required ho)</li>
-</ul>
-<p class="mini">Exact requirements aur current fees Sindh High Court / Sindh Bar Council se confirm karein.</p>
-"""},
-            {"h2": "Process", "html": """
-<ol class="steps">
-<li><b>Practice record tayyar karein</b> — 2 saal ke cases ki list: title, court, case number, aap ka role.</li>
-<li><b>Application</b> (prescribed form) bar council ke through High Court ko.</li>
-<li><b>Certificates</b> — good standing, dues clearance, aur character/fitness.</li>
-<li><b>Review / interview</b> — court ke process ke mutabiq.</li>
-<li><b>Certificate issue</b> — High Court advocate ke taur par enrollment.</li>
-</ol>
-"""},
-            {"h2": "Practice record — jo aaj banana chahiye", "html": """
-<p>Agar aap aaj se ye register maintain karein, 2 saal baad aap ka kaam aasan ho jayega:</p>
-<table class="tbl">
-<thead><tr><th>Column</th><th>Kya likhein</th></tr></thead>
-<tbody>
-<tr><td>Date</td><td>Peshì ki tareekh</td></tr>
-<tr><td>Court &amp; case no.</td><td>Court ka naam, case/FIR number</td></tr>
-<tr><td>Parties</td><td>Title (client ki ijazat ke baghair public share na karein)</td></tr>
-<tr><td>Aap ka role</td><td>Drafting / research / appearance / assistance</td></tr>
-<tr><td>Outcome</td><td>Adjournment, order, arguments</td></tr>
-<tr><td>Copy</td><td>Order sheet/file ka scan</td></tr>
-</tbody>
-</table>
-"""},
-            {"h2": "Supreme Court tak ka raasta", "html": """
-<p>Advocate Supreme Court banne ke liye aam taur par <b>High Court advocate ke taur par 7 saal</b> ki practice aur prescribed process (fitness certificate, interviews, fees) chahiye. Detail hamesha Pakistan Bar Council se confirm karein — requirements aur fees waqt ke saath badalte hain.</p>
-"""},
-        ],
-        "faqs": [
-            ("High Court license ke liye kitne saal chahiye?", "Legal Practitioners and Bar Councils Act ke mutabiq subordinate courts mein kam az kam 2 saal ki practice chahiye. Current requirements bar council se confirm karein."),
-            ("Kya High Court license ke bina High Court mein appear ho sakta hai?", "Nahi — High Court mein plead karne ke liye Advocate High Court ka license chahiye. Lower court advocate sirf subordinate courts tak appear kar sakta hai."),
-            ("Practice record na ho to kya karein?", "Order sheets, court copies aur senior ki tasdeeq se record reconstruct karne ki koshish karein. Isi liye aaj se register maintain karna zaroori hai."),
-            ("High Court license ki fee kitni hai?", "Fee waqt ke saath badalti hai. Sindh Bar Council / High Court ki current fee schedule check karein."),
-        ],
-        "related": [("Bar Council enrollment", "career/bar-council-enrollment/index.html"),
-                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
-                    ("Law-GAT guide", "career/law-gat/index.html")],
-    },
-
-    # ---------------- 11. VAKALATNAMA ----------------
-    {
-        "slug": "drafts/vakalatnama-format/index.html",
-        "url": "drafts/vakalatnama-format/",
-        "title": "Vakalatnama Format in Pakistan (Word, English & Urdu)",
-        "h1": "Vakalatnama Format — Pakistan",
-        "desc": "Vakalatnama ka format Pakistan mein: must clauses, Supreme Court aur High Court ke liye differences, stamp aur acceptance, aur common ghaltiyan.",
-        "kicker": "Drafts · Filing",
-        "lede": "Vakalatnama chhoti document hai — magar adhoori hone par case ki pehli date par hi masla aa jata hai.",
-        "sections": [
-            {"h2": "Vakalatnama mein kya hona chahiye", "html": """
-<ol class="steps">
-<li><b>Court ka naam</b> aur case number/title</li>
-<li><b>Client ki details</b> — naam, parentage, CNIC, address</li>
-<li><b>Advocate ki details</b> — naam, enrollment number, chamber address</li>
-<li><b>Authorization clause</b> — "I authorize the above-named advocate to appear, plead and act on my behalf" — scope likha ho (appear, plead, act, compromise?)</li>
-<li><b>Acceptance</b> — advocate ka acceptance (kai courts mein zaroori)</li>
-<li><b>Signature + date</b> — client (aur advocate)</li>
-<li><b>Stamp/court fee</b> — court ke rules ke mutabiq</li>
-<li><b>Witnesses / attestation</b> — jahan required</li>
-</ol>
-"""},
-            {"h2": "Scope of authority — sab se ahem clause", "html": """
-<p>"Appear, plead and act" ka matlab har cheez nahi hota. Agar client chahta hai ke advocate <b>compromise ya settlement</b> kar sake, to ye alag se likha jana chahiye. Isi tarah:</p>
-<ul>
-<li>Appeal file karne ka haq</li>
-<li>Evidence led karne ka haq</li>
-<li>Case withdraw karne ka haq</li>
-<li>Kisi doosre advocate ko substitute karne ka haq</li>
-</ul>
-<div class="callout"><b>Practice tip:</b> Scope ko italic/underline na karein — bas clear English mein likhein. Court aur client dono ko ek hi cheez samajh aani chahiye.</div>
-"""},
-            {"h2": "Court ke hisaab se farq", "html": """
-<table class="tbl">
-<thead><tr><th>Court</th><th>Note</th></tr></thead>
-<tbody>
-<tr><td>District / subordinate courts</td><td>Aam format; stamp/court fee court ke rules ke mutabiq</td></tr>
-<tr><td>Sindh High Court</td><td>High Court advocate ka enrollment number; filing branch ka current requirement check karein</td></tr>
-<tr><td>Supreme Court</td><td>Advocate-on-Record / Advocate Supreme Court ki requirement; apna makhsoos format</td></tr>
-<tr><td>Tribunals (service, tax, etc.)</td><td>Har tribunal ka apna practice; pehle filing branch se poochein</td></tr>
-</tbody>
-</table>
-"""},
-            {"h2": "Common mistakes", "html": """
-<ul>
-<li>Case number ghalat ya khali</li>
-<li>Client ka naam CNIC se match nahi karta</li>
-<li>Advocate ka enrollment number nahi likha</li>
-<li>Acceptance clause missing — filing branch wapas kar deti hai</li>
-<li>Pata adhoora — notice/order client tak nahi pahunchta</li>
-<li>Stamp/fee ki qism ghalat</li>
-</ul>
-"""},
-            {"h2": "Vakalatnama cancel ya change karna", "html": """
-<p>Agar client advocate badalna chahta hai, to courts ka apna process hai (no objection / discharge application). Ye process court ke rules aur case ki stage par depend karta hai — bina cause list/order ki copy ke koi step na lein.</p>
-"""},
-        ],
-        "faqs": [
-            ("Vakalatnama kya hoti hai?", "Vakalatnama ek document hai jisse client apne advocate ko court mein us ki taraf se appear, plead aur act karne ka ikhtiyar deta hai. Iske baghair advocate court mein case file/plead nahi kar sakta."),
-            ("Vakalatnama par stamp kitna lagta hai?", "Court aur case ki qism ke hisaab se stamp/court fee alag hoti hai. Mutaliqa court ke filing branch se current requirement confirm karein."),
-            ("Kya vakalatnama Urdu mein ho sakti hai?", "Aam practice English mein hai. Agar Urdu chahiye to upar English version rakhein aur neeche Urdu translation — court ki requirement pehle confirm karein."),
-            ("Ek case mein do advocates ho sakte hain?", "Aam taur par vakalatnama ek advocate ke naam hoti hai; doosre advocate ko assist karne ke liye alag arrangement ya substitution hota hai. Court ke rules check karein."),
-        ],
-        "related": [("Legal notice format", "drafts/legal-notice-format/index.html"),
-                    ("Plaint format", "drafts/plaint-format/index.html"),
-                    ("High Court license", "career/high-court-license/index.html")],
-    },
-
-    # ---------------- 12. 489-F ----------------
-    {
-        "slug": "case-law/489-f/index.html",
-        "url": "case-law/489-f/",
-        "title": "489-F PPC Case Law — Cheque Dishonour in Pakistan",
-        "h1": "489-F PPC — Cheque Dishonour Case Law",
-        "desc": "Section 489-F PPC: cheque dishonour ka offence, elements, complaint kaise file hoti hai, defence aur research guide — Pakistani lawyers ke liye.",
-        "kicker": "Case law · Criminal",
-        "lede": "<b>489-F PPC</b> Pakistan ka sab se zyada file hone wale criminal complaints mein se ek: <b>cheque ka dishonour</b>. Yahan legal framework aur research method.",
-        "sections": [
-            {"h2": "Section 489-F ka framework", "html": """
-<p>Pakistan Penal Code ka section <b>489-F</b> us shakhs se mutalliq hai jo <b>dishonestly</b> cheque issue karta hai — qarz ki adaigi ya kisi obligation ki poorai ke liye — jab usay maloom ho ke us ke account mein funds kafi nahi hain ya cheque return ho jayega.</p>
-<p>Is offence ki saza mein imprisonment, fine, ya dono shamil hain (bare act ka exact text aur duration parhein). Cheque dishonour ke civil aur criminal dono pehlu hote hain — dono ka apna raasta hota hai.</p>
-<div class="callout"><b>Note:</b> Ye page legal information deta hai, complaint ka draft nahi. Har case ke facts alag hote hain — apne case par tayari ke liye verified authorities aur apne senior ki guidance zaroor lein.</div>
-"""},
-            {"h2": "Elements jinhe prove karna hota hai", "html": """
-<table class="tbl">
-<thead><tr><th>Element</th><th>Kya dekha jata hai</th></tr></thead>
-<tbody>
-<tr><td>Cheque ka issue hona</td><td>Original cheque, signature, bank record</td></tr>
-<tr><td>Qarz ya obligation</td><td>Agreement, invoice, receipt, WhatsApp/email trail</td></tr>
-<tr><td>Dishonest intention</td><td>Funds ki kami ka ilm, account history, conduct</td></tr>
-<tr><td>Return / dishonour</td><td>Bank ka return memo — reason clearly likha ho</td></tr>
-<tr><td>Notice / demand</td><td>Notice ki copy + delivery proof (facts par depend)</td></tr>
-</tbody>
-</table>
-"""},
-            {"h2": "Complaint se pehle ka checklist", "html": """
-<ol class="steps">
-<li><b>Original cheque</b> aur us ki copy sambhal ke rakhein</li>
-<li><b>Bank ka return memo</b> — reason (insufficient funds, signature mismatch, account closed, stop payment) bohat ahem hai</li>
-<li><b>Qarz ka proof</b> — agreement, invoice, ledgers, messages</li>
-<li><b>Notice</b> — legal notice bhejein aur delivery proof rakhein</li>
-<li><b>Limitation</b> — kis muddat mein complaint file ho sakti hai, ye section aur case law se check karein</li>
-<li><b>Forum</b> — competent court ka taayun (territorial jurisdiction)</li>
-</ol>
-"""},
-            {"h2": "Defence ke aam pehlu (research ke liye)", "html": """
-<ul>
-<li>Cheque <b>security</b> ke taur par diya gaya tha, qarz ki adaigi ke liye nahi</li>
-<li>Qarz ka <b>proof nahi</b> — sirf cheque ka hona kafi nahi</li>
-<li><b>Signature</b> client ka nahi (forgery ka sawal)</li>
-<li><b>Dishonest intention</b> ka element missing</li>
-<li><b>Notice/demand</b> ka procedure follow nahi hua</li>
-<li>Civil dispute ko criminal rang dena</li>
-</ul>
-<p class="mini">In points par authority dhoondte waqt keywords: "489-F PPC", "security cheque", "dishonest intention", "quantum of sentence", "compounding".</p>
-"""},
-            {"h2": "Civil aur criminal — dono ka faisla", "html": """
-<p>Cheque dishonour par aksar do raaste chalte hain: <b>criminal complaint (489-F)</b> aur <b>civil suit/recovery</b>. Dono ke maqsad aur natije alag hote hain. Client ko pehle hi saaf bata dein ke wo kya chahta hai — saza, ya paisa wapas. Bohat cases mein settlement hi practical natija hota hai.</p>
-"""},
-        ],
-        "faqs": [
-            ("489-F PPC mein saza kya hai?", "Is offence par imprisonment aur/ya fine ki saza hai. Exact duration aur wording bare act se parhein aur latest precedent dekhein — courts facts ke hisaab se saza tay karti hain."),
-            ("Cheque bounce par police case ho sakta hai?", "489-F ke under complaint ka raasta hota hai. Kya police station jaana behtar hai ya court mein complaint — ye facts aur aap ke legal strategy par depend karta hai. Apne senior se mashwara lein."),
-            ("Security cheque aur qarz ka cheque mein kya farq hai?", "Security cheque aam taur par guarantee ke taur par diya jata hai, jab ke qarz ka cheque obligation ki adaigi ke liye hota hai. Ye farq dishonest intention aur qarz ke proof par asar daalta hai — is par case law zaroor dekhein."),
-            ("Kya cheque bounce case settle ho sakta hai?", "Haan, aksar cases settlement par khatam hote hain. Settlement ka record likha hua hona chahiye aur court ke process ke mutabiq hona chahiye."),
-        ],
-        "related": [("Legal notice format", "drafts/legal-notice-format/index.html"),
-                    ("302 PPC case law", "case-law/302-ppc/index.html"),
-                    ("Case law hub", "case-law/index.html")],
-    },
+SOURCES_COMMON = [
+    ("Legal Practitioners and Bar Councils Act, 1973", "http://nasirlawsite.com/laws/baract.htm", "statute"),
+    ("Sindh Bar Council — advocate verification portal", "https://advocates.sindhbarcouncil.org/", "official register"),
+    ("Law and Justice Commission of Pakistan — women in the justice sector report (2024)", "https://ljcp.gov.pk/", "report"),
+    ("Sindh Minimum Wages notification, 1 July 2026 — Sindh Labour Department", "https://lhr.sindh.gov.pk/", "notification"),
 ]
 
-# ---------- hubs (parent pages) ----------
+
+# ---------------------------------------------------------------- hubs
 HUBS = [
     {
         "slug": "case-law/index.html",
         "url": "case-law/",
-        "title": "Case Law Pakistan — Section-wise Research Guides | WakeelSaathi",
+        "title": "Case Law Pakistan — Section-wise Research Guides | WakeelBano",
         "h1": "Case Law Pakistan",
-        "desc": "Section-wise case law research guides for Pakistani lawyers: 302 PPC, 489-F PPC, 497 CrPC. Free databases, search method aur verification checklist.",
+        "desc": "Section-wise case law research guides for Pakistani lawyers: 302 PPC, 489-F PPC and 497 CrPC bail. Free databases, a four-step research method and a citation checklist.",
         "kicker": "Research library",
-        "lede": "Pakistan mein wakeel ki sab se zyada search ki jane wali cheez: <b>case law</b>. Yahan section-wise research guides hain — kahan se search karein, kaise verify karein, court mein kaise use karein.",
+        "answer": "Pakistani lawyers search for case law more than anything else. This library shows where to find judgments, how to verify a citation, and how to use an authority in court.",
         "children": [
-            ("302 PPC case law", "Qatl-i-amd — elements, qisas aur research method", "../case-law/302-ppc/index.html"),
-            ("489-F PPC case law", "Cheque dishonour — complaint, defence aur research", "../case-law/489-f/index.html"),
-            ("497 CrPC bail case law", "Non-bailable offence mein bail ke grounds", "../case-law/497-crpc/index.html"),
+            ("302 PPC case law", "Qatl-i-amd: elements, qisas and the research method", "../case-law/302-ppc/index.html"),
+            ("489-F PPC case law", "Cheque dishonour: complaint, defence and research", "../case-law/489-f/index.html"),
+            ("497 CrPC case law", "Bail in non-bailable offences: grounds and authorities", "../case-law/497-crpc/index.html"),
         ],
         "sections": [
-            {"h2": "Pakistan mein case law kahan se milega", "html": """
+            {"h2": "Where can Pakistani lawyers find case law for free?",
+             "answer": "The Supreme Court and every High Court publish judgments free on their official websites. Commercial databases add citation search on top of that.",
+             "html": """
 <table class="tbl">
-<thead><tr><th>Source</th><th>Kya milta hai</th><th>Cost</th></tr></thead>
+<thead><tr><th>Source</th><th>What you get</th><th>Cost</th></tr></thead>
 <tbody>
 <tr><td>Supreme Court of Pakistan</td><td>Judgments, cause lists, case status</td><td>Free</td></tr>
-<tr><td>High Courts (SHC, LHC, PHC, BHC, IHC) &amp; FSC</td><td>Reported judgments aur orders</td><td>Free</td></tr>
-<tr><td>Law databases (Pakistan Law Site, Pak Legal Database, LegalSearch)</td><td>PLD, SCMR, YLR, CLC citations</td><td>Free / subscription</td></tr>
-<tr><td>PLJ (Punjab Bar Council section)</td><td>Pakistan Law Journal</td><td>Subscription</td></tr>
-<tr><td>AI research tools</td><td>Fast research aur drafting hints</td><td>Free / paid</td></tr>
+<tr><td>High Courts (Sindh, Lahore, Peshawar, Balochistan, Islamabad) and the Federal Shariat Court</td><td>Reported judgments and orders</td><td>Free</td></tr>
+<tr><td>Law databases (Pakistan Law Site, Pak Legal Database, LegalSearch)</td><td>PLD, SCMR, YLR and CLC citation search</td><td>Free or subscription</td></tr>
+<tr><td>PLJ, published by the Punjab Bar Council section</td><td>Pakistan Law Journal citations</td><td>Subscription</td></tr>
+<tr><td>AI research tools (LawGPT, DigiLawyer, Conclavity, PakLegalAI)</td><td>Fast first-pass research and drafting hints</td><td>Free or paid</td></tr>
 </tbody>
 </table>
-<p class="mini">AI ka output hamesha original judgment se verify karein. Galat citation court mein sab se bara nuqsan hai.</p>
 """},
-            {"h2": "4-step research method", "html": """
+            {"h2": "What is the fastest reliable way to research a section?",
+             "answer": "Read the bare Act first, list each element as a separate issue, then look for five to eight leading judgments that deal with those issues.",
+             "html": """
 <ol class="steps">
-<li><b>Section framing</b> — bare act ka text parhein, elements alag likhein</li>
-<li><b>Headnote hunting</b> — section + keywords se 5–8 leading judgments chunein (Supreme Court pehle)</li>
-<li><b>Ratio extract</b> — har judgment se ek line ka principle</li>
-<li><b>Distinguish</b> — apne facts se farq likhein; yahi courtroom mein kaam aata hai</li>
+<li><b>Frame the section.</b> Read the exact text of the bare Act and write the elements out as separate issues.</li>
+<li><b>Hunt headnotes.</b> Search the section number with the key words you identified. Prefer Supreme Court authority, then your own High Court.</li>
+<li><b>Extract the ratio.</b> One line per judgment: the principle the court applied. You rarely need a full case summary.</li>
+<li><b>Distinguish.</b> Write down how your facts differ from each authority. This is the step AI cannot do for you, and the step judges test.</li>
 </ol>
+<div class="callout"><b>Verification rule:</b> Check every citation in three places — the citation number, the operative part of the judgment, and its current status after any appeal or review.</div>
+"""},
+            {"h2": "Why does WakeelBano not reproduce judgments?",
+             "answer": "Because a wrong or invented citation damages a lawyer in court. We explain the framework and the method, and link you to the official source where the judgment can be read.",
+             "html": """
+<p>Reported judgments sit inside law reporters that carry their own editorial rights, and AI tools sometimes generate
+citations that do not exist. Instead of reproducing text, we give you the statutory framework, an issue map, the
+research method and a verification checklist — then link to the court's own publication.</p>
 """},
         ],
         "faqs": [
-            ("Pakistan mein case law free mein kahan milta hai?", "Supreme Court aur High Courts ki official websites par judgments free milte hain. Law databases citation search dete hain — kuch free, kuch subscription par."),
-            ("Kya WakeelSaathi judgments reproduce karta hai?", "Nahi. Hum research method aur statutory framework dete hain, aur official source ke links dete hain jahan se aap original judgment parh sakte hain."),
+            ("Is WakeelBano free for lawyers?", "Yes. Every research guide on this site is free and needs no account. Junior lawyers get the full platform free."),
+            ("Can I cite an authority I found through an AI tool?", "Not without checking it. Open the original judgment, confirm the citation and the operative paragraph, then check whether it has been reviewed or distinguished."),
         ],
         "related": [("Bail application format", "../drafts/bail-application-format/index.html"),
                     ("Legal notice format", "../drafts/legal-notice-format/index.html")],
@@ -882,220 +84,1216 @@ HUBS = [
     {
         "slug": "drafts/index.html",
         "url": "drafts/",
-        "title": "Legal Draft Formats Pakistan — Bail, Notice, Plaint, Vakalatnama",
+        "title": "Legal Draft Formats in Pakistan — Bail, Notice, Plaint, Vakalatnama",
         "h1": "Legal Drafts Library",
-        "desc": "Pakistan ke court drafts ka structure aur checklist: bail application, legal notice, plaint aur vakalatnama. Format, clauses aur common mistakes.",
+        "desc": "Court-tested structures for Pakistani legal drafts: bail application, legal notice, civil plaint and vakalatnama. Every section, clause and common filing mistake explained.",
         "kicker": "Draft library",
-        "lede": "Drafting photocopy se nahi, <b>structure</b> se seekhi jati hai. Har draft ka skeleton, clauses aur ghaltiyan — yahan.",
+        "answer": "Drafting is learned from structure, not from photocopies. Each guide here breaks a document into its required parts and lists the mistakes that get filings returned.",
         "children": [
-            ("Bail application format", "496/497/498 CrPC — structure aur grounds", "../drafts/bail-application-format/index.html"),
-            ("Legal notice format", "Recovery, cheque, rent — 15 din aur delivery proof", "../drafts/legal-notice-format/index.html"),
-            ("Plaint format", "CPC Order VII — plaint ka structure", "../drafts/plaint-format/index.html"),
-            ("Vakalatnama format", "Authority, acceptance aur stamp", "../drafts/vakalatnama-format/index.html"),
+            ("Bail application format", "Sections 496, 497 and 498 CrPC — structure and grounds", "../drafts/bail-application-format/index.html"),
+            ("Legal notice format", "Recovery, cheque and rent notices, with proof of delivery", "../drafts/legal-notice-format/index.html"),
+            ("Plaint format", "Order VII CPC — what a plaint must contain", "../drafts/plaint-format/index.html"),
+            ("Vakalatnama format", "Authority, acceptance and stamp", "../drafts/vakalatnama-format/index.html"),
         ],
         "sections": [
-            {"h2": "Har draft ka bunyadi skeleton", "html": """
+            {"h2": "What do all court drafts have in common?",
+             "answer": "Every court document follows the same skeleton: heading, title, facts, numbered grounds, legal basis, prayer and annexures. Only the labels change.",
+             "html": """
 <ol class="steps">
-<li><b>Heading</b> — court, case number, parties</li>
-<li><b>Title</b> — document kya hai aur kis section ke under</li>
-<li><b>Facts</b> — dates ke saath, sirf relevant</li>
-<li><b>Grounds / averments</b> — numbered, har point alag</li>
-<li><b>Legal basis</b> — sirf verified sections/authorities</li>
-<li><b>Prayer</b> — clear aur specific</li>
-<li><b>Verification + annexures</b></li>
+<li><b>Heading</b> — court, case number and parties.</li>
+<li><b>Title</b> — what the document is and under which provision.</li>
+<li><b>Facts</b> — dated and relevant, nothing extra.</li>
+<li><b>Grounds or averments</b> — numbered, one point per paragraph.</li>
+<li><b>Legal basis</b> — only sections and authorities you have verified yourself.</li>
+<li><b>Prayer</b> — specific, and quantified where money is claimed.</li>
+<li><b>Verification and annexures.</b></li>
 </ol>
 """},
         ],
         "faqs": [
-            ("Kya yahan se draft download kar sakte hain?", "Hum structure aur checklist dete hain — copy-paste templates nahi, kyunke har case ke facts alag hote hain. Pehla draft banane ke liye AI Kit use karein, final draft apni review se."),
+            ("Can I download ready-made templates?", "We publish structures and checklists rather than fill-in-the-blank templates, because a draft that ignores your facts is dangerous. Use the AI Kit to produce a first draft, then edit it yourself."),
         ],
-        "related": [("Case law hub", "../case-law/index.html"), ("AI Kit", "../index.html#aikit")],
-    },
-    {
-        "slug": "karachi/index.html",
-        "url": "karachi/",
-        "title": "Karachi Lawyers — Jobs, Rehail & Chamber Share | WakeelSaathi",
-        "h1": "Karachi — Wakeelon ka Shehar",
-        "desc": "Karachi mein lawyer jobs, room for rent, chamber seat share aur court-wise practice guide. Punjab Colony, Garden, Saddar, Malir aur Gulshan ke liye practical guides.",
-        "kicker": "Karachi",
-        "lede": "Karachi mein practice karna alag game hai: court ka intekhab, rehail ka budget aur reference ka network. Yahan shehar-specific guides.",
-        "children": [
-            ("Lawyer jobs in Karachi", "Chamber, firm, in-house aur freelancing", "../karachi/lawyer-jobs/index.html"),
-            ("Room / seat share", "Punjab Colony, Garden, Saddar, Malir", "../karachi/lawyer-room-for-rent/index.html"),
-            ("Case law library", "Section-wise research guides", "../case-law/index.html"),
-        ],
-        "sections": [
-            {"h2": "Karachi mein practice — 3 faislay jo sab kuch tay karte hain", "html": """
-<ol class="steps">
-<li><b>Court ka intekhab:</b> City Courts, Malir, ya Sindh High Court. Ek court mein mastery > paanch courts mein bhaagna.</li>
-<li><b>Rehail ka budget:</b> court ke qareeb sasta rehail = roz ka safar aur waqt bachta hai. Seat share sab se practical option hai.</li>
-<li><b>Network:</b> Karachi mein kaam reference se aata hai. Chamber, bar room aur batchmates — teeno ko systematically use karein.</li>
-</ol>
-"""},
-        ],
-        "faqs": [
-            ("Karachi mein naye lawyer ke liye sab se sasta rehail option kya hai?", "Chamber seat share (Rs 6,000–15,000 per month) + shared room (Rs 8,000–15,000). Isse court ke qareeb rehna aur kharcha dono manage ho jata hai."),
-            ("Karachi mein lawyer jobs kahan milti hain?", "Chambers (City Courts/SHC ke qareeb), law firms, banks aur companies ke legal departments, aur government offices. Bohat positions advertise nahi hotin — chamber visit aur referral sab se effective hai."),
-        ],
-        "related": [("Lawyer jobs in Karachi", "../karachi/lawyer-jobs/index.html"),
-                    ("Room for rent", "../karachi/lawyer-room-for-rent/index.html")],
+        "related": [("Case law library", "../case-law/index.html"), ("AI Kit", "../index.html#ai-kit")],
     },
     {
         "slug": "career/index.html",
         "url": "career/",
-        "title": "Legal Career Pakistan — Law-GAT, Enrollment, Salary, License",
-        "h1": "Career — Sanad se High Court tak",
-        "desc": "Pakistan mein legal career ka poora raasta: Law-GAT, bar council enrollment, pupillage, salary expectations aur High Court license.",
+        "title": "Legal Career in Pakistan — Law-GAT, Enrollment, Salary, Licence",
+        "h1": "Career: From Sanad to the High Court",
+        "desc": "The full Pakistani legal career path: Law-GAT, bar council enrollment, pupillage, realistic salary ranges and the High Court licence — stage by stage.",
         "kicker": "Career",
-        "lede": "Har stage ka apna process hai — aur kisi ne aap ko theek se nahi bataya. Yahan har step ka guide.",
+        "answer": "Becoming a practising lawyer in Pakistan takes about six years: five years of LLB, the Law-GAT, a six-month pupillage and enrollment with a provincial bar council.",
         "children": [
-            ("Law-GAT 2026", "Test date, syllabus, past papers, result", "../career/law-gat/index.html"),
-            ("Bar Council enrollment", "Eligibility, documents, pupillage, fees", "../career/bar-council-enrollment/index.html"),
-            ("How to become a lawyer", "12th se Supreme Court tak roadmap", "../career/how-to-become-lawyer-pakistan/index.html"),
-            ("Lawyer salary in Pakistan", "Realistic ranges aur structural wajah", "../career/lawyer-salary-pakistan/index.html"),
-            ("High Court license", "2 saal practice, process aur record", "../career/high-court-license/index.html"),
+            ("Law-GAT 2026", "Test date, syllabus, past papers and result", "../career/law-gat/index.html"),
+            ("Bar council enrollment", "Eligibility, documents, pupillage and fees", "../career/bar-council-enrollment/index.html"),
+            ("How to become a lawyer", "Roadmap from 12th grade to the Supreme Court", "../career/how-to-become-lawyer-pakistan/index.html"),
+            ("Lawyer salary in Pakistan", "Realistic ranges and the reason they are low", "../career/lawyer-salary-pakistan/index.html"),
+            ("High Court licence", "Two years of practice, the process and the record", "../career/high-court-license/index.html"),
         ],
         "sections": [
-            {"h2": "Timeline ek nazar mein", "html": """
+            {"h2": "How long does each stage take?",
+             "answer": "Five years for the LLB, one test cycle for the Law-GAT, six prescribed months of pupillage, then two years of practice before a High Court licence.",
+             "html": """
 <table class="tbl">
-<thead><tr><th>Stage</th><th>Waqt</th></tr></thead>
+<thead><tr><th>Stage</th><th>Typical duration</th></tr></thead>
 <tbody>
-<tr><td>LLB</td><td>5 saal</td></tr>
-<tr><td>Law-GAT</td><td>Cycle ke mutabiq</td></tr>
-<tr><td>Pupillage</td><td>6 mahine (prescribed)</td></tr>
-<tr><td>Lower court license</td><td>Enrollment ke baad</td></tr>
-<tr><td>High Court license</td><td>2 saal practice ke baad</td></tr>
-<tr><td>Supreme Court</td><td>7 saal HC practice ke baad</td></tr>
+<tr><td>LLB</td><td>5 years</td></tr>
+<tr><td>Law-GAT</td><td>Depends on the HEC test cycle</td></tr>
+<tr><td>Pupillage</td><td>6 months (prescribed)</td></tr>
+<tr><td>Lower court licence</td><td>After enrollment</td></tr>
+<tr><td>High Court licence</td><td>After 2 years of practice</td></tr>
+<tr><td>Supreme Court</td><td>After 7 years as a High Court advocate</td></tr>
 </tbody>
 </table>
 """},
         ],
         "faqs": [
-            ("Legal career ka pehla step kya hai?", "12th ke baad recognized LLB programme. Us se pehle ek internship karein taake aap ko pata ho ke ye field aap ke liye hai ya nahi."),
-            ("Kya bina Law-GAT advocate ban sakte hain?", "Pakistan Bar Council ke rules ke mutabiq prescribed test pass karna zaroori hai. Current requirement apne bar council se confirm karein."),
+            ("What is the first step after 12th grade?", "Get admission to a recognised LLB programme. Before you commit, spend one summer interning in a chamber so you know what the work actually feels like."),
+            ("Is the Law-GAT compulsory?", "The prescribed test must be passed before enrollment as an advocate under Pakistan Bar Council rules. Confirm the current requirement with your provincial bar council."),
         ],
         "related": [("Lawyer jobs in Karachi", "../karachi/lawyer-jobs/index.html"),
-                    ("Room for rent", "../karachi/lawyer-room-for-rent/index.html")],
+                    ("Rooms and seat sharing", "../karachi/lawyer-room-for-rent/index.html")],
+    },
+    {
+        "slug": "karachi/index.html",
+        "url": "karachi/",
+        "title": "Lawyers in Karachi — Jobs, Rooms and Chamber Sharing | WakeelBano",
+        "h1": "Karachi for Lawyers",
+        "desc": "Practical Karachi guides for lawyers: chamber and firm jobs, room rent and chamber seat sharing near City Courts, Garden, Saddar and Malir.",
+        "kicker": "Karachi",
+        "answer": "Karachi is where most Pakistani lawyers start, and three decisions shape the first year: which court you commit to, what you can afford to rent, and whose network you join.",
+        "children": [
+            ("Lawyer jobs in Karachi", "Chambers, firms, in-house and freelance work", "../karachi/lawyer-jobs/index.html"),
+            ("Rooms and seat sharing", "Punjab Colony, Garden, Saddar and Malir", "../karachi/lawyer-room-for-rent/index.html"),
+            ("Case law library", "Section-wise research guides", "../case-law/index.html"),
+        ],
+        "sections": [
+            {"h2": "What are the three decisions that matter most?",
+             "answer": "Pick one court, keep your living cost low enough to survive a small stipend, and build a referral network deliberately rather than hoping for one.",
+             "html": """
+<ol class="steps">
+<li><b>Choose a court.</b> City Courts, Malir or the Sindh High Court. Mastery of one court beats rushing between five.</li>
+<li><b>Control your rent.</b> A chamber seat share plus a shared room near the court is the cheapest workable combination.</li>
+<li><b>Build your network on purpose.</b> Chamber seniors, the bar room and your batchmates are the three channels that actually send work.</li>
+</ol>
+"""},
+        ],
+        "faqs": [
+            ("What is the cheapest way for a new lawyer to live near the courts?", "A chamber seat share, typically Rs 6,000 to 15,000 a month, combined with a shared room at Rs 8,000 to 15,000. It cuts the daily commute and the monthly cost at the same time."),
+            ("Where are legal jobs in Karachi advertised?", "Mostly they are not. Chambers hire through visits and referrals. Firms and companies do advertise, but the hidden market is much larger."),
+        ],
+        "related": [("Lawyer jobs in Karachi", "../karachi/lawyer-jobs/index.html"),
+                    ("Rooms for rent", "../karachi/lawyer-room-for-rent/index.html")],
     },
 ]
 
-# ---------------- extra pages (hub links ko complete karne ke liye) ----------------
-PAGES.extend([
+
+# ---------------------------------------------------------------- articles
+PAGES = [
     {
-        "slug": "case-law/497-crpc/index.html",
-        "url": "case-law/497-crpc/",
-        "title": "497 CrPC Case Law — Bail in Non-Bailable Offence (Pakistan)",
-        "h1": "497 CrPC — Bail Case Law (Pakistan)",
-        "desc": "Section 497 CrPC Pakistan: non-bailable offence mein bail ka framework, 497(2) ka scope, grounds aur research guide with verification checklist.",
-        "kicker": "Case law · Criminal",
-        "lede": "<b>497 CrPC</b> wo section hai jis par har criminal lawyer ka roz ka kaam chalta hai: non-bailable offence mein bail.",
+        "slug": "career/law-gat/index.html",
+        "url": "career/law-gat/",
+        "title": "Law-GAT 2026: Test Date, Syllabus, Past Papers and Result",
+        "h1": "Law-GAT 2026 — the Law Graduate Assessment Test",
+        "desc": "What Law-GAT is, who can sit it, how to register, what the syllabus covers, how to use past papers, and where to check your result. A complete guide for Pakistani law graduates.",
+        "kicker": "Career · Entry",
+        "answer": "Law-GAT is the assessment test that Pakistani law graduates must pass before enrolling as an advocate. It is conducted by HEC with the Pakistan Bar Council and is normally held twice a year.",
+        "facts": [
+            ("Conducted by", "Higher Education Commission (HEC) with the Pakistan Bar Council"),
+            ("Frequency", "Usually twice a year; HEC confirms each cycle"),
+            ("Required for", "Advocate enrollment with a provincial bar council"),
+            ("Format", "Multiple-choice questions across core legal subjects"),
+            ("Result", "Checked on the official HEC portal with roll number or CNIC"),
+        ],
         "sections": [
-            {"h2": "Framework — 496, 497 aur 498", "html": """
-<p>Criminal Procedure Code ka bail ka chapter aam taur par in sections par khara hai: <b>496</b> (bailable offences), <b>497</b> (non-bailable offences) aur <b>498</b> (Sessions Court / High Court ke powers).</p>
-<p>Section 497 aam taur par do hisson mein samjha jata hai: pehla hissa jab accused ko bail na milne ka general rule, aur doosra (aksar <b>497(2)</b> kaha jane wala hissa) jahan court ko discretion milta hai jab record se further inquiry ka maqam banta ho.</p>
-<div class="callout"><b>Zaroori:</b> Section ka exact text aur us ki sub-clauses bare act se parhein. Har provincial/court practice mein interpretation ka farq ho sakta hai — apne High Court ki binding authorities dekhein.</div>
+            {"h2": "Who is eligible to sit the Law-GAT?",
+             "answer": "Candidates need a recognised LLB or equivalent degree, identity documents and the prescribed fee. Final-year students can often apply, but confirm the current notification.",
+             "html": """
+<ul>
+<li>A recognised <b>LLB</b>, or an equivalent degree accepted by the Pakistan Bar Council</li>
+<li>CNIC and degree or transcript details</li>
+<li>Registration fee for that cycle, paid through the route stated in the notification</li>
+<li>Foreign degree holders must first complete HEC equivalence</li>
+</ul>
+<div class="callout"><b>Do this first:</b> read the current notification on HEC's official website. Do not trust dates forwarded on WhatsApp or published on blogs, including this page.</div>
 """},
-            {"h2": "Bail ke grounds — issue map", "html": """
+            {"h2": "What does the syllabus cover?",
+             "answer": "The test centres on core subjects: constitutional law, criminal law and procedure, civil law, the law of evidence and family law, plus legal English.",
+             "html": """
 <table class="tbl">
-<thead><tr><th>Issue</th><th>Kya dekhna hai</th></tr></thead>
+<thead><tr><th>Subject</th><th>What to revise</th></tr></thead>
 <tbody>
-<tr><td>Nature of offence</td><td>Death/life imprisonment wala offence? Prohibitory clause ka scope</td></tr>
-<tr><td>Further inquiry</td><td>Record se sawal ubnay ka maqam — kya evidence primâ facie nahi banta</td></tr>
-<tr><td>Investigation status</td><td>Challan pesh, recovery ho chuki, custody ki muddat</td></tr>
-<tr><td>Flight risk</td><td>Permanent address, family, roots in society</td></tr>
-<tr><td>Parity</td><td>Co-accused ko bail mil chuki hai</td></tr>
-<tr><td>Health / age / gender</td><td>Documented grounds jo section mein specifically mention hon</td></tr>
-<tr><td>Delay in trial</td><td>Custody ki muddat vs trial ki raftaar</td></tr>
+<tr><td>Constitutional law</td><td>Fundamental rights, writ jurisdiction, key constitutional provisions</td></tr>
+<tr><td>Criminal law</td><td>Core PPC offences (qatl, hurt, property) and CrPC procedure</td></tr>
+<tr><td>Civil law</td><td>CPC (plaint, jurisdiction, appeals), Contract Act, Specific Relief</td></tr>
+<tr><td>Law of evidence</td><td>Qanun-e-Shahadat 1984: relevancy, burden of proof, documents</td></tr>
+<tr><td>Family law</td><td>MFLO 1961, dissolution of marriage, custody, maintenance</td></tr>
+<tr><td>Legal English</td><td>Comprehension, legal terminology, drafting basics</td></tr>
 </tbody>
 </table>
 """},
-            {"h2": "Research kaise karein", "html": """
+            {"h2": "What is a realistic 60-day preparation plan?",
+             "answer": "Spend the first ten days on bare Acts, the next fifteen on subject-wise practice questions, then past papers under time pressure, and the final week on revision only.",
+             "html": """
 <ol class="steps">
-<li>Keywords: "497 CrPC", "further inquiry", "prohibitory clause", "bail — deep-rooted enmity", "bail — recovery", "bail — challan".</li>
-<li>Pehle <b>Supreme Court</b>, phir apne <b>High Court</b> ki authorities — binding hierarchy yaad rakhein.</li>
-<li>Har authority ka operative paragraph parhein — headnote par bharosa na karein.</li>
-<li>Latest status check karein: review, larger bench, ya subsequent distinguishing cases.</li>
+<li><b>Days 1–10:</b> read the bare Acts for PPC, CrPC and CPC. Turn key sections into flashcards.</li>
+<li><b>Days 11–25:</b> subject-wise practice questions. Write down the <i>reason</i> for every wrong answer.</li>
+<li><b>Days 26–40:</b> past papers under timed conditions. Keep a list of weak areas.</li>
+<li><b>Days 41–52:</b> weak areas, plus evidence and family law.</li>
+<li><b>Days 53–60:</b> revision and full-length mocks. Add no new material.</li>
 </ol>
 """},
-            {"h2": "Application likhne se pehle", "html": """
-<p>Bail application ka format aur grounds ka structure hamare <a href="../../drafts/bail-application-format/index.html">Bail application format</a> page par hai. Yaad rakhein: bail ka maqsad trial ke doran release hai — acquittal nahi. Application ki zaban wahi rakhein.</p>
+            {"h2": "Where do you check the result and answer key?",
+             "answer": "Only on the official HEC result portal, using your roll number or CNIC. Result day traffic is heavy, so retry on the official portal rather than clicking on forwarded links.",
+             "html": """
+<p class="mini">Warning: any "leaked result" link shared before the official announcement is usually phishing. Log in only through the official portal.</p>
+"""},
+            {"h2": "What happens after you pass?",
+             "answer": "You apply to your provincial bar council for enrollment, which includes a prescribed pupillage in a senior advocate's chamber.",
+             "html": """
+<p>In Sindh, the application goes to the Sindh Bar Council and includes a six-month pupillage, documents and the current fees.
+The full sequence is in our <a href="../bar-council-enrollment/index.html">bar council enrollment guide</a>.</p>
 """},
         ],
         "faqs": [
-            ("497 CrPC mein bail kab milti hai?", "Court facts aur record dekh kar faisla karti hai — aam taur par jahan further inquiry ka maqam ho, ya section mein di gayi specific sooraten maujood hon. Apne facts par latest binding authority zaroor check karein."),
-            ("497(2) ka kya matlab hai?", "Ye aam taur par section 497 ke us hisse ko kaha jata hai jahan court ko further inquiry ka maqam banne par bail ka discretion milta hai. Exact wording bare act se parhein."),
-            ("Bail reject ho to kahan appeal karein?", "Aam taur par Sessions Court ya High Court ka raasta hota hai (498 CrPC). Procedure aur limitation apne case ki qism ke mutabiq verify karein."),
+            ("How many times a year is the Law-GAT held?", "Usually twice a year, but HEC confirms the schedule for each cycle. Always check the official notification."),
+            ("Can I become an advocate without the Law-GAT?", "The prescribed test must be passed before enrollment as an advocate. Confirm the current requirement with your provincial bar council."),
+            ("What if I fail?", "You can normally attempt the next cycle. Use the gap to work in a chamber: drafting practice helps both the retest and the pupillage that follows."),
+            ("When is the result announced?", "The result timeline is set by HEC in each notification and published on its official portal."),
+        ],
+        "sources": [
+            ("Higher Education Commission — Law-GAT notifications", "https://www.hec.gov.pk/", "official"),
+            ("Pakistan Bar Council — enrollment rules and forms", "https://pakistanbarcouncil.org/", "official"),
+        ],
+        "related": [("Bar council enrollment guide", "career/bar-council-enrollment/index.html"),
+                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
+                    ("High Court licence", "career/high-court-license/index.html")],
+    },
+    {
+        "slug": "case-law/302-ppc/index.html",
+        "url": "case-law/302-ppc/",
+        "title": "302 PPC Case Law — Qatl-i-amd in Pakistan (Research Guide)",
+        "h1": "302 PPC Case Law — Qatl-i-amd",
+        "desc": "Section 302 PPC explained: punishment, the elements courts examine, qisas, waiver and compounding, plus how to research 302 case law in Pakistan properly.",
+        "kicker": "Case law · Criminal",
+        "answer": "Section 302 of the Pakistan Penal Code sets the punishment for qatl-i-amd (intentional murder). The court chooses between death as qisas, imprisonment for life, or a term of imprisonment, depending on the facts and on the qisas process.",
+        "facts": [
+            ("Statute", "Pakistan Penal Code 1860, Chapter XVI"),
+            ("Definitions", "Section 300 defines qatl-i-amd and its exceptions"),
+            ("Punishment", "Section 302 — death as qisas, life imprisonment, or a term of imprisonment"),
+            ("Related sections", "299 (definitions), 301, 304, 305–310 (qisas, waiver, compounding)"),
+            ("Most searched form", "\u201c302 case law pakistan in urdu\u201d"),
+        ],
+        "sections": [
+            {"h2": "What does section 302 actually provide?",
+             "answer": "It provides the punishment for qatl-i-amd: death as qisas where qisas is available, imprisonment for life where qisas is waived or not applicable, or imprisonment for a stated term.",
+             "html": """
+<p>The section cannot be read alone. The chain runs through section 299 (definitions), 300 (when culpable homicide becomes
+qatl-i-amd), 301 (transfer of intent), 302 (punishment), and 304 to 310, which govern qisas, waiver and compounding.
+Read the bare Act for the exact wording before you rely on any summary.</p>
+"""},
+            {"h2": "Which issues does the court decide in a 302 case?",
+             "answer": "Four questions dominate: whether the offence is qatl-i-amd or a lesser form, whether each element is proved, whether qisas is available or waived, and whether a lesser conviction fits the record.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Issue</th><th>What the court looks at</th></tr></thead>
+<tbody>
+<tr><td>Intent</td><td>Motive, weapon, site of injury, medical evidence</td></tr>
+<tr><td>Proof of elements</td><td>Mens rea, act, causation, official and medical record</td></tr>
+<tr><td>Qisas</td><td>Heirs, waiver, compounding under sections 305–310</td></tr>
+<tr><td>Lesser conviction</td><td>Whether the record supports 304, 308 or a hurt offence instead</td></tr>
+<tr><td>Evidence</td><td>Ocular testimony, delay in FIR, identification, recovery</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "How do you research 302 case law in Pakistan?",
+             "answer": "Search the court portals using section-based key words, start from headnotes, then read the operative paragraph of every judgment and confirm it has not been reviewed.",
+             "html": """
+<ol class="steps">
+<li>Search the Supreme Court and High Court portals with: "302 PPC", "qatl-i-amd", "qisas", "waiver", "304 PPC", "benefit of doubt".</li>
+<li>Use reporters such as PLD, SCMR and YLR to find the headnote, then read the operative part of the judgment itself.</li>
+<li>Check whether a later bench has reviewed, overruled or distinguished the authority.</li>
+<li>Prefer the binding authority of your own High Court before citing another province's judgment.</li>
+</ol>
+<div class="callout"><b>Never file a citation you have not opened.</b> AI tools can generate citations that do not exist, and a wrong citation is the fastest way to lose a judge's confidence.</div>
+"""},
+        ],
+        "faqs": [
+            ("What is the punishment under section 302 PPC?", "Death as qisas, imprisonment for life, or imprisonment for a stated term, depending on the facts and the qisas process. Always read the bare Act and the current authority."),
+            ("Can qisas be waived in a 302 case?", "The qisas framework in sections 305 to 310 deals with waiver and compounding, and a waiver can change the sentence. The effect depends on your facts, so check the latest authority."),
+            ("What is the difference between 302 and 324 PPC?", "Section 302 concerns qatl-i-amd and its punishment, while section 324 concerns an attempt to commit qatl. Compare the elements in the bare Act."),
+        ],
+        "sources": [
+            ("Supreme Court of Pakistan — judgments", "https://www.supremecourt.gov.pk/", "official"),
+            ("Sindh High Court — case law portal", "https://caselaw.shc.gov.pk/", "official"),
+        ],
+        "related": [("497 CrPC bail case law", "case-law/497-crpc/index.html"),
+                    ("Bail application format", "drafts/bail-application-format/index.html"),
+                    ("Case law library", "case-law/index.html")],
+    },
+    {
+        "slug": "drafts/bail-application-format/index.html",
+        "url": "drafts/bail-application-format/",
+        "title": "Bail Application Format in Pakistan — Structure and Grounds",
+        "h1": "Bail Application Format (Pakistan)",
+        "desc": "How a bail application is structured in Pakistan: sections 496, 497 and 498 CrPC, the seven parts of the application, grounds the court actually hears, and common mistakes.",
+        "kicker": "Drafts · Criminal",
+        "answer": "A bail application in Pakistan has seven parts: heading, title, brief facts, numbered grounds, legal basis, prayer and annexures. The grounds must be tied to facts on the record, not to general statements.",
+        "facts": [
+            ("Bailable offences", "Section 496 CrPC"),
+            ("Non-bailable offences", "Section 497 CrPC"),
+            ("Sessions Court and High Court powers", "Section 498 CrPC"),
+            ("Illegal detention", "Section 491 CrPC"),
+            ("Bail after conviction", "Section 426 CrPC"),
+        ],
+        "sections": [
+            {"h2": "Which section applies to your case?",
+             "answer": "Read the sections in the FIR first: if the offence is bailable, section 496 applies; if it is non-bailable, section 497 applies and section 498 governs the higher courts.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Provision</th><th>When it applies</th></tr></thead>
+<tbody>
+<tr><td>496 CrPC</td><td>Bailable offences</td></tr>
+<tr><td>497 CrPC</td><td>Non-bailable offences, including the further-inquiry discretion</td></tr>
+<tr><td>498 CrPC</td><td>Bail powers of the Sessions Court and High Court</td></tr>
+<tr><td>491 CrPC</td><td>Illegal detention</td></tr>
+<tr><td>426 CrPC</td><td>Suspension of sentence and bail pending appeal</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "What does a well-drafted application look like?",
+             "answer": "It is short. Four to six lines of facts, then numbered grounds, one legal point each, and a prayer that states exactly what the court should order.",
+             "html": """
+<ol class="steps">
+<li><b>Heading:</b> court, case or FIR number, police station, sections and parties.</li>
+<li><b>Title:</b> "Application for grant of bail under section ___ CrPC".</li>
+<li><b>Brief facts:</b> the FIR version, the accused's role, the date of arrest and the custody period.</li>
+<li><b>Grounds:</b> numbered, each one a separate legal point tied to the record.</li>
+<li><b>Legal basis:</b> only provisions and authorities you have verified.</li>
+<li><b>Prayer:</b> a clear request, plus any conditions you accept.</li>
+<li><b>Verification, affidavit and vakalatnama.</b></li>
+</ol>
+"""},
+            {"h2": "Which grounds does the court actually consider?",
+             "answer": "Grounds that are documented: investigation already complete, no flight risk, weak or suspicious evidence, delay, parity with a co-accused, and health or age factors.",
+             "html": """
+<ul>
+<li><b>Investigation complete</b> — no further recovery or interrogation is needed</li>
+<li><b>No flight risk</b> — permanent address, family and roots in the community</li>
+<li><b>Weak evidence</b> — point to specific gaps in the record, not to argument</li>
+<li><b>Delay</b> — in the FIR, in arrest, or in trial</li>
+<li><b>Parity</b> — a co-accused has already been granted bail, with the order cited</li>
+<li><b>Health, age or gender</b> — supported by documents</li>
+</ul>
+<div class="callout"><b>Practice tip:</b> Attach facts to each ground. "The accused has been in custody for three days, the challan is filed and no recovery is on record" persuades; "the accused is innocent" does not.</div>
+"""},
+            {"h2": "What are the most common drafting mistakes?",
+             "answer": "Confusing bail with acquittal, repeating the whole FIR, citing unverified authority, leaving the prayer vague and filing incomplete annexures.",
+             "html": """
+<p>Bail decides release during trial, not guilt. Keep the language to that question, and check court fee and stamp requirements
+at the filing branch, because they vary by court and by the nature of the case.</p>
+"""},
+        ],
+        "faqs": [
+            ("Do bail applications have to be in English?", "Court filings are normally in English. An Urdu summary for the client is useful, but the filing itself follows the court's practice."),
+            ("What is the difference between sections 497 and 498 CrPC?", "Section 497 sets out bail in non-bailable offences before the trial court, while section 498 gives the Sessions Court and High Court power to grant bail. The forum you choose decides which provision you rely on."),
+            ("What if bail is refused?", "Read the reasons recorded in the order, strengthen the grounds with record-based facts, and consider the appellate forum. Check the procedure and limitation for your case type."),
+        ],
+        "sources": [
+            ("Sindh High Court — rules and practice", "https://www.sindhhighcourt.gov.pk/", "official"),
+            ("Pakistan Bar Council — professional conduct rules", "https://pakistanbarcouncil.org/", "official"),
+        ],
+        "related": [("497 CrPC case law", "case-law/497-crpc/index.html"),
+                    ("Legal notice format", "drafts/legal-notice-format/index.html"),
+                    ("302 PPC case law", "case-law/302-ppc/index.html")],
+    },
+    {
+        "slug": "drafts/legal-notice-format/index.html",
+        "url": "drafts/legal-notice-format/",
+        "title": "Legal Notice Format in Pakistan — Recovery, Cheque and Rent",
+        "h1": "Legal Notice Format (Pakistan)",
+        "desc": "How to draft a legal notice in Pakistan: the nine required parts, how to prove delivery, what a 15-day period really means, and the mistakes that weaken a notice.",
+        "kicker": "Drafts · Civil",
+        "answer": "A legal notice is a formal written demand that sets out the facts, the default, the exact relief wanted and a deadline. Written properly, it ends many disputes before a suit is filed.",
+        "facts": [
+            ("Typical deadline", "15 days is common practice, but statutory periods vary"),
+            ("Proof of delivery", "Registered post with acknowledgement due, or tracked courier"),
+            ("Common uses", "Recovery of money, cheque dishonour, rent, contract breach, defamation"),
+            ("No government fee", "The cost is professional fees and postage"),
+        ],
+        "sections": [
+            {"h2": "When should a legal notice be sent?",
+             "answer": "Before litigation, whenever a demand can still resolve the dispute, and whenever a statute requires prior notice as a condition for filing.",
+             "html": """
+<ul>
+<li><b>Recovery of money</b> — unpaid loans, invoices or services</li>
+<li><b>Cheque dishonour</b> — before a 489-F PPC complaint</li>
+<li><b>Rent and eviction</b> — under the applicable rented premises law</li>
+<li><b>Breach of contract</b> — demanding performance or accepting termination</li>
+<li><b>Property and possession</b> — warning against unlawful dispossession</li>
+<li><b>Defamation</b> — demanding a retraction</li>
+</ul>
+"""},
+            {"h2": "What are the nine parts of a legal notice?",
+             "answer": "Letterhead and date, correct addressee, subject line, chronology, the default, the exact demand, the deadline, the consequence and a reservation of rights.",
+             "html": """
+<ol class="steps">
+<li>Letterhead, date and reference number</li>
+<li>Full name and complete postal address of the addressee</li>
+<li>A specific subject line, such as "Legal notice for recovery of Rs ___"</li>
+<li>Chronology with dates: when the agreement was made, what was delivered, what remains due</li>
+<li>The default or breach, tied to a clause or section</li>
+<li>A precise demand: the exact amount or action</li>
+<li>A deadline, commonly 15 days</li>
+<li>The consequence of non-compliance, including costs</li>
+<li>Reservation of rights and the advocate's signature</li>
+</ol>
+"""},
+            {"h2": "How do you prove the notice was delivered?",
+             "answer": "Send it by registered post with acknowledgement due or a tracked courier, and keep the receipt, the tracking record and a copy of the notice in your file.",
+             "html": """
+<p>In court, the first question is not what the notice said but whether it was served. Email or WhatsApp notices only work where the
+contract or the law allows them, and even then you must keep the send confirmation and a screenshot.</p>
+<div class="callout"><b>Note:</b> the date on the notice and the date of dispatch are different things. Courts look at both.</div>
+"""},
+            {"h2": "Is a 15-day period always required?",
+             "answer": "No. Some statutes prescribe their own period, such as suits against the government, so check the specific section rather than assuming 15 days.",
+             "html": """
+<p>Fifteen days is a common practice for commercial demands. Where a statute sets a period, that period governs, and the
+notice must comply with its form as well as its timing.</p>
+"""},
+        ],
+        "faqs": [
+            ("How much does a legal notice cost?", "There is no government fee. The cost is the advocate's professional fee plus registered post or courier charges. Court fee applies only when a suit or complaint is filed."),
+            ("Can a legal notice be sent by WhatsApp?", "Only where the contract or the law permits electronic service, and only with proof of delivery saved. Registered post or courier remains the safer default."),
+            ("Is a notice required before a cheque dishonour complaint?", "Practice and the facts of your case determine this. Check the section, the current approach of the courts, and keep proof that your demand reached the other side."),
+        ],
+        "sources": [
+            ("Pakistan Post — registered post with acknowledgement due", "https://www.pakpost.gov.pk/", "service"),
+            ("Sindh High Court — civil practice", "https://www.sindhhighcourt.gov.pk/", "official"),
+        ],
+        "related": [("489-F PPC case law", "case-law/489-f/index.html"),
+                    ("Plaint format", "drafts/plaint-format/index.html"),
+                    ("Bail application format", "drafts/bail-application-format/index.html")],
+    },
+    {
+        "slug": "career/bar-council-enrollment/index.html",
+        "url": "career/bar-council-enrollment/",
+        "title": "Bar Council Enrollment in Pakistan — Step-by-Step Guide",
+        "h1": "Bar Council Enrollment — the Full Route to Sanad",
+        "desc": "How advocate enrollment works in Pakistan: eligibility under the 1973 Act, documents, the six-month pupillage, fees, the enrollment committee and licence verification.",
+        "kicker": "Career · Licensing",
+        "answer": "Enrollment as an advocate requires a recognised LLB, the prescribed test, a six-month pupillage in a senior advocate's chamber, the documents and fees, and clearance by the provincial bar council's enrollment committee.",
+        "facts": [
+            ("Governing law", "Legal Practitioners and Bar Councils Act, 1973 (sections 26 and 27)"),
+            ("Minimum age", "21 years"),
+            ("Pupillage", "6 months with a senior advocate, commonly 10 years' standing"),
+            ("Regulator in Sindh", "Sindh Bar Council, Karachi"),
+            ("Roll size", "Sindh Bar Council registration numbers passed 55,000 in 2026"),
+        ],
+        "sections": [
+            {"h2": "Who is eligible for enrollment?",
+             "answer": "A Pakistani or AJK citizen, at least 21 years old, holding a recognised LLB or Bar-at-Law, who has passed the prescribed test and meets the character requirements.",
+             "html": """
+<ul>
+<li>Citizenship of Pakistan or Azad Jammu and Kashmir</li>
+<li>Minimum age of 21 years</li>
+<li>LLB or Bar-at-Law recognised by the Pakistan Bar Council</li>
+<li>Prescribed test passed, under Pakistan Bar Council rules</li>
+<li>No disqualification under sections 26 and 27 of the 1973 Act</li>
+</ul>
+<p class="mini">Holders of foreign degrees must first complete HEC and Pakistan Bar Council equivalence.</p>
+"""},
+            {"h2": "What is the step-by-step process?",
+             "answer": "Pass the Law-GAT, complete six months of pupillage, prepare the document set, apply to the provincial bar council with the fees, appear before the enrollment committee, then collect the certificate and identity card.",
+             "html": """
+<ol class="steps">
+<li><b>Law-GAT</b> — pass the test (see the <a href="../law-gat/index.html">Law-GAT guide</a>).</li>
+<li><b>Pupillage</b> — six prescribed months in a senior's chamber.</li>
+<li><b>Documents</b> — LLB degree and transcripts, CNIC, photographs, character certificate, test result and the prescribed forms.</li>
+<li><b>Application</b> — file with the Sindh Bar Council in Sindh, with the enrollment fee, benevolent fund and other charges set by its rules.</li>
+<li><b>Enrollment committee</b> — review and interview.</li>
+<li><b>Certificate and identity card</b> — issued on approval.</li>
+</ol>
+<div class="callout"><b>Figures change:</b> fee amounts, challan routes and checklists are revised from time to time. Confirm the current requirements at the bar council office or website, not on a blog.</div>
+"""},
+            {"h2": "Why is pupillage the hardest step?",
+             "answer": "Because there is no placement system. Pupillage is mandatory, but finding a chamber still depends almost entirely on personal contacts.",
+             "html": """
+<p>This is the gap WakeelBano exists to close. Practical ways to make pupillage count:</p>
+<ul>
+<li>Take a one-page CV to a chamber visit: what you want to learn, how much time you can give, which area interests you</li>
+<li>Agree the terms at the start: hours, type of work, any stipend, and what you will be taught</li>
+<li>Write one page of notes every day — six months later that record is worth more than the degree</li>
+<li>Browse verified chambers in <a href="../../index.html#chambers">Chamber Match</a> on WakeelBano</li>
+</ul>
+"""},
+            {"h2": "How do you verify an advocate's licence?",
+             "answer": "Search the provincial bar council roll by name or registration number. In Sindh, the Sindh Bar Council publishes an advocate verification portal showing district, licence type and status.",
+             "html": """
+<p>Clients and employers should always verify against the roll rather than a screenshot. It is the simplest defence against
+imposters, an issue the Sindh Bar Council has publicly flagged more than once.</p>
+"""},
+            {"h2": "What should you do in the first 90 days after enrollment?",
+             "answer": "Commit to one court and a few case types, start a practice record, build a clean public profile, and tell twenty people in person what you do.",
+             "html": """
+<ul>
+<li>Fix your court, area and case types — spreading thin does not generate income</li>
+<li>Record every appearance and file, because the High Court licence will need that record</li>
+<li>Set up a LinkedIn profile, WhatsApp Business and a verified listing</li>
+<li>Tell your network directly: most first briefs come from referrals, not advertising</li>
+</ul>
+"""},
+        ],
+        "faqs": [
+            ("How long does it take to become an advocate in Pakistan?", "A five-year LLB, the Law-GAT, six prescribed months of pupillage and the enrollment process: roughly six years in total, depending on individual timing."),
+            ("Is the pupillage paid?", "Not necessarily. Some chambers pay a stipend and many do not, which is why agreeing the terms in writing at the start is important."),
+            ("How much are enrollment fees?", "The enrollment fee, benevolent fund and other charges are set by bar council rules and are revised over time. Ask the Sindh Bar Council for the current challan and breakdown."),
+            ("Can I practise in another province after enrolling in Sindh?", "Practice rights follow your enrollment and licence type. Confirm the position with the bar council concerned before taking instructions outside your province."),
+        ],
+        "sources": [
+            ("Legal Practitioners and Bar Councils Act, 1973", "http://nasirlawsite.com/laws/baract.htm", "statute"),
+            ("Sindh Bar Council — advocate verification", "https://advocates.sindhbarcouncil.org/", "official register"),
+            ("Pakistan Bar Council — enrollment", "https://pakistanbarcouncil.org/", "official"),
+        ],
+        "related": [("Law-GAT guide", "career/law-gat/index.html"),
+                    ("How to become a lawyer", "career/how-to-become-lawyer-pakistan/index.html"),
+                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html")],
+    },
+    {
+        "slug": "career/lawyer-salary-pakistan/index.html",
+        "url": "career/lawyer-salary-pakistan/",
+        "title": "Lawyer Salary in Pakistan 2026 — Junior, Firm and Independent",
+        "h1": "Lawyer Salary in Pakistan (2026)",
+        "desc": "Realistic lawyer salary ranges in Pakistan for 2026: pupillage, junior associates, law firms and independent practice, compared with the Sindh minimum wage.",
+        "kicker": "Career · Money",
+        "answer": "Most fresh lawyers in Pakistan earn between Rs 25,000 and Rs 50,000 a month, and many pupils are paid nothing at all, while the Sindh minimum wage for unskilled work is Rs 43,000.",
+        "facts": [
+            ("Pupillage", "Rs 0 to 25,000 a month"),
+            ("Junior associate, litigation chamber", "Rs 25,000 to 50,000"),
+            ("Law firm associate", "Rs 50,000 to 120,000+"),
+            ("Mid-level, 3–7 years", "Rs 80,000 to 250,000"),
+            ("Sindh minimum wage, 2026–27", "Rs 43,000 a month"),
+        ],
+        "sections": [
+            {"h2": "What are the realistic salary ranges?",
+             "answer": "Litigation chambers pay the least and law firms the most, with corporate and in-house roles paying more than chambers at every level of experience.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Stage</th><th>Typical monthly (PKR)</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>Internship or pupillage</td><td>0 – 25,000</td><td>Frequently unpaid</td></tr>
+<tr><td>Fresh associate, litigation chamber</td><td>25,000 – 50,000</td><td>Karachi and Lahore at the upper end</td></tr>
+<tr><td>Corporate law firm associate</td><td>50,000 – 120,000+</td><td>Higher pay, longer hours</td></tr>
+<tr><td>Mid-level, 3–7 years</td><td>80,000 – 250,000</td><td>Depends on firm type and client base</td></tr>
+<tr><td>Independent practice</td><td>Variable</td><td>Fee per case; low at first, rising with reputation</td></tr>
+</tbody>
+</table>
+<p class="mini">Ranges are indicative and drawn from public salary discussions, market reporting and practice observation between 2023 and 2026. Your city, firm and practice area will move the number.</p>
+"""},
+            {"h2": "Why is the pay so low compared with the minimum wage?",
+             "answer": "Because Pakistani litigation uses a lump-sum fee per case rather than hourly billing, so a junior's time is a cost to the senior rather than billable revenue.",
+             "html": """
+<ul>
+<li><b>Lump-sum fees:</b> there is no hourly billing culture in most chambers, so juniors are not revenue producers</li>
+<li><b>Training period:</b> a fresh graduate typically needs one to two years to become useful</li>
+<li><b>Retention:</b> many juniors leave within two years, which discourages investment</li>
+<li><b>Supply:</b> thousands of graduates enter the market each year for a limited number of paid seats</li>
+</ul>
+<div class="callout"><b>Know your position:</b> put the chamber terms in writing. "You are here to learn" does not mean you cannot agree a minimum contribution towards expenses and a clear scope of training.</div>
+"""},
+            {"h2": "How can a junior lawyer increase income?",
+             "answer": "Specialise in one area, master one court, take remote drafting work from foreign firms, build a visible professional profile and use idle hours for paid research and drafting.",
+             "html": """
+<ol class="steps">
+<li><b>Specialise.</b> A lawyer who does everything has no rate.</li>
+<li><b>Master one court.</b> Learn its practice, its filing staff and its judges' expectations.</li>
+<li><b>Add remote work.</b> Foreign firms pay in dollars for drafting, research and document review.</li>
+<li><b>Be visible.</b> Educational content within professional conduct rules brings referrals.</li>
+<li><b>Fill idle time.</b> The Kaam Board on WakeelBano lists paid drafting and research tasks.</li>
+</ol>
+"""},
+            {"h2": "What is a good way to negotiate chamber terms?",
+             "answer": "Offer a specific commitment in return for a specific arrangement: hours, learning scope and a minimum monthly amount, agreed in writing.",
+             "html": """
+<p>A workable opening: "I can commit six months, I want to work on drafting, research and court appearances, and I would
+like a minimum of Rs ___ a month plus one study day a week." Specific candidates get taken seriously; candidates who only ask
+about pay are replaced.</p>
+"""},
+        ],
+        "faqs": [
+            ("What is a fresh lawyer's salary in Pakistan?", "Usually Rs 25,000 to Rs 50,000 a month, depending on the city and the firm. Many chambers pay no stipend during pupillage."),
+            ("Can a chamber legally pay below the minimum wage?", "This depends on how the relationship is classified and on the sector-specific rules. Many chambers treat juniors as trainees rather than employees. For your own position, take advice from a labour or employment lawyer."),
+            ("How much do independent lawyers earn?", "There is no fixed figure. The first year or two is often very low, and income rises with reputation and case flow. Many lawyers supplement it with teaching, drafting or freelance work."),
+        ],
+        "sources": [
+            ("Sindh minimum wage notification, effective 1 July 2026", "https://lhr.sindh.gov.pk/", "notification"),
+            ("Dawn — junior lawyers' pay dispute (2023)", "https://www.dawn.com/news/1777625", "news"),
+            ("Profit — the economics of junior lawyers (2023)", "https://profit.pakistantoday.com.pk/2023/11/12/cant-pay-the-bills-with-experience", "news"),
+        ],
+        "related": [("Lawyer jobs in Karachi", "karachi/lawyer-jobs/index.html"),
+                    ("How to become a lawyer", "career/how-to-become-lawyer-pakistan/index.html"),
+                    ("Rooms for rent", "karachi/lawyer-room-for-rent/index.html")],
+    },
+    {
+        "slug": "career/how-to-become-lawyer-pakistan/index.html",
+        "url": "career/how-to-become-lawyer-pakistan/",
+        "title": "How to Become a Lawyer in Pakistan — Complete Roadmap",
+        "h1": "How to Become a Lawyer in Pakistan",
+        "desc": "The full roadmap from 12th grade to the Supreme Court: LLB admission, Law-GAT, pupillage, enrollment, the High Court licence, and what to do at each stage.",
+        "kicker": "Career · Roadmap",
+        "answer": "To become a lawyer in Pakistan you need a five-year LLB, the Law-GAT, a six-month pupillage and enrollment with a provincial bar council, which takes about six years in total.",
+        "facts": [
+            ("First degree", "LLB, five years after intermediate"),
+            ("Test", "Law-GAT, conducted by HEC with the Pakistan Bar Council"),
+            ("Pupillage", "Six prescribed months in a senior's chamber"),
+            ("First licence", "Advocate, enrolled with the provincial bar council"),
+            ("High Court", "After two years of practice"),
+        ],
+        "sections": [
+            {"h2": "What does the full roadmap look like?",
+             "answer": "LLB, then the Law-GAT, then pupillage, then enrollment, then two years of practice before a High Court licence and seven more before the Supreme Court.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Stage</th><th>Requirement</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td>LLB</td><td>Intermediate plus a university admission test</td><td>5 years</td></tr>
+<tr><td>Law-GAT</td><td>LLB and registration under the HEC notification</td><td>Per test cycle</td></tr>
+<tr><td>Pupillage</td><td>A senior advocate's chamber</td><td>6 months</td></tr>
+<tr><td>Enrollment</td><td>Documents, fees and committee review</td><td>A few months</td></tr>
+<tr><td>High Court licence</td><td>Two years of practice and an application</td><td>2 years</td></tr>
+<tr><td>Supreme Court</td><td>Seven years as a High Court advocate</td><td>7 years</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "What should you look for in an LLB programme?",
+             "answer": "A Pakistan Bar Council recognised university, a curriculum that includes supervised internships, and a location you can afford for five years.",
+             "html": """
+<ul>
+<li><b>Recognition:</b> confirm HEC and Pakistan Bar Council recognition before paying any fee</li>
+<li><b>Cost:</b> public colleges are far cheaper than private universities over five years</li>
+<li><b>Practice exposure:</b> moots, internships and legal aid clinics matter more than the brochure</li>
+<li><b>Test it first:</b> spend one summer in a chamber before committing five years</li>
+</ul>
+"""},
+            {"h2": "What should you do during law school that pays off later?",
+             "answer": "Complete three different internships, write drafts by hand, do two serious moots and read one judgment a day in English.",
+             "html": """
+<ol class="steps">
+<li><b>Three internships</b> — a trial court chamber, a law firm and an in-house legal department.</li>
+<li><b>Write drafts</b> — a plaint, written statement, bail application and notice every week, from scratch.</li>
+<li><b>Moot twice</b> — oral advocacy confidence is built only by standing up.</li>
+<li><b>Legal English</b> — one judgment and a five-line summary every day.</li>
+<li><b>Pick an area</b> — match your interest with where the work actually is.</li>
+</ol>
+"""},
+            {"h2": "Where do people lose the most time?",
+             "answer": "They study without ever entering a chamber, rely on contacts instead of skills, refuse to specialise, and leave their documents incomplete.",
+             "html": """
+<p>Each of these costs months. A student who interns early, drafts weekly and keeps a clean document file moves through the
+Law-GAT and enrollment significantly faster than one who starts preparing after graduation.</p>
+"""},
+        ],
+        "faqs": [
+            ("Can I become a lawyer after 10th grade?", "No. You need intermediate, then a five-year LLB. After 10th grade you can only take support roles such as a court clerk or office assistant."),
+            ("Is it possible to study law in Urdu medium?", "The degree and court work are in English, so legal English has to be built. Many successful lawyers come from Urdu-medium backgrounds, but drafting and reading happen in English."),
+            ("How much does it cost to become a lawyer?", "It varies widely: public law colleges are inexpensive, while private universities can cost several lakh over five years, before test fees, enrollment fees and pupillage costs."),
+        ],
+        "sources": [
+            ("Higher Education Commission — recognised programmes", "https://www.hec.gov.pk/", "official"),
+            ("Pakistan Bar Council — legal education", "https://pakistanbarcouncil.org/", "official"),
+        ],
+        "related": [("Bar council enrollment", "career/bar-council-enrollment/index.html"),
+                    ("Law-GAT guide", "career/law-gat/index.html"),
+                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html")],
+    },
+    {
+        "slug": "karachi/lawyer-jobs/index.html",
+        "url": "karachi/lawyer-jobs/",
+        "title": "Lawyer Jobs in Karachi — Chambers, Firms and In-House",
+        "h1": "Lawyer Jobs in Karachi",
+        "desc": "Where legal jobs actually exist in Karachi: chambers, law firms, corporate legal departments and remote work, plus a CV structure and realistic salary expectations.",
+        "kicker": "Karachi · Jobs",
+        "answer": "Most legal jobs in Karachi are never advertised. Chambers hire through visits and referrals, so a one-page CV and a sample draft delivered in person works better than applying online.",
+        "facts": [
+            ("Hidden market", "Most chamber positions are filled through referrals"),
+            ("Pupil or trainee", "Rs 0 to 25,000 a month"),
+            ("Junior chamber associate", "Rs 25,000 to 50,000"),
+            ("Law firm associate", "Rs 50,000 to 120,000+"),
+            ("In-house, 0–2 years", "Rs 60,000 to 120,000"),
+        ],
+        "sections": [
+            {"h2": "What kinds of legal jobs exist in Karachi?",
+             "answer": "Six types: chamber associate, law firm associate, in-house counsel, public sector roles, court research assistantships and remote freelance work.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Type</th><th>What the work looks like</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>Chamber associate or pupil</td><td>Drafting, research, appearances with a senior</td><td>City Courts and Sindh High Court chambers</td></tr>
+<tr><td>Law firm associate</td><td>Corporate, tax, disputes and transactions</td><td>Karachi's commercial districts</td></tr>
+<tr><td>In-house legal</td><td>Contracts, compliance, litigation management</td><td>Banks, telecom, FMCG, technology companies</td></tr>
+<tr><td>Public sector</td><td>Prosecution, government legal drafting</td><td>Provincial and federal departments</td></tr>
+<tr><td>Court research assistant</td><td>Research and drafting for judges</td><td>High Court and Supreme Court registries</td></tr>
+<tr><td>Remote freelance</td><td>Drafting, research, document review</td><td>From home, for foreign clients</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "How do you find the jobs that are never advertised?",
+             "answer": "Visit chambers in person, ask your batchmates and seniors, watch the bar room notice board, and use verified listings rather than waiting for a job post.",
+             "html": """
+<ul>
+<li>A senior or classmate who already knows your work</li>
+<li>Chamber visits with a printed CV, which work better than email</li>
+<li>Notice boards in the bar room and near the courts</li>
+<li>Your law college alumni group</li>
+<li>Verified chamber listings on WakeelBano</li>
+</ul>
+<div class="callout"><b>Red flag:</b> anyone charging a "placement fee" or promising a guaranteed job is almost always a fraud. Reputable chambers do not ask for money.</div>
+"""},
+            {"h2": "What should a one-page CV contain?",
+             "answer": "Name and contact details, a line on your practice interest, verified counts of your drafting and court experience, internships, skills and a sample draft.",
+             "html": """
+<ul>
+<li><b>Header:</b> name, phone, email, city and one line on your area of interest</li>
+<li><b>Replace objectives with evidence:</b> "drafted 3 bail applications, 12 legal notices, observed 40+ appearances"</li>
+<li><b>Internships:</b> chamber name, court, dates and what you actually did</li>
+<li><b>Skills:</b> drafting types, research databases, languages</li>
+<li><b>Education and status:</b> LLB, Law-GAT, pupillage stage</li>
+<li><b>One sample draft attached</b> — it demonstrates ability faster than any claim</li>
+</ul>
+"""},
+            {"h2": "What should you expect to be paid?",
+             "answer": "Expect nothing to Rs 25,000 during pupillage, Rs 25,000 to 50,000 as a junior chamber associate, and more in firms and in-house roles.",
+             "html": """
+<p>For the full breakdown, see <a href="../../career/lawyer-salary-pakistan/index.html">lawyer salary in Pakistan</a>,
+which explains why chambers pay what they pay.</p>
+"""},
+        ],
+        "faqs": [
+            ("How do I get my first legal job in Karachi?", "Go in person. Take a one-page CV and a sample draft to chambers near the courts you want to practise in, and ask your seniors for introductions. Referrals fill most openings."),
+            ("Do law firms hire fresh graduates?", "Yes, but usually through internships first. A strong internship record and a writing sample matter more than grades alone."),
+            ("Are remote legal jobs available in Pakistan?", "Yes. Foreign firms and legal process outsourcers hire Pakistani lawyers for drafting, research and document review, usually paid in dollars. Strong English and a writing sample are essential."),
+        ],
+        "sources": [
+            ("Sindh High Court — cause lists and registries", "https://www.sindhhighcourt.gov.pk/", "official"),
+            ("Karachi Bar Association — City Courts", "https://www.karachibarassociation.com/", "association"),
+        ],
+        "related": [("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
+                    ("Rooms for rent", "karachi/lawyer-room-for-rent/index.html"),
+                    ("Bar council enrollment", "career/bar-council-enrollment/index.html")],
+    },
+    {
+        "slug": "karachi/lawyer-room-for-rent/index.html",
+        "url": "karachi/lawyer-room-for-rent/",
+        "title": "Room for Rent in Karachi for Lawyers — Punjab Colony and Garden",
+        "h1": "Rooms and Chamber Seat Sharing in Karachi",
+        "desc": "Where new lawyers actually live in Karachi: room and seat-share costs in Punjab Colony, Garden, Saddar and Malir, what to check before paying, and how to avoid broker traps.",
+        "kicker": "Karachi · Housing",
+        "answer": "A shared room near the courts in Karachi costs about Rs 8,000 to 15,000 a month, and a chamber seat share costs Rs 6,000 to 15,000, which together make a junior stipend survivable.",
+        "facts": [
+            ("Shared room", "Rs 8,000 – 15,000 a month"),
+            ("Paying guest with meals", "Rs 10,000 – 20,000"),
+            ("Single room in a shared flat", "Rs 14,000 – 25,000"),
+            ("Chamber seat share", "Rs 6,000 – 15,000"),
+            ("Typical deposit", "Two to three months"),
+        ],
+        "sections": [
+            {"h2": "What does it actually cost to live near the courts?",
+             "answer": "On a Rs 30,000 stipend, a shared room and a chamber seat share keep rent and travel low enough to survive the first year.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Option</th><th>Typical monthly (PKR)</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>Shared room for two</td><td>8,000 – 15,000</td><td>Cheapest; utilities sometimes separate</td></tr>
+<tr><td>Paying guest with meals</td><td>10,000 – 20,000</td><td>Cleaner, with house rules</td></tr>
+<tr><td>Single room in a shared flat</td><td>14,000 – 25,000</td><td>Punjab Colony, Garden, Jamshed Road</td></tr>
+<tr><td>Small independent flat</td><td>25,000 – 45,000</td><td>Deposit separate</td></tr>
+<tr><td>Chamber seat share</td><td>6,000 – 15,000</td><td>Desk, cupboard and library access</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "Which areas work best for which court?",
+             "answer": "Punjab Colony and Garden suit City Courts, Jamshed Road balances both courts, Malir is cheapest for Malir court, and Gulshan means a long daily commute.",
+             "html": """
+<ul>
+<li><b>Punjab Colony and Garden</b> — close to City Courts and Saddar, dense lawyer network, cheap food</li>
+<li><b>Saddar</b> — transport from everywhere, but noisy and crowded at night</li>
+<li><b>Jamshed Road and Patel Para</b> — mid-range, reachable to both City Courts and the High Court</li>
+<li><b>Malir</b> — cheapest option if you practise at Malir court</li>
+<li><b>Gulshan-e-Iqbal</b> — better housing, but long and costly daily travel</li>
+<li><b>Clifton and Defence</b> — close to the High Court but outside a junior's budget</li>
+</ul>
+"""},
+            {"h2": "What should you check before paying a deposit?",
+             "answer": "Verify the owner's identity, insist on a written agreement, confirm the electricity meter, water supply, security and the conditions for returning your deposit.",
+             "html": """
+<ol class="steps">
+<li>Owner's CNIC — confirm whether you are dealing with the owner or a sub-letter</li>
+<li>A written rent agreement in two copies, with duration and advance stated</li>
+<li>Electricity: separate meter or shared bill, and who sets the rate</li>
+<li>Water: tank, timing and quality — a constant issue in Karachi</li>
+<li>Security: gate, guard, locks and late-entry arrangements</li>
+<li>Deposit: when and on what conditions it is returned, in writing</li>
+<li>Notice period: how many months either side must give</li>
+<li>Workspace: somewhere to keep files, plus light and internet</li>
+</ol>
+<div class="callout"><b>For women lawyers:</b> check for a family building, a warden or guard, and a separate entrance. Visit in person and speak to current residents rather than relying on assurances.</div>
+"""},
+            {"h2": "How do you avoid broker problems?",
+             "answer": "Ask your chamber network first, deal with owners directly, and never pay a booking amount before seeing the room and signing an agreement.",
+             "html": """
+<ul>
+<li>Ask seniors and colleagues — they often know of an empty seat</li>
+<li>Use your law college alumni group and the bar room notice board</li>
+<li>Deal with the owner directly before agreeing to any commission</li>
+<li>Use verified listings on the WakeelBano Rehail board, filtered by area and budget</li>
+</ul>
+<p class="mini">Never transfer a deposit before viewing the property. Advance payments are the most common rental fraud.</p>
+"""},
+        ],
+        "faqs": [
+            ("How much does a room cost near City Courts in Karachi?", "Shared rooms around Punjab Colony and Garden typically run Rs 8,000 to 15,000 a month, and a chamber seat share adds Rs 6,000 to 15,000."),
+            ("What is a chamber seat share?", "Two or three lawyers share one chamber, each with a desk, and split the rent and utilities. It is the cheapest way for a new lawyer to be based near the courts."),
+            ("Should I rent without a written agreement?", "A written agreement is strongly advised. Without one, disputes over deposits, notice periods and bills are common and hard to resolve."),
+        ],
+        "sources": [
+            ("Sindh Rented Premises Ordinance — rent framework", "http://nasirlawsite.com/laws/", "statute"),
+        ],
+        "related": [("Lawyer jobs in Karachi", "karachi/lawyer-jobs/index.html"),
+                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
+                    ("Bar council enrollment", "career/bar-council-enrollment/index.html")],
+    },
+    {
+        "slug": "career/high-court-license/index.html",
+        "url": "career/high-court-license/",
+        "title": "High Court Licence in Pakistan — Requirements and Process",
+        "h1": "High Court Licence (Advocate High Court)",
+        "desc": "How to obtain a High Court licence in Pakistan: two years of practice, the application, fitness certificates, documents, and how to maintain a practice record from day one.",
+        "kicker": "Career · Licensing",
+        "answer": "A High Court licence requires at least two years of practice in the subordinate courts after enrollment, an application through the bar council, the required certificates and clearance by the High Court.",
+        "facts": [
+            ("Experience required", "Two years in subordinate courts"),
+            ("Legal basis", "Section 27, Legal Practitioners and Bar Councils Act, 1973"),
+            ("Application route", "Through the provincial bar council to the High Court"),
+            ("Key documents", "Practice record, good standing and dues clearance certificates"),
+            ("Supreme Court", "Requires seven years as a High Court advocate"),
+        ],
+        "sections": [
+            {"h2": "What are the eligibility requirements?",
+             "answer": "You must already be enrolled as an advocate, have practised for at least two years in the subordinate courts, and satisfy the application and fitness requirements of the High Court.",
+             "html": """
+<ul>
+<li>Enrollment on the provincial bar council roll</li>
+<li>At least two years of practice before subordinate courts</li>
+<li>The prescribed application form and current fees</li>
+<li>Fitness and character certificates, plus any interview the court requires</li>
+</ul>
+<p class="mini">Confirm current requirements and fees with the Sindh High Court and the Sindh Bar Council, because the process is updated from time to time.</p>
+"""},
+            {"h2": "What is the step-by-step process?",
+             "answer": "Assemble your two-year practice record, file the application through the bar council, obtain the certificates, appear for review or interview, then collect the enrolment certificate.",
+             "html": """
+<ol class="steps">
+<li>Build the practice record: case titles, courts, case numbers and your role in each matter</li>
+<li>File the prescribed application through the bar council</li>
+<li>Obtain good standing, dues clearance and character certificates</li>
+<li>Complete the High Court's review or interview process</li>
+<li>Receive the certificate of enrolment as an Advocate of the High Court</li>
+</ol>
+"""},
+            {"h2": "How should you keep a practice record?",
+             "answer": "Keep a simple register from your first day: date, court, case number, parties, your role and the outcome, with a scanned copy of each order.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Column</th><th>What to record</th></tr></thead>
+<tbody>
+<tr><td>Date</td><td>The date of the hearing</td></tr>
+<tr><td>Court and case number</td><td>Court name and the case or FIR number</td></tr>
+<tr><td>Parties</td><td>The case title, kept private and never published</td></tr>
+<tr><td>Your role</td><td>Drafting, research, appearance or assistance</td></tr>
+<tr><td>Outcome</td><td>Adjournment, order or arguments heard</td></tr>
+<tr><td>Copy</td><td>A scanned order sheet or file note</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "What is the route to the Supreme Court?",
+             "answer": "Seven years of practice as a High Court advocate, plus the prescribed fitness certificate, interviews and fees set by the Pakistan Bar Council.",
+             "html": """
+<p>The Supreme Court route also requires a list of independently conducted cases and judgments where you appeared as lead counsel.
+The exact numbers and fees change, so confirm them with the Pakistan Bar Council before you begin.</p>
+"""},
+        ],
+        "faqs": [
+            ("How many years of practice are needed for a High Court licence?", "At least two years before the subordinate courts, under the Legal Practitioners and Bar Councils Act, 1973. Confirm the current requirement with your bar council."),
+            ("Can I appear in the High Court without a High Court licence?", "No. Pleadings in the High Court require an Advocate High Court licence; a lower court advocate is limited to the subordinate courts."),
+            ("What if I have no practice record?", "Try to reconstruct it from order sheets, court copies and your senior's confirmation. It is far easier to keep the register from day one."),
+        ],
+        "sources": [
+            ("Sindh High Court — enrolment", "https://www.sindhhighcourt.gov.pk/", "official"),
+            ("Legal Practitioners and Bar Councils Act, 1973", "http://nasirlawsite.com/laws/baract.htm", "statute"),
+        ],
+        "related": [("Bar council enrollment", "career/bar-council-enrollment/index.html"),
+                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
+                    ("Law-GAT guide", "career/law-gat/index.html")],
+    },
+    {
+        "slug": "drafts/vakalatnama-format/index.html",
+        "url": "drafts/vakalatnama-format/",
+        "title": "Vakalatnama Format in Pakistan — Clauses, Stamp and Acceptance",
+        "h1": "Vakalatnama Format (Pakistan)",
+        "desc": "What a vakalatnama must contain in Pakistan: client and advocate details, the scope of authority, acceptance, stamp requirements and the mistakes that get filings returned.",
+        "kicker": "Drafts · Filing",
+        "answer": "A vakalatnama authorises an advocate to appear, plead and act for a client in a specific case. It must identify the court, the case, the client and the advocate, and it must state the scope of authority.",
+        "facts": [
+            ("Purpose", "Authorises an advocate to act in a specific case"),
+            ("Key clause", "Scope of authority — appear, plead, act, compromise"),
+            ("Acceptance", "The advocate's acceptance, where the court requires it"),
+            ("Stamp", "Set by the rules of the relevant court"),
+        ],
+        "sections": [
+            {"h2": "What must a vakalatnama contain?",
+             "answer": "Court and case details, client identity, advocate details with enrollment number, the scope of authority, acceptance, signature, date and the required stamp.",
+             "html": """
+<ol class="steps">
+<li>The court's name and the case number or title</li>
+<li>Client details: name, parentage, CNIC and address</li>
+<li>Advocate details: name, enrollment number and chamber address</li>
+<li>An authority clause stating exactly what is authorised</li>
+<li>The advocate's acceptance, where required</li>
+<li>Signatures and date</li>
+<li>Stamp or court fee as the court's rules require</li>
+<li>Witnesses or attestation, where required</li>
+</ol>
+"""},
+            {"h2": "Why is the scope of authority the most important clause?",
+             "answer": "Because “appear, plead and act” does not cover everything. Powers to compromise, withdraw or substitute must be stated explicitly.",
+             "html": """
+<ul>
+<li>Filing an appeal</li>
+<li>Leading evidence</li>
+<li>Withdrawing the case</li>
+<li>Compromising or settling the matter</li>
+<li>Substituting another advocate</li>
+</ul>
+<div class="callout"><b>Practice tip:</b> State each power in plain English. Both the client and the court should read the same meaning from the document.</div>
+"""},
+            {"h2": "How does it differ by court?",
+             "answer": "The format is broadly similar, but stamp requirements, acceptance clauses and the advocate's licence level change between subordinate courts, the High Court, the Supreme Court and tribunals.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Court</th><th>What changes</th></tr></thead>
+<tbody>
+<tr><td>District and subordinate courts</td><td>Standard format; stamp per the court's rules</td></tr>
+<tr><td>Sindh High Court</td><td>A High Court advocate's enrollment number is required</td></tr>
+<tr><td>Supreme Court</td><td>Advocate-on-Record requirements and its own format</td></tr>
+<tr><td>Tribunals</td><td>Each tribunal sets its own practice; ask the filing branch first</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "What are the common mistakes?",
+             "answer": "Wrong or missing case numbers, a client name that does not match the CNIC, no enrollment number, a missing acceptance clause and an incomplete address.",
+             "html": """
+<p>These errors get filings returned and waste a hearing date. An incomplete address is the most damaging, because court notices
+and orders never reach the client.</p>
+"""},
+        ],
+        "faqs": [
+            ("What is a vakalatnama?", "A document by which a client authorises an advocate to appear, plead and act on their behalf in a particular case. Without it the advocate cannot file or plead the matter."),
+            ("How much stamp does a vakalatnama need?", "Stamp and court fee depend on the court and the nature of the case. Confirm the current requirement at the court's filing branch."),
+            ("Can two advocates be named on one vakalatnama?", "Practice normally names one advocate, with arrangements for another to assist or substitute. Check the relevant court's rules."),
+        ],
+        "sources": [
+            ("Sindh High Court — filing requirements", "https://www.sindhhighcourt.gov.pk/", "official"),
+        ],
+        "related": [("Legal notice format", "drafts/legal-notice-format/index.html"),
+                    ("Plaint format", "drafts/plaint-format/index.html"),
+                    ("High Court licence", "career/high-court-license/index.html")],
+    },
+    {
+        "slug": "case-law/489-f/index.html",
+        "url": "case-law/489-f/",
+        "title": "489-F PPC Case Law — Cheque Dishonour in Pakistan",
+        "h1": "489-F PPC — Cheque Dishonour",
+        "desc": "Section 489-F PPC explained: the offence of dishonestly issuing a cheque, the elements to prove, complaint preparation, common defences and how to research the case law.",
+        "kicker": "Case law · Criminal",
+        "answer": "Section 489-F of the Pakistan Penal Code deals with dishonestly issuing a cheque that is returned unpaid, where the person knew the funds were insufficient. Punishment includes imprisonment and a fine.",
+        "facts": [
+            ("Statute", "Pakistan Penal Code 1860, section 489-F"),
+            ("Core element", "Dishonest intention when the cheque was issued"),
+            ("Key documents", "Original cheque, bank return memo, proof of the debt, notice"),
+            ("Searched as", "\u201c489-F case law\u201d, \u201ccheque bounce case Pakistan\u201d"),
+        ],
+        "sections": [
+            {"h2": "What must be proved in a 489-F case?",
+             "answer": "That the cheque was issued, that it related to a debt or obligation, that it was dishonestly issued, that it was returned unpaid, and that a demand was made.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Element</th><th>Evidence usually relied on</th></tr></thead>
+<tbody>
+<tr><td>Issuance</td><td>The original cheque, signature and bank record</td></tr>
+<tr><td>Debt or obligation</td><td>Agreement, invoice, receipt, message trail</td></tr>
+<tr><td>Dishonest intention</td><td>Knowledge of insufficient funds, account history, conduct</td></tr>
+<tr><td>Dishonour</td><td>The bank's return memo, with the reason stated</td></tr>
+<tr><td>Demand</td><td>The notice and proof that it reached the other side</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "What is the pre-complaint checklist?",
+             "answer": "Secure the original cheque, obtain the return memo, assemble proof of the underlying debt, send a demand notice and confirm the limitation period and the correct forum.",
+             "html": """
+<ol class="steps">
+<li>The original cheque, plus copies</li>
+<li>The bank return memo — the stated reason matters enormously</li>
+<li>Proof of the debt: agreement, invoices, ledgers, messages</li>
+<li>A legal notice with proof of delivery</li>
+<li>The limitation period, checked against the section and current case law</li>
+<li>The competent court, determined by territorial jurisdiction</li>
+</ol>
+"""},
+            {"h2": "What defences are commonly raised?",
+             "answer": "That the cheque was given as security rather than for a debt, that no debt is proved, that the signature is not the client's, or that the dispute is essentially civil.",
+             "html": """
+<ul>
+<li>The cheque was a <b>security cheque</b>, not payment for a debt</li>
+<li>The underlying <b>debt is not proved</b></li>
+<li>The <b>signature</b> is disputed</li>
+<li>The element of <b>dishonest intention</b> is missing</li>
+<li>The <b>demand procedure</b> was not followed</li>
+<li>A <b>civil dispute</b> has been given a criminal colour</li>
+</ul>
+<p class="mini">Research key words: "489-F PPC", "security cheque", "dishonest intention", "quantum of sentence", "compounding".</p>
+"""},
+            {"h2": "Should the client pursue criminal, civil, or both?",
+             "answer": "It depends what the client wants: punishment or recovery. Many matters end in a recorded settlement, and the client should decide the objective before filing.",
+             "html": """
+<p>Criminal and civil remedies run on different tracks with different outcomes and timelines. Explain both clearly, including
+the cost of each, before the client commits.</p>
+"""},
+        ],
+        "faqs": [
+            ("What is the punishment under 489-F PPC?", "The section provides imprisonment and a fine. Read the bare Act for the exact wording and check current authority, since sentencing depends on the facts."),
+            ("What is a security cheque?", "A cheque handed over as a guarantee rather than to discharge a debt. That distinction affects whether dishonest intention can be established, so research the case law carefully."),
+            ("Can a cheque case be settled?", "Yes, frequently. Any settlement should be recorded in writing and given effect through the court's process."),
+        ],
+        "sources": [
+            ("Sindh High Court — case law portal", "https://caselaw.shc.gov.pk/", "official"),
+            ("Supreme Court of Pakistan — judgments", "https://www.supremecourt.gov.pk/", "official"),
+        ],
+        "related": [("Legal notice format", "drafts/legal-notice-format/index.html"),
+                    ("302 PPC case law", "case-law/302-ppc/index.html"),
+                    ("Case law library", "case-law/index.html")],
+    },
+    {
+        "slug": "case-law/497-crpc/index.html",
+        "url": "case-law/497-crpc/",
+        "title": "497 CrPC Case Law — Bail in Non-Bailable Offences",
+        "h1": "497 CrPC — Bail Case Law",
+        "desc": "Section 497 CrPC explained for Pakistani practice: bail in non-bailable offences, the further-inquiry discretion, the grounds courts weigh, and how to research the authorities.",
+        "kicker": "Case law · Criminal",
+        "answer": "Section 497 CrPC governs bail in non-bailable offences. The court weighs the nature of the offence, the evidence on record, and whether further inquiry is needed before deciding.",
+        "facts": [
+            ("Bailable offences", "Section 496 CrPC"),
+            ("Non-bailable offences", "Section 497 CrPC"),
+            ("Higher courts", "Section 498 CrPC"),
+            ("Most cited ground", "Further inquiry under the second part of section 497"),
+        ],
+        "sections": [
+            {"h2": "How does the section work in practice?",
+             "answer": "It sets a general rule against bail in serious offences, then gives the court discretion where further inquiry is warranted or where the section itself allows it.",
+             "html": """
+<p>Read the bare Act for the exact text and sub-clauses. Practice varies, so always prefer the binding authority of your own
+High Court when you prepare the grounds.</p>
+<div class="callout"><b>Remember:</b> bail decides release during trial, not guilt. Keep the application and the arguments on that question.</div>
+"""},
+            {"h2": "Which issues does the court weigh?",
+             "answer": "The nature and gravity of the offence, the strength of the evidence, the stage of investigation, flight risk, parity with co-accused and any specific grounds the section allows.",
+             "html": """
+<table class="tbl">
+<thead><tr><th>Issue</th><th>What to examine</th></tr></thead>
+<tbody>
+<tr><td>Nature of offence</td><td>Whether it carries death or life imprisonment</td></tr>
+<tr><td>Further inquiry</td><td>Whether the record leaves a genuine question to be tried</td></tr>
+<tr><td>Investigation</td><td>Challan filed, recovery complete, custody period</td></tr>
+<tr><td>Flight risk</td><td>Permanent address, family and community ties</td></tr>
+<tr><td>Parity</td><td>A co-accused has been granted bail, with the order cited</td></tr>
+<tr><td>Delay</td><td>Delay in trial or prolonged custody</td></tr>
+</tbody>
+</table>
+"""},
+            {"h2": "How do you research bail authorities efficiently?",
+             "answer": "Search by key words on the court portals, read the operative paragraph rather than the headnote, and confirm each authority has not been reviewed or distinguished.",
+             "html": """
+<ol class="steps">
+<li>Key words: "497 CrPC", "further inquiry", "prohibitory clause", "bail — recovery", "bail — challan".</li>
+<li>Start with the Supreme Court, then apply your own High Court's binding authority.</li>
+<li>Read the paragraph the court actually relied on, not the summary.</li>
+<li>Check the current status: review, larger bench, or later distinguishing cases.</li>
+</ol>
+"""},
+            {"h2": "Where is the drafting guidance?",
+             "answer": "The structure of the application and the grounds that work are set out in our bail application format guide.",
+             "html": """
+<p>See <a href="../../drafts/bail-application-format/index.html">bail application format in Pakistan</a> for the
+seven-part structure, the sections involved and the filing mistakes to avoid.</p>
+"""},
+        ],
+        "faqs": [
+            ("When is bail granted under section 497 CrPC?", "When the court is satisfied on the facts and the record, commonly where further inquiry is warranted or where the section permits it. Always check the latest binding authority for your facts."),
+            ("What does further inquiry mean?", "It refers to the discretion in the second part of section 497, where the record leaves a question that requires determination. Read the exact text of the section."),
+            ("Where is a refusal of bail challenged?", "Usually before the Sessions Court or the High Court under section 498 CrPC. Confirm the procedure and limitation for your case type."),
+        ],
+        "sources": [
+            ("Sindh High Court — case law portal", "https://caselaw.shc.gov.pk/", "official"),
+            ("Supreme Court of Pakistan — judgments", "https://www.supremecourt.gov.pk/", "official"),
         ],
         "related": [("Bail application format", "drafts/bail-application-format/index.html"),
                     ("302 PPC case law", "case-law/302-ppc/index.html"),
-                    ("Case law hub", "case-law/index.html")],
+                    ("Case law library", "case-law/index.html")],
     },
     {
         "slug": "drafts/plaint-format/index.html",
         "url": "drafts/plaint-format/",
-        "title": "Plaint Format in Pakistan (CPC Order VII) — Civil Suit",
-        "h1": "Plaint Format — Pakistan (CPC)",
-        "desc": "Plaint ka format Pakistan mein: Order VII CPC ke requirements, suit valuation, court fee, jurisdiction, cause of action aur common mistakes.",
+        "title": "Plaint Format in Pakistan — Order VII CPC Requirements",
+        "h1": "Plaint Format (Order VII CPC)",
+        "desc": "What a civil plaint must contain in Pakistan under Order VII CPC: parties, cause of action, jurisdiction, valuation, court fee, limitation, prayer and verification.",
         "kicker": "Drafts · Civil",
-        "lede": "Civil suit ka pehla document: <b>plaint</b>. Agar plaint kamzor hai to poora case kamzor hai — aur isi ghalti ka sudhaar baad mein mushkil hota hai.",
+        "answer": "A plaint is the document that starts a civil suit. Under Order VII CPC it must state the parties, the facts, the cause of action, jurisdiction, valuation, limitation and the relief sought.",
+        "facts": [
+            ("Governed by", "Code of Civil Procedure 1908, Order VII"),
+            ("Must state", "Parties, facts, cause of action, jurisdiction, valuation, limitation, relief"),
+            ("Court fee", "Depends on the suit's nature and valuation"),
+            ("Government suits", "Usually require prior notice under the CPC"),
+        ],
         "sections": [
-            {"h2": "Order VII CPC ke bunyadi requirements", "html": """
+            {"h2": "What must a plaint contain?",
+             "answer": "The court, the parties, the subject matter, dated facts, the cause of action, jurisdiction, valuation and court fee, limitation, the relief, verification and the document list.",
+             "html": """
 <ul>
-<li>Court ka naam</li>
-<li>Plaintiff aur defendant ki details (naam, description, address)</li>
-<li><b>Suit ka title</b> aur subject matter</li>
-<li><b>Cause of action</b> — kab, kahan aur kaise paida hua (dates ke saath)</li>
-<li><b>Jurisdiction</b> — court ko kyun ikhtiyar hai (territorial + pecuniary)</li>
-<li><b>Suit valuation</b> aur court fee</li>
-<li><b>Relief</b> (prayer) — precise aur quantified jahan possible ho</li>
-<li><b>Limitation</b> — suit kab tak file ho sakta hai</li>
-<li>Verification + list of documents</li>
+<li>The court's name</li>
+<li>Plaintiff and defendant details, with addresses</li>
+<li>The suit's title and subject matter</li>
+<li>The cause of action: when, where and how it arose, with dates</li>
+<li>Jurisdiction: territorial and pecuniary, with reasons</li>
+<li>Valuation and the court fee paid</li>
+<li>The relief claimed, quantified where money is involved</li>
+<li>Limitation</li>
+<li>Verification and the list of documents</li>
 </ul>
 """},
-            {"h2": "Structure jo courts expect karti hain", "html": """
+            {"h2": "How should the plaint be structured?",
+             "answer": "Follow the court's expected order: heading, parties, subject line, numbered facts, cause of action, jurisdiction and valuation, limitation, prayer, verification and annexures.",
+             "html": """
 <ol class="steps">
-<li><b>Heading:</b> "In the Court of ___" + suit number</li>
-<li><b>Parties:</b> plaintiff vs defendants, addresses</li>
-<li><b>Suit for:</b> ek line — "Suit for recovery of Rs ___" ya "Suit for specific performance"</li>
-<li><b>Facts:</b> numbered paragraphs, chronological</li>
-<li><b>Cause of action:</b> alag heading, dates ke saath</li>
-<li><b>Jurisdiction &amp; valuation:</b> alag paragraph</li>
-<li><b>Limitation:</b> alag paragraph</li>
-<li><b>Prayer:</b> numbered reliefs + costs</li>
-<li><b>Verification + affidavit + documents</b></li>
+<li><b>Heading:</b> "In the Court of ___" with the suit number</li>
+<li><b>Parties:</b> plaintiff versus defendants, with addresses</li>
+<li><b>Subject:</b> one line, such as "Suit for recovery of Rs ___"</li>
+<li><b>Facts:</b> numbered paragraphs in date order</li>
+<li><b>Cause of action:</b> a separate heading</li>
+<li><b>Jurisdiction and valuation:</b> a separate paragraph</li>
+<li><b>Limitation:</b> a separate paragraph</li>
+<li><b>Prayer:</b> numbered reliefs, plus costs</li>
+<li><b>Verification, affidavit and documents</b></li>
 </ol>
 """},
-            {"h2": "Court fee aur valuation — sab se zyada ghaltiyan yahan", "html": """
-<p>Court fee suit ki qism aur valuation par depend karti hai (Sindh mein Court Fees Act ke framework ke mutabiq). Ghalti se:</p>
+            {"h2": "Where do valuation and court fee go wrong?",
+             "answer": "Under-valuing the suit or paying insufficient court fee leads to objections and delay, so confirm the current schedule at the filing branch.",
+             "html": """
 <ul>
-<li>Court fee kam lag gayi → objection aur deri</li>
-<li>Valuation ghalat → pecuniary jurisdiction ka sawal</li>
-<li>Relief quantify nahi kiya → decree ka masla</li>
+<li>Court fee paid too low — an objection follows, and the date is lost</li>
+<li>Wrong valuation — raises a question over pecuniary jurisdiction</li>
+<li>Unquantified relief — creates a problem at the decree stage</li>
 </ul>
-<p class="mini">Filing branch se current fee schedule confirm karein — ye waqt ke saath badalta hai.</p>
+<p class="mini">Court fee rules are set by statute and revised over time. Confirm the current position with the court, not with an old template.</p>
 """},
-            {"h2": "Sarkari fard ke khilaf suit — special notice", "html": """
-<p>Sarkar ya kisi public officer ke khilaf suit mein aam taur par <b>pehle notice</b> dena zaroori hota hai (CPC ka mutalliqa section). Notice ki muddat aur form section se check karein — warna suit maintainability par sawal uthta hai.</p>
-"""},
-            {"h2": "Common mistakes", "html": """
-<ul>
-<li>Cause of action aur facts mix karna</li>
-<li>Dates nahi likhna ("kuch arsa pehle" jaise alfaaz)</li>
-<li>Relief mein "jo court munasib samjhe" likh dena bina specific demand</li>
-<li>Documents ki list na lagana</li>
-<li>Limitation par koi paragraph nahi</li>
-<li>Verification ka format ghalat</li>
-</ul>
+            {"h2": "What are the common mistakes?",
+             "answer": "Mixing facts with the cause of action, omitting dates, leaving the relief vague, forgetting the document list and skipping the limitation paragraph.",
+             "html": """
+<p>Each omission becomes the first objection raised against the suit. A plaint that answers all nine requirements in order
+survives scrutiny and reaches the merits faster.</p>
 """},
         ],
         "faqs": [
-            ("Plaint format Pakistan mein kya hota hai?", "Order VII CPC ke mutabiq: court ka naam, parties, suit ka title, numbered facts, cause of action, jurisdiction aur valuation, limitation, prayer, verification aur documents ki list."),
-            ("Court fee kitni lagti hai?", "Suit ki qism aur valuation par depend karti hai. Mutaliqa court ke filing branch se current schedule confirm karein."),
-            ("Kya plaint amend ho sakti hai?", "Aam taur par haan, court ki ijazat se (CPC ke mutabiq). Magar jitni jaldi ho utna behtar — trial ke baad amendment mushkil hota hai."),
-            ("Plaint Urdu mein likh sakte hain?", "Aam practice English mein hai. Urdu translation saath rakh sakte hain, magar court ki requirement pehle confirm karein."),
+            ("What is the format of a plaint in Pakistan?", "Under Order VII CPC: court, parties, subject matter, numbered facts, cause of action, jurisdiction and valuation, limitation, prayer, verification and a list of documents."),
+            ("How much court fee is payable?", "It depends on the nature and valuation of the suit. Confirm the current schedule with the relevant court's filing branch."),
+            ("Can a plaint be amended?", "Generally yes, with the court's permission, but the earlier it is done the better. Amendments become harder once trial has progressed."),
+        ],
+        "sources": [
+            ("Sindh High Court — civil practice and rules", "https://www.sindhhighcourt.gov.pk/", "official"),
         ],
         "related": [("Legal notice format", "drafts/legal-notice-format/index.html"),
                     ("Vakalatnama format", "drafts/vakalatnama-format/index.html"),
-                    ("Case law hub", "case-law/index.html")],
+                    ("Case law library", "case-law/index.html")],
     },
-])
+]
+
+# ---------------------------------------------------------------- about / entity page (AI answer target)
+ABOUT = {
+    "slug": "about/index.html",
+    "url": "about/",
+    "title": "About WakeelBano — Pakistan's Career Platform for Lawyers",
+    "h1": "What is WakeelBano?",
+    "desc": "WakeelBano is a Pakistani career platform for lawyers: chamber and mentor matching, verified rooms and seat sharing, paid work, legal research guides and an AI kit for drafting.",
+    "kicker": "About",
+    "answer": "WakeelBano is a career platform for Pakistani lawyers, built for Karachi first. It helps new lawyers find a chamber and mentor, affordable housing near the courts, paid drafting work, and reliable research guidance — all free for junior lawyers.",
+    "sections": [
+        {"h2": "Who is WakeelBano for?",
+         "answer": "Law students, fresh graduates, pupils and junior advocates in Pakistan, plus the chambers, law firms and universities that hire them.",
+         "html": """
+<ul>
+<li><b>Law students</b> who need to know what to do before and after graduation</li>
+<li><b>Fresh graduates</b> facing the Law-GAT, pupillage and enrollment process</li>
+<li><b>Junior advocates</b> looking for chambers, paid work and better visibility</li>
+<li><b>Seniors and firms</b> who need reliable juniors and a verified public profile</li>
+<li><b>Law colleges</b> that must place students for mandatory internships</li>
+</ul>
+"""},
+        {"h2": "How does WakeelBano make money?",
+         "answer": "From chambers, firms, universities and sponsors — not from junior lawyers, who use the platform free.",
+         "html": """
+<table class="tbl">
+<thead><tr><th>Stream</th><th>Who pays</th><th>Typical price (PKR)</th></tr></thead>
+<tbody>
+<tr><td>Chamber Pro subscription</td><td>Seniors and chambers</td><td>Rs 2,500 per month</td></tr>
+<tr><td>Verified listings</td><td>Room and chamber owners</td><td>Rs 500 – 1,000 per listing</td></tr>
+<tr><td>Institution plan</td><td>Law colleges and firms</td><td>From Rs 60,000 per year</td></tr>
+<tr><td>Workshops</td><td>Participants and sponsors</td><td>Rs 1,500 – 3,000 per seat</td></tr>
+<tr><td>Kaam Board commission</td><td>Task posters</td><td>10 – 15% of the task value</td></tr>
+</tbody>
+</table>
+<p class="mini">WakeelBano never charges a junior lawyer for a profile, a listing or a chamber match.</p>
+"""},
+        {"h2": "What does WakeelBano not do?",
+         "answer": "It does not give legal advice, does not take commission on client case referrals, and does not publish or sell lawyer rankings.",
+         "html": """
+<p>Referral fees for client cases would amount to touting, which is prohibited under professional conduct rules. Any "best lawyer
+in Pakistan" ranking would be misleading. We stay on the correct side of both lines: information, tools and verified connections
+between lawyers.</p>
+"""},
+        {"h2": "How is content on this site produced?",
+         "answer": "From primary sources — bare Acts, bar council notifications and court publications — with the source named on every page and an explicit verification instruction.",
+         "html": """
+<p>Our guides explain statutory frameworks and research method. We do not reproduce reported judgments, and we do not invent
+citations. Every page carries a date, a scope note and links to the official source you can check yourself.</p>
+"""},
+        {"h2": "Where is WakeelBano based?",
+         "answer": "Karachi, Sindh, with an initial focus on City Courts, the Sindh High Court and the districts around them.",
+         "html": """
+<p>The pilot starts in Karachi because that is where the largest concentration of new lawyers practises, and where the shortage of
+affordable rooms and paid pupillages is sharpest. Expansion to Hyderabad, Sukkur, Lahore and Islamabad follows once the Karachi
+network is verified and working.</p>
+"""},
+    ],
+    "faqs": [
+        ("Is WakeelBano a law firm?", "No. It is a technology platform. It does not provide legal advice, does not represent clients and does not act as an agent in any case."),
+        ("Is WakeelBano free?", "Yes for students, fresh graduates and junior advocates. Chambers, firms, universities and sponsors pay for listings, subscriptions and workshops."),
+        ("Does WakeelBano take a cut of a lawyer's fee?", "No. It never takes a share of a lawyer's professional fee, and never takes commission on client referrals."),
+        ("Which cities does it cover?", "Karachi first, with Sindh districts next, then Lahore and Islamabad."),
+    ],
+    "sources": [
+        ("Legal Practitioners and Bar Councils Act, 1973", "http://nasirlawsite.com/laws/baract.htm", "statute"),
+        ("Sindh Bar Council", "https://advocates.sindhbarcouncil.org/", "official register"),
+        ("Pakistan Bar Council", "https://pakistanbarcouncil.org/", "official"),
+    ],
+    "related": [("Case law library", "case-law/index.html"),
+                ("Career guides", "career/index.html")],
+}

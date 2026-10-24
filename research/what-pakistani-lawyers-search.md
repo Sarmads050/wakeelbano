@@ -334,3 +334,24 @@ relevance free mil jati hai; content English keywords par target hoga.
 (spelling conflict), Daftarkhana (Daftarkhwan coworking confusion).
 
 **Build status:** SEO foundation (meta, canonical, OG, JSON-LD, sitemap, robots) + 15 landing pages live in repo.
+
+---
+
+## DECISION UPDATE (Oct 2026) — brand is WakeelBano, English-first, GEO layer
+
+**Brand:** WakeelBano — `wakeelbano.com` (`.pk` and `.com.pk` also unregistered as of 24 Oct 2026).
+"Wakeel" stays in the brand, so the keyword lives in every page title and URL.
+
+**Language:** easy English everywhere. The earlier Roman Urdu draft is retired; the search
+data still supports the choice, because English head terms dominate even in Pakistan.
+
+**Keyword trade-off (stated openly to the user):** Google Trends PK indexes `lawyer` at 79
+against `wakeel` at 22. The "wakeel" keyword the user asked for is therefore carried by the
+brand and by section-level content, while titles/H1s use `lawyer`, `advocate`, `case law`,
+`law gat` to win the search volume that actually exists.
+
+**AI search (GEO):** the site now ships `llms.txt`, `llms-full.txt`, an AI-crawler-friendly
+`robots.txt`, answer-first blocks under question headings, key-facts tables with sourced
+numbers, FAQPage + Article + BreadcrumbList JSON-LD, and server-rendered HTML only.
+Remaining off-site work: submit `sitemap.xml` to Bing Webmaster Tools (ChatGPT search reads
+Bing's index) and to Google Search Console once the domain is live.
