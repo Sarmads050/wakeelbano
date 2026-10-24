@@ -115,9 +115,15 @@ mail — enough for testing. Each send stamps `last_sent_at`, so nobody gets the
 
 `send_alerts.py` reads `SUPABASE_URL`, `SUPABASE_KEY`, `RESEND_KEY` and `RESEND_FROM` from the
 environment first, then from `.secrets/`. That is what lets
-`.github/workflows/alerts.yml` run it every Monday at 09:00 Pakistan time (or on demand from the
+`scripts/alerts-workflow.yml` run it every Monday at 09:00 Pakistan time (or on demand from the
 Actions tab). Add those four values under *Settings → Secrets and variables → Actions* to switch
 on the scheduled digest; nothing else needs changing.
+
+The workflow file lives at `scripts/alerts-workflow.yml` rather than in `.github/workflows/`
+because the personal access token used for pushes has no `workflow` scope, so GitHub refuses to
+accept it. To turn the schedule on, either copy it into `.github/workflows/alerts.yml` through the
+GitHub web editor (**Add file → Create new file**), or give the token `workflow` scope and push it
+from here.
 
 A brand-new subscriber's first digest covers the last 30 days of openings (`WELCOME_DAYS`), so a
 signup never lands in an empty mailbox.
