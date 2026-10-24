@@ -1,6 +1,6 @@
 # WakeelBano
 
-> Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and junior advocates find a chamber and mentor, verified rooms and seat sharing near the courts, paid drafting work, and free case law research guides. Junior lawyers use it free; chambers, firms and universities pay.
+> Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and junior advocates find a chamber and mentor, paid drafting work and a legal job market covering all of Pakistan, paid drafting work, and free case law research guides. Junior lawyers use it free; chambers, firms and universities pay.
 
 Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information only, not legal advice. No commission on client case referrals, and no lawyer rankings. Guidance is drawn from Pakistani statutes, bar council notifications and official court publications, with sources listed on every page.
 
@@ -45,11 +45,11 @@ Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information on
 - [First 30 days in a chamber: A week-by-week plan for a new pupil](https://sarmads050.github.io/wakeelbano/career/first-30-days-in-chamber/index.html)
 
 ## Karachi for Lawyers (https://sarmads050.github.io/wakeelbano/karachi/)
-- [Practical Karachi guides for lawyers: chamber and firm jobs, room rent and chamber seat sharing near City Courts, Garden, Saddar and Malir.](https://sarmads050.github.io/wakeelbano/karachi/)
+- [Practical Karachi guides for lawyers: chamber and firm jobs, pupillage, the City Courts filing system and the routes that actually lead to paid work.](https://sarmads050.github.io/wakeelbano/karachi/)
 - [Lawyer jobs in Karachi: Chambers, firms, in-house and freelance work](https://sarmads050.github.io/wakeelbano/karachi/lawyer-jobs/index.html)
-- [Rooms and seat sharing: Punjab Colony, Garden, Saddar and Malir](https://sarmads050.github.io/wakeelbano/karachi/lawyer-room-for-rent/index.html)
+- [Legal jobs in Pakistan: Karachi, Lahore, Islamabad and remote](https://sarmads050.github.io/wakeelbano/jobs/index.html)
 - [Case law library: Section-wise research guides](https://sarmads050.github.io/wakeelbano/case-law/index.html)
-- [Chamber for rent: Seat share costs and what to check before paying](https://sarmads050.github.io/wakeelbano/karachi/chamber-seat-rent/index.html)
+- [Pupillage and first chamber: What a first chamber actually expects](https://sarmads050.github.io/wakeelbano/career/first-30-days-in-chamber/index.html)
 - [City Courts guide: Filing, etiquette and the first month at City Courts](https://sarmads050.github.io/wakeelbano/karachi/city-courts-guide/index.html)
 
 ## Family Law in Pakistan (https://sarmads050.github.io/wakeelbano/family/)

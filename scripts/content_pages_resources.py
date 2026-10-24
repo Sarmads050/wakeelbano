@@ -14,9 +14,9 @@ PAGES_4 = [
         "url": "what-is-wakeelbano/",
         "title": "What Is WakeelBano? What the Platform Does for Pakistani Lawyers",
         "h1": "What Is WakeelBano?",
-        "desc": "WakeelBano is a free career platform for Pakistani lawyers: chamber and pupillage matching, verified rooms and seat sharing in Karachi, paid drafting work, a legal job market, lawyer profiles with ratings, case law research guides and an AI drafting kit.",
+        "desc": "WakeelBano is a free career platform for Pakistani lawyers: chamber and pupillage matching, paid drafting work, a legal job market covering all of Pakistan, lawyer profiles with ratings, case law research guides and an AI drafting kit.",
         "kicker": "Start here",
-        "answer": "WakeelBano is a career platform for Pakistani lawyers, starting in Karachi. It brings seven things into one place: a chamber and pupillage match, verified rooms and chamber seat sharing near the courts, a legal job market covering all of Pakistan, paid freelance drafting and research work, lawyer profiles with earned ratings, free case law and drafting guides, and an AI drafting kit. It is free for students and junior lawyers; chambers, firms, universities and sponsors pay.",
+        "answer": "WakeelBano is a career platform for Pakistani lawyers, starting in Karachi. It brings six things into one place: a chamber and pupillage match, a legal job market covering all of Pakistan, paid freelance drafting and research work, lawyer profiles with earned ratings, free case law and drafting guides, and an AI drafting kit. It is free for students and junior lawyers; chambers, firms, universities and sponsors pay.",
         "facts": [
             ("What it is", "A career platform for lawyers — not a law firm and not a client-referral service"),
             ("Who it is for", "Law students, fresh graduates, junior advocates, chambers, firms, universities and recruiters"),
@@ -55,7 +55,7 @@ PAGES_4 = [
 <ul>
 <li><b>Lawyer profile</b> — skills, cases handled, current chamber, fee, and ratings that can only come from completed work.</li>
 <li><b>Work board</b> — freelance drafting and research to cover the months when the courts are quiet.</li>
-<li><b>Housing</b> — verified rooms, paying-guest options and chamber seat shares near the courts in Karachi, without a broker.</li>
+<li><b>Job market</b> — legal openings across Pakistan, each one dated and linked to the employer who posted it.</li>
 <li><b>Practice guides</b> — cause list tracking, case registers, City Courts procedure, and what a first month in a chamber looks like.</li>
 <li><b>Growth school</b> — how to become visible to clients inside professional conduct rules.</li>
 </ul>
@@ -98,7 +98,7 @@ PAGES_4 = [
         "faqs": [
             ("Is WakeelBano free?", "Yes for students, fresh graduates and junior advocates — permanently. Chambers, law firms, universities and sponsors pay for listings, hiring tools and workshops."),
             ("Does WakeelBano give legal advice?", "No. It publishes legal information, guides and tools for lawyers. It does not advise clients, appear in court, or take instructions in any case."),
-            ("Which cities does it cover?", "The housing and chamber features start in Karachi, where the court districts hold the densest concentration of lawyers in Pakistan. The job market covers all of Pakistan, including remote roles."),
+            ("Which cities does it cover?", "The chamber and mentor network starts in Karachi, where the court districts hold the densest concentration of lawyers in Pakistan. The job market covers all of Pakistan, including remote roles."),
             ("Can a chamber post a pupillage position?", "Yes, and it is free during the pilot. Posting a six-month seat is the single most useful thing a chamber can do for the profession."),
             ("How are lawyers verified?", "A verified badge means the lawyer's bar council roll number has been checked against the public register. Ratings are separate, and can only be left by a recruiter after a job posted on the platform is marked complete."),
             ("Who writes the guides?", "The WakeelBano editorial team, working from Pakistani statutes, bar council notifications and official court publications. Every page lists its sources and says when it was last updated."),

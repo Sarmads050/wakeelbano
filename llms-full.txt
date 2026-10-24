@@ -5,7 +5,7 @@ Public content from sarmads050.github.io/wakeelbano, in plain text for AI agents
 ## What is WakeelBano?
 URL: https://sarmads050.github.io/wakeelbano/about/
 
-WakeelBano is a career platform for Pakistani lawyers, built for Karachi first. It helps new lawyers find a chamber and mentor, affordable housing near the courts, paid drafting work, and reliable research guidance — all free for junior lawyers.
+WakeelBano is a career platform for Pakistani lawyers, built for Karachi first. It helps new lawyers find a chamber and mentor, paid drafting work, legal jobs across Pakistan, and reliable research guidance — all free for junior lawyers.
 
 ### Who is WakeelBano for?
 Law students, fresh graduates, pupils and junior advocates in Pakistan, plus the chambers, law firms and universities that hire them.
@@ -13,7 +13,7 @@ Law students who need to know what to do before and after graduation Fresh gradu
 
 ### How does WakeelBano make money?
 From chambers, firms, universities and sponsors — not from junior lawyers, who use the platform free.
-Stream Who pays Typical price (PKR) Chamber Pro subscription Seniors and chambers Rs 2,500 per month Verified listings Room and chamber owners Rs 500 – 1,000 per listing Institution plan Law colleges and firms From Rs 60,000 per year Workshops Participants and sponsors Rs 1,500 – 3,000 per seat Kaam Board commission Task posters 10 – 15% of the task value WakeelBano never charges a junior lawyer for a profile, a listing or a chamber match.
+Stream Who pays Typical price (PKR) Chamber Pro subscription Seniors and chambers Rs 2,500 per month Verified job posting Chambers, firms and companies Rs 1,500 per posting Institution plan Law colleges and firms From Rs 60,000 per year Workshops Participants and sponsors Rs 1,500 – 3,000 per seat Kaam Board commission Task posters 10 – 15% of the task value WakeelBano never charges a junior lawyer for a profile, a listing or a chamber match.
 
 ### What does WakeelBano not do?
 It does not give legal advice, does not take commission on client case referrals, and does not publish or sell lawyer rankings.
@@ -25,7 +25,7 @@ Our guides explain statutory frameworks and research method. We do not reproduce
 
 ### Where is WakeelBano based?
 Karachi, Sindh, with an initial focus on City Courts, the Sindh High Court and the districts around them.
-The pilot starts in Karachi because that is where the largest concentration of new lawyers practises, and where the shortage of affordable rooms and paid pupillages is sharpest. Expansion to Hyderabad, Sukkur, Lahore and Islamabad follows once the Karachi network is verified and working.
+The pilot starts in Karachi because that is where the largest concentration of new lawyers practises, and where the gap between a law degree and paid work is widest. Expansion to Hyderabad, Sukkur, Lahore and Islamabad follows once the Karachi network is verified and working.
 
 Q: Is WakeelBano a law firm?
 A: No. It is a technology platform. It does not provide legal advice, does not represent clients and does not act as an agent in any case.
@@ -335,42 +335,6 @@ A: Yes, but usually through internships first. A strong internship record and a 
 
 Q: Are remote legal jobs available in Pakistan?
 A: Yes. Foreign firms and legal process outsourcers hire Pakistani lawyers for drafting, research and document review, usually paid in dollars. Strong English and a writing sample are essential.
-
-
-## Rooms and Chamber Seat Sharing in Karachi
-URL: https://sarmads050.github.io/wakeelbano/karachi/lawyer-room-for-rent/
-
-A shared room near the courts in Karachi costs about Rs 8,000 to 15,000 a month, and a chamber seat share costs Rs 6,000 to 15,000, which together make a junior stipend survivable.
-
-- Shared room: Rs 8,000 – 15,000 a month
-- Paying guest with meals: Rs 10,000 – 20,000
-- Single room in a shared flat: Rs 14,000 – 25,000
-- Chamber seat share: Rs 6,000 – 15,000
-- Typical deposit: Two to three months
-### What does it actually cost to live near the courts?
-On a Rs 30,000 stipend, a shared room and a chamber seat share keep rent and travel low enough to survive the first year.
-Option Typical monthly (PKR) Note Shared room for two 8,000 – 15,000 Cheapest; utilities sometimes separate Paying guest with meals 10,000 – 20,000 Cleaner, with house rules Single room in a shared flat 14,000 – 25,000 Punjab Colony, Garden, Jamshed Road Small independent flat 25,000 – 45,000 Deposit separate Chamber seat share 6,000 – 15,000 Desk, cupboard and library access
-
-### Which areas work best for which court?
-Punjab Colony and Garden suit City Courts, Jamshed Road balances both courts, Malir is cheapest for Malir court, and Gulshan means a long daily commute.
-Punjab Colony and Garden — close to City Courts and Saddar, dense lawyer network, cheap food Saddar — transport from everywhere, but noisy and crowded at night Jamshed Road and Patel Para — mid-range, reachable to both City Courts and the High Court Malir — cheapest option if you practise at Malir court Gulshan-e-Iqbal — better housing, but long and costly daily travel Clifton and Defence — close to the High Court but outside a junior's budget
-
-### What should you check before paying a deposit?
-Verify the owner's identity, insist on a written agreement, confirm the electricity meter, water supply, security and the conditions for returning your deposit.
-Owner's CNIC — confirm whether you are dealing with the owner or a sub-letter A written rent agreement in two copies, with duration and advance stated Electricity: separate meter or shared bill, and who sets the rate Water: tank, timing and quality — a constant issue in Karachi Security: gate, guard, locks and late-entry arrangements Deposit: when and on what conditions it is returned, in writing Notice period: how many months either side must give Workspace: somewhere to keep files, plus light and internet For women lawyers: check for a family building, a warden or guard, and a separate entrance. Visit in person and speak to current residents rather than relying on assurances.
-
-### How do you avoid broker problems?
-Ask your chamber network first, deal with owners directly, and never pay a booking amount before seeing the room and signing an agreement.
-Ask seniors and colleagues — they often know of an empty seat Use your law college alumni group and the bar room notice board Deal with the owner directly before agreeing to any commission Use verified listings on the WakeelBano Rehail board, filtered by area and budget Never transfer a deposit before viewing the property. Advance payments are the most common rental fraud.
-
-Q: How much does a room cost near City Courts in Karachi?
-A: Shared rooms around Punjab Colony and Garden typically run Rs 8,000 to 15,000 a month, and a chamber seat share adds Rs 6,000 to 15,000.
-
-Q: What is a chamber seat share?
-A: Two or three lawyers share one chamber, each with a desk, and split the rent and utilities. It is the cheapest way for a new lawyer to be based near the courts.
-
-Q: Should I rent without a written agreement?
-A: A written agreement is strongly advised. Without one, disputes over deposits, notice periods and bills are common and hard to resolve.
 
 
 ## High Court Licence (Advocate High Court)
@@ -933,43 +897,6 @@ Q: How many hours should a junior expect to work?
 A: Court hours plus chamber hours, typically six days a week in a litigation practice. Agree the expectations in writing so that both sides know what the first year looks like.
 
 
-## Lawyer Chamber for Rent in Karachi
-URL: https://sarmads050.github.io/wakeelbano/karachi/chamber-seat-rent/
-
-A shared chamber seat in Karachi usually costs Rs 6,000 to 15,000 a month, depending on the court vicinity, the size of the chamber and whether a clerk is included. Always agree in writing what the seat includes before paying.
-
-- Typical seat share: Rs 6,000 to 15,000 a month
-- Usually included: Desk, chair, cupboard, electricity, and shared use of the library
-- Often extra: Clerk's salary, stationery, internet, chamber maintenance
-- Best locations: Around City Courts, Saddar, Garden and near the Sindh High Court
-- Usual arrangement: Two or three juniors share one chamber and split the rent
-- Written record needed: Rent, inclusions, notice period, and who holds the key
-### What does a chamber seat actually cost?
-Between Rs 6,000 and Rs 15,000 a month for a shared seat, with the higher end near the High Court and in chambers with a library and clerk.
-Arrangement Typical monthly cost What you get Desk in a shared chamber Rs 6,000 – 9,000 Desk, chair, cupboard, shared library Seat plus clerk support Rs 10,000 – 15,000 Adds filing, copying and cause-list help Small independent chamber Rs 20,000 and above Own room, often with utilities separate Figures are indicative for 2026 and vary street to street. Treat them as a starting point for negotiation, not a rate card.
-
-### What should a junior check before sharing a chamber?
-Who the tenant of record is, what the rent includes, how the key is held, whether the senior is present daily, and whether client files will be safe.
-Tenancy — the chamber's own lease and the person legally entitled to sublet space. Inclusions — electricity, internet, cleaning, clerk, stationery. Get a list, not a promise. Security — a locker or cupboard you alone can lock, and a written inventory. Use of the library — borrowing rules, and whether reports may leave the chamber. Notice — how many days must either side give before leaving. Client meetings — whether you may meet your own clients there, and at what hours. Do not pay a deposit without a receipt that names the payer, the amount, the period covered and what the deposit secures.
-
-### How does seat sharing between juniors work in practice?
-Two or three juniors take one chamber, split the rent and utilities, and agree a rota for who receives clients and how files are stored.
-Agree the split in writing: rent, utilities, clerk, stationery. Allocate desks and storage physically, so nothing is ambiguous. Set rules on client meetings — booked slots, no overlapping appointments. Keep separate files, in separately locked cupboards. Fix an exit clause: 30 days' notice, deposit returned after the final utility bill.
-
-### Is a chamber seat worth the money in the first year?
-Yes, if it puts you within walking distance of your court and gives you a place clients can visit. It is a cost of doing business, not a luxury.
-Compare it with the alternative: Working from home means no walk-in clients and no library. Paying for a separate room costs two to three times more for the same utility. A shared seat near the court saves travel time, which is the scarcest resource of a junior. On a Rs 30,000 stipend, a Rs 8,000 seat is 27% of income — but it is the difference between being a lawyer with an address and one without.
-
-Q: Can a chamber seat be shared by a man and a woman advocate?
-A: Shared professional space is a matter for the parties to agree, and many chambers allocate separate desks and storage. What matters is a written arrangement that both sides are comfortable with; harassment at the workplace is separately governed by law.
-
-Q: Do I need a separate chamber to take my own clients?
-A: No, but you need a place where a client can sit and where your files are safe. Confirm with your senior or co-sharers that you may meet your own clients there.
-
-Q: What is a fair deposit for a chamber seat?
-A: Commonly one month's rent. Anything higher should be justified in writing and covered by a receipt that states the terms of return.
-
-
 ## Karachi City Courts: A Guide for New Lawyers
 URL: https://sarmads050.github.io/wakeelbano/karachi/city-courts-guide/
 
@@ -1245,7 +1172,7 @@ A: Not always, but a well-drafted demand and a correct calculation often produce
 ## What Is WakeelBano?
 URL: https://sarmads050.github.io/wakeelbano/what-is-wakeelbano/
 
-WakeelBano is a career platform for Pakistani lawyers, starting in Karachi. It brings seven things into one place: a chamber and pupillage match, verified rooms and chamber seat sharing near the courts, a legal job market covering all of Pakistan, paid freelance drafting and research work, lawyer profiles with earned ratings, free case law and drafting guides, and an AI drafting kit. It is free for students and junior lawyers; chambers, firms, universities and sponsors pay.
+WakeelBano is a career platform for Pakistani lawyers, starting in Karachi. It brings six things into one place: a chamber and pupillage match, a legal job market covering all of Pakistan, paid freelance drafting and research work, lawyer profiles with earned ratings, free case law and drafting guides, and an AI drafting kit. It is free for students and junior lawyers; chambers, firms, universities and sponsors pay.
 
 - What it is: A career platform for lawyers — not a law firm and not a client-referral service
 - Who it is for: Law students, fresh graduates, junior advocates, chambers, firms, universities and recruiters
@@ -1264,7 +1191,7 @@ Chamber match — verified seniors and chambers that state their terms openly: p
 
 ### I am a junior advocate — what does WakeelBano do for me?
 It helps you build a record: visible work, earned ratings, and a profile a recruiter can read instead of a one-page CV.
-Lawyer profile — skills, cases handled, current chamber, fee, and ratings that can only come from completed work. Work board — freelance drafting and research to cover the months when the courts are quiet. Housing — verified rooms, paying-guest options and chamber seat shares near the courts in Karachi, without a broker. Practice guides — cause list tracking, case registers, City Courts procedure, and what a first month in a chamber looks like. Growth school — how to become visible to clients inside professional conduct rules.
+Lawyer profile — skills, cases handled, current chamber, fee, and ratings that can only come from completed work. Work board — freelance drafting and research to cover the months when the courts are quiet. Job market — legal openings across Pakistan, each one dated and linked to the employer who posted it. Practice guides — cause list tracking, case registers, City Courts procedure, and what a first month in a chamber looks like. Growth school — how to become visible to clients inside professional conduct rules.
 
 ### I run a chamber or a law firm — what does WakeelBano do for me?
 It gives you a filtered pipeline of pupils and juniors, and a place to send overflow work with a documented record of who delivered it.
@@ -1285,7 +1212,7 @@ Q: Does WakeelBano give legal advice?
 A: No. It publishes legal information, guides and tools for lawyers. It does not advise clients, appear in court, or take instructions in any case.
 
 Q: Which cities does it cover?
-A: The housing and chamber features start in Karachi, where the court districts hold the densest concentration of lawyers in Pakistan. The job market covers all of Pakistan, including remote roles.
+A: The chamber and mentor network starts in Karachi, where the court districts hold the densest concentration of lawyers in Pakistan. The job market covers all of Pakistan, including remote roles.
 
 Q: Can a chamber post a pupillage position?
 A: Yes, and it is free during the pilot. Posting a six-month seat is the single most useful thing a chamber can do for the profession.

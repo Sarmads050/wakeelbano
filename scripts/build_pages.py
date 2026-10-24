@@ -159,7 +159,7 @@ FOOTER = """<footer><div class="wrap">
 <div class="fg">
   <div>
     <b style="color:#fff;font-family:Georgia,serif;font-size:18px">WakeelBano</b>
-    <p style="max-width:310px;font-size:13px;margin-top:8px">Pakistan's career platform for lawyers — chambers, housing, paid work and research, in one place. Starting in Karachi.</p>
+    <p style="max-width:310px;font-size:13px;margin-top:8px">Pakistan's career platform for lawyers — chambers, jobs, paid work and research, in one place. Starting in Karachi.</p>
   </div>
   <div><h5>Career</h5>
     <a href="{root}career/law-gat/index.html">Law-GAT</a>
@@ -169,7 +169,6 @@ FOOTER = """<footer><div class="wrap">
   </div>
   <div><h5>Karachi</h5>
     <a href="{root}karachi/lawyer-jobs/index.html">Lawyer jobs</a>
-    <a href="{root}karachi/lawyer-room-for-rent/index.html">Rooms and seat share</a>
     <a href="{root}case-law/index.html">Case law</a>
     <a href="{root}about/index.html">About</a>
   </div>
@@ -273,7 +272,7 @@ def org_node():
         "name": BRAND,
         "url": BASE,
         "description": ("Career platform for Pakistani lawyers: chamber and pupillage matching, "
-                        "verified rooms and seat sharing, paid drafting work, a legal job market, "
+                        "paid drafting work, a legal job market covering all of Pakistan, "
                         "lawyer profiles with earned ratings, and free case law research guides."),
         "address": {"@type": "PostalAddress", "addressLocality": "Karachi",
                     "addressRegion": "Sindh", "addressCountry": "PK"},
@@ -430,7 +429,7 @@ def write_llms_txt(urls):
     ]
     out = [f"# {BRAND}", "",
            "> Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh graduates and "
-           "junior advocates find a chamber and mentor, verified rooms and seat sharing near the courts, paid drafting "
+           "junior advocates find a chamber and mentor, paid drafting work and a legal job market covering all of Pakistan, paid drafting "
            "work, and free case law research guides. Junior lawyers use it free; chambers, firms and universities pay.",
            "",
            "Key facts: founded 2026, based in Karachi, Sindh, Pakistan. Legal information only, not legal advice. "

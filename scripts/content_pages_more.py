@@ -464,7 +464,7 @@ MORE_PAGES = [
         ],
         "related": [
             ("Legal notice format", "drafts/legal-notice-format/index.html"),
-            ("Rooms and seat sharing in Karachi", "karachi/lawyer-room-for-rent/index.html"),
+            ("Legal jobs across Pakistan", "jobs/index.html"),
             ("Affidavit format", "drafts/affidavit-format/index.html"),
         ],
     },
@@ -855,90 +855,7 @@ MORE_PAGES = [
     },
 
     # ------------------------------------------------------------ karachi
-    {
-        "slug": "karachi/chamber-seat-rent/index.html",
-        "url": "karachi/chamber-seat-rent/",
-        "title": "Lawyer Chamber for Rent in Karachi — Seat Share Guide",
-        "h1": "Lawyer Chamber for Rent in Karachi",
-        "desc": "What a chamber seat costs in Karachi, what to check before sharing a chamber, how seat sharing works between juniors, and the areas closest to City Courts and the Sindh High Court.",
-        "kicker": "Karachi · Housing",
-        "answer": "A shared chamber seat in Karachi usually costs Rs 6,000 to 15,000 a month, depending on the court vicinity, the size of the chamber and whether a clerk is included. Always agree in writing what the seat includes before paying.",
-        "facts": [
-            ("Typical seat share", "Rs 6,000 to 15,000 a month"),
-            ("Usually included", "Desk, chair, cupboard, electricity, and shared use of the library"),
-            ("Often extra", "Clerk's salary, stationery, internet, chamber maintenance"),
-            ("Best locations", "Around City Courts, Saddar, Garden and near the Sindh High Court"),
-            ("Usual arrangement", "Two or three juniors share one chamber and split the rent"),
-            ("Written record needed", "Rent, inclusions, notice period, and who holds the key"),
-        ],
-        "sections": [
-            {"h2": "What does a chamber seat actually cost?",
-             "answer": "Between Rs 6,000 and Rs 15,000 a month for a shared seat, with the higher end near the High Court and in chambers with a library and clerk.",
-             "html": """
-<table class="tbl">
-<thead><tr><th>Arrangement</th><th>Typical monthly cost</th><th>What you get</th></tr></thead>
-<tbody>
-<tr><td>Desk in a shared chamber</td><td>Rs 6,000 – 9,000</td><td>Desk, chair, cupboard, shared library</td></tr>
-<tr><td>Seat plus clerk support</td><td>Rs 10,000 – 15,000</td><td>Adds filing, copying and cause-list help</td></tr>
-<tr><td>Small independent chamber</td><td>Rs 20,000 and above</td><td>Own room, often with utilities separate</td></tr>
-</tbody>
-</table>
-<p>Figures are indicative for 2026 and vary street to street. Treat them as a starting point for negotiation, not a rate card.</p>
-"""},
-            {"h2": "What should a junior check before sharing a chamber?",
-             "answer": "Who the tenant of record is, what the rent includes, how the key is held, whether the senior is present daily, and whether client files will be safe.",
-             "html": """
-<ul>
-<li><b>Tenancy</b> — the chamber's own lease and the person legally entitled to sublet space.</li>
-<li><b>Inclusions</b> — electricity, internet, cleaning, clerk, stationery. Get a list, not a promise.</li>
-<li><b>Security</b> — a locker or cupboard you alone can lock, and a written inventory.</li>
-<li><b>Use of the library</b> — borrowing rules, and whether reports may leave the chamber.</li>
-<li><b>Notice</b> — how many days must either side give before leaving.</li>
-<li><b>Client meetings</b> — whether you may meet your own clients there, and at what hours.</li>
-</ul>
-<div class="callout"><b>Do not pay a deposit without a receipt that names the payer, the amount, the period covered and what the deposit secures.</b></div>
-"""},
-            {"h2": "How does seat sharing between juniors work in practice?",
-             "answer": "Two or three juniors take one chamber, split the rent and utilities, and agree a rota for who receives clients and how files are stored.",
-             "html": """
-<ol class="steps">
-<li>Agree the split in writing: rent, utilities, clerk, stationery.</li>
-<li>Allocate desks and storage physically, so nothing is ambiguous.</li>
-<li>Set rules on client meetings — booked slots, no overlapping appointments.</li>
-<li>Keep separate files, in separately locked cupboards.</li>
-<li>Fix an exit clause: 30 days' notice, deposit returned after the final utility bill.</li>
-</ol>
-"""},
-            {"h2": "Is a chamber seat worth the money in the first year?",
-             "answer": "Yes, if it puts you within walking distance of your court and gives you a place clients can visit. It is a cost of doing business, not a luxury.",
-             "html": """
-<p>Compare it with the alternative:</p>
-<ul>
-<li>Working from home means no walk-in clients and no library.</li>
-<li>Paying for a separate room costs two to three times more for the same utility.</li>
-<li>A shared seat near the court saves travel time, which is the scarcest resource of a junior.</li>
-</ul>
-<p>On a Rs 30,000 stipend, a Rs 8,000 seat is 27% of income — but it is the difference between being a lawyer with an address and one without.</p>
-"""},
-        ],
-        "faqs": [
-            ("Can a chamber seat be shared by a man and a woman advocate?",
-             "Shared professional space is a matter for the parties to agree, and many chambers allocate separate desks and storage. What matters is a written arrangement that both sides are comfortable with; harassment at the workplace is separately governed by law."),
-            ("Do I need a separate chamber to take my own clients?",
-             "No, but you need a place where a client can sit and where your files are safe. Confirm with your senior or co-sharers that you may meet your own clients there."),
-            ("What is a fair deposit for a chamber seat?",
-             "Commonly one month's rent. Anything higher should be justified in writing and covered by a receipt that states the terms of return."),
-        ],
-        "sources": [
-            ("Sindh Bar Council — Karachi bar associations", "https://advocates.sindhbarcouncil.org/", "official register"),
-            ("Sindh High Court", "https://sindhhighcourt.gov.pk/", "court website"),
-        ],
-        "related": [
-            ("Rooms and seat sharing in Karachi", "karachi/lawyer-room-for-rent/index.html"),
-            ("Lawyer jobs in Karachi", "karachi/lawyer-jobs/index.html"),
-            ("First 30 days in a chamber", "career/first-30-days-in-chamber/index.html"),
-        ],
-    },
+
     {
         "slug": "karachi/city-courts-guide/index.html",
         "url": "karachi/city-courts-guide/",
@@ -1020,7 +937,7 @@ MORE_PAGES = [
         ],
         "related": [
             ("Cause list tracking", "career/cause-list-tracking/index.html"),
-            ("Chamber for rent in Karachi", "karachi/chamber-seat-rent/index.html"),
+            ("Legal jobs in Karachi", "karachi/lawyer-jobs/index.html"),
             ("Bail application format", "drafts/bail-application-format/index.html"),
         ],
     },
@@ -1046,7 +963,7 @@ HUB_ADDITIONS = {
         ("First 30 days in a chamber", "A week-by-week plan for a new pupil", "../career/first-30-days-in-chamber/index.html"),
     ],
     "karachi/index.html": [
-        ("Chamber for rent", "Seat share costs and what to check before paying", "../karachi/chamber-seat-rent/index.html"),
+        ("Pupillage and first chamber", "What a first chamber actually expects", "../career/first-30-days-in-chamber/index.html"),
         ("City Courts guide", "Filing, etiquette and the first month at City Courts", "../karachi/city-courts-guide/index.html"),
     ],
 }

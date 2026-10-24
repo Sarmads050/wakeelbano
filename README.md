@@ -1,8 +1,8 @@
 # WakeelBano — wakeelbano.com
 
 Career platform for Pakistani lawyers, starting in Karachi. It helps law students, fresh
-graduates and junior advocates find a chamber and mentor, verified rooms and seat sharing
-near the courts, paid drafting work, and free case law research guides.
+graduates and junior advocates find a chamber and mentor, paid drafting work, legal jobs across
+Pakistan, and free case law research guides.
 
 - **Junior lawyers use it free.** Chambers, law firms, universities and sponsors pay.
 - **Legal information only** — no legal advice, no client case referrals, no "best lawyer" rankings.
@@ -12,11 +12,11 @@ near the courts, paid drafting work, and free case law research guides.
 
 | Path | What it is |
 |---|---|
-| `index.html` | Single-file app prototype: home, problem research, career navigator, chamber match, rooms, work board, AI kit, growth school, pricing. Vanilla JS, no build step, works offline. |
+| `index.html` | Single-file app prototype: home, problem research, career navigator, chamber match, work board, AI kit, growth school, pricing. Vanilla JS, no build step, works offline. |
 | `case-law/` | Research hub + 302 PPC, 489-F PPC, 497 CrPC, 420 PPC, 406 PPC, 506 PPC pages |
 | `drafts/` | Drafting hub + bail application, legal notice, notice reply, plaint, written statement, vakalatnama, affidavit, rent agreement, power of attorney |
 | `career/` | Career hub + Law-GAT, enrollment, how to become a lawyer, salary, High Court licence, cause list tracking, lawyer CV, first 30 days in a chamber |
-| `karachi/` | Karachi hub + lawyer jobs, lawyer room for rent, chamber seat rent, City Courts guide |
+| `karachi/` | Karachi hub + lawyer jobs, City Courts guide |
 | `about/` | Entity page (what the platform is and does not do) |
 | `what-is-wakeelbano/` | "What does it do for me?" — one section per user type (the page an AI assistant should quote) |
 | `methodology/` | How guides are researched, sourced and corrected (trust / E-E-A-T signal) |

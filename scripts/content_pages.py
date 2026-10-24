@@ -15,7 +15,7 @@ DISCLAIMER = ("<b>Legal information, not legal advice.</b> This page explains ho
               "court, because these details change.")
 
 CTA = {"title": "Create your free WakeelBano account",
-       "text": "Chamber matching, verified rooms, paid work and legal research tools. Always free for junior lawyers."}
+       "text": "Chamber matching, legal jobs across Pakistan, paid work and legal research tools. Always free for junior lawyers."}
 
 SOURCES_COMMON = [
     ("Legal Practitioners and Bar Councils Act, 1973", "http://nasirlawsite.com/laws/baract.htm", "statute"),
@@ -152,19 +152,19 @@ research method and a verification checklist — then link to the court's own pu
             ("Is the Law-GAT compulsory?", "The prescribed test must be passed before enrollment as an advocate under Pakistan Bar Council rules. Confirm the current requirement with your provincial bar council."),
         ],
         "related": [("Lawyer jobs in Karachi", "../karachi/lawyer-jobs/index.html"),
-                    ("Rooms and seat sharing", "../karachi/lawyer-room-for-rent/index.html")],
+                    ("Legal jobs in Pakistan", "../jobs/index.html")],
     },
     {
         "slug": "karachi/index.html",
         "url": "karachi/",
         "title": "Lawyers in Karachi — Jobs, Rooms and Chamber Sharing | WakeelBano",
         "h1": "Karachi for Lawyers",
-        "desc": "Practical Karachi guides for lawyers: chamber and firm jobs, room rent and chamber seat sharing near City Courts, Garden, Saddar and Malir.",
+        "desc": "Practical Karachi guides for lawyers: chamber and firm jobs, pupillage, the City Courts filing system and the routes that actually lead to paid work.",
         "kicker": "Karachi",
         "answer": "Karachi is where most Pakistani lawyers start, and three decisions shape the first year: which court you commit to, what you can afford to rent, and whose network you join.",
         "children": [
             ("Lawyer jobs in Karachi", "Chambers, firms, in-house and freelance work", "../karachi/lawyer-jobs/index.html"),
-            ("Rooms and seat sharing", "Punjab Colony, Garden, Saddar and Malir", "../karachi/lawyer-room-for-rent/index.html"),
+            ("Legal jobs in Pakistan", "Karachi, Lahore, Islamabad and remote", "../jobs/index.html"),
             ("Case law library", "Section-wise research guides", "../case-law/index.html"),
         ],
         "sections": [
@@ -173,17 +173,17 @@ research method and a verification checklist — then link to the court's own pu
              "html": """
 <ol class="steps">
 <li><b>Choose a court.</b> City Courts, Malir or the Sindh High Court. Mastery of one court beats rushing between five.</li>
-<li><b>Control your rent.</b> A chamber seat share plus a shared room near the court is the cheapest workable combination.</li>
+<li><b>Cut the commute.</b> A chamber close to the courts saves hours a week; those hours are the difference between watching and drafting.</li>
 <li><b>Build your network on purpose.</b> Chamber seniors, the bar room and your batchmates are the three channels that actually send work.</li>
 </ol>
 """},
         ],
         "faqs": [
-            ("What is the cheapest way for a new lawyer to live near the courts?", "A chamber seat share, typically Rs 6,000 to 15,000 a month, combined with a shared room at Rs 8,000 to 15,000. It cuts the daily commute and the monthly cost at the same time."),
+            ("How does a new lawyer find work in Karachi?", "Chambers rarely advertise. Visit with a CV, ask for pupillage, and use the Karachi jobs page for the firms and companies that do advertise."),
             ("Where are legal jobs in Karachi advertised?", "Mostly they are not. Chambers hire through visits and referrals. Firms and companies do advertise, but the hidden market is much larger."),
         ],
         "related": [("Lawyer jobs in Karachi", "../karachi/lawyer-jobs/index.html"),
-                    ("Rooms for rent", "../karachi/lawyer-room-for-rent/index.html")],
+                    ("Legal jobs in Pakistan", "../jobs/index.html")],
     },
 ]
 
@@ -633,7 +633,7 @@ about pay are replaced.</p>
         ],
         "related": [("Lawyer jobs in Karachi", "karachi/lawyer-jobs/index.html"),
                     ("How to become a lawyer", "career/how-to-become-lawyer-pakistan/index.html"),
-                    ("Rooms for rent", "karachi/lawyer-room-for-rent/index.html")],
+                    ("Legal jobs in Pakistan", "jobs/index.html")],
     },
     {
         "slug": "career/how-to-become-lawyer-pakistan/index.html",
@@ -779,90 +779,10 @@ which explains why chambers pay what they pay.</p>
             ("Karachi Bar Association — City Courts", "https://www.karachibarassociation.com/", "association"),
         ],
         "related": [("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
-                    ("Rooms for rent", "karachi/lawyer-room-for-rent/index.html"),
+                    ("Legal jobs in Pakistan", "jobs/index.html"),
                     ("Bar council enrollment", "career/bar-council-enrollment/index.html")],
     },
-    {
-        "slug": "karachi/lawyer-room-for-rent/index.html",
-        "url": "karachi/lawyer-room-for-rent/",
-        "title": "Room for Rent in Karachi for Lawyers — Punjab Colony and Garden",
-        "h1": "Rooms and Chamber Seat Sharing in Karachi",
-        "desc": "Where new lawyers actually live in Karachi: room and seat-share costs in Punjab Colony, Garden, Saddar and Malir, what to check before paying, and how to avoid broker traps.",
-        "kicker": "Karachi · Housing",
-        "answer": "A shared room near the courts in Karachi costs about Rs 8,000 to 15,000 a month, and a chamber seat share costs Rs 6,000 to 15,000, which together make a junior stipend survivable.",
-        "facts": [
-            ("Shared room", "Rs 8,000 – 15,000 a month"),
-            ("Paying guest with meals", "Rs 10,000 – 20,000"),
-            ("Single room in a shared flat", "Rs 14,000 – 25,000"),
-            ("Chamber seat share", "Rs 6,000 – 15,000"),
-            ("Typical deposit", "Two to three months"),
-        ],
-        "sections": [
-            {"h2": "What does it actually cost to live near the courts?",
-             "answer": "On a Rs 30,000 stipend, a shared room and a chamber seat share keep rent and travel low enough to survive the first year.",
-             "html": """
-<table class="tbl">
-<thead><tr><th>Option</th><th>Typical monthly (PKR)</th><th>Note</th></tr></thead>
-<tbody>
-<tr><td>Shared room for two</td><td>8,000 – 15,000</td><td>Cheapest; utilities sometimes separate</td></tr>
-<tr><td>Paying guest with meals</td><td>10,000 – 20,000</td><td>Cleaner, with house rules</td></tr>
-<tr><td>Single room in a shared flat</td><td>14,000 – 25,000</td><td>Punjab Colony, Garden, Jamshed Road</td></tr>
-<tr><td>Small independent flat</td><td>25,000 – 45,000</td><td>Deposit separate</td></tr>
-<tr><td>Chamber seat share</td><td>6,000 – 15,000</td><td>Desk, cupboard and library access</td></tr>
-</tbody>
-</table>
-"""},
-            {"h2": "Which areas work best for which court?",
-             "answer": "Punjab Colony and Garden suit City Courts, Jamshed Road balances both courts, Malir is cheapest for Malir court, and Gulshan means a long daily commute.",
-             "html": """
-<ul>
-<li><b>Punjab Colony and Garden</b> — close to City Courts and Saddar, dense lawyer network, cheap food</li>
-<li><b>Saddar</b> — transport from everywhere, but noisy and crowded at night</li>
-<li><b>Jamshed Road and Patel Para</b> — mid-range, reachable to both City Courts and the High Court</li>
-<li><b>Malir</b> — cheapest option if you practise at Malir court</li>
-<li><b>Gulshan-e-Iqbal</b> — better housing, but long and costly daily travel</li>
-<li><b>Clifton and Defence</b> — close to the High Court but outside a junior's budget</li>
-</ul>
-"""},
-            {"h2": "What should you check before paying a deposit?",
-             "answer": "Verify the owner's identity, insist on a written agreement, confirm the electricity meter, water supply, security and the conditions for returning your deposit.",
-             "html": """
-<ol class="steps">
-<li>Owner's CNIC — confirm whether you are dealing with the owner or a sub-letter</li>
-<li>A written rent agreement in two copies, with duration and advance stated</li>
-<li>Electricity: separate meter or shared bill, and who sets the rate</li>
-<li>Water: tank, timing and quality — a constant issue in Karachi</li>
-<li>Security: gate, guard, locks and late-entry arrangements</li>
-<li>Deposit: when and on what conditions it is returned, in writing</li>
-<li>Notice period: how many months either side must give</li>
-<li>Workspace: somewhere to keep files, plus light and internet</li>
-</ol>
-<div class="callout"><b>For women lawyers:</b> check for a family building, a warden or guard, and a separate entrance. Visit in person and speak to current residents rather than relying on assurances.</div>
-"""},
-            {"h2": "How do you avoid broker problems?",
-             "answer": "Ask your chamber network first, deal with owners directly, and never pay a booking amount before seeing the room and signing an agreement.",
-             "html": """
-<ul>
-<li>Ask seniors and colleagues — they often know of an empty seat</li>
-<li>Use your law college alumni group and the bar room notice board</li>
-<li>Deal with the owner directly before agreeing to any commission</li>
-<li>Use verified listings on the WakeelBano Rehail board, filtered by area and budget</li>
-</ul>
-<p class="mini">Never transfer a deposit before viewing the property. Advance payments are the most common rental fraud.</p>
-"""},
-        ],
-        "faqs": [
-            ("How much does a room cost near City Courts in Karachi?", "Shared rooms around Punjab Colony and Garden typically run Rs 8,000 to 15,000 a month, and a chamber seat share adds Rs 6,000 to 15,000."),
-            ("What is a chamber seat share?", "Two or three lawyers share one chamber, each with a desk, and split the rent and utilities. It is the cheapest way for a new lawyer to be based near the courts."),
-            ("Should I rent without a written agreement?", "A written agreement is strongly advised. Without one, disputes over deposits, notice periods and bills are common and hard to resolve."),
-        ],
-        "sources": [
-            ("Sindh Rented Premises Ordinance — rent framework", "http://nasirlawsite.com/laws/", "statute"),
-        ],
-        "related": [("Lawyer jobs in Karachi", "karachi/lawyer-jobs/index.html"),
-                    ("Lawyer salary in Pakistan", "career/lawyer-salary-pakistan/index.html"),
-                    ("Bar council enrollment", "career/bar-council-enrollment/index.html")],
-    },
+
     {
         "slug": "career/high-court-license/index.html",
         "url": "career/high-court-license/",
@@ -1232,9 +1152,9 @@ ABOUT = {
     "url": "about/",
     "title": "About WakeelBano — Pakistan's Career Platform for Lawyers",
     "h1": "What is WakeelBano?",
-    "desc": "WakeelBano is a Pakistani career platform for lawyers: chamber and mentor matching, verified rooms and seat sharing, paid work, legal research guides and an AI kit for drafting.",
+    "desc": "WakeelBano is a Pakistani career platform for lawyers: chamber and mentor matching, a legal job market covering all of Pakistan, paid work, legal research guides and an AI kit for drafting.",
     "kicker": "About",
-    "answer": "WakeelBano is a career platform for Pakistani lawyers, built for Karachi first. It helps new lawyers find a chamber and mentor, affordable housing near the courts, paid drafting work, and reliable research guidance — all free for junior lawyers.",
+    "answer": "WakeelBano is a career platform for Pakistani lawyers, built for Karachi first. It helps new lawyers find a chamber and mentor, paid drafting work, legal jobs across Pakistan, and reliable research guidance — all free for junior lawyers.",
     "sections": [
         {"h2": "Who is WakeelBano for?",
          "answer": "Law students, fresh graduates, pupils and junior advocates in Pakistan, plus the chambers, law firms and universities that hire them.",
@@ -1254,7 +1174,7 @@ ABOUT = {
 <thead><tr><th>Stream</th><th>Who pays</th><th>Typical price (PKR)</th></tr></thead>
 <tbody>
 <tr><td>Chamber Pro subscription</td><td>Seniors and chambers</td><td>Rs 2,500 per month</td></tr>
-<tr><td>Verified listings</td><td>Room and chamber owners</td><td>Rs 500 – 1,000 per listing</td></tr>
+<tr><td>Verified job posting</td><td>Chambers, firms and companies</td><td>Rs 1,500 per posting</td></tr>
 <tr><td>Institution plan</td><td>Law colleges and firms</td><td>From Rs 60,000 per year</td></tr>
 <tr><td>Workshops</td><td>Participants and sponsors</td><td>Rs 1,500 – 3,000 per seat</td></tr>
 <tr><td>Kaam Board commission</td><td>Task posters</td><td>10 – 15% of the task value</td></tr>
@@ -1278,9 +1198,9 @@ citations. Every page carries a date, a scope note and links to the official sou
         {"h2": "Where is WakeelBano based?",
          "answer": "Karachi, Sindh, with an initial focus on City Courts, the Sindh High Court and the districts around them.",
          "html": """
-<p>The pilot starts in Karachi because that is where the largest concentration of new lawyers practises, and where the shortage of
-affordable rooms and paid pupillages is sharpest. Expansion to Hyderabad, Sukkur, Lahore and Islamabad follows once the Karachi
-network is verified and working.</p>
+<p>The pilot starts in Karachi because that is where the largest concentration of new lawyers practises, and where the gap between
+a law degree and paid work is widest. Expansion to Hyderabad, Sukkur, Lahore and Islamabad follows once the Karachi network is
+verified and working.</p>
 """},
     ],
     "faqs": [
