@@ -37,6 +37,7 @@ near the courts, paid drafting work, and free case law research guides.
 | `scripts/validate.py` | Checks broken internal links, JSON-LD validity, one `<h1>`/title/canonical per page, dead links in `llms.txt` |
 | `scripts/repair_quotes.py` | Utility: converts unescaped straight quotes in content text to typographic quotes |
 | `scripts/push.sh` | Commit + push using a token in `.secrets/gh_token` |
+| `scripts/db.py` | Database helper: `counts`, `rows`, `insert`, `update`, `delete`, `sql` (keys from `.secrets/`) |
 | `research/` | Demand research (what Pakistani lawyers search, pain points) behind the content plan |
 
 **Size of the site:** 43 indexable URLs — home, job market, 6 hubs, 34 guides, about, plus a 404.
@@ -137,6 +138,25 @@ When `wakeelbano.com` is bought:
 3. GitHub → Settings → Pages → Custom domain `wakeelbano.com`, then tick **Enforce HTTPS**
 4. Rebuild with `CUSTOM_DOMAIN=wakeelbano.com python3 scripts/build_pages.py` to write the
    `CNAME` file into the repo
+
+## Keys and secrets
+
+Everything secret lives in `.secrets/` and is gitignored — it is never committed and never
+shipped to the browser:
+
+| File | Contents |
+|---|---|
+| `.secrets/gh_token` | GitHub token used by `scripts/push.sh` |
+| `.secrets/supabase_url` | Supabase project URL |
+| `.secrets/supabase_key` | Supabase **secret** key — used only by `scripts/db.py` for data changes |
+| `.secrets/supabase_access_token` | Optional Supabase personal access token, needed for schema (DDL) changes |
+
+The browser only ever receives `assets/supabase-config.js`, which holds the **publishable** key.
+That key is public by design; the row-level security rules in `supabase/schema.sql` decide what
+it can read and write.
+
+Rotate the secret key (Project Settings → API Keys → Revoke) whenever it may have been shared
+outside `.secrets/`, then save the new value back into `.secrets/supabase_key`.
 
 ## Content rules (do not break these)
 
