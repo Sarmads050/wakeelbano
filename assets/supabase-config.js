@@ -8,6 +8,6 @@
  * bypass every rule.
  */
 window.WB_CONFIG = {
-  SUPABASE_URL: "https://irseajosvdcvtxdadyj.supabase.co",
+  SUPABASE_URL: "https://lrseajesvdvctxdadytj.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_HMEAIwCzmCnJ-C3NHwAg5A_lLnSUmIk"
 };
