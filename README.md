@@ -40,6 +40,7 @@ Pakistan, and free case law research guides.
 | `supabase/schema.sql` | Database tables, rating rules and RLS policies |
 | `supabase/seed.sql` | Generated seed data (`scripts/gen_supabase.py`) |
 | `supabase/README.md` | 10-minute database setup guide |
+| `scripts/layout_audit.py` | Renders 24 page types at 1280/768/390 in Chromium and reports sideways overflow, overlapping text, clipped boxes, offscreen elements, dead gaps and content spilling out of cards. `--all --fast` scans every template at desktop + phone |
 | `scripts/validate.py` | Checks broken internal links, JSON-LD validity, one `<h1>`/title/canonical per page, dead links in `llms.txt` |
 | `scripts/repair_quotes.py` | Utility: converts unescaped straight quotes in content text to typographic quotes |
 | `scripts/push.sh` | Commit + push using a token in `.secrets/gh_token` |
@@ -300,6 +301,7 @@ than assumed:
 
 ```bash
 python3 scripts/mobile_audit.py --write   # static rules -> mobile-audit.md
+python3 scripts/layout_audit.py --all --fast   # real browser: overlap / overflow / spill
 python3 scripts/shot_mobile.py            # real Chromium at 390px -> mobile-shots/
 ```
 
