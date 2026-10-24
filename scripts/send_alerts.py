@@ -118,7 +118,7 @@ def email_html(sub, jobs):
       <p style="font-size:12px;color:#7A8794;margin-top:22px;border-top:1px solid #E6EAEE;padding-top:14px">
         You are getting this because you subscribed on WakeelBano.
         Salaries and dates come from the source page — always check before applying.
-        To stop these emails, reply with "unsubscribe" or use the link on the jobs page.
+        To stop these emails, reply with "stop" — we remove the address the same day.
       </p>
     </div>
   </div></body></html>"""
