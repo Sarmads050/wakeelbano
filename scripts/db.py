@@ -39,8 +39,10 @@ def read(name, required=True):
     return io.open(path, encoding="utf-8").read().strip()
 
 
-URL = read("supabase_url").rstrip("/")
-KEY = read("supabase_key")
+URL = (os.environ.get("SUPABASE_URL") or read("supabase_url", required=False) or "").rstrip("/")
+KEY = os.environ.get("SUPABASE_KEY") or read("supabase_key", required=False) or ""
+if not URL or not KEY:
+    sys.exit("no Supabase credentials: set SUPABASE_URL / SUPABASE_KEY, or put them in .secrets/")
 PROJECT_REF = URL.split("//")[-1].split(".")[0]
 
 

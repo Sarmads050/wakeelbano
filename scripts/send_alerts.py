@@ -29,13 +29,30 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 
 import db  # noqa: E402
 
-EMAIL_FROM = "WakeelBano Job Alerts <alerts@wakeelbano.com>"
+def from_address():
+    """Sender address.
+
+    Until a domain is verified in Resend you can only send from
+    onboarding@resend.dev, and only to the address that owns the Resend
+    account. After verifying wakeelbano.com, write the real sender into
+    .secrets/resend_from, e.g.
+        WakeelBano Job Alerts <alerts@wakeelbano.com>
+    """
+    if os.environ.get("RESEND_FROM"):
+        return os.environ["RESEND_FROM"].strip()
+    path = os.path.join(ROOT, ".secrets", "resend_from")
+    if os.path.exists(path):
+        return io.open(path, encoding="utf-8").read().strip()
+    return "WakeelBano <onboarding@resend.dev>"
 SITE = "https://sarmads050.github.io/wakeelbano"
 MAX_JOBS = 12
+WELCOME_DAYS = 30   # first digest for a brand-new subscriber: last 30 days of jobs
 
 
 # ---------------------------------------------------------------- helpers
 def resend_key():
+    if os.environ.get("RESEND_KEY"):
+        return os.environ["RESEND_KEY"].strip()
     path = os.path.join(ROOT, ".secrets", "resend_key")
     if not os.path.exists(path):
         return ""
@@ -127,10 +144,14 @@ def email_html(sub, jobs):
 def send_resend(key, to, subject, html):
     import urllib.error
     import urllib.request
-    body = json.dumps({"from": EMAIL_FROM, "to": [to], "subject": subject, "html": html}).encode()
+    body = json.dumps({"from": from_address(), "to": [to], "subject": subject, "html": html}).encode()
     req = urllib.request.Request("https://api.resend.com/emails", data=body, method="POST")
     req.add_header("Authorization", f"Bearer {key}")
     req.add_header("Content-Type", "application/json")
+    # Resend sits behind Cloudflare, which rejects the default urllib user agent
+    # with a misleading 403 / error code 1010. A named agent sails through.
+    req.add_header("User-Agent", "WakeelBano/1.0")
+    req.add_header("Accept", "application/json")
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
             return r.status, r.read().decode()
@@ -160,7 +181,15 @@ def main():
     for sub in subs:
         if not sub.get("email"):
             continue
-        cutoff = parse_dt(sub.get("last_sent_at")) or parse_dt(sub.get("created_at")) or floor
+        first = not sub.get("last_sent_at")
+        cutoff = parse_dt(sub.get("last_sent_at"))
+        if not cutoff:
+            # A subscriber who has never had a digest should get a welcome batch of
+            # recent openings, not silence because no job was posted after signup.
+            signed = parse_dt(sub.get("created_at")) or datetime.datetime.now(datetime.timezone.utc)
+            cutoff = signed - datetime.timedelta(days=WELCOME_DAYS)
+        if floor and floor < cutoff:
+            cutoff = floor
         fresh = [j for j in jobs
                  if matches(sub, j)
                  and (not cutoff or (parse_dt(j.get("created_at")) or datetime.datetime.now(datetime.timezone.utc)) > cutoff)]
@@ -168,7 +197,9 @@ def main():
         if not fresh:
             print(f"  - {sub['email']}: nothing new")
             continue
-        subject = f"{len(fresh)} new legal job{'s' if len(fresh) != 1 else ''} on WakeelBano"
+        subject = (f"Welcome to WakeelBano alerts — {len(fresh)} legal job"
+                   f"{'s' if len(fresh) != 1 else ''} for you") if first else (
+                  f"{len(fresh)} new legal job{'s' if len(fresh) != 1 else ''} on WakeelBano")
         html = email_html(sub, fresh)
         if args.dry_run:
             print(f"  * would send to {sub['email']}: {subject}")

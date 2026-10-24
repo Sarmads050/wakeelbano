@@ -113,6 +113,15 @@ python3 scripts/send_alerts.py --to you@x.com --test
 Until a sender domain is verified in Resend, only the account owner's own address can receive
 mail — enough for testing. Each send stamps `last_sent_at`, so nobody gets the same job twice.
 
+`send_alerts.py` reads `SUPABASE_URL`, `SUPABASE_KEY`, `RESEND_KEY` and `RESEND_FROM` from the
+environment first, then from `.secrets/`. That is what lets
+`.github/workflows/alerts.yml` run it every Monday at 09:00 Pakistan time (or on demand from the
+Actions tab). Add those four values under *Settings → Secrets and variables → Actions* to switch
+on the scheduled digest; nothing else needs changing.
+
+A brand-new subscriber's first digest covers the last 30 days of openings (`WELCOME_DAYS`), so a
+signup never lands in an empty mailbox.
+
 WhatsApp: the pilot uses the WakeelBano business number and the "Copy all WhatsApp numbers"
 button in the admin panel; the Meta Cloud API can be wired into the same script later without
 touching the database.
