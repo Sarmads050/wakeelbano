@@ -89,6 +89,7 @@ a{color:#1B4E7A}
   </div>
 
   <div id="app" style="display:none">
+    <div id="diag" style="font-size:12px;color:#5E6B78;margin:0 0 8px"></div>
     <div id="stats"></div>
     <div class="tabs">
       <button class="tab on" data-t="leads" onclick="show('leads')">Join requests</button>
@@ -137,7 +138,7 @@ async function doLogin(e){
 async function enter(user){
   $$('loginBox').style.display='none';
   $$('app').style.display='block';
-  $$('who').innerHTML = `<span>${esc(user.email||'signed in')}</span>
+  $$('who').innerHTML = `<span class="pill cloud">signed in: ${esc(user.email||'admin')}</span>
     <button class="btn btn-line btn-small" onclick="logout()">Sign out</button>
     <a class="btn btn-line btn-small" href="../jobs/" target="_blank">Open site</a>`;
   await loadAll();
@@ -161,6 +162,9 @@ async function loadAll(){
 }
 
 function paintStats(){
+  const line = `Signed in OK · leads ${DATA.leads.length} · applications ${DATA.applications.length} · jobs ${DATA.jobs.length} · profiles ${DATA.profiles.length} · ratings ${DATA.ratings.length}`;
+  const el = document.getElementById('diag');
+  if (el) el.textContent = line;
   const s = [
     ['Join requests', DATA.leads.length],
     ['Job applications', DATA.applications.length],
@@ -183,7 +187,7 @@ function render(){
 }
 
 function tableLeads(){
-  if (!DATA.leads.length) return `<div class="empty">No join requests yet. They appear here the moment somebody submits the "Join free" form.</div>`;
+  if (!DATA.leads.length) return `<div class="empty"><b>No join requests yet.</b><br><span style="font-size:13px">Submit the "Join free" form on the <a href="../index.html" target="_blank">home page</a>, then refresh this page.</span></div>`;
   return `<table><thead><tr><th>When</th><th>Name</th><th>WhatsApp</th><th>Stage</th><th>Needs</th><th>Status</th><th></th></tr></thead><tbody>` +
     DATA.leads.map(l => `<tr>
       <td>${esc(dt(l.created_at))}</td>
@@ -200,7 +204,7 @@ function tableLeads(){
 }
 
 function tableApplications(){
-  if (!DATA.applications.length) return `<div class="empty">No applications yet.</div>`;
+  if (!DATA.applications.length) return `<div class="empty"><b>No applications yet.</b><br><span style="font-size:13px">Apply to a job on the <a href="../jobs/" target="_blank">Jobs page</a> to see one arrive here.</span></div>`;
   return `<table><thead><tr><th>When</th><th>Role</th><th>Applicant</th><th>WhatsApp</th><th>Note</th><th>Status</th><th></th></tr></thead><tbody>` +
     DATA.applications.map(a => `<tr>
       <td>${esc(dt(a.created_at))}</td>
@@ -234,7 +238,7 @@ function tableJobs(){
 }
 
 function tableProfiles(){
-  if (!DATA.profiles.length) return `<div class="empty">No lawyer profiles yet.</div>`;
+  if (!DATA.profiles.length) return `<div class="empty"><b>No lawyer profiles yet.</b><br><span style="font-size:13px">Profiles are created in the "My profile" tab on the <a href="../jobs/" target="_blank">Jobs page</a>.</span></div>`;
   return `<table><thead><tr><th>When</th><th>Name</th><th>City / Area</th><th>Chamber</th><th>Cases</th><th>Skills</th><th></th></tr></thead><tbody>` +
     DATA.profiles.map(p => `<tr>
       <td>${esc(dt(p.created_at))}</td>
@@ -248,7 +252,7 @@ function tableProfiles(){
 }
 
 function tableRatings(){
-  if (!DATA.ratings.length) return `<div class="empty">No ratings yet. A rating can only be left after a completed job.</div>`;
+  if (!DATA.ratings.length) return `<div class="empty"><b>No ratings yet.</b><br><span style="font-size:13px">A rating can only be left after a completed job.</span></div>`;
   return `<table><thead><tr><th>When</th><th>Lawyer id</th><th>Stars</th><th>Review</th><th>Job</th><th></th></tr></thead><tbody>` +
     DATA.ratings.map(r => `<tr>
       <td>${esc(dt(r.created_at))}</td>
@@ -278,7 +282,10 @@ async function removeRow(table, id){
   catch(e){ alert('Could not delete: ' + (e.message||e)); }
 }
 
-boot();
+boot().catch(err => {
+  $$('loginBox').style.display = 'block';
+  msg($$('loginMsg'), 'Startup error: ' + (err && err.message ? err.message : err), false);
+});
 </script>
 </body>
 </html>"""
